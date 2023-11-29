@@ -1,0 +1,7 @@
+.dropdown-toggle::after,
+.dropdown-toggle::before {
+	margin-right: 4px;
+	margin-left: 0;
+	content: ""; /* This will hide the arrow button */
+	opacity: 0; /* This will make the arrow transparent */
+}

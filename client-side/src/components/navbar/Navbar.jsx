@@ -4,6 +4,7 @@ import "bootstrap";
 import "../../assets/css/style.css";
 import "../../assets/css/sections/global-settings.css";
 import "../../assets/css/responsive.css";
+import "./navbar.css";
 import $ from "jquery";
 import { useEffect } from "react";
 
@@ -11,14 +12,17 @@ import LogoImage from "../../assets/images/logo.png";
 import MenuIcon from "../../assets/images/icons/menu-icon.svg";
 
 import { useAuth } from "../../context/authContext";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
 	const [auth, setAuth] = useAuth();
+	const navigate = useNavigate();
 
 	const logout = () => {
+		console.log("function call");
 		setAuth({ ...auth, user: null, token: "" });
 		localStorage.removeItem("auth");
+		navigate("/");
 	};
 
 	useEffect(() => {
@@ -224,22 +228,28 @@ const Navbar = () => {
 							</div>
 							<div className="links-box clearfix">
 								<div className="link login">
-									{!auth?.user ? (
+									{auth?.user ? (
 										<div className="dropdown">
-											<img
-												src="https://pixlok.com/wp-content/uploads/2022/02/Profile-Icon-SVG-09856789.png"
-												style={{
-													width: "20px",
-													height: "20px",
-												}}
-											/>
-											<ul>
-												<li>
-													<NavLink to="#">
+											<a
+												className="nav-link pointer dropdown-toggle"
+												data-bs-toggle="dropdown"
+											>
+												<img
+													src="https://pixlok.com/wp-content/uploads/2022/02/Profile-Icon-SVG-09856789.png"
+													style={{
+														width: "36px",
+														height: "36px",
+													}}
+													className="ms-2 avatar shadow mb-2"
+												/>
+											</a>
+											<ul className="dropdown-menu">
+												<li className="dropdown-item">
+													<NavLink to="/dashboard">
 														Dashboard
 													</NavLink>
 												</li>
-												<li>
+												<li className="dropdown-item">
 													<a onClick={logout}>
 														Logout
 													</a>
@@ -247,7 +257,7 @@ const Navbar = () => {
 											</ul>
 										</div>
 									) : (
-										<NavLink to="#">
+										<NavLink to="/login">
 											<button className="btn-style-one">
 												Sign in
 											</button>
@@ -286,21 +296,23 @@ const Navbar = () => {
 					<div className="links-box clearfix">
 						<div className="clearfix">
 							<div className="link">
-								{!auth?.user ? (
-									<NavLink to="#">
-										<button className="btn-style-one">
-											Sign in
-										</button>
-									</NavLink>
-								) : (
+								{auth?.user ? (
 									<ul>
 										<li>
-											<NavLink to="#">Dashboard</NavLink>
+											<NavLink to="/dashboard">
+												Dashboard
+											</NavLink>
 										</li>
 										<li>
 											<a onClick={logout}>Logout</a>
 										</li>
 									</ul>
+								) : (
+									<NavLink to="/login">
+										<button className="btn-style-one">
+											Sign in
+										</button>
+									</NavLink>
 								)}
 							</div>
 						</div>
