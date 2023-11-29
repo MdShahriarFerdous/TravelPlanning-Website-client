@@ -1,4 +1,3 @@
-import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap";
 import "../../assets/css/style.css";
@@ -6,13 +5,13 @@ import "../../assets/css/sections/global-settings.css";
 import "../../assets/css/responsive.css";
 import "./navbar.css";
 import $ from "jquery";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import LogoImage from "../../assets/images/logo.png";
 import MenuIcon from "../../assets/images/icons/menu-icon.svg";
 
 import { useAuth } from "../../context/authContext";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
 	const [auth, setAuth] = useAuth();
@@ -164,6 +163,14 @@ const Navbar = () => {
 			}
 		})(window.jQuery);
 	}, []);
+	// To Toggle Active / Inactive class
+	const location = useLocation();
+	const [isActive, setIsActive] = useState("/");
+
+	useEffect(() => {
+		const matched = location.pathname.match(/^\/([^/]+)/);
+		setIsActive(matched && matched[1]);
+	}, [location]);
 
 	return (
 		<>
@@ -186,10 +193,22 @@ const Navbar = () => {
 								<div className="nav-outer clearfix">
 									<nav className="main-menu">
 										<ul className="navigation clearfix">
-											<li className="current dropdown">
+											<li
+												className={`${
+													isActive === null
+														? "current"
+														: ""
+												}`}
+											>
 												<NavLink to="/">Home</NavLink>
 											</li>
-											<li className="dropdown">
+											<li
+												className={`${
+													isActive === "trips"
+														? "current"
+														: ""
+												} dropdown`}
+											>
 												<NavLink to="/trips">
 													Trips
 												</NavLink>
@@ -206,14 +225,38 @@ const Navbar = () => {
 													</li>
 												</ul>
 											</li>
-											<li>
-												<NavLink to="#">Flight</NavLink>
+											<li
+												className={`${
+													isActive === "flights"
+														? "current"
+														: ""
+												}`}
+											>
+												<NavLink to="/flights">
+													Flights
+												</NavLink>
 											</li>
-											<li>
-												<NavLink to="">Blog</NavLink>
+											<li
+												className={`${
+													isActive === "blogs"
+														? "current"
+														: ""
+												}`}
+											>
+												<NavLink to="/blogs">
+													Blogs
+												</NavLink>
 											</li>
-											<li>
-												<NavLink to="#">Hotel</NavLink>
+											<li
+												className={`${
+													isActive === "hotels"
+														? "current"
+														: ""
+												}`}
+											>
+												<NavLink to="/hotels">
+													Hotels
+												</NavLink>
 											</li>
 										</ul>
 									</nav>

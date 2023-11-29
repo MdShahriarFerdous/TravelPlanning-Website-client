@@ -316,61 +316,62 @@
 		});
 	}
 
+	// Integrated in react
 	//Partners Carousel
-	if ($(".partners-carousel").length) {
-		$(".partners-carousel").slick({
-			slidesToShow: 5,
-			centerMode: false,
-			centerPadding: "24px",
-			slidesToScroll: 2,
-			autoplay: true,
-			infinite: true,
-			dots: false,
-			arrows: false,
-			touchMove: true,
-			touchThreshold: 5,
-			autoplaySpeed: 5000,
-			pauseOnHover: true,
-			speed: 1000,
-			prevArrow:
-				'<div class="prev-btn"><i class="fa-solid fa-angle-left"></span></div>',
-			nextArrow:
-				'<div class="next-btn"><i class="fa-solid fa-angle-right"></span></div>',
-			//cssEase:'linear',
-			responsive: [
-				{
-					breakpoint: 1200,
-					settings: {
-						slidesToShow: 5,
-					},
-				},
-				{
-					breakpoint: 992,
-					settings: {
-						slidesToShow: 3,
-					},
-				},
-				{
-					breakpoint: 768,
-					settings: {
-						slidesToShow: 2,
-					},
-				},
-				{
-					breakpoint: 600,
-					settings: {
-						slidesToShow: 1,
-					},
-				},
-				{
-					breakpoint: 480,
-					settings: {
-						slidesToShow: 1,
-					},
-				},
-			],
-		});
-	}
+	// if ($(".partners-carousel").length) {
+	// 	$(".partners-carousel").slick({
+	// 		slidesToShow: 5,
+	// 		centerMode: false,
+	// 		centerPadding: "24px",
+	// 		slidesToScroll: 2,
+	// 		autoplay: true,
+	// 		infinite: true,
+	// 		dots: false,
+	// 		arrows: false,
+	// 		touchMove: true,
+	// 		touchThreshold: 5,
+	// 		autoplaySpeed: 5000,
+	// 		pauseOnHover: true,
+	// 		speed: 1000,
+	// 		prevArrow:
+	// 			'<div class="prev-btn"><i class="fa-solid fa-angle-left"></span></div>',
+	// 		nextArrow:
+	// 			'<div class="next-btn"><i class="fa-solid fa-angle-right"></span></div>',
+	// 		//cssEase:'linear',
+	// 		responsive: [
+	// 			{
+	// 				breakpoint: 1200,
+	// 				settings: {
+	// 					slidesToShow: 5,
+	// 				},
+	// 			},
+	// 			{
+	// 				breakpoint: 992,
+	// 				settings: {
+	// 					slidesToShow: 3,
+	// 				},
+	// 			},
+	// 			{
+	// 				breakpoint: 768,
+	// 				settings: {
+	// 					slidesToShow: 2,
+	// 				},
+	// 			},
+	// 			{
+	// 				breakpoint: 600,
+	// 				settings: {
+	// 					slidesToShow: 1,
+	// 				},
+	// 			},
+	// 			{
+	// 				breakpoint: 480,
+	// 				settings: {
+	// 					slidesToShow: 1,
+	// 				},
+	// 			},
+	// 		],
+	// 	});
+	// }
 
 	//Insta Feed Carousel
 	if ($(".insta-carousel").length) {
