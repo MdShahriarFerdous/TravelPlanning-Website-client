@@ -9,8 +9,6 @@ import SendMailPage from "./pages/userauth/SendMailPage";
 import VerifyPage from "./pages/userauth/VerifyPage";
 import UserDashboard from "./pages/user/UserDashboard";
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomePage from "./pages/home/HomePage";
 import BlogsListPage from "./pages/blogs/BlogsListPage";
 import BlogDetailsPage from "./pages/blogs/BlogDetailsPage";
 import TripsListPage from "./pages/trips/TripsListPage";
