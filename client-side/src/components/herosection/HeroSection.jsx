@@ -10,11 +10,7 @@ const HeroSection = () => {
   return (
     <div className="banner-section">
       <div className="banner-container">
-        <div
-          className="banner-arrow wow slideInLeft"
-          data-wow-delay="0ms"
-          data-wow-duration="1500ms"
-        >
+        <div className="banner-arrow wow slideInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
           <img src={BannerArrowPic} />
         </div>
         <div className="auto-container">
@@ -34,62 +30,33 @@ const HeroSection = () => {
                       Explore the Top Destinations
                     </h1>
                     <div className="form-box site-form">
-                      <form
-                        method="post"
-                        action="https://tech-taqwa.com/html/index.html"
-                      >
+                      <form method="post" action="https://tech-taqwa.com/html/index.html">
                         <div className="row clearfix">
                           <div className="form-group col-xl-3 col-lg-6 col-md-6 col-sm-12">
                             <div className="field-label">Destination</div>
                             <div className="field-inner">
-                              <input
-                                type="text"
-                                name="field-name"
-                                defaultValue
-                                placeholder="Where to go?"
-                                required
-                              />
+                              <input type="text" name="field-name" placeholder="Where to go?" required />
                               <i className="alt-icon fa fa-map-marker-alt" />
                             </div>
                           </div>
                           <div className="form-group col-xl-3 col-lg-6 col-md-6 col-sm-12">
                             <div className="field-label">Check in</div>
                             <div className="field-inner">
-                              <input
-                                className="datepicker"
-                                type="text"
-                                name="field-name"
-                                defaultValue
-                                placeholder="Check in"
-                                required
-                              />
+                              <input className="datepicker" type="text" name="field-name" placeholder="Check in" required />
                               <i className="alt-icon fa fa-calendar-alt" />
                             </div>
                           </div>
                           <div className="form-group col-xl-3 col-lg-6 col-md-6 col-sm-12">
                             <div className="field-label">Check out</div>
                             <div className="field-inner">
-                              <input
-                                className="datepicker"
-                                type="text"
-                                name="field-name"
-                                defaultValue
-                                placeholder="Check out"
-                                required
-                              />
+                              <input className="datepicker" type="text" name="field-name" placeholder="Check out" required />
                               <i className="alt-icon fa fa-calendar-alt" />
                             </div>
                           </div>
                           <div className="form-group col-xl-3 col-lg-6 col-md-6 col-sm-12">
                             <div className="field-label">Guests</div>
                             <div className="field-inner">
-                              <input
-                                type="text"
-                                name="field-name"
-                                defaultValue
-                                placeholder="Guests"
-                                required
-                              />
+                              <input type="text" name="field-name" placeholder="Guests" required />
                               <i className="alt-icon fa fa-user" />
                             </div>
                           </div>
@@ -107,11 +74,7 @@ const HeroSection = () => {
               </div>
             </div>
             <div className="right-col col-lg-6 col-md-12">
-              <div
-                className="inner wow fadeInRight"
-                data-wow-delay="0ms"
-                data-wow-duration="1500ms"
-              >
+              <div className="inner wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
                 <div
                   className="image-layer"
                   style={{
