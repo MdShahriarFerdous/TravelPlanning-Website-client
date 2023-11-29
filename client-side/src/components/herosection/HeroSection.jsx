@@ -16,7 +16,7 @@ const HeroSection = () => {
 					data-wow-delay="0ms"
 					data-wow-duration="1500ms"
 				>
-					<img src={BannerArrowPic} title />
+					<img src={BannerArrowPic} />
 				</div>
 				<div className="auto-container">
 					<div className="row clearfix">
@@ -25,16 +25,12 @@ const HeroSection = () => {
 								<div className="clearfix">
 									<div className="content">
 										<div className="bg-image">
-											<img src={BGradient} title />
+											<img src={BGradient} />
 										</div>
 										<h3>Start Travelling Now</h3>
 										<h1>
 											<i className="d-icon">
-												<img
-													src={YelloCrown}
-													alt
-													title
-												/>
+												<img src={YelloCrown} />
 											</i>
 											Explore the Top Destinations
 										</h1>

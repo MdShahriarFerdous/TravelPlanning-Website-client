@@ -19,7 +19,6 @@ const Footer = () => {
 										<a href="index.html" title="Travilo">
 											<img
 												src={FooterLogo}
-												alt
 												title="Travilo"
 											/>
 										</a>
@@ -161,7 +160,7 @@ const Footer = () => {
 										<div className="gallery-item">
 											<div className="image">
 												<a href="#">
-													<img src={MaldivPic} alt />
+													<img src={MaldivPic} />
 												</a>
 											</div>
 											<h6>
