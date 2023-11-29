@@ -3,6 +3,7 @@ import HeroSection from "../../components/herosection/HeroSection";
 import TourPackage from "../../components/tourpackage/TourPackage";
 import Destination from "../../components/destination/Destination";
 import Counter from "../../components/counter/Counter";
+import Partners from "../../components/partners/Partners";
 
 const HomePage = () => {
   return (
@@ -11,6 +12,7 @@ const HomePage = () => {
       <TourPackage />
       <Destination />
       <Counter />
+      <Partners />
     </AppLayout>
   );
 };
