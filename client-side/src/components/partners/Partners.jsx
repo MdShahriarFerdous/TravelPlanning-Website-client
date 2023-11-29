@@ -4,14 +4,51 @@ const Partners = () => {
   const imgs = ["partner-1-white.png", "partner-2-white.png", "partner-3-white.png", "partner-4-white.png", "partner-5-white.png", "partner-1-white.png", "partner-2-white.png", "partner-3-white.png", "partner-4-white.png", "partner-5-white.png"];
 
   const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
     slidesToShow: 5,
-    slidesToScroll: 1,
-    initialSlide: 0,
-    arrows: false,
+    centerMode: false,
+    centerPadding: "24px",
+    slidesToScroll: 2,
     autoplay: true,
+    infinite: true,
+    dots: false,
+    arrows: false,
+    touchMove: true,
+    touchThreshold: 5,
+    autoplaySpeed: 5000,
+    pauseOnHover: true,
+    speed: 1000,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 5,
+        },
+      },
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   return (
