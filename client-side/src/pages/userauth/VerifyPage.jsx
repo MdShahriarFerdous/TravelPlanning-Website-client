@@ -9,6 +9,7 @@ import "bootstrap";
 
 const VerifyPage = () => {
 	const { token } = useParams();
+	console.log(token);
 	const navigate = useNavigate();
 	const [auth, setAuth] = useAuth();
 	const [loader, setLoader] = useLoader();
