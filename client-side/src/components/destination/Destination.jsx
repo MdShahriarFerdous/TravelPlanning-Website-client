@@ -18,11 +18,20 @@ import Gallery6 from "../../assets/images/resources/gallery/gallery-6.jpg";
 import Gallery7 from "../../assets/images/resources/gallery/gallery-7.jpg";
 import { useEffect, useRef } from "react";
 import Isotope from "isotope-layout";
+import {getAllDestination} from "../../_api/DestinationApi.js";
 
 const Destination = () => {
 	const isotopeContainer = useRef(null);
+
+	const fetchDestination = async () => {
+		const response = await getAllDestination();
+		console.log("Destination", response.data);
+	}
+
 	useEffect(() => {
+
 		(function () {
+			fetchDestination();
 			//Hide Loading Box (Preloader)
 			function handlePreloader() {
 				if ($(".loader-wrap").length) {
