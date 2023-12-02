@@ -330,7 +330,7 @@ form .form-group select {
 	-moz-appearance: none;
 	-o-appearance: none;
 	appearance: none;
-	background: #fff url(../assets/images/icons/icon-select.html) right center no-repeat;
+	background: #fff;
 	cursor: pointer;
 }
 

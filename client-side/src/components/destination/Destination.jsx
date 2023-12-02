@@ -16,9 +16,11 @@ import Gallery14 from "../../assets/images/resources/gallery/gallery-14.jpg";
 import Gallery15 from "../../assets/images/resources/gallery/gallery-15.jpg";
 import Gallery6 from "../../assets/images/resources/gallery/gallery-6.jpg";
 import Gallery7 from "../../assets/images/resources/gallery/gallery-7.jpg";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import Isotope from "isotope-layout";
 
 const Destination = () => {
+	const isotopeContainer = useRef(null);
 	useEffect(() => {
 		(function () {
 			//Hide Loading Box (Preloader)
@@ -406,22 +408,20 @@ const Destination = () => {
 
 			//Default Masonry
 			function enableDefaultMasonry() {
-				if ($(".masonry-container").length) {
-					var winDow = $(window);
-					// Needed variables
-					var $container = $(".masonry-container");
-
-					// $container.isotope({
-					// 	itemSelector: ".masonry-item",
-					// 	masonry: {
-					// 		columnWidth: 1,
-					// 		gutter: 5,
-					// 	},
-					// 	animationOptions: {
-					// 		duration: 500,
-					// 		easing: "linear",
-					// 	},
-					// });
+				if (isotopeContainer.current) {
+					const iso = new Isotope(isotopeContainer.current, {
+						itemSelector: ".masonry-item",
+						masonry: {
+							columnWidth: 1,
+							gutter: 5,
+						},
+						animationOptions: {
+							duration: 500,
+							easing: "linear",
+						},
+					});
+					console.log("Isotope initialized");
+					iso.layout();
 				}
 			}
 			enableDefaultMasonry();
@@ -493,7 +493,7 @@ const Destination = () => {
 					</h2>
 				</div>
 				<div className="gallery-box">
-					<div className="masonry-container row clearfix">
+					<div ref={isotopeContainer} className="masonry-container row clearfix">
 						{/*Block*/}
 						<div className="dest-block-one masonry-item col-xl-6 col-lg-12 col-md-12 col-sm-12">
 							<div
