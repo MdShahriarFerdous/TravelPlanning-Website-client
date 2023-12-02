@@ -26,13 +26,12 @@ const RegisterPage = () => {
 			setLoader(true);
 			try {
 				const data = await RegisterAPI(values);
-				if (data?.status === "success") {
+				if (data.status === "success") {
+					localStorage.setItem("registerInfo", JSON.stringify(data));
 					navigate("/check-mail");
+				} else {
+					console.log("Registration failed:", data.message);
 				}
-
-				resetForm({
-					values: "",
-				});
 			} catch (error) {
 				console.log(error);
 				toast.error(error.response.data.error.message);
