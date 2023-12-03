@@ -23,7 +23,10 @@ const App = () => {
 
 				<Route path="/register" element={<RegisterPage />} />
 				<Route path="/check-mail" element={<SendMailPage />} />
-				<Route path="/user/activate/:token" element={<VerifyPage />} />
+				<Route
+					path="/user/activate/:verifyId"
+					element={<VerifyPage />}
+				/>
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/dashboard" element={<UserDashboard />} />
 				<Route path="*" element={<PageNotFound />} replace />

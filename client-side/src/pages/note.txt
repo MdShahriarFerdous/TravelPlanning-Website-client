@@ -1,1 +1,1 @@
-here will be the pages folders and files.
+All the files has to inside a folder.

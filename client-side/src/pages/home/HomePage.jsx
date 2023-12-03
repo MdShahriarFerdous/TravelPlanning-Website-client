@@ -4,6 +4,8 @@ import TourPackage from "../../components/tourpackage/TourPackage";
 import Destination from "../../components/destination/Destination";
 import Counter from "../../components/counter/Counter";
 import Partners from "../../components/partners/Partners";
+import TourTypes from "../../components/tourTypes/TourTypes";
+import Testimonial from "../../components/testimonial/Testimonial";
 
 const HomePage = () => {
   return (
@@ -11,7 +13,9 @@ const HomePage = () => {
       <HeroSection />
       <TourPackage />
       <Destination />
+      <TourTypes />
       <Counter />
+      <Testimonial />
       <Partners />
     </AppLayout>
   );
