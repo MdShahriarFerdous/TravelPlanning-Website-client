@@ -8,6 +8,7 @@ import "./css/bootstrap.css";
 import "bootstrap";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import travelSVG from "../../assets/images/travel.svg";
 
 const VerifyPage = () => {
 	const { verifyId } = useParams();
@@ -57,16 +58,26 @@ const VerifyPage = () => {
 	};
 
 	return (
-		<div className="d-flex justify-content-center align-items-center vh-100">
-			<h2>Almost there! Click this button to activate your account</h2>
-			<button
-				style={{ display: "block" }}
-				onClick={handleClick}
-				className="btn btn-secondary"
-			>
-				Activate
-			</button>
-		</div>
+		<>
+			<div className="d-flex justify-content-center align-items-center mt-5 p-5">
+				<h2>Almost there! Click activate button and join our family</h2>
+			</div>
+			<div className="d-flex justify-content-center align-items-center p-2">
+				<button
+					style={{ display: "block" }}
+					onClick={handleClick}
+					className="btn bg-gradient-primary"
+				>
+					Activate
+				</button>
+			</div>
+			<div className="d-flex justify-content-center align-items-center mt-2">
+				<img
+					src={travelSVG}
+					style={{ width: "300px", height: "300px" }}
+				/>
+			</div>
+		</>
 	);
 };
 

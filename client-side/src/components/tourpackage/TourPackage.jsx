@@ -1,3 +1,5 @@
+import Slider from "react-slick";
+
 import "../../assets/css/responsive.css";
 import "../../assets/css/sections/global-settings.css";
 import "../../assets/css/lib/slick.min.css";
@@ -5,6 +7,11 @@ import "../../assets/css/style.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap";
 import "./package.css";
+
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 
 import Pattern1 from "../../assets/images/background/pattern-1.png";
 import ItalyPic from "../../assets/images/resources/destinations/italy.jpg";
@@ -23,7 +30,10 @@ import TIcon1 from "../../assets/images/icons/t-icon-1.png";
 
 const TourPackage = () => {
 	return (
+
+
 		<div className="packages-section">
+
 			<div
 				className="bg-layer"
 				style={{
@@ -31,6 +41,7 @@ const TourPackage = () => {
 				}}
 			/>
 			<div className="auto-container tour-container">
+
 				<div className="title-box">
 					<div className="subtitle">Packages</div>
 					<h2>
@@ -407,6 +418,7 @@ const TourPackage = () => {
 							</div>
 						</div>
 					</div>
+					
 					<button
 						className="carousel-control-prev"
 						type="button"

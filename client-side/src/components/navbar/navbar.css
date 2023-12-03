@@ -5,3 +5,10 @@
 	content: ""; /* This will hide the arrow button */
 	opacity: 0; /* This will make the arrow transparent */
 }
+.main-menu .navigation > li:hover > a:after,
+.main-menu .navigation > li.current > a:after,
+.main-menu .navigation > li.current-menu-item > a:after {
+	opacity: 1;
+	visibility: visible;
+	width: 40px;
+}
