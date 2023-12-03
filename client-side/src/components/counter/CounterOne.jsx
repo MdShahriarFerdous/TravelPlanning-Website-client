@@ -7,7 +7,7 @@ const CounterOne = ({ number, title, suffix = "" }) => {
       <div className="inner clearfix">
         <div className="fact-count">
           <div className="count-box">
-            <CountUp start={0} end={number} duration={2} enableScrollSpy={true} suffix={suffix}>
+            <CountUp start={0} end={number} duration={2} enableScrollSpy={true} suffix={suffix} scrollSpyOnce={true}>
               {({ countUpRef }) => <span ref={countUpRef} />}
             </CountUp>
             <i>+</i>
