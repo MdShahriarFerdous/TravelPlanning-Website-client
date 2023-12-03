@@ -257,64 +257,64 @@
 	}
 
 	//Testimonials Carousel
-	if ($(".testimonial-carousel").length) {
-		$(".testimonial-carousel").slick({
-			slidesToShow: 3,
-			centerMode: false,
-			centerPadding: "24px",
-			slidesToScroll: 3,
-			autoplay: true,
-			infinite: true,
-			dots: true,
-			arrows: false,
-			touchMove: true,
-			touchThreshold: 4,
-			autoplaySpeed: 5000,
-			pauseOnHover: true,
-			speed: 1000,
-			prevArrow:
-				'<div class="prev-btn"><i class="fa-solid fa-angle-left"></span></div>',
-			nextArrow:
-				'<div class="next-btn"><i class="fa-solid fa-angle-right"></span></div>',
-			//cssEase:'linear',
-			responsive: [
-				{
-					breakpoint: 1200,
-					settings: {
-						slidesToShow: 3,
-					},
-				},
-				{
-					breakpoint: 992,
-					settings: {
-						slidesToShow: 2,
-						slidesToScroll: 2,
-					},
-				},
-				{
-					breakpoint: 768,
-					settings: {
-						slidesToShow: 1,
-						slidesToScroll: 1,
-					},
-				},
-				{
-					breakpoint: 600,
-					settings: {
-						slidesToShow: 1,
-						slidesToScroll: 1,
-					},
-				},
-				{
-					breakpoint: 480,
-					settings: {
-						slidesToShow: 1,
-						slidesToScroll: 1,
-					},
-				},
-			],
-		});
-	}
+	// if ($(".testimonial-carousel").length) {
+	// 	$(".testimonial-carousel").slick({
+	// 		slidesToShow: 3,
+	// 		centerMode: false,
+	// 		centerPadding: "24px",
+	// 		slidesToScroll: 3,
+	// 		autoplay: true,
+	// 		infinite: true,
+	// 		dots: true,
+	// 		arrows: false,
+	// 		touchMove: true,
+	// 		touchThreshold: 4,
+	// 		autoplaySpeed: 5000,
+	// 		pauseOnHover: true,
+	// 		speed: 1000,
+	// 		prevArrow:
+	// 			'<div class="prev-btn"><i class="fa-solid fa-angle-left"></span></div>',
+	// 		nextArrow:
+	// 			'<div class="next-btn"><i class="fa-solid fa-angle-right"></span></div>',
+	// 		//cssEase:'linear',
+	// 		responsive: [
+	// 			{
+	// 				breakpoint: 1200,
+	// 				settings: {
+	// 					slidesToShow: 3,
+	// 				},
+	// 			},
+	// 			{
+	// 				breakpoint: 992,
+	// 				settings: {
+	// 					slidesToShow: 2,
+	// 					slidesToScroll: 2,
+	// 				},
+	// 			},
+	// 			{
+	// 				breakpoint: 768,
+	// 				settings: {
+	// 					slidesToShow: 1,
+	// 					slidesToScroll: 1,
+	// 				},
+	// 			},
+	// 			{
+	// 				breakpoint: 600,
+	// 				settings: {
+	// 					slidesToShow: 1,
+	// 					slidesToScroll: 1,
+	// 				},
+	// 			},
+	// 			{
+	// 				breakpoint: 480,
+	// 				settings: {
+	// 					slidesToShow: 1,
+	// 					slidesToScroll: 1,
+	// 				},
+	// 			},
+	// 		],
+	// 	});
+	// }
 
 	// Integrated in react
 	//Partners Carousel
