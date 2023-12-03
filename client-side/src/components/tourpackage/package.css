@@ -1,0 +1,13 @@
+/* .carousel-inner .carousel-item {
+	display: flex;
+ }  */
+.package-block {
+	margin: 0.5rem;
+	width: calc(100% / 3);
+}
+
+/* Change color of the carousel control button icons */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+	background-color: #c93507;
+}

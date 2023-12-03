@@ -1,0 +1,56 @@
+@import url("https://fonts.cdnfonts.com/css/gilroy-bold");
+
+/* font-family: 'Gilroy-Bold', sans-serif;
+font-family: 'Gilroy-Heavy', sans-serif;
+font-family: 'Gilroy-Light', sans-serif;
+font-family: 'Gilroy-Medium', sans-serif;
+font-family: 'Gilroy-Regular', sans-serif; */
+* {
+	font-family: "Gilroy-Bold", sans-serif;
+}
+.btn {
+	display: inline-block;
+	font-weight: 700;
+	line-height: 1.4;
+	color: #67748e;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-color: transparent;
+	border: 1px solid transparent;
+	padding: 1rem 1.5rem;
+	font-size: 0.875rem;
+	border-radius: 0.5rem;
+	transition: all 0.15s ease-in;
+}
+.bg-gradient-primary {
+	background-image: linear-gradient(310deg, #ff531f 0%, #ff531f 100%);
+}
+.form-control {
+	font-family: "Gilroy-Medium", sans-serif;
+}
+.form-control:focus {
+	border-color: #ffa185;
+	outline: 0;
+	box-shadow: 0 0 0 0.15px #ffa185;
+}
+
+.input-group .form-control:focus {
+	border-left: 1px solid #ff7247 !important;
+	border-right: 1px solid #ff7247 !important;
+}
+.welcome-text {
+	margin-right: 12px;
+	color: rgb(103, 116, 142);
+	font-family: "Gilroy-Regular", sans-serif;
+}
+.logo-text {
+	color: #3d3d3d;
+}
+.logo-text .we-text {
+	color: #ff531f;
+}
