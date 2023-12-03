@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { object, string } from "yup";
 import { Link, NavLink, useNavigate } from "react-router-dom";
@@ -10,11 +10,12 @@ import "react-toastify/dist/ReactToastify.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap";
 import "./css/bootstrap.css";
+import "./css/general.css";
 
 const LoginPage = () => {
 	const [auth, setAuth] = useAuth();
 	const [loader, setLoader] = useLoader();
-	const navigate = useNavigate();
+
 	const formik = useFormik({
 		initialValues: {
 			email: "",
@@ -35,7 +36,7 @@ const LoginPage = () => {
 						user: data.user,
 						token: data.createToken,
 					});
-					setLoader(true);
+					setLoader(false);
 					toast.success("Login successful");
 				}
 				navigate("/");
@@ -52,7 +53,13 @@ const LoginPage = () => {
 	});
 	return (
 		<div className="container mt-5">
-			<form className="form-group " onSubmit={formik.handleSubmit}>
+			<form className="form-group p-5" onSubmit={formik.handleSubmit}>
+				<div className="d-flex justify-content-center logo-div mb-3">
+					<h2 className="welcome-text">Welcome to</h2>
+					<h2 className="logo-text">
+						We<span className="we-text">Travel</span>
+					</h2>
+				</div>
 				<div className="row d-flex py-4 justify-content-center">
 					<div className="col-lg-6">
 						<div className="card p-5">

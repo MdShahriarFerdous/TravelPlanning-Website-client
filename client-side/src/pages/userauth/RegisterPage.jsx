@@ -18,7 +18,7 @@ const RegisterPage = () => {
 			password: "",
 		},
 		validationSchema: object({
-			username: string().min(6, "Minimum 6 characters long").required(),
+			username: string().max(12, "Maximum 12 characters").required(),
 			email: string().email("Must be a valid email").required(),
 			password: string().min(6, "Minimum 6 characters long").required(),
 		}),
@@ -43,6 +43,12 @@ const RegisterPage = () => {
 	return (
 		<div className="container mt-5">
 			<form className="form-group " onSubmit={formik.handleSubmit}>
+				<div className="d-flex justify-content-center logo-div mb-3">
+					<h2 className="welcome-text">Join </h2>
+					<h2 className="logo-text">
+						We<span className="we-text">Travel</span>
+					</h2>
+				</div>
 				<div className="row d-flex py-4 justify-content-center">
 					<div className="col-lg-6">
 						<div className="card p-5">
