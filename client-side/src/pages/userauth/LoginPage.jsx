@@ -40,10 +40,10 @@ const LoginPage = () => {
 					setLoader(false);
 					toast.success("Login successful");
 				}
-				navigate("/");
 				resetForm({
 					values: "",
 				});
+				navigate("/");
 			} catch (error) {
 				console.log(error);
 				toast.error(error.response.data.error.message);
