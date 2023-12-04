@@ -15,6 +15,7 @@ import "./css/general.css";
 const LoginPage = () => {
 	const [auth, setAuth] = useAuth();
 	const [loader, setLoader] = useLoader();
+	const navigate = useNavigate();
 
 	const formik = useFormik({
 		initialValues: {
@@ -29,7 +30,7 @@ const LoginPage = () => {
 			setLoader(true);
 			try {
 				const data = await LoginAPI(values);
-				if (data?.status === "success") {
+				if (data.status === "success") {
 					localStorage.setItem("auth", JSON.stringify(data));
 					setAuth({
 						...auth,
