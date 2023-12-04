@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import { Link } from 'react-router-dom';
 import "../../assets/css/responsive.css";
 import "../../assets/css/sections/global-settings.css";
 import "../../assets/css/style.css";
@@ -8,7 +8,7 @@ import $ from "jquery";
 
 import BgGradient3 from "../../assets/images/background/bg-gradient-3.png";
 import BgGradient4 from "../../assets/images/background/bg-gradient-4.png";
-import {useEffect, useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 import Isotope from "isotope-layout";
 import {getTopDestination} from "../../_api/DestinationApi.js";
 
@@ -511,16 +511,16 @@ const Destination = () => {
                                             data-wow-duration="1500ms"
                                         >
                                             <div className="image-box">
-                                                <a href="destination-single.html">
-                                                    <img src={data['photo'][0]} alt="Gallery  7"/>
-                                                </a>
+                                                <Link to={`/destination/${data._id}`}>
+                                                    <img src={data['photo'][0]} alt="Gallery  7" />
+                                                </Link>
                                             </div>
                                             <div className="hvr-box">
                                                 <div className="hvr-inner">
                                                     <h4>
-                                                        <a href="destination-single.html">
+                                                        <Link to={`/destination/${data._id}`}>
 															{data['name']}
-                                                        </a>
+                                                        </Link>
                                                     </h4>
                                                     <div className="tour-count">
                                                         <span>{data['placeCount']} Places</span>
