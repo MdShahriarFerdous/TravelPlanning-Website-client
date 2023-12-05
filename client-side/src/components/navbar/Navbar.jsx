@@ -3,9 +3,9 @@ import "bootstrap";
 import "../../assets/css/style.css";
 import "../../assets/css/sections/global-settings.css";
 import "../../assets/css/responsive.css";
-import "./navbar.css";
 import $ from "jquery";
 import { useEffect, useState } from "react";
+import "./navbar.css";
 
 import LogoImage from "../../assets/images/logo.png";
 import MenuIcon from "../../assets/images/icons/menu-icon.svg";
