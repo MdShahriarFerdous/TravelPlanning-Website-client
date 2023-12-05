@@ -19,7 +19,6 @@ import Pink1 from "../../assets/images/elements/pink-1.png";
 
 const TourTypes = () => {
 	const settings = {
-		// dots: true,
 		infinite: true,
 		speed: 500,
 		slidesToShow: 4,
@@ -38,7 +37,7 @@ const TourTypes = () => {
 				}}
 			/>
 			<div className="d-elem-2">
-				<img src={Green3} alt="" />
+				<img src={Green3} />
 			</div>
 			<div className="auto-container">
 				<div
@@ -57,7 +56,7 @@ const TourTypes = () => {
 					data-wow-duration="1500ms"
 				>
 					<div className="d-elem-1">
-						<img src={Pink1} alt="" />
+						<img src={Pink1} />
 					</div>
 					<Slider {...settings}>
 						<div className="tour-type-block bg-blue">

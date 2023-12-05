@@ -6,8 +6,39 @@
 	width: calc(100% / 3);
 }
 
-/* Change color of the carousel control button icons */
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-	background-color: #c93507;
+.slick-prev,
+.slick-next {
+	font-size: 0;
+	line-height: 0;
+	position: absolute;
+	top: 50px;
+	width: 60px;
+	height: 60px;
+	cursor: pointer;
+	color: transparent;
+}
+
+.slick-prev:before,
+.slick-next:before {
+	font-family: "slick";
+	font-size: 35px;
+	line-height: 2;
+	opacity: 0.85;
+	color: #ff5522;
+}
+.slick-prev:before {
+	position: absolute;
+	left: 1150px;
+	bottom: 110px;
+}
+.slick-next:before {
+	position: absolute;
+	bottom: 110px;
+	right: 30px;
+}
+.title-box h2 span {
+	position: relative;
+	z-index: 1;
+	color: rgb(108, 113, 113);
+	font-size: 42px;
 }

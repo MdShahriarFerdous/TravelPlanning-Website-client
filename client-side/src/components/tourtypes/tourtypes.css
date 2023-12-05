@@ -1,3 +1,7 @@
 .slick-slide {
 	margin: 0 10px;
 }
+.tour-types .slick-next:before,
+.tour-types .slick-prev:before {
+	content: "";
+}
