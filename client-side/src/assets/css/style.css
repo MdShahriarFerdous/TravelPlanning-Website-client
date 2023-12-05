@@ -2176,7 +2176,7 @@ body.visible-sidebar {
 
 .package-block {
 	position: relative;
-	margin-bottom: 30px;
+	/* margin-bottom: 30px; */
 	width: 383px;
 }
 
@@ -2186,7 +2186,7 @@ body.visible-sidebar {
 
 .packages-section .row .package-block {
 	padding: 0 12px;
-	margin-bottom: 24px;
+	/* margin-bottom: 24px; */
 }
 
 .slick-slider .package-block {
@@ -3183,7 +3183,7 @@ body.visible-sidebar {
 	margin: 0 -10px;
 }
 
-.testimonials-section .carousel-box .slick-list { 
+.testimonials-section .carousel-box .slick-list {
 	overflow: hidden;
 }
 
