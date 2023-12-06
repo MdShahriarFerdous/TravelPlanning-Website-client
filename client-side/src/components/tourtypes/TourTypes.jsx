@@ -19,6 +19,7 @@ import Pink1 from "../../assets/images/elements/pink-1.png";
 
 const TourTypes = () => {
 	const settings = {
+		dots: true,
 		infinite: true,
 		speed: 500,
 		slidesToShow: 4,
