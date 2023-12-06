@@ -1,13 +1,76 @@
-/* .carousel-inner .carousel-item {
-	display: flex;
- }  */
-.package-block {
-	margin: 0.5rem;
-	width: calc(100% / 3);
+.slick-prev,
+.slick-next {
+	font-size: 0;
+	line-height: 0;
+	position: absolute;
+	top: 50px;
+	width: 60px;
+	height: 60px;
+	cursor: pointer;
+	color: transparent;
 }
 
-/* Change color of the carousel control button icons */
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-	background-color: #c93507;
+.slick-prev:before,
+.slick-next:before {
+	font-family: "slick";
+	font-size: 35px;
+	line-height: 2;
+	opacity: 0.85;
+	color: #ff5522;
+}
+.slick-prev:before {
+	position: absolute;
+	left: 1955%;
+	bottom: 100px;
+}
+.slick-next:before {
+	position: absolute;
+	bottom: 100px;
+	right: 18%;
+}
+.title-box h2 span {
+	position: relative;
+	z-index: 1;
+	color: rgb(108, 113, 113);
+	font-size: 42px;
+}
+.packages-section {
+	padding-bottom: 48px;
+}
+.packages-section .title-box {
+	margin-top: 24px;
+	margin-bottom: 24px;
+}
+.slick-track {
+	margin-bottom: 0;
+	padding-top: 32px;
+	padding-bottom: 120px;
+}
+/* .package-section .carousel-box .slick-list {
+	margin-bottom: 120px;
+} */
+.package-block .inner-box,
+.package-block .image-box {
+	min-height: 80%;
+	width: 381px;
+}
+.package-block .lower-box {
+	width: 350px;
+}
+
+/* Adjust for smaller screens */
+@media screen and (max-width: 768px) {
+	.slick-prev:before {
+		left: 1000%;
+	}
+}
+@media screen and (max-width: 600px) {
+	.slick-prev:before {
+		left: 700%;
+	}
+}
+@media screen and (max-width: 400px) {
+	.slick-prev:before {
+		left: 400%;
+	}
 }

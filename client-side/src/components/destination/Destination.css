@@ -1,0 +1,16 @@
+.slick-prev:before,
+.slick-next:before {
+	font-size: 35px;
+	color: #ff5522;
+}
+
+.slick-prev {
+	left: -40px;
+}
+
+a.btn.btn-primary {
+	background: rgba(255, 85, 34, 0.85);
+}
+.destination-section {
+	padding-top: 135px;
+}

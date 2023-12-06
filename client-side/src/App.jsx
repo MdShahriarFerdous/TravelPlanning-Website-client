@@ -14,6 +14,7 @@ import BlogDetailsPage from "./pages/blogs/BlogDetailsPage";
 import TripsListPage from "./pages/trips/TripsListPage";
 import HotelsListPage from "./pages/hotels/HotelsListPage";
 import FlightsListPage from "./pages/flights/FlightsListPage";
+import DestinationDetailsPage from "./pages/destination/DestinationDetailsPage.jsx";
 
 import BookmarksPage from "./pages/bookmark/BookmarksPage";
 import HotelPage from "./components/bookmark/HotelPage";
@@ -41,6 +42,8 @@ const App = () => {
 				<Route path="/hotels" element={<HotelsListPage />} />
 				<Route path="/bookmarks" element={<BookmarksPage />} />
 				<Route path="/hotelpage" element={<HotelPage />} />
+				<Route path="/destination/:id" element={<DestinationDetailsPage />} />
+
 			</Routes>
 			<ToastContainer />
 		</BrowserRouter>
