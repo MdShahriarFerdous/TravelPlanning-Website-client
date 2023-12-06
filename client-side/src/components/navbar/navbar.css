@@ -12,3 +12,16 @@
 	visibility: visible;
 	width: 40px;
 }
+ul.dropdown-menu.show {
+	padding: 1rem;
+	/* inset: 8px 0 0 8px !important; */
+	left: 3px !important;
+	top: 4px !important;
+	min-width: 144px;
+	height: 100px;
+}
+ul.dropdown-menu.show .dropdown-item a {
+	padding: 12px 8px 8px 8px;
+	width: 160px !important;
+	height: 10px !important;
+}

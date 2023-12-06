@@ -15,6 +15,8 @@ import HotelsListPage from "./pages/hotels/HotelsListPage";
 import FlightsListPage from "./pages/flights/FlightsListPage";
 import TripsSearchPage from "./pages/trips/TripsSearchPage";
 import TripsDetailsPage from "./pages/trips/TripsDetailsPage";
+import DestinationDetailsPage from "./pages/destination/DestinationDetailsPage.jsx";
+
 
 const App = () => {
   return (
@@ -28,7 +30,6 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/dashboard" element={<UserDashboard />} />
         <Route path="*" element={<PageNotFound />} replace />
-
         <Route path="/trips" element={<TripsSearchPage />} />
         <Route path="/tripsdetails" element={<TripsDetailsPage />} />
         <Route path="/flights" element={<FlightsListPage />} />
@@ -39,6 +40,7 @@ const App = () => {
       <ToastContainer />
     </BrowserRouter>
   );
+
 };
 
 export default App;

@@ -10,11 +10,13 @@ import "react-toastify/dist/ReactToastify.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap";
 import "./css/bootstrap.css";
+import "./css/animate.min.css";
 import "./css/general.css";
 
 const LoginPage = () => {
 	const [auth, setAuth] = useAuth();
 	const [loader, setLoader] = useLoader();
+	const navigate = useNavigate();
 
 	const formik = useFormik({
 		initialValues: {
@@ -29,7 +31,7 @@ const LoginPage = () => {
 			setLoader(true);
 			try {
 				const data = await LoginAPI(values);
-				if (data?.status === "success") {
+				if (data.status === "success") {
 					localStorage.setItem("auth", JSON.stringify(data));
 					setAuth({
 						...auth,
@@ -39,10 +41,10 @@ const LoginPage = () => {
 					setLoader(false);
 					toast.success("Login successful");
 				}
-				navigate("/");
 				resetForm({
 					values: "",
 				});
+				navigate("/");
 			} catch (error) {
 				console.log(error);
 				toast.error(error.response.data.error.message);
@@ -55,14 +57,19 @@ const LoginPage = () => {
 		<div className="container mt-5">
 			<form className="form-group p-5" onSubmit={formik.handleSubmit}>
 				<div className="d-flex justify-content-center logo-div mb-3">
-					<h2 className="welcome-text">Welcome to</h2>
-					<h2 className="logo-text">
-						We<span className="we-text">Travel</span>
+					<h2 className="welcome-text animated fadeInUp">
+						Welcome to
+					</h2>
+					<h2 className="logo-text animated fadeInUp">
+						We
+						<span className="we-text animated fadeInUp">
+							Travel
+						</span>
 					</h2>
 				</div>
 				<div className="row d-flex py-4 justify-content-center">
 					<div className="col-lg-6">
-						<div className="card p-5">
+						<div className="card animated fadeInUp p-5">
 							<h1 className="card-title mb-4 text-center">
 								Sign in
 							</h1>

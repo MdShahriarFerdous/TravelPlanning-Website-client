@@ -2146,9 +2146,9 @@ body.visible-sidebar {
 
 .packages-section {
 	position: relative;
-	padding: 130px 0px;
+	padding: 130px 0px 0px 0px;
 	background: #fafaee;
-	margin-top: 120px;
+	margin-top: 144px;
 }
 
 .packages-section .title-box {
@@ -2176,22 +2176,21 @@ body.visible-sidebar {
 
 .package-block {
 	position: relative;
-	margin-bottom: 30px;
+	/* margin-bottom: 30px; */
 	width: 383px;
 }
 
-.packages-section .row {
+/* .packages-section .row {
 	margin: 0 -12px;
-}
+} */
 
-.packages-section .row .package-block {
+/* .packages-section .row .package-block {
 	padding: 0 12px;
-	margin-bottom: 24px;
-}
+} */
 
-.slick-slider .package-block {
+/* .slick-slider .package-block {
 	margin: 10px 12px;
-}
+} */
 
 .package-block .inner-box {
 	position: relative;
@@ -3183,7 +3182,7 @@ body.visible-sidebar {
 	margin: 0 -10px;
 }
 
-.testimonials-section .carousel-box .slick-list { 
+.testimonials-section .carousel-box .slick-list {
 	overflow: hidden;
 }
 
