@@ -15,6 +15,9 @@ import TripsListPage from "./pages/trips/TripsListPage";
 import HotelsListPage from "./pages/hotels/HotelsListPage";
 import FlightsListPage from "./pages/flights/FlightsListPage";
 
+import BookmarksPage from "./pages/bookmark/BookmarksPage";
+import HotelPage from "./components/bookmark/HotelPage";
+
 const App = () => {
 	return (
 		<BrowserRouter>
@@ -36,6 +39,8 @@ const App = () => {
 				<Route path="/blogs" element={<BlogsListPage />} />
 				<Route path="/blogs/:blogId" element={<BlogDetailsPage />} />
 				<Route path="/hotels" element={<HotelsListPage />} />
+				<Route path="/bookmarks" element={<BookmarksPage />} />
+				<Route path="/hotelpage" element={<HotelPage />} />
 			</Routes>
 			<ToastContainer />
 		</BrowserRouter>
