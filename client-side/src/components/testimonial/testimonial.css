@@ -1,5 +1,22 @@
 .testimonial-carousel .slick-dots li button:before {
 	content: "";
-
 	color: rgb(36, 35, 35);
+}
+.testimonials-section {
+	position: relative;
+	padding: 140px 56px 0px;
+
+	background: #fff;
+	overflow: hidden;
+}
+.testimonials-section .slick-slider .slick-track,
+.slick-slider .slick-list {
+	padding-bottom: 0;
+}
+.testimonials-section .slick-dots {
+	padding-top: 0;
+	padding-bottom: 80px;
+}
+.testimonials-section {
+	padding-bottom: 48px;
 }
