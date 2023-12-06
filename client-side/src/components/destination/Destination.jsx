@@ -410,9 +410,9 @@ const Destination = () => {
 												<div className="hvr-box">
 													<div className="hvr-inner">
 														<h4>
-															<a href="destination-single.html">
+															<Link to={`/destination/${data._id}`}>
 																{data["name"]}
-															</a>
+															</Link>
 														</h4>
 														<div className="tour-count">
 															<span>
