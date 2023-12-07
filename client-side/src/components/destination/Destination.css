@@ -4,13 +4,27 @@
 	color: #ff5522;
 }
 
+.slick-next:before {
+	position: absolute;
+	bottom: 73px;
+	right: 45%;
+}
+
+.slick-prev:before {
+	position: absolute;
+	left: 2075%;
+	bottom: 73px;
+}
+
 .slick-prev {
 	left: -40px;
 }
 
 a.btn.btn-primary {
 	background: rgba(255, 85, 34, 0.85);
+	color: #fff
 }
 .destination-section {
 	padding-top: 135px;
 }
+

@@ -384,32 +384,36 @@ const Destination = () => {
             {topDestination &&
               topDestination.map((data) => {
                 return (
-                  <div
-                    key={data._id}
-                    className="dest-block-one masonry-item column-width col-xl-3 col-lg-6 col-md-6 col-sm-12"
-                  >
+                  <>
                     <div
-                      className="inner-box wow fadeInUp"
-                      data-wow-delay="600ms"
-                      data-wow-duration="1500ms"
+                      key={data._id}
+                      className="dest-block-one masonry-item column-width col-xl-3 col-lg-6 col-md-6 col-sm-12"
                     >
-                      <div className="image-box">
-                        <a href="destination-single.html">
-                          <img src={data["photo"][0]} alt="Gallery  7" />
-                        </a>
-                      </div>
-                      <div className="hvr-box">
-                        <div className="hvr-inner">
-                          <h4>
-                            <a href="destination-single.html">{data["name"]}</a>
-                          </h4>
-                          <div className="tour-count">
-                            <span>{data["placeCount"]} Places</span>
+                      <div
+                        className="inner-box wow fadeInUp"
+                        data-wow-delay="600ms"
+                        data-wow-duration="1500ms"
+                      >
+                        <div className="image-box">
+                          <Link to={`/destination/${data._id}`}>
+                            <img src={data["photo"][0]} alt="Gallery  7" />
+                          </Link>
+                        </div>
+                        <div className="hvr-box">
+                          <div className="hvr-inner">
+                            <h4>
+                              <Link to={`/destination/${data._id}`}>
+                                {data["name"]}
+                              </Link>
+                            </h4>
+                            <div className="tour-count">
+                              <span>{data["placeCount"]} Places</span>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </>
                 );
               })}
           </div>
