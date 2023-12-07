@@ -18,15 +18,18 @@
 	opacity: 0.75;
 	color: #ff5522;
 }
-.slick-prev:before {
+.tour-container .slick-prev:before {
 	position: absolute;
-	left: 1955%;
+	left: 1920%;
 	bottom: 90px;
 }
-.slick-next:before {
+.tour-container .slick-next:before {
 	position: absolute;
 	bottom: 90px;
-	right: 35%;
+	right: 45%;
+}
+.packages-section .carousel-box {
+	margin: 0 -7px;
 }
 .title-box h2 span {
 	position: relative;
