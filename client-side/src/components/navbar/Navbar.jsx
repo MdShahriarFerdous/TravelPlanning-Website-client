@@ -18,7 +18,6 @@ const Navbar = () => {
 	const navigate = useNavigate();
 
 	const logout = () => {
-		console.log("function call");
 		setAuth({ ...auth, user: null, token: "" });
 		localStorage.removeItem("auth");
 		navigate("/");
@@ -238,17 +237,6 @@ const Navbar = () => {
 											</li>
 											<li
 												className={`${
-													isActive === "blogs"
-														? "current"
-														: ""
-												}`}
-											>
-												<NavLink to="/blogs">
-													Blogs
-												</NavLink>
-											</li>
-											<li
-												className={`${
 													isActive === "hotels"
 														? "current"
 														: ""
@@ -258,6 +246,18 @@ const Navbar = () => {
 													Hotels
 												</NavLink>
 											</li>
+											<li
+												className={`${
+													isActive === "blogs"
+														? "current"
+														: ""
+												}`}
+											>
+												<NavLink to="/blogs">
+													Blogs
+												</NavLink>
+											</li>
+											
 										</ul>
 									</nav>
 								</div>

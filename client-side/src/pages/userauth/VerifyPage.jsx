@@ -31,7 +31,6 @@ const VerifyPage = () => {
 			setLoader(true);
 			if (verifyId === browserId) {
 				const data = await VerificationAPI(browserToken);
-				console.log(data);
 				if (data.status === "success") {
 					localStorage.setItem("auth", JSON.stringify(data));
 					setAuth({
@@ -48,7 +47,7 @@ const VerifyPage = () => {
 				console.error("Verification ID mismatch");
 			}
 		} catch (error) {
-			console.log(error);
+			console.error(error);
 			toast.error(
 				error.response?.data?.error?.message || "Verification failed"
 			);

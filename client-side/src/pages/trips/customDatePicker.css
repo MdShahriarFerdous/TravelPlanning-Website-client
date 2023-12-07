@@ -1,0 +1,9 @@
+/* #! If .datepicker don't work the comment out below code */
+/* .customDatePickerWidth,
+.customDatePickerWidth>div.react-datepicker-wrapper,
+.customDatePickerWidth>div>div.react-datepicker__input-container .customDatePickerWidth>div>div.react-datepicker__input-container input {
+    width: 100%;
+} */
+.datepicker {
+    width: 100%;
+}
