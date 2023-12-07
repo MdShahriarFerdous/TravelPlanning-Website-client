@@ -17,7 +17,6 @@ import TripsSearchPage from "./pages/trips/TripsSearchPage";
 import TripsDetailsPage from "./pages/trips/TripsDetailsPage";
 import DestinationDetailsPage from "./pages/destination/DestinationDetailsPage.jsx";
 
-
 const App = () => {
   return (
     <BrowserRouter>
@@ -40,7 +39,6 @@ const App = () => {
       <ToastContainer />
     </BrowserRouter>
   );
-
 };
 
 export default App;
