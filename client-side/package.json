@@ -26,6 +26,7 @@
     "jquery-ui-dist": "^1.13.2",
     "localforage": "^1.10.0",
     "moment": "^2.29.4",
+    "qs": "^6.11.2",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
     "react-code-input": "^3.10.1",
