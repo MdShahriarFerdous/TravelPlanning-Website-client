@@ -1,3 +1,25 @@
-.slick-slide {
-	margin: 0 10px;
+.tour-types .slick-dots li button:before {
+	content: "";
+	color: rgb(36, 35, 35);
+}
+.tour-types .slick-slider .tour-type-block {
+	margin: 10px 6px;
+}
+.tour-types .slick-next:before,
+.tour-types .slick-prev:before {
+	content: "";
+}
+.tour-type-block .inner-box {
+	width: 273px;
+	height: 325px;
+	padding: 70px 20px 0px;
+}
+.tour-types .auto-container {
+	padding-bottom: 0px;
+}
+.tour-types .slick-track {
+	padding-bottom: 0px;
+}
+.tour-type-block .inner-box .over-link {
+	height: 325px;
 }

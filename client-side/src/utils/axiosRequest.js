@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const baseUrl = 'http://localhost:8000/api/v1';
+const baseUrl = import.meta.env.VITE_API ||
+		"https://travelplanning-website-server.onrender.com/api/v1";
 
 export function makeAxiosRequest(method, urlPath, data) {
     const headers = {

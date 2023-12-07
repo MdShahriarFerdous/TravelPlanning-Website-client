@@ -710,8 +710,8 @@ form label.error {
 }
 
 .site-form form .f-btn:hover {
-	background: var(--dark-gray-gray);
-	color: #fff;
+	/* background: var(--dark-gray-gray);
+	color: #fff; */
 	box-shadow: 0 0 5px 0 var(--primary-color);
 }
 
@@ -2146,9 +2146,9 @@ body.visible-sidebar {
 
 .packages-section {
 	position: relative;
-	padding: 130px 0px;
+	padding: 130px 0px 0px 0px;
 	background: #fafaee;
-	margin-top: 120px;
+	margin-top: 144px;
 }
 
 .packages-section .title-box {
@@ -2176,22 +2176,21 @@ body.visible-sidebar {
 
 .package-block {
 	position: relative;
-	margin-bottom: 30px;
+	/* margin-bottom: 30px; */
 	width: 383px;
 }
 
-.packages-section .row {
+/* .packages-section .row {
 	margin: 0 -12px;
-}
+} */
 
-.packages-section .row .package-block {
+/* .packages-section .row .package-block {
 	padding: 0 12px;
-	margin-bottom: 24px;
-}
+} */
 
-.slick-slider .package-block {
+/* .slick-slider .package-block {
 	margin: 10px 12px;
-}
+} */
 
 .package-block .inner-box {
 	position: relative;
@@ -2469,7 +2468,8 @@ body.visible-sidebar {
 
 .destination-section {
 	position: relative;
-	padding: 135px 0 110px;
+	padding: 135px 0 0;
+	min-height: 770px !important;
 	background: #fff;
 	overflow: hidden;
 }
@@ -3073,7 +3073,7 @@ body.visible-sidebar {
 
 .facts-section .fact-counter {
 	position: relative;
-	padding: 140px 0 90px;
+	padding: 140px 0 55px;
 }
 
 .facts-section.alt-padding .fact-counter {
@@ -3183,7 +3183,7 @@ body.visible-sidebar {
 	margin: 0 -10px;
 }
 
-.testimonials-section .carousel-box .slick-list { 
+.testimonials-section .carousel-box .slick-list {
 	overflow: hidden;
 }
 
@@ -6569,7 +6569,7 @@ body.visible-sidebar {
 
 .packages-three {
 	position: relative;
-	padding: 0 0 140px;
+	/* padding: 0 0 140px; */
 	background: #fff;
 	z-index: 5;
 }
