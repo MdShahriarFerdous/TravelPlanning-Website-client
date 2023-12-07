@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { RegisterAPI } from "../../backend-services/api";
 import { useLoader } from "../../context/loaderContext";
+import { toast } from "react-toastify";
 
 const RegisterPage = () => {
 	const navigate = useNavigate();
@@ -30,10 +31,10 @@ const RegisterPage = () => {
 					localStorage.setItem("registerInfo", JSON.stringify(data));
 					navigate("/check-mail");
 				} else {
-					console.log("Registration failed:", data.message);
+					console.error("Registration failed:", data.message);
 				}
 			} catch (error) {
-				console.log(error);
+				console.error(error);
 				toast.error(error.response.data.error.message);
 			} finally {
 				setLoader(false);

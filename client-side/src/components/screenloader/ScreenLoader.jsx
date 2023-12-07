@@ -1,4 +1,3 @@
-import React from "react";
 import loader from "../../assets/images/loader/loader.svg";
 import "./loader.css";
 
