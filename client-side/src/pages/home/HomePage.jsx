@@ -6,6 +6,7 @@ import Counter from "../../components/counter/Counter";
 import Partners from "../../components/partners/Partners";
 import TourTypes from "../../components/tourtypes/TourTypes";
 import Testimonial from "../../components/testimonial/Testimonial";
+import FeaturedBlogs from "../../components/blogs/HomeView/FeaturedBlogs";
 
 const HomePage = () => {
 	return (
@@ -17,6 +18,7 @@ const HomePage = () => {
 			<Counter />
 			<Testimonial />
 			<Partners />
+			<FeaturedBlogs />
 		</AppLayout>
 	);
 };

@@ -11,9 +11,10 @@ import UserDashboard from "./pages/user/UserDashboard";
 
 import BlogsListPage from "./pages/blogs/BlogsListPage";
 import BlogDetailsPage from "./pages/blogs/BlogDetailsPage";
-import TripsListPage from "./pages/trips/TripsListPage";
 import HotelsListPage from "./pages/hotels/HotelsListPage";
 import FlightsListPage from "./pages/flights/FlightsListPage";
+import TripsSearchPage from "./pages/trips/TripsSearchPage";
+import TripsDetailsPage from "./pages/trips/TripsDetailsPage";
 import DestinationDetailsPage from "./pages/destination/DestinationDetailsPage.jsx";
 import SingleTourPackage from "./pages/single-tour-package/SingleTourPackage.jsx";
 
@@ -37,7 +38,8 @@ const App = () => {
 				/>
 				<Route path="*" element={<PageNotFound />} replace />
 
-				<Route path="/trips" element={<TripsListPage />} />
+				<Route path="/trips" element={<TripsSearchPage />} />
+				<Route path="/tripsdetails" element={<TripsDetailsPage />} />
 				<Route path="/flights" element={<FlightsListPage />} />
 				<Route path="/blogs" element={<BlogsListPage />} />
 				<Route path="/blogs/:blogId" element={<BlogDetailsPage />} />

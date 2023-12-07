@@ -710,8 +710,8 @@ form label.error {
 }
 
 .site-form form .f-btn:hover {
-	background: var(--dark-gray-gray);
-	color: #fff;
+	/* background: var(--dark-gray-gray);
+	color: #fff; */
 	box-shadow: 0 0 5px 0 var(--primary-color);
 }
 
@@ -2468,7 +2468,8 @@ body.visible-sidebar {
 
 .destination-section {
 	position: relative;
-	padding: 135px 0 110px;
+	padding: 135px 0 0;
+	min-height: 770px !important;
 	background: #fff;
 	overflow: hidden;
 }
@@ -3072,7 +3073,7 @@ body.visible-sidebar {
 
 .facts-section .fact-counter {
 	position: relative;
-	padding: 140px 0 90px;
+	padding: 140px 0 55px;
 }
 
 .facts-section.alt-padding .fact-counter {
@@ -3339,7 +3340,7 @@ body.visible-sidebar {
 
 .partners-section {
 	position: relative;
-	padding: 110px 0px;
+	padding: 110px 0 0;
 	background: var(--dark-gray-color);
 	color: #fff;
 	overflow: hidden;
@@ -3587,7 +3588,8 @@ body.visible-sidebar {
 
 .insta-section {
 	position: relative;
-	padding: 0 0 90px;
+	padding: 0 0 0;
+	background: #f9fcff;
 }
 
 .insta-section .insta-feed {
@@ -3614,7 +3616,6 @@ body.visible-sidebar {
 .insta-section .insta-block .image {
 	position: relative;
 	display: block;
-	height: 290px;
 	border-radius: 10px;
 }
 
@@ -3628,7 +3629,6 @@ body.visible-sidebar {
 .insta-section .insta-block .image img {
 	position: relative;
 	display: inline-block;
-	height: 290px;
 	vertical-align: baseline;
 	border-radius: 10px;
 	opacity: 1;
@@ -3824,7 +3824,7 @@ body.visible-sidebar {
 
 .main-footer .upper-section {
 	position: relative;
-	padding: 140px 56px 40px;
+	padding: 0 56px 40px;
 }
 
 .main-footer.style-two .upper-section {
@@ -6568,7 +6568,7 @@ body.visible-sidebar {
 
 .packages-three {
 	position: relative;
-	padding: 0 0 140px;
+	/* padding: 0 0 140px; */
 	background: #fff;
 	z-index: 5;
 }
@@ -6762,6 +6762,27 @@ body.visible-sidebar {
 
 .styled-pagination ul li:hover a,
 .styled-pagination ul li.active a {
+	color: #fff;
+	background: var(--primary-color);
+	border-color: var(--primary-color);
+}
+
+.styled-pagination ul li span {
+	cursor: pointer;
+	position: relative;
+	display: block;
+	width: 48px;
+	height: 48px;
+	line-height: 46px;
+	color: var(--medium-gray-color);
+	text-align: center;
+	border: 1px solid rgba(0, 0, 0, 0.5);
+	border-radius: 5px;
+	transition: all 500ms linear;
+}
+
+.styled-pagination ul li:hover span,
+.styled-pagination ul li.active span {
 	color: #fff;
 	background: var(--primary-color);
 	border-color: var(--primary-color);

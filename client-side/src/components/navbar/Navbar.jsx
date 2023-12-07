@@ -237,17 +237,6 @@ const Navbar = () => {
 											</li>
 											<li
 												className={`${
-													isActive === "blogs"
-														? "current"
-														: ""
-												}`}
-											>
-												<NavLink to="/blogs">
-													Blogs
-												</NavLink>
-											</li>
-											<li
-												className={`${
 													isActive === "hotels"
 														? "current"
 														: ""
@@ -257,6 +246,18 @@ const Navbar = () => {
 													Hotels
 												</NavLink>
 											</li>
+											<li
+												className={`${
+													isActive === "blogs"
+														? "current"
+														: ""
+												}`}
+											>
+												<NavLink to="/blogs">
+													Blogs
+												</NavLink>
+											</li>
+											
 										</ul>
 									</nav>
 								</div>

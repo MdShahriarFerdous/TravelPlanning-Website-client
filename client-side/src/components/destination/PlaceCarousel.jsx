@@ -4,15 +4,18 @@ import 'slick-carousel/slick/slick-theme.css';
 import './Destination.css';
 import ItalyPic from "../../assets/images/resources/destinations/italy.jpg";
 
-const PlaceCarousel = () => {
-    const places = [
-        { id: 1, name: 'Place 1', title: 'Title 1', ratings: 4.5, image: ItalyPic },
-        { id: 2, name: 'Place 2', title: 'Title 2', ratings: 4.0, image: ItalyPic },
-        { id: 3, name: 'Place 3', title: 'Title 3', ratings: 3.8, image: ItalyPic },
-        { id: 4, name: 'Place 4', title: 'Title 4', ratings: 4.2, image: ItalyPic },
-        { id: 5, name: 'Place 5', title: 'Title 5', ratings: 4.7, image: ItalyPic },
-        // Add more places as needed
-    ];
+// eslint-disable-next-line react/prop-types
+const PlaceCarousel = ({destinationData}) => {
+
+    const truncateDescription = (description, maxLength) => {
+        // Check if the description length exceeds the maxLength
+        if (description.length > maxLength) {
+            // Truncate the description and append "..."
+            return description.substring(0, maxLength) + "...";
+        }
+        // Return the original description if it's within the maxLength
+        return description;
+    };
 
     const settings = {
         arrows: true,
@@ -20,26 +23,49 @@ const PlaceCarousel = () => {
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    infinite: true,
+                },
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+        ],
     };
 
-    return (
+    return (destinationData &&
         <div className="auto-container">
             <div className="u-title clearfix">
-                <h2>Places in Istanbul</h2>
+                <h2>Places in {destinationData['name']}</h2>
             </div>
             <Slider {...settings}>
-                {places.map((place) => (
-                    <div key={place.id}>
+                {destinationData.places.length > 0 && destinationData.places.map((place, index) => (
+                    <div key={index}>
                         <div className="card m-2" >
-                            <img src={ItalyPic} className="card-img-top" alt="..." />
+                            <img src={place.photo} className="card-img-top" alt={place.name} style={{ height: '200px' }} />
                             <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
+                                <h5 className="card-title">{place.name}</h5>
                                 <p className="card-text">
-                                    Some quick example text to build on the card title and make up the bulk of
-                                    the card's content.
+                                    {truncateDescription(place.description, 50)}
                                 </p>
                                 <a href="#" className="btn btn-primary">
-                                    Go somewhere
+                                    View Details
                                 </a>
                             </div>
                         </div>

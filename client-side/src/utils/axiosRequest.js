@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:3000/api/v1";
+const baseUrl =
+	import.meta.env.VITE_API ||
+	"https://travelplanning-website-server.onrender.com/api/v1";
 
 export function makeAxiosRequest(method, urlPath, data) {
 	const headers = {
@@ -19,7 +21,7 @@ export function makeAxiosRequest(method, urlPath, data) {
 		.then((res) => res.data)
 		.catch((err) => {
 			if (axios.isCancel(err)) {
-				console.log("Request canceled:", err.message);
+				console.error("Request canceled:", err.message);
 			} else if (err.response && err.response.status === 401) {
 				// Handle unauthorized access (e.g., redirect to login)
 				console.error("Unauthorized access:", err.message);
