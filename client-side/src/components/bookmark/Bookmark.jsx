@@ -1,36 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookmark, faTrash } from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { FaRegBookmark, FaBookmark } from "react-icons/fa";
+import axios from "axios";
 
-const Bookmark = () => {
+const Bookmark = ({ hotelId, handleBookmarkToggle }) => {
   const [bookmarked, setBookmarked] = useState(false);
 
-  const handleBookmarkToggle = async () => {
-    try {
-      if (bookmarked) {
-        // remove bookmark
-        await axios.delete(`http://localhost:8000/api/v1/remove-bookmark`);
-      } else {
-        // add bookmark
-        await axios.post(`http://localhost:8000/api/v1/add-bookmark`);
-      }
-
-      // toggle the bookmarked state
-      setBookmarked(!bookmarked);
-    } catch (error) {
-      console.error('Error toggling bookmark:', error.message);
-    }
-  };
-
   useEffect(() => {
-    // fetch bookmark status when the component mounts
     const fetchBookmarkStatus = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/v1/get-all-bookmarks`);
-        setBookmarked(response.data.bookmarked);
+        const authToken = localStorage.getItem("auth");
+        const token = JSON.parse(authToken).createToken;
+        axios
+          .get(`${import.meta.env.VITE_API}/get-all-bookmarks`, {
+            headers: {
+              Authorization: `${token}`,
+              "Content-Type": "application/json",
+            },
+          })
+          .then((response) => {
+            const hotels = response.data.data.hotelId;
+
+            setBookmarked(!hotels.includes(hotelId));
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+        // setBookmarked(response.data.bookmarked);
       } catch (error) {
-        console.error('Error fetching bookmark status:', error.message);
+        console.error("Error fetching bookmark status:", error.message);
       }
     };
 
@@ -39,12 +36,11 @@ const Bookmark = () => {
 
   return (
     <div className="bookmark-container">
-      <button className="bookmark-button" onClick={handleBookmarkToggle}>
-        {bookmarked ? (
-          <FontAwesomeIcon icon={faTrash} />
-        ) : (
-          <FontAwesomeIcon icon={faBookmark} />
-        )}
+      <button
+        className="bookmark-button"
+        onClick={() => handleBookmarkToggle(hotelId, bookmarked)}
+      >
+        {bookmarked ? <FaRegBookmark /> : <FaBookmark />}
       </button>
     </div>
   );

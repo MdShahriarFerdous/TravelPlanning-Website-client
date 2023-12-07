@@ -17,7 +17,6 @@ import FlightsListPage from "./pages/flights/FlightsListPage";
 import DestinationDetailsPage from "./pages/destination/DestinationDetailsPage.jsx";
 
 import BookmarksPage from "./pages/bookmark/BookmarksPage";
-import HotelPage from "./components/bookmark/HotelPage";
 
 const App = () => {
 	return (
@@ -41,7 +40,6 @@ const App = () => {
 				<Route path="/blogs/:blogId" element={<BlogDetailsPage />} />
 				<Route path="/hotels" element={<HotelsListPage />} />
 				<Route path="/bookmarks" element={<BookmarksPage />} />
-				<Route path="/hotelpage" element={<HotelPage />} />
 				<Route path="/destination/:id" element={<DestinationDetailsPage />} />
 
 			</Routes>
