@@ -15,6 +15,7 @@ import TripsListPage from "./pages/trips/TripsListPage";
 import HotelsListPage from "./pages/hotels/HotelsListPage";
 import FlightsListPage from "./pages/flights/FlightsListPage";
 import DestinationDetailsPage from "./pages/destination/DestinationDetailsPage.jsx";
+import SingleTourPackage from "./pages/single-tour-package/SingleTourPackage.jsx";
 
 const App = () => {
 	return (
@@ -30,6 +31,10 @@ const App = () => {
 				/>
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/dashboard" element={<UserDashboard />} />
+				<Route
+					path="/tour-package/:tourInfoId"
+					element={<SingleTourPackage />}
+				/>
 				<Route path="*" element={<PageNotFound />} replace />
 
 				<Route path="/trips" element={<TripsListPage />} />
@@ -37,8 +42,10 @@ const App = () => {
 				<Route path="/blogs" element={<BlogsListPage />} />
 				<Route path="/blogs/:blogId" element={<BlogDetailsPage />} />
 				<Route path="/hotels" element={<HotelsListPage />} />
-				<Route path="/destination/:id" element={<DestinationDetailsPage />} />
-
+				<Route
+					path="/destination/:id"
+					element={<DestinationDetailsPage />}
+				/>
 			</Routes>
 			<ToastContainer />
 		</BrowserRouter>

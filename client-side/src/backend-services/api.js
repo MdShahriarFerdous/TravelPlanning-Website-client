@@ -53,3 +53,34 @@ export const LoginAPI = async (values) => {
 		toast.error("Login failed. Try again.");
 	}
 };
+//* =========================Tour-thumbnail-list-API=========================
+export const TourThumbnailAPI = async () => {
+	try {
+		const { data } = await axios.get("/tour-thumbnails");
+
+		if (data.error) {
+			toast.error(data.error);
+		} else {
+			return data;
+		}
+	} catch (error) {
+		console.log(error);
+		toast.error("Thumbnail fetching failed. Try again.");
+	}
+};
+
+//* =========================SingleTour-byId-API=========================
+export const TourByIdAPI = async (tourInfoId) => {
+	try {
+		const { data } = await axios.get(`/tour-info/${tourInfoId}`);
+
+		if (data.error) {
+			toast.error(data.error);
+		} else {
+			return data;
+		}
+	} catch (error) {
+		console.log(error);
+		toast.error("Tour info data failed to serve. Try again.");
+	}
+};

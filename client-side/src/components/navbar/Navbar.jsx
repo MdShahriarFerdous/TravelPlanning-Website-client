@@ -18,7 +18,6 @@ const Navbar = () => {
 	const navigate = useNavigate();
 
 	const logout = () => {
-		console.log("function call");
 		setAuth({ ...auth, user: null, token: "" });
 		localStorage.removeItem("auth");
 		navigate("/");
