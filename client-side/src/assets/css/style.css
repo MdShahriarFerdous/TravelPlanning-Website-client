@@ -710,8 +710,8 @@ form label.error {
 }
 
 .site-form form .f-btn:hover {
-	background: var(--dark-gray-gray);
-	color: #fff;
+	/* background: var(--dark-gray-gray);
+	color: #fff; */
 	box-shadow: 0 0 5px 0 var(--primary-color);
 }
 
@@ -6568,7 +6568,7 @@ body.visible-sidebar {
 
 .packages-three {
 	position: relative;
-	padding: 0 0 140px;
+	/* padding: 0 0 140px; */
 	background: #fff;
 	z-index: 5;
 }
