@@ -37,3 +37,12 @@ export const blogsGalleryList = async () => {
     console.error(error);
   }
 };
+
+// ======================Blogs Category List API========================
+export const blogsCategoryList = async () => {
+  try {
+    return await axios.get("/blog-categories");
+  } catch (error) {
+    console.error(error);
+  }
+};

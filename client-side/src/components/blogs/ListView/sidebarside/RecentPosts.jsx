@@ -1,31 +1,58 @@
 import { NavLink } from "react-router-dom";
-import BlogPostSampleImage from "../../../../assets/images/resources/gallery/oman-11-thumb.jpg";
+import { useEffect, useState } from "react";
+import { blogsList } from "../../../../backend-services/blogsApi";
+import moment from "moment";
+import ScreenLoader from "../../../screenloader/ScreenLoader";
 export default function RecentPosts() {
+  const [blogs, setBlogs] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    (async () => {
+      setIsLoading(true);
+      const res = await blogsList({ query: { pageNumber: 1 } });
+      if (res) {
+        const { blogs } = res || {};
+        setIsLoading(false);
+        setBlogs(blogs);
+      }
+    })();
+  }, []);
   return (
-    <div className="sb-widget posts-widget">
-      <div className="w-inner">
-        <div className="s-title">
-          <i className="fa-solid fa-caret-right"></i>
-          <h4>Recent Posts</h4>
-        </div>
-        <div className="posts">
-          {Array.apply(null, { length: 8 }).map((e, i) => (
-            <div className="post" key={i}>
-              <div className="post-thumb">
-                <NavLink to={`/blogs/${i}`}>
-                  <img src={BlogPostSampleImage} alt="Salalah" />
-                </NavLink>
-              </div>
-              <div className="travilo-text">
-                <NavLink to={`/blogs/${i}`}>
-                  Salalah, A Tropical Paradise in Oman
-                </NavLink>
-              </div>
-              <div className="post-info">August 3 2023</div>
+    <>
+      {isLoading ? (
+        <ScreenLoader />
+      ) : (
+        <div className="sb-widget posts-widget">
+          <div className="w-inner">
+            <div className="s-title">
+              <i className="fa-solid fa-caret-right"></i>
+              <h4>Recent Posts</h4>
             </div>
-          ))}
+            <div className="posts">
+              {blogs &&
+                blogs.length > 0 &&
+                blogs.map((blog) => {
+                  const { _id, title, createdAt, thumbnailImage } = blog || {};
+                  return (
+                    <div className="post" key={_id}>
+                      <div className="post-thumb">
+                        <NavLink to={`/blogs/${_id}`}>
+                          <img src={thumbnailImage} alt="Salalah" />
+                        </NavLink>
+                      </div>
+                      <div className="travilo-text">
+                        <NavLink to={`/blogs/${_id}`}>{title}</NavLink>
+                      </div>
+                      <div className="post-info">
+                        {moment(createdAt).format("Do MMMM, YYYY")}
+                      </div>
+                    </div>
+                  );
+                })}
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
