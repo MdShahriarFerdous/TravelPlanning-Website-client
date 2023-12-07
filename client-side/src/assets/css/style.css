@@ -3616,9 +3616,7 @@ body.visible-sidebar {
 .insta-section .insta-block .image {
 	position: relative;
 	display: block;
-	height: 200px;
 	border-radius: 10px;
-	width: 95%;
 }
 
 .insta-section .insta-block .image .img {
@@ -3631,7 +3629,6 @@ body.visible-sidebar {
 .insta-section .insta-block .image img {
 	position: relative;
 	display: inline-block;
-	height: 200px;
 	vertical-align: baseline;
 	border-radius: 10px;
 	opacity: 1;
