@@ -1,6 +1,6 @@
 .slick-prev,
 .slick-next {
-	font-size: 0;
+	font-size: 32px;
 	line-height: 0;
 	position: absolute;
 	top: 50px;
@@ -13,20 +13,20 @@
 .slick-prev:before,
 .slick-next:before {
 	font-family: "slick";
-	font-size: 35px;
+	font-size: 32px;
 	line-height: 2;
-	opacity: 0.85;
+	opacity: 0.75;
 	color: #ff5522;
 }
 .slick-prev:before {
 	position: absolute;
 	left: 1955%;
-	bottom: 100px;
+	bottom: 90px;
 }
 .slick-next:before {
 	position: absolute;
-	bottom: 100px;
-	right: 18%;
+	bottom: 90px;
+	right: 35%;
 }
 .title-box h2 span {
 	position: relative;

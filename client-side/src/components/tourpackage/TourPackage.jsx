@@ -18,27 +18,32 @@ import EgyptPic from "../../assets/images/resources/destinations/egypt.jpg";
 import CanadaPic from "../../assets/images/resources/destinations/canada.jpg";
 import MaldivesPic from "../../assets/images/resources/destinations/maldives.jpg";
 import MoroccoPic from "../../assets/images/resources/destinations/morocco.jpg";
-import AustraliaPic from "../../assets/images/resources/destinations/australia.jpg";
-import JapanPic from "../../assets/images/resources/destinations/japan.jpg";
-import OmanPic from "../../assets/images/resources/destinations/oman.jpg";
 import TIcon9 from "../../assets/images/icons/t-icon-9.png";
 import TIcon2 from "../../assets/images/icons/t-icon-2.png";
 import TIcon3 from "../../assets/images/icons/t-icon-3.png";
 import TIcon1 from "../../assets/images/icons/t-icon-1.png";
 import { NavLink } from "react-router-dom";
+import { TourThumbnailAPI } from "../../backend-services/api";
+import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Arrow(props) {
 	const { className, style, onClick } = props;
-	return (
-		<div
-			className={className}
-			style={{ ...style, display: "block" }}
-			onClick={onClick}
-		/>
-	);
+	return <div className={className} onClick={onClick} />;
 }
 
+const iconArray = [TIcon1, TIcon2, TIcon3, TIcon9];
+let currentIndex = 0;
+
+const getRandomIcon = () => {
+	const randomIndex = currentIndex;
+	currentIndex = (currentIndex + 1) % iconArray.length;
+	return iconArray[randomIndex];
+};
+
 const TourPackage = () => {
+	const [thumbnailData, setThumbnailData] = useState([]);
 	const settings = {
 		infinite: true,
 		speed: 500,
@@ -74,6 +79,24 @@ const TourPackage = () => {
 			},
 		],
 	};
+
+	useEffect(() => {
+		fetchThumbnails();
+	}, []);
+
+	const fetchThumbnails = async () => {
+		try {
+			const data = await TourThumbnailAPI();
+			if (!data) {
+				console.log("Thumbnail Data fetching fail", data.message);
+			} else if (data.status === "Success") {
+				setThumbnailData(data?.tourPackageLists);
+			}
+		} catch (error) {
+			console.log(error);
+			toast.error(error.response.data.error.message);
+		}
+	};
 	return (
 		<div className="packages-section">
 			<div
@@ -94,8 +117,78 @@ const TourPackage = () => {
 				<div className="carousel-box">
 					<div className="packages-carousel">
 						<Slider {...settings}>
+							{thumbnailData.map((thumbnail) => (
+								<div
+									key={thumbnail.tourInfoId}
+									className="package-block"
+								>
+									<NavLink
+										to={`/tour-package/${thumbnail.tourInfoId}`}
+									>
+										<div className="inner-box">
+											<div className="image-box">
+												<div className="image">
+													<img
+														src={thumbnail.image}
+													/>
+												</div>
+											</div>
+											<div className="lower-box">
+												<div className="p-icon">
+													<img
+														src={getRandomIcon()}
+													/>
+													<span className="icon flaticon-family" />
+												</div>
+												<div className="location">
+													{thumbnail.locationName}
+												</div>
+												<h5>{thumbnail.tourTitle}</h5>
+												<div className="info clearfix">
+													<div className="duration">
+														<i className="fa-solid fa-clock" />
+														{thumbnail.durations}
+													</div>
+													<div className="persons">
+														<i className="fa-solid fa-user" />
+														{thumbnail.peopleSize}
+													</div>
+												</div>
+												<div className="bottom-box clearfix">
+													<div className="rating">
+														<a
+															href="#"
+															class="theme-btn"
+														>
+															<i className="fa-solid fa-star" />
+															<strong>
+																{
+																	thumbnail.ratings
+																}
+															</strong>
+															&ensp;
+															<span className="count">
+																{
+																	thumbnail.reviewsCount
+																}{" "}
+																Reviews
+															</span>
+														</a>
+													</div>
+													<p className="price">
+														Start from  
+														<span className="amount">
+															$ {thumbnail.price}
+														</span>
+													</p>
+												</div>
+											</div>
+										</div>
+									</NavLink>
+								</div>
+							))}
 							{/* ========= Block-1 start ========= */}
-							<div className="package-block">
+							{/* <div className="package-block">
 								<NavLink to="">
 									<div className="inner-box">
 										<div className="image-box">
@@ -130,11 +223,17 @@ const TourPackage = () => {
 											</div>
 											<div className="bottom-box clearfix">
 												<div className="rating">
-													<i className="fa-solid fa-star" />
-													<strong>4.8</strong>
-													<span className="count">
-														1260 Reviews
-													</span>
+													<a
+														href="#"
+														class="theme-btn"
+													>
+														<i className="fa-solid fa-star" />
+														<strong>4.8</strong>
+														&ensp;
+														<span className="count">
+															1260 Reviews
+														</span>
+													</a>
 												</div>
 												<p className="price">
 													Start from  
@@ -146,11 +245,11 @@ const TourPackage = () => {
 										</div>
 									</div>
 								</NavLink>
-							</div>
+							</div> */}
 							{/* ========= Block-1 end ========= */}
 
 							{/* ========= Block-2 start ========= */}
-							<div className="package-block">
+							{/* <div className="package-block">
 								<NavLink to="">
 									<div className="inner-box">
 										<div className="image-box">
@@ -191,6 +290,7 @@ const TourPackage = () => {
 													>
 														<i className="fa-solid fa-star" />
 														<strong>4.9</strong>
+														&ensp;
 														<span className="count">
 															510 Reviews
 														</span>
@@ -206,11 +306,11 @@ const TourPackage = () => {
 										</div>
 									</div>
 								</NavLink>
-							</div>
+							</div> */}
 							{/* ========= Block-2 end ========= */}
 
 							{/* ========= Block-3 start ========= */}
-							<div className="package-block">
+							{/* <div className="package-block">
 								<NavLink to="">
 									<div className="inner-box">
 										<div className="image-box">
@@ -251,6 +351,7 @@ const TourPackage = () => {
 													>
 														<i className="fa-solid fa-star" />
 														<strong>4.4</strong>
+														&ensp;
 														<span className="count">
 															2190 Reviews
 														</span>
@@ -266,11 +367,11 @@ const TourPackage = () => {
 										</div>
 									</div>
 								</NavLink>
-							</div>
+							</div> */}
 							{/* ========= Block-3 end ========= */}
 
 							{/* ========= Block-4 start ========= */}
-							<div className="package-block">
+							{/* <div className="package-block">
 								<NavLink to="">
 									<div className="inner-box">
 										<div className="image-box">
@@ -311,6 +412,7 @@ const TourPackage = () => {
 													>
 														<i className="fa-solid fa-star" />
 														<strong>4.8</strong>
+														&ensp;
 														<span className="count">
 															4210 Reviews
 														</span>
@@ -326,11 +428,11 @@ const TourPackage = () => {
 										</div>
 									</div>
 								</NavLink>
-							</div>
+							</div> */}
 							{/* ========= Block-4 end ========= */}
 
 							{/* ========= Block-5 start ========= */}
-							<div className="package-block">
+							{/* <div className="package-block">
 								<NavLink to="">
 									<div className="inner-box">
 										<div className="image-box">
@@ -371,6 +473,7 @@ const TourPackage = () => {
 													>
 														<i className="fa-solid fa-star" />
 														<strong>4.9</strong>
+														&ensp;
 														<span className="count">
 															5330 Reviews
 														</span>
@@ -386,11 +489,11 @@ const TourPackage = () => {
 										</div>
 									</div>
 								</NavLink>
-							</div>
+							</div> */}
 							{/* ========= Block-5 end ========= */}
 
 							{/* ========= Block-6 start ========= */}
-							<div className="package-block">
+							{/* <div className="package-block">
 								<NavLink to="">
 									<div className="inner-box">
 										<div className="image-box">
@@ -431,6 +534,7 @@ const TourPackage = () => {
 													>
 														<i className="fa-solid fa-star" />
 														<strong>4.7</strong>
+														&ensp;
 														<span className="count">
 															3610 Reviews
 														</span>
@@ -446,7 +550,7 @@ const TourPackage = () => {
 										</div>
 									</div>
 								</NavLink>
-							</div>
+							</div> */}
 							{/* ========= Block-6 end ========= */}
 						</Slider>
 					</div>
