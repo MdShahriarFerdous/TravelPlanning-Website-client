@@ -34,7 +34,6 @@ export default function BlogsList() {
         {isLoading && <ScreenLoader />}
         {blogs && blogs?.length > 0 ? (
           blogs.map((blog) => {
-            console.log(blog);
             const { _id, title, thumbnailImage, author, tags, details, createdAt } =
               blog || {};
             const blogId = _id;

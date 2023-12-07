@@ -15,7 +15,7 @@ export const RegisterAPI = async (values) => {
 			return data;
 		}
 	} catch (error) {
-		console.log(error);
+		console.error(error);
 		toast.error("Registration failed. Try again.");
 	}
 };
@@ -30,7 +30,7 @@ export const VerificationAPI = async (token) => {
 			return data;
 		}
 	} catch (error) {
-		console.log(error);
+		console.error(error);
 		toast.error("Verification failed. Try again.");
 		throw error;
 	}
@@ -49,7 +49,7 @@ export const LoginAPI = async (values) => {
 			return data;
 		}
 	} catch (error) {
-		console.log(error);
+		console.error(error);
 		toast.error("Login failed. Try again.");
 	}
 };

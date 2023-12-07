@@ -1,5 +1,10 @@
 import Slider from "react-slick";
 import "./partner.css";
+import Partner1 from "../../assets/images/partners/partner-1-white.png";
+import Partner2 from "../../assets/images/partners/partner-2-white.png";
+import Partner3 from "../../assets/images/partners/partner-3-white.png";
+import Partner4 from "../../assets/images/partners/partner-4-white.png";
+import Partner5 from "../../assets/images/partners/partner-5-white.png";
 
 const Partners = () => {
   const settings = {
@@ -60,7 +65,7 @@ const Partners = () => {
                 <div className="image">
                   <a href="#">
                     <img
-                      src="/src/assets/images/partners/partner-1-white.png"
+                      src={Partner1}
                       alt=""
                     />
                   </a>
@@ -70,7 +75,7 @@ const Partners = () => {
                 <div className="image">
                   <a href="#">
                     <img
-                      src="/src/assets/images/partners/partner-2-white.png"
+                      src={Partner2}
                       alt=""
                     />
                   </a>
@@ -80,7 +85,7 @@ const Partners = () => {
                 <div className="image">
                   <a href="#">
                     <img
-                      src="/src/assets/images/partners/partner-3-white.png"
+                      src={Partner3}
                       alt=""
                     />
                   </a>
@@ -90,7 +95,7 @@ const Partners = () => {
                 <div className="image">
                   <a href="#">
                     <img
-                      src="/src/assets/images/partners/partner-4-white.png"
+                      src={Partner4}
                       alt=""
                     />
                   </a>
@@ -100,7 +105,7 @@ const Partners = () => {
                 <div className="image">
                   <a href="#">
                     <img
-                      src="/src/assets/images/partners/partner-5-white.png"
+                      src={Partner5}
                       alt=""
                     />
                   </a>
@@ -110,7 +115,7 @@ const Partners = () => {
                 <div className="image">
                   <a href="#">
                     <img
-                      src="/src/assets/images/partners/partner-1-white.png"
+                      src={Partner1}
                       alt=""
                     />
                   </a>
@@ -120,7 +125,7 @@ const Partners = () => {
                 <div className="image">
                   <a href="#">
                     <img
-                      src="/src/assets/images/partners/partner-2-white.png"
+                      src={Partner2}
                       alt=""
                     />
                   </a>
@@ -130,7 +135,7 @@ const Partners = () => {
                 <div className="image">
                   <a href="#">
                     <img
-                      src="/src/assets/images/partners/partner-3-white.png"
+                      src={Partner3}
                       alt=""
                     />
                   </a>
@@ -140,7 +145,7 @@ const Partners = () => {
                 <div className="image">
                   <a href="#">
                     <img
-                      src="/src/assets/images/partners/partner-4-white.png"
+                      src={Partner4}
                       alt=""
                     />
                   </a>
@@ -150,7 +155,7 @@ const Partners = () => {
                 <div className="image">
                   <a href="#">
                     <img
-                      src="/src/assets/images/partners/partner-5-white.png"
+                      src={Partner5}
                       alt=""
                     />
                   </a>
