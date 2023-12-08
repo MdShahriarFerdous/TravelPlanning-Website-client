@@ -1,0 +1,53 @@
+@import url("https://fonts.cdnfonts.com/css/gilroy-bold");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+
+/* font-family: 'Gilroy-Bold', sans-serif;
+font-family: 'Gilroy-Heavy', sans-serif;
+font-family: 'Gilroy-Light', sans-serif;
+font-family: 'Gilroy-Medium', sans-serif;  
+font-family: 'Gilroy-Regular', sans-serif; */
+/* font-family: 'Open Sans', sans-serif;
+ */
+.single-tour h3,
+h4,
+h5,
+h6 {
+	font-family: "Gilroy-Medium", sans-serif;
+}
+.single-tour p {
+	font-family: "Open Sans", sans-serif;
+	font-size: 0.875rem;
+}
+p.p-bold {
+	font-weight: bold;
+}
+.arrow {
+	font-size: 1.1rem;
+	padding-bottom: 1px;
+	color: #5a657a;
+}
+.toggle-button {
+	position: absolute;
+	right: 10px;
+}
+.span-bookmark {
+	margin-left: 30%;
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	text-align: center;
+	padding-top: 4px;
+	border: 1px solid #3d434e;
+	cursor: pointer;
+}
+.bookmark {
+	font-size: 1.5rem;
+}
+.bookmark.fill-bookmark {
+	color: #ff531f;
+}
+.tick {
+	font-size: 1.4rem;
+	color: #37aa63;
+	margin-right: 4px;
+}
