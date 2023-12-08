@@ -100,7 +100,7 @@ const Destination = () => {
         var menuWrap = $(".hidden-bar .side-menu");
         // appending expander button
         menuWrap.find("li.dropdown > a").append(function () {
-          return '<button type="button" class="btn-expander"><i class="icon icon-arrow-down"></i></button>';
+          return '<button type="button" className="btn-expander"><i className="icon icon-arrow-down"></i></button>';
         });
         // hidding submenu
         menuWrap.find(".dropdown").children("ul").hide();
@@ -182,9 +182,9 @@ const Destination = () => {
           pauseOnHover: true,
           speed: 1000,
           prevArrow:
-            '<div class="prev-btn"><i class="fa-solid fa-angle-left"></span></div>',
+            '<div className="prev-btn"><i className="fa-solid fa-angle-left"></span></div>',
           nextArrow:
-            '<div class="next-btn"><i class="fa-solid fa-angle-right"></span></div>',
+            '<div className="next-btn"><i className="fa-solid fa-angle-right"></span></div>',
           //cssEase:'linear'
         });
       }
@@ -205,9 +205,9 @@ const Destination = () => {
           pauseOnHover: true,
           speed: 1000,
           prevArrow:
-            '<div class="prev-btn"><i class="fa-solid fa-angle-left"></span></div>',
+            '<div className="prev-btn"><i className="fa-solid fa-angle-left"></span></div>',
           nextArrow:
-            '<div class="next-btn"><i class="fa-solid fa-angle-right"></span></div>',
+            '<div className="next-btn"><i className="fa-solid fa-angle-right"></span></div>',
           //cssEase:'linear'
         });
       }

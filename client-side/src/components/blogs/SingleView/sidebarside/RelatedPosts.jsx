@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { blogsList } from "../../../../backend-services/blogsApi";
 import moment from "moment";
-import ScreenLoader from "../../../screenloader/ScreenLoader";
+import MiniLoader from "../../../screenloader/MiniLoader";
 export default function RelatedPosts() {
   const [blogs, setBlogs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -20,7 +20,7 @@ export default function RelatedPosts() {
   return (
     <>
       {isLoading ? (
-        <ScreenLoader />
+        <MiniLoader />
       ) : (
         <div className="sb-widget posts-widget">
           <div className="w-inner">

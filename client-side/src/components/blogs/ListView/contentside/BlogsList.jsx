@@ -3,8 +3,8 @@ import { NavLink, useLocation, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import moment from "moment";
 import Pagination from "../../../pagination/Pagination";
-import ScreenLoader from "../../../screenloader/ScreenLoader";
 import { blogsList } from "../../../../backend-services/blogsApi";
+import MiniLoader from "../../../screenloader/MiniLoader";
 export default function BlogsList() {
   const [searchParams, setSearchParams] = useSearchParams();
   const category = searchParams.get("category");
@@ -33,7 +33,7 @@ export default function BlogsList() {
       }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageNumber,location.search]);
+  }, [pageNumber, location.search]);
   const handlePageChange = (page) => {
     window.scrollTo({
       top: 600,
@@ -45,7 +45,7 @@ export default function BlogsList() {
     <>
       <div className="news">
         {isLoading ? (
-          <ScreenLoader />
+          <MiniLoader />
         ) : (
           <>
             {blogs && blogs?.length > 0 ? (

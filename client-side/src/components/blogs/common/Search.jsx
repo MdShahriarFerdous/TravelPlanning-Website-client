@@ -1,6 +1,7 @@
 export default function Search() {
   return (
-    <div className="sb-widget search-widget">
+    <>
+      {/* <div className="sb-widget search-widget">
       <div className="w-inner">
         <div className="s-title">
           <i className="fa-solid fa-caret-right"></i>
@@ -21,6 +22,7 @@ export default function Search() {
           </div>
         </form>
       </div>
-    </div>
+    </div> */}
+    </>
   );
 }

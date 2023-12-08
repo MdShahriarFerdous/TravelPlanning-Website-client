@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const BookmarksPage = () => {
@@ -15,8 +15,7 @@ const BookmarksPage = () => {
 
   const handleRemoveBookmark = async (bookmarkId) => {
     try {
-      const response = await axios.delete(`http://localhost:8000/api/v1/remove-bookmarks/${bookmarkId}`);
-      console.log(response.data);
+      await axios.delete(`http://localhost:8000/api/v1/remove-bookmarks/${bookmarkId}`);
       getAllBookmarks();
     } catch (error) {
       console.error('Error removing bookmark:', error);

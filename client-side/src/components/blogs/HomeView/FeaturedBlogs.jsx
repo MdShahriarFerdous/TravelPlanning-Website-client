@@ -3,9 +3,9 @@ import {
   blogsInHomeList,
   blogsGalleryList,
 } from "../../../backend-services/blogsApi";
-import ScreenLoader from "../../screenloader/ScreenLoader";
 import FeaturedSection from "./section/FeaturedSection";
 import GallerySection from "./section/GallerySection";
+import MiniLoader from "../../screenloader/MiniLoader";
 
 export default function FeaturedBlogs() {
   const [featuredBlogs, setFeaturedBlogs] = useState([]);
@@ -34,23 +34,30 @@ export default function FeaturedBlogs() {
   }, []);
   return (
     <>
-      {isLoading || isGalleryBlogsLoading ? (
-        <ScreenLoader />
+      <div className="news-section">
+        <div className="auto-container">
+          <div className="title-box centered">
+            <div className="subtitle">Updates</div>
+            <h2>
+              <span>From Our Blog</span>
+            </h2>
+          </div>
+
+          {isLoading ? (
+            <MiniLoader />
+          ) : (
+            <>
+              {featuredBlogs && featuredBlogs.length > 0 && (
+                <FeaturedSection featuredBlogs={featuredBlogs} />
+              )}
+            </>
+          )}
+        </div>
+      </div>
+      {isGalleryBlogsLoading ? (
+        <MiniLoader />
       ) : (
         <>
-          {featuredBlogs && featuredBlogs.length > 0 && (
-            <div className="news-section">
-              <div className="auto-container">
-                <div className="title-box centered">
-                  <div className="subtitle">Updates</div>
-                  <h2>
-                    <span>From Our Blog</span>
-                  </h2>
-                </div>
-                <FeaturedSection featuredBlogs={featuredBlogs} />
-              </div>
-            </div>
-          )}
           {galleryBlogs && galleryBlogs.length > 0 && (
             <GallerySection galleryBlogs={galleryBlogs} />
           )}

@@ -5,8 +5,8 @@ import SidebarSide from "../../components/blogs/SingleView/sidebarside/SidebarSi
 
 import { useParams } from "react-router-dom";
 import { blogsDetailedList } from "../../backend-services/blogsApi";
-import ScreenLoader from "../../components/screenloader/ScreenLoader";
 import Banner from "../../components/blogs/SingleView/contentside/Banner";
+import MiniLoader from "../../components/screenloader/MiniLoader";
 
 const BlogDetailsPage = () => {
   const { blogId } = useParams();
@@ -27,28 +27,34 @@ const BlogDetailsPage = () => {
       }
     })();
   }, [blogId]);
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
   return (
-    <>
-      {isLoading ? (
-        <ScreenLoader />
-      ) : (
-        <AppLayout>
-          <Banner post={currentBlogPost} />
-          <div className="sidebar-container blog-page">
-            <div className="auto-container">
-              <div className="row clearfix">
+    <AppLayout>
+      <Banner post={currentBlogPost} />
+      <div className="sidebar-container blog-page">
+        <div className="auto-container">
+          <div className="row clearfix">
+            {isLoading ? (
+              <MiniLoader />
+            ) : (
+              <>
                 <ContentSide
                   previousBlogPost={previousBlogPost}
                   currentBlogPost={currentBlogPost}
                   nextBlogPost={nextBlogPost}
                 />
                 <SidebarSide />
-              </div>
-            </div>
+              </>
+            )}
           </div>
-        </AppLayout>
-      )}
-    </>
+        </div>
+      </div>
+    </AppLayout>
   );
 };
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { blogTagsList } from "../../../../backend-services/blogsApi";
-import ScreenLoader from "../../../screenloader/ScreenLoader";
 import { NavLink } from "react-router-dom";
+import MiniLoader from "../../../screenloader/MiniLoader";
 
 export default function Tags() {
   const [blogTags, setBlogTags] = useState([]);
@@ -20,7 +20,7 @@ export default function Tags() {
   return (
     <>
       {isBlogTagsLoading ? (
-        <ScreenLoader />
+        <MiniLoader />
       ) : (
         <>
           {blogTags && blogTags.length > 0 && (

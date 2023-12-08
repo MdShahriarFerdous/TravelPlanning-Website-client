@@ -83,12 +83,12 @@ const TourPackage = () => {
 		try {
 			const data = await TourThumbnailAPI();
 			if (!data) {
-				console.log("Thumbnail Data fetching fail", data.message);
+				console.error("Thumbnail Data fetching fail", data.message);
 			} else if (data.status === "Success") {
 				setThumbnailData(data?.tourPackageLists);
 			}
 		} catch (error) {
-			console.log(error);
+			console.error(error);
 			toast.error(error.response.data.error.message);
 		}
 	};
@@ -161,7 +161,7 @@ const TourPackage = () => {
 														<div className="rating">
 															<a
 																href="#"
-																class="theme-btn"
+																className="theme-btn"
 															>
 																<i className="fa-solid fa-star" />
 																<strong>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import ScreenLoader from "../../screenloader/ScreenLoader";
 import { blogsGalleryList } from "../../../backend-services/blogsApi";
+import MiniLoader from "../../screenloader/MiniLoader";
 
 export default function Gallery() {
   const [galleryBlogs, setGalleryBlogs] = useState([]);
@@ -19,7 +19,7 @@ export default function Gallery() {
   return (
     <>
       {isGalleryBlogsLoading ? (
-        <ScreenLoader />
+        <MiniLoader />
       ) : (
         <>
           {galleryBlogs && galleryBlogs.length > 0 && (

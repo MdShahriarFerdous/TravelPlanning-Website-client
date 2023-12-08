@@ -38,12 +38,12 @@ const SingleTourPackage = () => {
 			try {
 				const data = await TourByIdAPI(tourInfoId);
 				if (!data) {
-					console.log("Tour info Data fetching fail", data.message);
+					console.error("Tour info Data fetching fail", data.message);
 				} else if (data.status === "Success") {
 					setTourDetails(data?.tourDetails);
 				}
 			} catch (error) {
-				console.log(error);
+				console.error(error);
 				toast.error(
 					error.response?.data?.error?.message || "An error occurred"
 				);
@@ -73,7 +73,6 @@ const SingleTourPackage = () => {
 	const handleAdditionalToggle = () => {
 		setAdditionalToggle(!additionalToggle);
 	};
-	// console.log(tourDetails);
 	return (
 		<>
 			{loading ? (
@@ -153,7 +152,7 @@ const SingleTourPackage = () => {
 
 						{/* <div className="container mt-5"> */}
 						<div className="row mt-5 g-0">
-							<div class="col-lg-8 ps-3">
+							<div className="col-lg-8 ps-3">
 								<div className="card p-4 mx-2">
 									<h6 className="fw-bold">About</h6>
 									<p className="text-muted">
@@ -385,7 +384,7 @@ const SingleTourPackage = () => {
 								</div>
 							</div>
 
-							<div class="col-lg-4 ">
+							<div className="col-lg-4 ">
 								<form className="form-group px-3">
 									<div className="row d-flex justify-content-center pr-4">
 										<div className="card p-4 pb-4">

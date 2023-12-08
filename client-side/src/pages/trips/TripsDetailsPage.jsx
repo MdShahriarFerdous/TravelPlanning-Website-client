@@ -1,15 +1,10 @@
 import { useLocation } from "react-router-dom";
-import bannerImg from "../../assets/images/resources/featured/featured-4.jpg";
 
 const TripsDetailsPage = () => {
   const location = useLocation();
 
-  const { location_name = "Dhaka", tripLength = "2", hotels, itinerary } = location.state;
+  const { location_name = "Dhaka", tripLength = "2", itinerary } = location.state;
 
-  console.log(location_name);
-  console.log(tripLength);
-  console.log(hotels);
-  console.log(itinerary);
 
   return (
     <div className="page-wrapper">
