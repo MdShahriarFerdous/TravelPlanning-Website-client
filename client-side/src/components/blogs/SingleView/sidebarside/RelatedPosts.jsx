@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { blogsList } from "../../../../backend-services/blogsApi";
 import moment from "moment";
 import ScreenLoader from "../../../screenloader/ScreenLoader";
-export default function RecentPosts() {
+export default function RelatedPosts() {
   const [blogs, setBlogs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function RecentPosts() {
           <div className="w-inner">
             <div className="s-title">
               <i className="fa-solid fa-caret-right"></i>
-              <h4>Recent Posts</h4>
+              <h4>Related Posts</h4>
             </div>
             <div className="posts">
               {blogs &&

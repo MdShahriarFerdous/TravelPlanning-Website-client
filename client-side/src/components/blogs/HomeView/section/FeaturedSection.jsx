@@ -16,7 +16,7 @@ export default function FeaturedSection({ featuredBlogs }) {
       >
         <Masonry gutter="1.5rem">
           {featuredBlogs.map((feature) => {
-            const { _id, thumbnailImage, title, tags, createdAt } =
+            const { _id, thumbnailImage, title, category, createdAt } =
               feature || {};
             return (
               <div key={_id} className="news-block-one">
@@ -27,22 +27,22 @@ export default function FeaturedSection({ featuredBlogs }) {
                   ></div>
                   <div className="over-box">
                     <ul className="info clearfix">
-                      {tags && tags.length > 0 && (
+                      {category?.title && (
                         <li>
-                          <a href="#">
-                            <i className="fa-solid fa-folder"></i> {tags[0]}
-                          </a>
+                          <a href="#"></a>
+                          <NavLink to={`/blogs?tag=${category?._id}`}>
+                            <i className="fa-solid fa-folder"></i>{" "}
+                            {category?.title}
+                          </NavLink>
                         </li>
                       )}
-                      <li>
-                        <a href="#">
-                          <i className="fa-solid fa-clock"></i>{" "}
-                          {moment(createdAt).format("Do MMMM, YYYY")}
-                        </a>
+                      <li className="text-white">
+                        <i className="fa-solid fa-clock"></i>{" "}
+                        {moment(createdAt).format("Do MMMM, YYYY")}
                       </li>
                     </ul>
                     <h3>
-                      <NavLink to={`/blogs/1`}>{title}</NavLink>
+                      <NavLink to={`/blogs/${_id}`}>{title}</NavLink>
                     </h3>
                   </div>
                 </div>

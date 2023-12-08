@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { blogsGalleryList } from "../../../../backend-services/blogsApi";
-import ScreenLoader from "../../../screenloader/ScreenLoader";
+import ScreenLoader from "../../screenloader/ScreenLoader";
+import { blogsGalleryList } from "../../../backend-services/blogsApi";
+
 export default function Gallery() {
   const [galleryBlogs, setGalleryBlogs] = useState([]);
   const [isGalleryBlogsLoading, setIsGalleryBlogsLoading] = useState(false);

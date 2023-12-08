@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { blogsCategoryList } from "../../../../backend-services/blogsApi";
+import { blogCategoriesList } from "../../../../backend-services/blogsApi";
 import ScreenLoader from "../../../screenloader/ScreenLoader";
+import { NavLink } from "react-router-dom";
 
 export default function Categories() {
   const [blogCategories, setBlogCategories] = useState([]);
@@ -8,7 +9,7 @@ export default function Categories() {
   useEffect(() => {
     (async () => {
       setIsBlogCategoriesLoading(true);
-      const res = await blogsCategoryList();
+      const res = await blogCategoriesList();
       if (res?.data) {
         const { blogCategories } = res?.data || {};
         setIsBlogCategoriesLoading(false);
@@ -34,7 +35,7 @@ export default function Categories() {
                     const { _id, title } = category || {};
                     return (
                       <li key={_id}>
-                        <a href="#">{title}</a>
+                        <NavLink to={`/blogs?category=${_id}`}>{title}</NavLink>
                       </li>
                     );
                   })}
