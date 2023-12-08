@@ -10,8 +10,7 @@ const AuthProvider = ({ children }) => {
 	});
 
 	axios.defaults.baseURL =
-		import.meta.env.VITE_API ||
-		"https://travelplanning-website-server.onrender.com/api/v1";
+		import.meta.env.VITE_API || "http://localhost:3000/api/v1 ";
 	axios.defaults.headers.common["Authorization"] = auth?.token;
 
 	useEffect(() => {

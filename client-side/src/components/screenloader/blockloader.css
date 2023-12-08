@@ -1,15 +1,15 @@
-.ProcessingDiv {
+.ProcessingDivBlock {
 	top: 0 !important;
 	bottom: 0 !important;
-	width: 100% !important;
-	height: 100% !important;
+	width: 100%;
+	height: 100%;
 	background: white;
 	margin: 0;
 	padding: 0;
-	position: absolute;
-	z-index: 1000000 !important;
+	position: relative;
+	z-index: 10000 !important;
 }
-.center-screen {
+.center-screenBlock {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -17,6 +17,6 @@
 	text-align: center;
 	min-height: 85vh;
 }
-.loader-size {
+.loader-sizeBlock {
 	width: 180px;
 }
