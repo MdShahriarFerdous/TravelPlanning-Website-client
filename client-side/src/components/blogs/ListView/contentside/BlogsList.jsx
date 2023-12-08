@@ -1,18 +1,30 @@
-import { NavLink } from "react-router-dom";
+/* eslint-disable no-unused-vars */
+import { NavLink, useLocation, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import moment from "moment";
 import Pagination from "../../../pagination/Pagination";
 import ScreenLoader from "../../../screenloader/ScreenLoader";
 import { blogsList } from "../../../../backend-services/blogsApi";
 export default function BlogsList() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const category = searchParams.get("category");
+  const author = searchParams.get("author");
+  const tag = searchParams.get("tag");
+  const location = useLocation();
   const [blogs, setBlogs] = useState([]);
   const [blogsMeta, setBlogsMeta] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [pageNumber, setPageNumber] = useState(1);
   useEffect(() => {
+    window.scrollTo({
+      top: 600,
+      behavior: "smooth",
+    });
     (async () => {
       setIsLoading(true);
-      const res = await blogsList({ query: { pageNumber } });
+      const res = await blogsList({
+        query: { pageNumber, category, author, tag },
+      });
       if (res) {
         const { blogs, page, totalPages, count } = res || {};
         setIsLoading(false);
@@ -20,7 +32,8 @@ export default function BlogsList() {
         setBlogsMeta({ page, totalPages, count });
       }
     })();
-  }, [pageNumber]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageNumber,location.search]);
   const handlePageChange = (page) => {
     window.scrollTo({
       top: 600,
@@ -42,7 +55,7 @@ export default function BlogsList() {
                   title,
                   thumbnailImage,
                   author,
-                  tags,
+                  category,
                   details,
                   createdAt,
                 } = blog || {};
@@ -62,26 +75,25 @@ export default function BlogsList() {
                       </div>
                       <div className="lower-box">
                         <ul className="info clearfix">
-                          {tags && tags.length > 0 && (
+                          {category?.title && (
                             <li>
-                              <a href="#">
+                              <NavLink to={`/blogs?category=${category?._id}`}>
                                 <i className="fa-solid fa-folder"></i>{" "}
-                                {tags?.[0] || "No Tag"}
-                              </a>
+                                {category?.title}
+                              </NavLink>
                             </li>
                           )}
-
+                          {author.username && (
+                            <li>
+                              <NavLink to={`/blogs?author=${author._id}`}>
+                                <i className="fa-solid fa-user"></i>{" "}
+                                {author.username}
+                              </NavLink>
+                            </li>
+                          )}
                           <li>
-                            <a href="#">
-                              <i className="fa-solid fa-user"></i>{" "}
-                              {author.userName || "Unknown Author"}
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <i className="fa-solid fa-clock"></i>{" "}
-                              {moment(createdAt).format("Do MMMM, YYYY")}
-                            </a>
+                            <i className="fa-solid fa-clock"></i>{" "}
+                            {moment(createdAt).format("Do MMMM, YYYY")}
                           </li>
                         </ul>
                         <h3>

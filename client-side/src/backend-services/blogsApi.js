@@ -5,8 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 // =========================BlogsList API=========================
 export const blogsList = async ({ query }) => {
-  const { pageNumber } = query || {};
-  const sortedQuery = qs.stringify({ pageNumber });
+  const sortedQuery = qs.stringify(query);
   try {
     const { data } = await axios.get(`/blogs?${sortedQuery}`);
     if (data.error) {
@@ -38,10 +37,27 @@ export const blogsGalleryList = async () => {
   }
 };
 
-// ======================Blogs Category List API========================
-export const blogsCategoryList = async () => {
+// ======================Blog Categories List API========================
+export const blogCategoriesList = async () => {
   try {
     return await axios.get("/blog-categories");
+  } catch (error) {
+    console.error(error);
+  }
+};
+// ======================Blog Tags List API========================
+export const blogTagsList = async () => {
+  try {
+    return await axios.get("/blog-tags");
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// ======================Blog Details API========================
+export const blogsDetailedList = async (blogId) => {
+  try {
+    return await axios.get(`/blogs/${blogId}`);
   } catch (error) {
     console.error(error);
   }

@@ -1,8 +1,8 @@
+import Gallery from "../../common/Gallery";
+import RecentPosts from "../../common/RecentPosts";
+import Search from "../../common/Search";
 import Categories from "./Categories";
-import Gallery from "./Gallery";
-import RecentPosts from "./RecentPosts";
-import Search from "./Search";
-import Socials from "./Socials";
+import Tags from "./Tags";
 
 export default function SidebarSide() {
   return (
@@ -11,8 +11,8 @@ export default function SidebarSide() {
         <Search />
         <RecentPosts />
         <Categories />
+        <Tags />
         <Gallery />
-        <Socials />
       </div>
     </div>
   );
