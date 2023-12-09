@@ -18,6 +18,7 @@ import TripsDetailsPage from "./pages/trips/TripsDetailsPage";
 import DestinationDetailsPage from "./pages/destination/DestinationDetailsPage.jsx";
 import SingleTourPackage from "./pages/single-tour-package/SingleTourPackage.jsx";
 import HotelDetailsPage from "./pages/hotels/HotelDetailsPage.jsx";
+import PrivateRoute from "./routes/PrivateRoute.jsx";
 
 const App = () => {
 	return (
@@ -32,7 +33,10 @@ const App = () => {
 					element={<VerifyPage />}
 				/>
 				<Route path="/login" element={<LoginPage />} />
-				<Route path="/dashboard" element={<UserDashboard />} />
+				<Route path="/user" element={<PrivateRoute />}>
+					<Route path="dashboard" element={<UserDashboard />} />
+				</Route>
+
 				<Route
 					path="/tour-package/:tourInfoId"
 					element={<SingleTourPackage />}
