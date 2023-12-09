@@ -257,7 +257,6 @@ const Navbar = () => {
 													Blogs
 												</NavLink>
 											</li>
-											
 										</ul>
 									</nav>
 								</div>
@@ -288,7 +287,7 @@ const Navbar = () => {
 											</a>
 											<ul className="dropdown-menu">
 												<li className="dropdown-item">
-													<NavLink to="/dashboard">
+													<NavLink to="/user/dashboard">
 														Dashboard
 													</NavLink>
 												</li>
