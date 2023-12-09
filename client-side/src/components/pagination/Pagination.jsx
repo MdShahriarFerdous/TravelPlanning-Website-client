@@ -1,6 +1,6 @@
 // eslint-disable-next-line react/prop-types
-export default function Pagination({ handlePageChange, blogsMeta }) {
-  const { page, totalPages } = blogsMeta || {};
+export default function Pagination({ handlePageChange, meta }) {
+  const { page, totalPages } = meta || {};
   return (
     <div className="styled-pagination centered">
       <ul className="clearfix">

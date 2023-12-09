@@ -17,6 +17,7 @@ import TripsSearchPage from "./pages/trips/TripsSearchPage";
 import TripsDetailsPage from "./pages/trips/TripsDetailsPage";
 import DestinationDetailsPage from "./pages/destination/DestinationDetailsPage.jsx";
 import SingleTourPackage from "./pages/single-tour-package/SingleTourPackage.jsx";
+import HotelDetailsPage from "./pages/hotels/HotelDetailsPage.jsx";
 
 const App = () => {
 	return (
@@ -44,6 +45,7 @@ const App = () => {
 				<Route path="/blogs" element={<BlogsListPage />} />
 				<Route path="/blogs/:blogId" element={<BlogDetailsPage />} />
 				<Route path="/hotels" element={<HotelsListPage />} />
+				<Route path="/hotels/:hotelId" element={<HotelDetailsPage />} />
 				<Route
 					path="/destination/:id"
 					element={<DestinationDetailsPage />}
