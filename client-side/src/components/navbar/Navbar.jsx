@@ -341,7 +341,7 @@ const Navbar = () => {
 								{auth?.user ? (
 									<ul>
 										<li>
-											<NavLink to="/dashboard">
+											<NavLink to="/user/dashboard">
 												Dashboard
 											</NavLink>
 										</li>
