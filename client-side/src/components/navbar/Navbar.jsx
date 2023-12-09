@@ -94,7 +94,7 @@ const Navbar = () => {
 				var menuWrap = $(".hidden-bar .side-menu");
 				// appending expander button
 				menuWrap.find("li.dropdown > a").append(function () {
-					return '<button type="button" class="btn-expander"><i class="icon icon-arrow-down"></i></button>';
+					return '<button type="button" className="btn-expander"><i className="icon icon-arrow-down"></i></button>';
 				});
 				// hidding submenu
 				menuWrap.find(".dropdown").children("ul").hide();

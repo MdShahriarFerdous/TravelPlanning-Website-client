@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { blogCategoriesList } from "../../../../backend-services/blogsApi";
-import ScreenLoader from "../../../screenloader/ScreenLoader";
 import { NavLink } from "react-router-dom";
+import MiniLoader from "../../../screenloader/MiniLoader";
 
 export default function Categories() {
   const [blogCategories, setBlogCategories] = useState([]);
@@ -20,7 +20,7 @@ export default function Categories() {
   return (
     <>
       {isBlogCategoriesLoading ? (
-        <ScreenLoader />
+        <MiniLoader />
       ) : (
         <>
           {blogCategories && blogCategories.length > 0 && (

@@ -18,7 +18,6 @@ const DestinationDetailsPage = () => {
         try {
             const response = await DestinationDetailsById(id);
             setDestinationData(response.data);
-            console.log("Destination", response.data);
         } catch (error) {
             console.error("Error fetching destination data:", error);
         }

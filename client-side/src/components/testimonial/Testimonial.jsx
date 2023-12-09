@@ -20,9 +20,9 @@ const Testimonial = () => {
 		pauseOnHover: true,
 		speed: 1000,
 		prevArrow:
-			'<div class="prev-btn"><i class="fa-solid fa-angle-left"></span></div>',
+			'<div className="prev-btn"><i className="fa-solid fa-angle-left"></span></div>',
 		nextArrow:
-			'<div class="next-btn"><i class="fa-solid fa-angle-right"></span></div>',
+			'<div className="next-btn"><i className="fa-solid fa-angle-right"></span></div>',
 		//cssEase:'linear',
 		responsive: [
 			{

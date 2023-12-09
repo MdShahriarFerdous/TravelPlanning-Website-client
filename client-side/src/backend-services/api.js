@@ -64,7 +64,7 @@ export const TourThumbnailAPI = async () => {
 			return data;
 		}
 	} catch (error) {
-		console.log(error);
+		console.error(error);
 		toast.error("Thumbnail fetching failed. Try again.");
 	}
 };
@@ -80,7 +80,7 @@ export const TourByIdAPI = async (tourInfoId) => {
 			return data;
 		}
 	} catch (error) {
-		console.log(error);
+		console.error(error);
 		toast.error("Tour info data failed to serve. Try again.");
 	}
 };
