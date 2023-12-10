@@ -2,10 +2,21 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './Destination.css';
-import ItalyPic from "../../assets/images/resources/destinations/italy.jpg";
+import {useState} from "react";
+import RestaurantModal from "../restaurant/RestaurantModal.jsx";
 
 // eslint-disable-next-line react/prop-types
 const RestaurantCarousel = ({destinationData}) => {
+    const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+
+    const handleViewDetails = (restaurant) => {
+        setSelectedRestaurant(restaurant);
+    };
+
+    const handleCloseModal = () => {
+        setSelectedRestaurant(null);
+    };
+
     const truncateDescription = (description, maxLength) => {
         // Check if the description length exceeds the maxLength
         if (description.length > maxLength) {
@@ -20,7 +31,7 @@ const RestaurantCarousel = ({destinationData}) => {
         arrows: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 4,
+        slidesToShow: 3,
         slidesToScroll: 1,
         responsive: [
             {
@@ -54,24 +65,51 @@ const RestaurantCarousel = ({destinationData}) => {
                 <h2>Restaurants in {destinationData.name}</h2>
             </div>
             <Slider {...settings}>
-                {destinationData.restaurants.length > 0 && destinationData.restaurants.map((restaurant, index) => (
+                {destinationData?.restaurants?.length > 0 && destinationData?.restaurants?.map((restaurant, index) => (
                     <div key={index}>
-                        <div className="card m-2" >
-                            <img src={restaurant.photo} className="card-img-top" alt={restaurant.name} style={{ height: '200px' }}/>
-                            <div className="card-body">
-                                <h5 className="card-title">{restaurant.name}</h5>
-                                <p className="card-text">
-                                    {truncateDescription(restaurant.description, 50)}
-                                </p>
-                                <a href="#" className="btn btn-primary">
-                                    View Details
-                                </a>
+                        <div className="package-block">
+                            <div className="inner-box">
+                                <div className="image-box">
+                                    <div className="image">
+                                        <a>
+                                            <img
+                                                onClick={() => handleViewDetails(restaurant)}
+                                                src={restaurant?.photo}
+                                                alt={restaurant?.name}
+                                                style={{height: '250px'}}
+                                            />
+                                        </a>
+                                    </div>
+                                    {/*<div className="b-title top-rated">*/}
+                                    {/*    <span>Top Rated</span>*/}
+                                    {/*</div>*/}
+                                </div>
+                                <div className="lower-box">
+                                    <div className="location">{restaurant?.name}</div>
+                                    <h5>
+                                        <a onClick={() => handleViewDetails(restaurant)}>{truncateDescription(restaurant?.description, 50)}</a>
+                                    </h5>
+                                    <div className="bottom-box clearfix">
+                                        <div className="rating">
+                                            <a href="#" className="theme-btn">
+                                                <i className="fa-solid fa-star"/>
+                                                <strong>4.8</strong><span className="count">3210 Reviews</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
                     </div>
                 ))}
             </Slider>
+            {selectedRestaurant && (
+                <RestaurantModal
+                    show={!!selectedRestaurant}
+                    onHide={handleCloseModal}
+                    restaurant={selectedRestaurant}
+                />
+            )}
         </div>
     );
 };
