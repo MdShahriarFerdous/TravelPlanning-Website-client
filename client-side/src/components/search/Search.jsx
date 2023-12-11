@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSearch } from "../../context/searchContext";
 import { Formik, Form, Field } from "formik";
 export default function Search() {
+  // eslint-disable-next-line no-unused-vars
   const [type, setType] = useState("hotels");
   const [locationId, setLocationId] = useSearch();
 
@@ -23,7 +24,6 @@ export default function Search() {
   }, [locationId]);
 
   const handleSubmit = (values) => {
-    console.log("Form values:", values);
     localStorage.setItem("search-hotel", JSON.stringify(values.searchHotel));
     setLocationId(values.searchHotel);
     window.location.replace(

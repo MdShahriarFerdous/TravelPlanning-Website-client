@@ -12,7 +12,6 @@ const HotelsListPage = () => {
   // eslint-disable-next-line no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
   const queryLocation = searchParams.get("location");
-  console.log(queryLocation)
   const location = useLocation();
   const [hotels, setHotels] = useState([]);
   const [hotelsMeta, setHotelsMeta] = useState(null);
@@ -96,7 +95,22 @@ const HotelsListPage = () => {
                       })}
                     </>
                   ) : (
-                    <>No Hotel Found</>
+                    <div className="package-block alt col-12">
+                      <div>
+                        <div>
+                          <div
+                            style={{
+                              padding: "25px 0px 40px",
+                              textAlign: "center",
+                              fontSize: "2rem",
+                              color: "#ff5522",
+                            }}
+                          >
+                            {"No Hotel Found"}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   )}
                 </>
               )}
