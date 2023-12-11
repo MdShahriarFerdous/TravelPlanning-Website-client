@@ -6974,7 +6974,7 @@ body.visible-sidebar {
 
 .hotels-section .search-one {
 	position: relative;
-	margin-bottom: 130px;
+	margin-bottom: 0;
 }
 
 .hotels-section .packages .row {

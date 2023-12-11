@@ -1,7 +1,5 @@
 // eslint-disable-next-line react/prop-types
-export default function Speciality({ id }) {
-  const isFeatured = id % 2 == 0;
-  const isTopRated = id % 3 == 0;
+export default function Speciality({ isFeatured, isTopRated }) {
   return (
     <>
       {isFeatured && (
