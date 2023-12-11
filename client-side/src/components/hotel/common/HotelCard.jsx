@@ -21,8 +21,8 @@ export default function HotelCard({ hotelId, hotel }) {
       </div>
       <div className="lower-box">
         <div className="location">{location_name || ""}</div>
-        <h5>
-          <NavLink to={`/hotels/${1}`}>{name || ""}</NavLink>
+        <h5 style={{ minHeight: "57px" }}>
+          <NavLink to={`/hotels/${hotelId}`}>{name || ""}</NavLink>
         </h5>
         <div className="bottom-box clearfix">
           <Rating />
