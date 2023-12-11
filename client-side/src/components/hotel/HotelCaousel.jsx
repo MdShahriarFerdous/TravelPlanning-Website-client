@@ -1,13 +1,14 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import './Destination.css';
+import '../destination/Destination.css';
 import {useState} from "react";
-import PlaceModal from "../place/PlaceModal.jsx";
-import HotelModal from "../hotel/HotelModal.jsx";
+import HotelModal from "./HotelModal.jsx";
 
 // eslint-disable-next-line react/prop-types
 const HotelCarousel = ({destinationData}) => {
+
+    console.log("destinationData", destinationData)
 
     const [selectedHotel, setSelectedHotel] = useState(null);
 
@@ -40,7 +41,7 @@ const HotelCarousel = ({destinationData}) => {
 
     const settings = {
         arrows: true,
-        infinite: true,
+        infinite: false,
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 1,
@@ -50,7 +51,6 @@ const HotelCarousel = ({destinationData}) => {
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 1,
-                    infinite: true,
                 },
             },
             {
@@ -76,7 +76,7 @@ const HotelCarousel = ({destinationData}) => {
                 <h2>Hotels in {destinationData.name}</h2>
             </div>
             <Slider {...settings}>
-                {hotels?.length > 0 && hotels?.map((hotel, index) => (
+                {destinationData?.hotels?.length > 0 && destinationData?.hotels?.map((hotel, index) => (
                     <div key={index}>
                         <div className="package-block">
                             <div className="inner-box">
@@ -101,11 +101,11 @@ const HotelCarousel = ({destinationData}) => {
                                         {/*<a href="#">{truncateDescription(hotel?.description, 50)}</a>*/}
                                     </h5>
                                     <div className="bottom-box clearfix">
-                                        <div className="rating">
-                                            <a href="#" className="theme-btn">
-                                                <i className="fa-solid fa-star"/>
-                                                <strong>4.8</strong><span className="count">3210 Reviews</span>
-                                            </a>
+                                        <div className="rating"><a href="#" className="theme-btn"><i
+                                            className="fa-solid fa-star"></i>
+                                            <strong>4.8</strong></a>
+                                        </div>
+                                        <div className="price"><span className="count">3210 Reviews</span>
                                         </div>
                                     </div>
                                 </div>

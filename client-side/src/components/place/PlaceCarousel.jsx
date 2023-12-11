@@ -1,20 +1,21 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import './Destination.css';
+import '../destination/Destination.css';
+import PlaceModal from "./PlaceModal.jsx";
 import {useState} from "react";
-import RestaurantModal from "../restaurant/RestaurantModal.jsx";
 
 // eslint-disable-next-line react/prop-types
-const RestaurantCarousel = ({destinationData}) => {
-    const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+const PlaceCarousel = ({destinationData}) => {
 
-    const handleViewDetails = (restaurant) => {
-        setSelectedRestaurant(restaurant);
+    const [selectedPlace, setSelectedPlace] = useState(null);
+
+    const handleViewDetails = (place) => {
+        setSelectedPlace(place);
     };
 
     const handleCloseModal = () => {
-        setSelectedRestaurant(null);
+        setSelectedPlace(null);
     };
 
     const truncateDescription = (description, maxLength) => {
@@ -29,7 +30,7 @@ const RestaurantCarousel = ({destinationData}) => {
 
     const settings = {
         arrows: true,
-        infinite: true,
+        infinite: false,
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 1,
@@ -60,12 +61,12 @@ const RestaurantCarousel = ({destinationData}) => {
     };
 
     return (destinationData &&
-        <div className="container">
+        <div className="auto-container">
             <div className="u-title clearfix">
-                <h2>Restaurants in {destinationData.name}</h2>
+                <h2>Places in {destinationData?.name}</h2>
             </div>
             <Slider {...settings}>
-                {destinationData?.restaurants?.length > 0 && destinationData?.restaurants?.map((restaurant, index) => (
+                {destinationData?.places?.length > 0 && destinationData?.places?.map((place, index) => (
                     <div key={index}>
                         <div className="package-block">
                             <div className="inner-box">
@@ -73,9 +74,9 @@ const RestaurantCarousel = ({destinationData}) => {
                                     <div className="image">
                                         <a>
                                             <img
-                                                onClick={() => handleViewDetails(restaurant)}
-                                                src={restaurant?.photo}
-                                                alt={restaurant?.name}
+                                                onClick={() => handleViewDetails(place)}
+                                                src={place?.photo}
+                                                alt={place?.name}
                                                 style={{height: '250px'}}
                                             />
                                         </a>
@@ -85,16 +86,16 @@ const RestaurantCarousel = ({destinationData}) => {
                                     {/*</div>*/}
                                 </div>
                                 <div className="lower-box">
-                                    <div className="location">{restaurant?.name}</div>
+                                    <div className="location">{place?.name}</div>
                                     <h5>
-                                        <a onClick={() => handleViewDetails(restaurant)}>{truncateDescription(restaurant?.description, 50)}</a>
+                                        <a>{truncateDescription(place?.description, 50)}</a>
                                     </h5>
                                     <div className="bottom-box clearfix">
-                                        <div className="rating">
-                                            <a href="#" className="theme-btn">
-                                                <i className="fa-solid fa-star"/>
-                                                <strong>4.8</strong><span className="count">3210 Reviews</span>
-                                            </a>
+                                        <div className="rating"><a href="#" className="theme-btn"><i
+                                            className="fa-solid fa-star"></i>
+                                            <strong>4.8</strong></a>
+                                        </div>
+                                        <div className="price"><span className="count">3210 Reviews</span>
                                         </div>
                                     </div>
                                 </div>
@@ -103,15 +104,15 @@ const RestaurantCarousel = ({destinationData}) => {
                     </div>
                 ))}
             </Slider>
-            {selectedRestaurant && (
-                <RestaurantModal
-                    show={!!selectedRestaurant}
+            {selectedPlace && (
+                <PlaceModal
+                    show={!!selectedPlace}
                     onHide={handleCloseModal}
-                    restaurant={selectedRestaurant}
+                    place={selectedPlace}
                 />
             )}
         </div>
     );
 };
 
-export default RestaurantCarousel;
+export default PlaceCarousel;
