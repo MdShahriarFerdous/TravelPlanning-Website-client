@@ -22,7 +22,12 @@ const DestinationDetails = ({destinationData}) => {
         <>
             <div className="destination-single">
                 <div className="auto-container">
-                    <h2 className="destination-heading">{destinationData.name}</h2>
+                    <div className="title-box">
+                        <div className="subtitle">Discover</div>
+                        <h2>
+                            <span className="destination-heading">{destinationData.name}</span>
+                        </h2>
+                    </div>
                     <div className="upper-images">
                         <div className="row clearfix">
                             {/*Image Block*/}
