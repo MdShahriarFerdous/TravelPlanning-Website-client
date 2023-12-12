@@ -1,0 +1,297 @@
+.flight-card {
+    background-color: #fff;
+    width: 100%;
+    margin: 15px 0;
+    border-radius: 5px;
+    box-shadow: 5px 2px 10px rgba(28,60,107,.1);
+}
+
+.flight-card .flight-airlines-wrapper{
+    display: flex;
+    align-items: center;
+}
+
+.flight-card .flight-airlines-wrapper .airline-info-container {
+    flex-basis: 75%;
+    padding: 18px;
+}
+
+.flight-card .flight-airlines-wrapper .airline-info-container .flight-airlines-info {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.flight-card .flight-airlines-wrapper .airline-info-container .flight-airlines-info {
+    flex-basis: 35%;
+}
+
+.airplane-info {
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.airplane-info .image-placeholder {
+    width: 50px;
+    height: 50px;
+    margin-right: 12px;
+    display: inline-block;
+}
+
+.airplane-info .airplane-info-text {
+    display: inline-block;
+}
+
+.airplane-info .airplane-info-text span.airplane-name {
+    color: #1c3c6b;
+}
+
+.flight-time {
+    display: flex;
+}
+
+.flight-time .start-time {
+    text-align: left;
+    flex-basis: 30%;
+}
+
+.flight-time .end-time .time-text, .flight-time .start-time .time-text {
+    color: #1c3c6b;
+    font-size: 1.2857142857rem;
+    line-height: 22px;
+    font-weight: 600;
+}
+
+.flight-time .end-time .day-text, .flight-time .end-time .destination-text, .flight-time .start-time .day-text, .flight-time .start-time .destination-text {
+    display: block;
+    color: #5d6974;
+    font-size: 1rem;
+    line-height: 22px;
+    font-weight: 400;
+}
+
+.flight-time .stops-info .stop-names, .flight-time .stops-info .stop-numbers {
+    color: #728db6;
+    font-size: .8571428571rem;
+    line-height: 14px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.flight-time .stops-info .arrow-pointer {
+    background-color: #728db6;
+    height: 2px;
+    width: 100px;
+    position: relative;
+    margin: 0 18px;
+    display: inline-block;
+}
+
+.flight-time .stops-info .arrow-pointer:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 8px 0 0;
+    border-color: #728db6 transparent transparent transparent;
+    right: -2px;
+    top: -6px;
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+}
+
+.flight-time .end-time {
+    text-align: right;
+    flex-basis: 30%;
+}
+
+.flight-card .flight-airlines-wrapper .airline-info-container .flight-airlines-info .flight-duration-text {
+    color: #3a4856;
+    font-size: 1rem;
+    line-height: 22px;
+    font-weight: 600;
+    width: 15%;
+    text-align: right;
+}
+
+.flight-card .flight-airlines-wrapper .price-info-wrapper {
+    flex-basis: 30%;
+    background-color: rgba(243, 215, 205, 0.76);
+    text-align: right;
+    padding: 14px;
+    position: relative;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-flow: column nowrap;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.flight-card .flight-airlines-wrapper .price-info-wrapper .price-texts {
+    margin-bottom: 15px;
+}
+
+.flight-card .flight-airlines-wrapper .price-info-wrapper .price-texts .discount-info {
+    color: #056998;
+    padding-bottom: 5px;
+    display: block;
+}
+
+.flight-card .flight-airlines-wrapper .price-info-wrapper .price-texts .actual-price {
+    color: #5d6974;
+    font-size: 1rem;
+    line-height: 22px;
+    font-weight: 400;
+    text-decoration: line-through;
+}
+
+.flight-card .flight-airlines-wrapper .price-info-wrapper .price-texts .discount-price {
+    display: inline-block;
+    color: #1c3c6b;
+    font-size: 1.2857142857rem;
+    line-height: 22px;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+button.selection-btn {
+    background: #ff5522 url(https://www.gozayaan.com/img/icon-button-right.eae27bcc.svg) no-repeat calc(100% - 12px) 50%;
+    text-align: left;
+    font-size: 1rem;
+    line-height: 16px;
+    font-weight: 600;
+    color: #fff
+}
+
+.btn-secondary:hover, .btn.bg-gradient-secondary:hover {
+    background-color: rgba(192, 139, 110, 0.89);
+    border-color: #be7c6a;
+}
+
+
+/*Timer*/
+.timer-container {
+    background-color: #fff;
+    border-radius: 3px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 2px 0 rgba(28,60,107,.1);
+}
+
+.timer-container .timer-text-wrapper {
+    background-color: #ecf3fe;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+.timer-container .timer-text-wrapper .timer-number {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 10px;
+}
+
+.timer-container .timer-text-wrapper .timer-number i {
+    font-size: 20px;
+    color: #5d6974;
+    margin-right: 10px;
+}
+
+.fa-clock:before {
+    content: "\F017";
+}
+
+.timer-container .timer-text-wrapper .timer-number .timer-value {
+    display: flex;
+}
+
+.timer-container .timer-text-wrapper .timer-number .timer-value div {
+    font-size: 1.7142857143rem;
+    line-height: 22px;
+    font-weight: 600;
+    color: #1c3c6b;
+    text-align: right;
+}
+
+.timer-container .timer-text-wrapper .timer-number .timer-value div:not(:last-child) span {
+    padding-right: 10px;
+}
+
+.timer-container .timer-text-wrapper .timer-number .timer-value div span {
+    display: block;
+    font-size: 1rem;
+    line-height: 22px;
+    font-weight: 400;
+    color: #5d6974;
+}
+
+.timer-container .timer-text-wrapper .timer-number .timer-value div:not(:first-child) {
+    margin-left: 10px;
+}
+
+/*Help Section*/
+.row .support-desktop-view {
+    display: block;
+}
+
+.support-card-wrapper {
+    background-color: #fff;
+    overflow: hidden;
+    border-radius: 3px;
+    box-shadow: 0 2px 2px 0 rgba(28,60,107,.1);
+    margin-bottom: 15px;
+}
+
+.support-card-wrapper .support-header-text {
+    background-image: linear-gradient(90deg, #cb4e00, #ff9358);
+    padding: 14px 18px;
+    color: #fff;
+    font-size: 1.1428571429rem;
+    line-height: 22px;
+    font-weight: 600;
+}
+
+.support-card-wrapper .support-card-body {
+    padding: 0 14px;
+}
+
+.support-card-wrapper .support-card-body .support-content:not(:last-child) {
+    border-bottom: 1px solid #dbdde0;
+    padding-bottom: 12px;
+}
+.support-card-wrapper .support-card-body .support-content {
+    margin: 18px 0;
+}
+
+.support-card-wrapper .support-card-body .support-content img {
+    margin-right: 12px;
+    width: 30px;
+}
+
+.support-card-wrapper .support-card-body .support-content a {
+    text-decoration: none;
+    color: #1c3c6b;
+}
+
+.support-card-wrapper .support-card-body .support-content {
+    margin: 18px 0;
+}
+
+.support-card-wrapper .support-card-body .support-content img {
+    margin-right: 12px;
+    width: 30px;
+}
+
+.support-card-wrapper .support-card-body .support-content a {
+    text-decoration: none;
+    color: #1c3c6b;
+}

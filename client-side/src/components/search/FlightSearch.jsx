@@ -3,6 +3,7 @@ import { Formik, Form, Field } from "formik";
 import { getAllLocation } from "../../_api/LocationApi";
 import { TextField } from "@mui/material";
 import "./FlightSearch.css";
+import FlightCard from "../flight/FlightCard.jsx";
 
 export default function FlightSearch() {
   // eslint-disable-next-line no-unused-vars
@@ -116,6 +117,7 @@ export default function FlightSearch() {
           </Form>
         </Formik>
       </div>
+      <FlightCard formData={formData}/>
     </>
   );
 }
