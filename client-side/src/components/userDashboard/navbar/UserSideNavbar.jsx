@@ -29,7 +29,7 @@ const UserSideNavbar = () => {
           </li>
           <li>
             <NavLink
-              to="/user/hotel-booking"
+              to="/user/hotel-bookings"
               className="list d-block navlink-hover"
             >
               <TbBrandBooking style={{ marginRight: "8px" }} />
@@ -38,7 +38,7 @@ const UserSideNavbar = () => {
           </li>
           <li>
             <NavLink
-              to="/user/tour-booking"
+              to="/user/tour-bookings"
               className="list d-block navlink-hover"
             >
               <TbBrandBooking style={{ marginRight: "8px" }} />
@@ -47,7 +47,7 @@ const UserSideNavbar = () => {
           </li>
           <li>
             <NavLink
-              to="/user/flight-booking"
+              to="/user/flight-bookings"
               className="list d-block navlink-hover"
             >
               <TbBrandBooking style={{ marginRight: "8px" }} />

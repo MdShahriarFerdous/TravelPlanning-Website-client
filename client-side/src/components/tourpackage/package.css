@@ -18,15 +18,15 @@
 	opacity: 0.75;
 	color: #ff5522;
 }
-.tour-container .slick-prev:before {
+.tour-container.tour-pack .slick-prev:before {
 	position: absolute;
-	left: 1920%;
-	bottom: 90px;
+	left: 1900%;
+	bottom: 80px;
 }
-.tour-container .slick-next:before {
+.tour-container.tour-pack .slick-next:before {
 	position: absolute;
-	bottom: 90px;
-	right: 45%;
+	bottom: 80px;
+	right: 10%;
 }
 .packages-section .carousel-box {
 	margin: 0 -7px;

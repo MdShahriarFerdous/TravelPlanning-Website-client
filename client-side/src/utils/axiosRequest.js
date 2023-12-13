@@ -4,7 +4,7 @@ const baseUrl =
 	import.meta.env.VITE_API ||
 	"https://travelplanning-website-server.onrender.com/api/v1";
 
-export function makeAxiosRequest(method, urlPath, data) {
+export async function makeAxiosRequest(method, urlPath, data) {
 	const headers = {
 		"Content-Type": "application/json",
 		// Authorization: `Bearer ${serviceToken}`,
@@ -17,21 +17,22 @@ export function makeAxiosRequest(method, urlPath, data) {
 		headers,
 	};
 
-	return axios(config)
-		.then((res) => res.data)
-		.catch((err) => {
-			if (axios.isCancel(err)) {
-				console.error("Request canceled:", err.message);
-			} else if (err.response && err.response.status === 401) {
-				// Handle unauthorized access (e.g., redirect to login)
-				console.error("Unauthorized access:", err.message);
-			} else if (err.response) {
-				console.error("API error:", err.response.data.message);
-				throw err.response.data;
-			} else if (err.request) {
-				throw err.request;
-			} else {
-				throw new Error(`Error: ${err.message}`);
-			}
-		});
+	try {
+		const res = await axios(config);
+		return res.data;
+	} catch (err) {
+		if (axios.isCancel(err)) {
+			console.error("Request canceled:", err.message);
+		} else if (err.response && err.response.status === 401) {
+			// Handle unauthorized access (e.g., redirect to login)
+			console.error("Unauthorized access:", err.message);
+		} else if (err.response) {
+			console.error("API error:", err.response.data.message);
+			throw err.response.data;
+		} else if (err.request) {
+			throw err.request;
+		} else {
+			throw new Error(`Error: ${err.message}`);
+		}
+	}
 }

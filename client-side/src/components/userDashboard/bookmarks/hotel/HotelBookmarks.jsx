@@ -6,7 +6,6 @@ import HotelCard from "./HotelCard";
 import ContentLoader from "react-content-loader";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap";
-import "./HotelBookmarks.css";
 import "../../commonCSS/common.css";
 
 import { useLocation  } from "react-router-dom";
@@ -50,7 +49,7 @@ const HotelBookmarks = () => {
             <UserSideNavbar />
           </div>
 
-          <div className="col-8 animated fixed-end w-60 bookmarks">
+          <div className="col-8 animated fixed-end w-60">
             <div className="pt-5">
               <NavLink to="/" className="mt-8">
                 Back to Home

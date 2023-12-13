@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { object, string } from "yup";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { LoginAPI } from "../../backend-services/api";
 import { useAuth } from "../../context/authContext";
 import { useLoader } from "../../context/loaderContext";
@@ -17,6 +17,7 @@ const LoginPage = () => {
 	const [auth, setAuth] = useAuth();
 	const [loader, setLoader] = useLoader();
 	const navigate = useNavigate();
+	const location = useLocation();
 
 	const formik = useFormik({
 		initialValues: {

@@ -8,6 +8,9 @@ font-family: 'Gilroy-Medium', sans-serif;
 font-family: 'Gilroy-Regular', sans-serif; */
 /* font-family: 'Open Sans', sans-serif;
  */
+html {
+	scroll-behavior: smooth;
+}
 .single-tour h3,
 h4,
 h5,
@@ -50,4 +53,25 @@ p.p-bold {
 	font-size: 1.4rem;
 	color: #37aa63;
 	margin-right: 4px;
+}
+.cross {
+	font-size: 1.4rem;
+	color: #e22214;
+	margin-right: 4px;
+}
+label,
+.form-label {
+	font-size: 0.75rem;
+	font-weight: 700;
+	color: #344767;
+	margin-left: 0.25rem;
+}
+.adult-count-div,
+.child-count-div {
+	margin: 6px 0;
+}
+.price-div .p-price {
+	font-size: 1.2rem;
+	font-weight: 600;
+	color: rgb(52, 71, 103);
 }
