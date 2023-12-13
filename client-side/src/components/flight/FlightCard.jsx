@@ -2,15 +2,19 @@ import {useEffect, useState} from "react";
 import {getFilterFlight} from "../../_api/FlightApi.js";
 import "./FlightCard.css";
 import {calculateDuration} from "../../utils/calculateDuration.js";
+import MiniLoader from "../screenloader/MiniLoader.jsx";
 
 const FlightCard = ({formData, onResetFormData}) => {
         const [flightData, setFlightData] = useState([]);
         const [timer, setTimer] = useState({minutes: 1, seconds: 59});
         const [showModal, setShowModal] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
         const fetchFlight = async () => {
+            setIsLoading(true);
             const response = await getFilterFlight(formData);
             setFlightData(response.data);
+            setIsLoading(false);
         };
 
         useEffect(() => {
@@ -52,7 +56,7 @@ const FlightCard = ({formData, onResetFormData}) => {
             onResetFormData();
         };
 
-        return (flightData.length > 0 &&
+        return (isLoading ? <MiniLoader /> : flightData.length > 0 &&
             <>
                 <div className="row">
                     <div className="col-lg-9">
