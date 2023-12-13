@@ -4,7 +4,7 @@ import "./FlightCard.css";
 
 const FlightCard = ({ formData }) => {
   console.log("FlightCard", formData);
-  const [flightData, setFlightData] = useState();
+  const [flightData, setFlightData] = useState([]);
   const [timer, setTimer] = useState({ minutes: 0, seconds: 10 });
   const [showModal, setShowModal] = useState(false);
 
@@ -25,7 +25,7 @@ const FlightCard = ({ formData }) => {
   useEffect(() => {
     let timerInterval;
 
-    if (formData.source_destination_id) {
+    if (flightData.length > 0) {
       timerInterval = setInterval(() => {
         if (timer.seconds > 0) {
           setTimer((prevTimer) => ({
@@ -44,7 +44,7 @@ const FlightCard = ({ formData }) => {
     return () => clearInterval(timerInterval); // Clear the interval on component unmount
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [timer, formData]);
+  }, [timer, flightData]);
 
   const handleSearchAgain = () => {
     setShowModal(false);
