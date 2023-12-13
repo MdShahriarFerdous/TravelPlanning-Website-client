@@ -6,11 +6,11 @@ import { LoaderProvider } from "./context/loaderContext.jsx";
 import { SearchProvider } from "./context/searchContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <LoaderProvider>
-    <AuthProvider>
-      <SearchProvider>
-        <App />
-      </SearchProvider>
-    </AuthProvider>
-  </LoaderProvider>
+	<AuthProvider>
+		<LoaderProvider>
+			<SearchProvider>
+				<App />
+			</SearchProvider>
+		</LoaderProvider>
+	</AuthProvider>
 );

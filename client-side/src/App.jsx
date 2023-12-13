@@ -19,8 +19,14 @@ import DestinationDetailsPage from "./pages/destination/DestinationDetailsPage.j
 import SingleTourPackage from "./pages/single-tour-package/SingleTourPackage.jsx";
 import HotelDetailsPage from "./pages/hotels/HotelDetailsPage.jsx";
 import PrivateRoute from "./routes/PrivateRoute.jsx";
+import TourBooking from "./pages/tourbooking/TourBooking.jsx";
+import { useLoader } from "./context/loaderContext.jsx";
 
-const App = () => {
+const RenderAppContent = () => {
+	const [loader, setLoader] = useLoader();
+	if (loader) {
+		return null;
+	}
 	return (
 		<BrowserRouter>
 			<Routes>
@@ -33,14 +39,19 @@ const App = () => {
 					element={<VerifyPage />}
 				/>
 				<Route path="/login" element={<LoginPage />} />
-				<Route path="/user" element={<PrivateRoute />}>
-					<Route path="dashboard" element={<UserDashboard />} />
-				</Route>
-
 				<Route
 					path="/tour-package/:tourInfoId"
 					element={<SingleTourPackage />}
 				/>
+
+				<Route path="/user" element={<PrivateRoute />}>
+					<Route path="dashboard" element={<UserDashboard />} />
+					<Route
+						path="tour-booking/:bookingId"
+						element={<TourBooking />}
+					/>
+				</Route>
+
 				<Route path="*" element={<PageNotFound />} replace />
 
 				<Route path="/trips" element={<TripsSearchPage />} />
@@ -55,9 +66,22 @@ const App = () => {
 					element={<DestinationDetailsPage />}
 				/>
 			</Routes>
-			<ToastContainer />
+			<ToastContainer
+				autoClose={3000}
+				draggable={false}
+				position="top-right"
+				hideProgressBar={false}
+				newestOnTop
+				closeOnClick
+				rtl={false}
+				pauseOnHover
+			/>
 		</BrowserRouter>
 	);
+};
+
+const App = () => {
+	return <RenderAppContent />;
 };
 
 export default App;

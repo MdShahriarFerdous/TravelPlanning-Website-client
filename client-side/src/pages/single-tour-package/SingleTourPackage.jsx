@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { HiOutlineBookmark, HiBookmark } from "react-icons/hi2";
+import { RxCross2 } from "react-icons/rx";
 import { TiTick } from "react-icons/ti";
-// <HiBookmark />   <HiOutlineBookmark /> <TiTick />
+// <HiBookmark />   <HiOutlineBookmark /> <TiTick /> <RxCross2 />
 import { useParams } from "react-router-dom";
 import { TourByIdAPI } from "../../backend-services/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-import "../../assets/css/style.css";
-import "../../assets/css/sections/global-settings.css";
-import "../../assets/css/responsive.css";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap";
@@ -19,6 +16,7 @@ import "./singletour.css";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import ScreenLoader from "./../../components/screenloader/ScreenLoader";
+import TourPackageForm from "./TourPackageForm";
 
 const SingleTourPackage = () => {
 	const [tourDetails, setTourDetails] = useState({});
@@ -30,6 +28,9 @@ const SingleTourPackage = () => {
 	const [distanceToggle, setDistanceToggle] = useState(false);
 	const [descriptionToggle, setDescriptionToggle] = useState(false);
 	const [additionalToggle, setAdditionalToggle] = useState(false);
+	const [optionsToggle, setOptionsToggle] = useState(false);
+	const [incluExcluToggle, setIncluExcluToggle] = useState(false);
+	const [tourTipsToggle, setTourTipsToggle] = useState(false);
 
 	const { tourInfoId } = useParams();
 
@@ -73,6 +74,17 @@ const SingleTourPackage = () => {
 	const handleAdditionalToggle = () => {
 		setAdditionalToggle(!additionalToggle);
 	};
+	const handleOptionsToggle = () => {
+		setOptionsToggle(!optionsToggle);
+	};
+	const handleIncluExcluToggle = () => {
+		setIncluExcluToggle(!incluExcluToggle);
+	};
+	const handleTourTipsToggle = () => {
+		setTourTipsToggle(!tourTipsToggle);
+	};
+	// console.log(tourDetails);
+
 	return (
 		<>
 			{loading ? (
@@ -259,42 +271,71 @@ const SingleTourPackage = () => {
 										<>
 											{tourDetails?.description.map(
 												(item, index) => (
-													<div key={index + 1}>
-														<p>{item?.details}</p>
-														<p className="p-bold">
+													<div key={index + 3}>
+														<p
+															key={`details-${
+																index + 3
+															}`}
+														>
+															{item?.details}
+														</p>
+														<p
+															className="p-bold"
+															key={`l1-${
+																index + 3
+															}`}
+														>
 															Locations that will
 															be covered in this
 															tour are:
 														</p>
 														{item?.coveredLocations.map(
 															(location, i) => (
-																<p key={i + 1}>
+																<p key={i + 4}>
 																	<TiTick />
 																	{location}
 																</p>
 															)
 														)}
-														<p className="p-bold">
+														<p
+															className="p-bold"
+															key={`l2-${
+																index + 3
+															}`}
+														>
 															Rooms will be
 															allotted from the
 															following Resorts
 															only:
 														</p>
-														<p>
+														<p
+															key={`lis-${
+																index + 3
+															}`}
+														>
 															{" "}
 															Premium Package:{" "}
 															{
 																item?.premiumResorts
 															}
 														</p>
-														<p>
+														<p
+															key={`l3-${
+																index + 3
+															}`}
+														>
 															{" "}
 															Economy Package:{" "}
 															{
 																item?.economyResorts
 															}
 														</p>
-														<p className="p-bold">
+														<p
+															className="p-bold"
+															key={`l4-${
+																index + 3
+															}`}
+														>
 															Max number:{" "}
 															{
 																tourDetails
@@ -303,7 +344,12 @@ const SingleTourPackage = () => {
 															}{" "}
 														</p>
 
-														<p className="p-bold">
+														<p
+															className="p-bold"
+															key={`l5-${
+																index + 3
+															}`}
+														>
 															Food Menu
 														</p>
 														{tourDetails?.foodmenu?.map(
@@ -321,20 +367,50 @@ const SingleTourPackage = () => {
 																		}
 																	</p>
 																	<ul>
-																		<li>
-																			<p>
+																		<li
+																			key={`l6-${
+																				index +
+																				3
+																			}`}
+																		>
+																			<p
+																				key={`l7-${
+																					index +
+																					3
+																				}`}
+																			>
 																				Breakfast:{" "}
 																				{food.breakfast.join()}
 																			</p>
 																		</li>
-																		<li>
-																			<p>
+																		<li
+																			key={`l7-${
+																				index +
+																				4
+																			}`}
+																		>
+																			<p
+																				key={`l8-${
+																					index +
+																					3
+																				}`}
+																			>
 																				Lunch:{" "}
 																				{food.lunch.join()}
 																			</p>
 																		</li>
-																		<li>
-																			<p>
+																		<li
+																			key={`l9-${
+																				index +
+																				3
+																			}`}
+																		>
+																			<p
+																				key={`l10-${
+																					index +
+																					3
+																				}`}
+																			>
 																				Dinner:{" "}
 																				{food.dinner.join()}
 																			</p>
@@ -370,8 +446,8 @@ const SingleTourPackage = () => {
 										tourDetails?.getTourInfo?.additionalInfo.map(
 											(info, index) => (
 												<>
-													<ul key={index + 1}>
-														<li>
+													<ul>
+														<li key={index + 1}>
 															<p>
 																<TiTick />
 																{info}
@@ -381,76 +457,198 @@ const SingleTourPackage = () => {
 												</>
 											)
 										)}
+									<hr></hr>
+
+									<h6 className="fw-bold mb-3">
+										Options and Prices
+										<button
+											style={{
+												background: "transparent",
+											}}
+											onClick={handleOptionsToggle}
+											className="toggle-button"
+										>
+											{optionsToggle ? (
+												<IoIosArrowUp className="arrow" />
+											) : (
+												<IoIosArrowDown className="arrow" />
+											)}
+										</button>
+									</h6>
+									{optionsToggle &&
+										tourDetails?.packages.map(
+											(eachPackage, index) => (
+												<>
+													<p
+														className="p-bold"
+														key={index + 1}
+														style={{
+															marginTop: "8px",
+														}}
+													>
+														{
+															eachPackage?.packageName
+														}
+													</p>
+													<p>
+														<TiTick />
+														{
+															eachPackage?.packageDetails
+														}
+													</p>
+													<p>
+														<TiTick />
+														Price Start: &nbsp;{" "}
+														{
+															eachPackage?.packagePrice
+														}
+														$ each adult person
+													</p>
+													<p>
+														Transportation Options
+													</p>
+													{eachPackage?.vehicleDetails.map(
+														(vehicle, i) => (
+															<p key={i + 1}>
+																<TiTick />
+																&nbsp; {vehicle}
+															</p>
+														)
+													)}
+												</>
+											)
+										)}
+									<hr></hr>
+
+									<h6 className="fw-bold mb-3">
+										Inclusions and Exclusions
+										<button
+											style={{
+												background: "transparent",
+											}}
+											onClick={handleIncluExcluToggle}
+											className="toggle-button"
+										>
+											{incluExcluToggle ? (
+												<IoIosArrowUp className="arrow" />
+											) : (
+												<IoIosArrowDown className="arrow" />
+											)}
+										</button>
+									</h6>
+									{incluExcluToggle &&
+										tourDetails?.includeExclude.map(
+											(item, i) => (
+												<>
+													<p
+														key={i + 1}
+														className="p-bold"
+													>
+														Inclusions
+													</p>
+													{item?.inclusions.map(
+														(inclu, i) => (
+															<p key={i + 1}>
+																<TiTick className="tick" />
+																{inclu}
+															</p>
+														)
+													)}
+													<p
+														key={i + 2}
+														className="p-bold"
+														style={{
+															marginTop: "8px",
+														}}
+													>
+														Exclusions
+													</p>
+													{item?.exclusions.map(
+														(exclu, i) => (
+															<p key={i + 3}>
+																<RxCross2 className="cross" />
+																{exclu}
+															</p>
+														)
+													)}
+												</>
+											)
+										)}
+									<hr></hr>
+
+									<h6 className="fw-bold mb-3">
+										Tour Tips
+										<button
+											style={{
+												background: "transparent",
+											}}
+											onClick={handleTourTipsToggle}
+											className="toggle-button"
+										>
+											{tourTipsToggle ? (
+												<IoIosArrowUp className="arrow" />
+											) : (
+												<IoIosArrowDown className="arrow" />
+											)}
+										</button>
+									</h6>
+									{tourTipsToggle &&
+										tourDetails?.tourTips.map((tip, i) => (
+											<>
+												<p
+													className="p-bold"
+													key={i + 4}
+													style={{
+														marginTop: "8px",
+													}}
+												>
+													Things Should Do:
+												</p>
+												{tip.thingsCandDo.map(
+													(can, i) => (
+														<p key={i + 5}>
+															<TiTick className="tick" />
+															{can}
+														</p>
+													)
+												)}
+												<p
+													className="p-bold"
+													style={{
+														marginTop: "8px",
+													}}
+												>
+													Things to Avoid:
+												</p>
+												{tip?.thingsToAvoid.map(
+													(avoid, i) => (
+														<p key={i + 6}>
+															<RxCross2 className="cross" />
+															{avoid}
+														</p>
+													)
+												)}
+											</>
+										))}
 								</div>
 							</div>
 
 							<div className="col-lg-4 ">
-								<form className="form-group px-3">
-									<div className="row d-flex justify-content-center pr-4">
-										<div className="card p-4 pb-4">
-											<fieldset disabled>
-												<label htmlFor="disabledTextInput">
-													Journey Date
-												</label>
-												<input
-													value="23 Dec 2023"
-													type="text"
-													id="disabledTextInput"
-													className="form-control my-2 py-3"
-													placeholder="Disabled input"
-												/>
-											</fieldset>
-											<select
-												className="form-select form-select-lg my-2"
-												aria-label=".form-select-lg example"
-											>
-												<option selected>
-													Choose Package
-												</option>
-												<option value={1}>
-													Premium Package
-												</option>
-												<option value={2}>
-													Economy Package
-												</option>
-											</select>
-
-											<select
-												className="form-select form-select-lg my-2"
-												aria-label=".form-select-lg example"
-											>
-												<option selected>
-													Adult persons count
-												</option>
-												<option value={1}>1</option>
-												<option value={2}>2</option>
-											</select>
-											<select
-												className="form-select form-select-lg my-2"
-												aria-label=".form-select-lg example"
-											>
-												<option selected>
-													Choose vehicle option
-												</option>
-												<option value={1}>Auto</option>
-												<option value={2}>CNG</option>
-											</select>
-											<p className="text-center">
-												Start from $
-												{
-													tourDetails?.getTourInfo
-														?.price
-												}
-											</p>
-											<button
-												type="submit"
-												className="btn bg-gradient-primary my-2"
-											>
-												Continue
-											</button>
-										</div>
-									</div>
-								</form>
+								<TourPackageForm
+									journeyDate={
+										tourDetails?.getTourInfo?.tourDate
+									}
+									groupSize={
+										tourDetails?.getTourInfo?.maxGroupSize
+									}
+									price={tourDetails?.getTourInfo?.price}
+									tourMatchingCode={tourInfoId}
+									tourInfoId={tourDetails?.getTourInfo?._id}
+									vehicleDetailes={
+										tourDetails?.tourVehiclePrice
+									}
+									packages={tourDetails?.packages}
+								/>
 							</div>
 						</div>
 					</div>

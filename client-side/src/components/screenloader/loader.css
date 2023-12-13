@@ -1,14 +1,21 @@
+body,
+html {
+	margin: 0;
+	padding: 0;
+}
 .ProcessingDiv {
 	top: 0 !important;
 	bottom: 0 !important;
 	width: 100% !important;
-	height: 100% !important;
+	height: 100vh !important;
 	background: white;
 	margin: 0;
 	padding: 0;
 	position: absolute;
 	z-index: 1000000 !important;
+	overflow: hidden;
 }
+
 .center-screen {
 	display: flex;
 	flex-direction: column;

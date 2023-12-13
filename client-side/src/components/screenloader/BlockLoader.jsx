@@ -1,14 +1,15 @@
-import loader from "../../assets/images/loader/loader.svg";
-import "./blockloader.css";
+import { RotatingLines } from "react-loader-spinner";
 
 const BlockLoader = () => {
 	return (
-		<div>
-			<div className="ProcessingDivBlock">
-				<div className="center-screenBlock ">
-					<img className="loader-sizeBlock" src={loader} />
-				</div>
-			</div>
+		<div className="d-flex justify-content-center">
+			<RotatingLines
+				strokeColor="#ff531f"
+				strokeWidth="4"
+				animationDuration="0.75"
+				width="80"
+				visible={true}
+			/>
 		</div>
 	);
 };
