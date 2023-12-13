@@ -9,10 +9,11 @@ export default function FlightSearch() {
   // eslint-disable-next-line no-unused-vars
   const [locationData, setLocationData] = useState();
   const [formData, setFormData] = useState({
-    from: "",
-    to: "",
+    source_destination_id: "",
+    destination_id: "",
     journey_date: new Date().toISOString().split("T")[0],
-    traveler: "",
+    total_travellers: "",
+    flight_class: "economy"
   });
 
   const fetchLocation = async () => {
@@ -46,7 +47,7 @@ export default function FlightSearch() {
                   <Field
                     as="select"
                     className="form-select"
-                    name="from"
+                    name="source_destination_id"
                     aria-label="From"
                   >
                     <option value="">Where from go?</option>
@@ -66,7 +67,7 @@ export default function FlightSearch() {
                   <Field
                     as="select"
                     className="form-select"
-                    name="to"
+                    name="destination_id"
                     aria-label="To"
                   >
                     <option value="">Where to go?</option>
@@ -101,7 +102,7 @@ export default function FlightSearch() {
                 <div className="field-inner">
                   <Field
                     type="text"
-                    name="traveler"
+                    name="total_travellers"
                     placeholder="Traveler"
                     // required
                   />
