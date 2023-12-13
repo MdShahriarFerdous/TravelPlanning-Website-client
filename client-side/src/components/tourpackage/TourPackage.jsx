@@ -109,7 +109,7 @@ const TourPackage = () => {
 				{loading ? (
 					<BlockLoader />
 				) : (
-					<div className="auto-container tour-container">
+					<div className="auto-container tour-container tour-pack">
 						<div className="title-box">
 							<div className="subtitle">Packages</div>
 							<h2>

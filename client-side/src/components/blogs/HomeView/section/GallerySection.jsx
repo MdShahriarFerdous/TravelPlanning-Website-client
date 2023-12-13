@@ -4,7 +4,7 @@ import Slider from "react-slick";
 export default function GallerySection({ galleryBlogs }) {
   const settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 1,

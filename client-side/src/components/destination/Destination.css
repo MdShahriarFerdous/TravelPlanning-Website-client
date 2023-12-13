@@ -31,3 +31,25 @@ a.btn.btn-primary {
 .destination-section {
 	padding-top: 110px;
 }
+
+.destination-single {
+	padding-top: 25px;
+}
+
+.destination-heading {
+	text-align: center;
+	font-size: 2rem;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	/* Add additional styles as needed */
+}
+
+.destination-single .upper-images .image-col {
+	padding: 0 5px;
+}
+.destination-single .upper-images .image-block {
+	position: relative;
+	margin-bottom: 10px;
+}
