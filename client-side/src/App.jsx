@@ -18,6 +18,10 @@ import TripsDetailsPage from "./pages/trips/TripsDetailsPage";
 import DestinationDetailsPage from "./pages/destination/DestinationDetailsPage.jsx";
 import SingleTourPackage from "./pages/single-tour-package/SingleTourPackage.jsx";
 import PrivateRoute from "./routes/PrivateRoute.jsx";
+import Profile from "./components/userDashboard/profile/Profile";
+import Booking from "./components/userDashboard/booking/Booking";
+import Bookmarks from "./components/userDashboard/bookmarks/Bookmarks";
+import Blogs from "./components/userDashboard/blogs/Blogs";
 
 const App = () => {
 	return (
@@ -34,6 +38,10 @@ const App = () => {
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/user" element={<PrivateRoute />}>
 					<Route path="dashboard" element={<UserDashboard />} />
+					<Route path="profile" element={<Profile />} />
+					<Route path="booking" element={<Booking />} />
+        			<Route path="bookmarks" element={<Bookmarks />} />
+        			<Route path="blogs" element={<Blogs />} />
 				</Route>
 
 				<Route
