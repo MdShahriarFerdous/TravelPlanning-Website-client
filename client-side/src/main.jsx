@@ -6,9 +6,9 @@ import { AuthProvider } from "./context/authContext.jsx";
 import { LoaderProvider } from "./context/loaderContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-	<LoaderProvider>
-		<AuthProvider>
+	<AuthProvider>
+		<LoaderProvider>
 			<App />
-		</AuthProvider>
-	</LoaderProvider>
+		</LoaderProvider>
+	</AuthProvider>
 );
