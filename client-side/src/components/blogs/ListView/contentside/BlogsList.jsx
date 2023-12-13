@@ -131,7 +131,7 @@ export default function BlogsList() {
             {blogsMeta && (
               <Pagination
                 handlePageChange={handlePageChange}
-                blogsMeta={blogsMeta}
+                meta={blogsMeta}
               />
             )}
           </>

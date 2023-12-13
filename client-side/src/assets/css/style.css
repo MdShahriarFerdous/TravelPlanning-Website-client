@@ -2283,6 +2283,27 @@ body.visible-sidebar {
 	color: var(--primary-color);
 }
 
+.package-block .image-box .fav-btn span {
+	position: relative;
+	display: block;
+	line-height: 24px;
+	color: #fff;
+	font-size: 21px;
+	opacity: 0.85;
+}
+
+.package-block .image-box .fav-btn span:hover {
+	color: var(--primary-color);
+	opacity: 1;
+	cursor: pointer;
+}
+
+.package-block .image-box .fav-btn span span.active {
+	color: var(--primary-color);
+	opacity: 1;
+}
+
+
 .package-block .lower-box {
 	position: relative;
 	display: block;
@@ -6953,7 +6974,7 @@ body.visible-sidebar {
 
 .hotels-section .search-one {
 	position: relative;
-	margin-bottom: 130px;
+	margin-bottom: 0;
 }
 
 .hotels-section .packages .row {
@@ -10362,7 +10383,7 @@ body.visible-sidebar {
 }
 
 .hotel-single-banner .row {
-	margin: 0 -12px;
+	margin: 0 0;
 }
 
 .hotel-single-banner .image-col {

@@ -1,10 +1,33 @@
 
 // eslint-disable-next-line react/prop-types
+import {useState} from "react";
+
 const DestinationDetails = ({destinationData}) => {
+    const [showFullDescription, setShowFullDescription] = useState(false);
+
+    const toggleDescription = () => {
+        setShowFullDescription(!showFullDescription);
+    };
+
+    const getDescriptionToShow = () => {
+        if (showFullDescription) {
+            return destinationData.description;
+        }
+        // Show only the first two sentences when not in full description mode
+        const sentences = destinationData.description.split('. ');
+        return sentences.slice(0, 3).join('. ') + (sentences.length > 3 ? '...' : '');
+    };
+
     return (destinationData &&
         <>
             <div className="destination-single">
                 <div className="auto-container">
+                    <div className="title-box">
+                        <div className="subtitle">Discover</div>
+                        <h2>
+                            <span className="destination-heading">{destinationData.name}</span>
+                        </h2>
+                    </div>
                     <div className="upper-images">
                         <div className="row clearfix">
                             {/*Image Block*/}
@@ -48,9 +71,12 @@ const DestinationDetails = ({destinationData}) => {
                                 <div className="inner">
                                     <h3>About {destinationData['name']}</h3>
                                     <div className="travilo-text">
-                                        <p>
-                                            {destinationData['description']}
-                                        </p>
+                                        <p>{getDescriptionToShow()}</p>
+                                        {destinationData.description.length > 150 && (
+                                            <button className="btn btn-link" onClick={toggleDescription}>
+                                                {showFullDescription ? 'Show Less' : 'See More'}
+                                            </button>
+                                        )}
                                     </div>
                                 </div>
                             </div>
