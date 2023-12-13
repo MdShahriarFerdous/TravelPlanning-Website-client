@@ -1,13 +1,14 @@
 .sidebar {
   background-color: #FEFEFE;
   height: 100%;
-  width: 250px;
+  width: 350px;
   position: fixed;
+  left: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding-top: 150px;
+  padding-top: 100px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -19,7 +20,7 @@
   align-items: center;
   transition: color 0.3s;
   font-size: 22px;
-  padding-bottom: 8px;
+  padding-bottom: 16px;
 }
 
 a:hover {

@@ -28,16 +28,48 @@ const UserSideNavbar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/user/booking" className="list d-block navlink-hover">
-              <TbBrandBooking style={{ marginRight: "8px" }} /> Booking
+            <NavLink
+              to="/user/hotel-booking"
+              className="list d-block navlink-hover"
+            >
+              <TbBrandBooking style={{ marginRight: "8px" }} />
+              Hotel Booking
             </NavLink>
           </li>
           <li>
             <NavLink
-              to="/user/bookmarks"
+              to="/user/tour-booking"
               className="list d-block navlink-hover"
             >
-              <IoBookmarks style={{ marginRight: "8px" }} /> Bookmarks
+              <TbBrandBooking style={{ marginRight: "8px" }} />
+              Tour Booking
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/user/flight-booking"
+              className="list d-block navlink-hover"
+            >
+              <TbBrandBooking style={{ marginRight: "8px" }} />
+              Flight Booking
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/user/bookmarked-hotels"
+              className="list d-block navlink-hover"
+            >
+              <IoBookmarks style={{ marginRight: "8px" }} />
+              Bookmarked Hotels
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/user/bookmarked-tours"
+              className="list d-block navlink-hover"
+            >
+              <IoBookmarks style={{ marginRight: "8px" }} />
+              Bookmarked Tours
             </NavLink>
           </li>
           <li>

@@ -20,9 +20,12 @@ import SingleTourPackage from "./pages/single-tour-package/SingleTourPackage.jsx
 import HotelDetailsPage from "./pages/hotels/HotelDetailsPage.jsx";
 import PrivateRoute from "./routes/PrivateRoute.jsx";
 import Profile from "./components/userDashboard/profile/Profile";
-import Booking from "./components/userDashboard/booking/Booking";
-import Bookmarks from "./components/userDashboard/bookmarks/Bookmarks";
-import Blogs from "./components/userDashboard/blogs/Blogs";
+import TourBooking from "./components/userDashboard/booking/tour/TourBooking.jsx";
+import HotelBooking from "./components/userDashboard/booking/hotel/HotelBooking.jsx";
+import FlightBooking from './components/userDashboard/booking/flight/FlightBooking.jsx';
+import HotelBookmarks from "./components/userDashboard/bookmarks/hotel/HotelBookmarks.jsx";
+import TourBookmarks from "./components/userDashboard/bookmarks/tour/TourBookmarks.jsx";
+import Blogs from "./components/userDashboard/blogs/Blogs.jsx";
 
 const App = () => {
 	return (
@@ -40,8 +43,11 @@ const App = () => {
 				<Route path="/user" element={<PrivateRoute />}>
 					<Route path="dashboard" element={<UserDashboard />} />
 					<Route path="profile" element={<Profile />} />
-					<Route path="booking" element={<Booking />} />
-        			<Route path="bookmarks" element={<Bookmarks />} />
+					<Route path="hotel-booking" element={<HotelBooking />} />
+					<Route path="tour-booking" element={<TourBooking />} />
+					<Route path="flight-booking" element={<FlightBooking />} />
+        			<Route path="bookmarked-hotels" element={<HotelBookmarks />} />
+        			<Route path="bookmarked-tours" element={<TourBookmarks />} />
         			<Route path="blogs" element={<Blogs />} />
 				</Route>
 
