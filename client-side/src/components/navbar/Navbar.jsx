@@ -13,6 +13,8 @@ import MenuIcon from "../../assets/images/icons/menu-icon.svg";
 import { useAuth } from "../../context/authContext";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
+import User from "../../assets/images/photo-1-1.jpg";
+
 const Navbar = () => {
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
@@ -69,10 +71,13 @@ const Navbar = () => {
       }
       //Cart Sidebar Toggle
       if ($(".cart-sidebar").length) {
-        $(".main-header .header-upper .links-box .cart-btn > a").on("click", function (e) {
-          e.preventDefault();
-          $("body").toggleClass("visible-cart-bar");
-        });
+        $(".main-header .header-upper .links-box .cart-btn > a").on(
+          "click",
+          function (e) {
+            e.preventDefault();
+            $("body").toggleClass("visible-cart-bar");
+          }
+        );
         $(".cart-sidebar .closer-btn,.cart-backdrop").on("click", function () {
           $("body").removeClass("visible-cart-bar");
         });
@@ -93,22 +98,39 @@ const Navbar = () => {
         // hidding submenu
         menuWrap.find(".dropdown").children("ul").hide();
 
-        $(".hidden-bar .side-menu ul li.dropdown .btn-expander").on("click", function (e) {
-          e.preventDefault();
-          if ($(this).parents("li").children("ul").is(":visible")) {
-            $(this).parents("li").children("ul").slideUp();
-            $(this).find("i").toggleClass("icon-arrow-up");
-            return false;
-          } else {
-            $(this).parents(".navigation").children("li").children("ul").hide();
-            $(this).parents(".navigation").children("li").children("a").find("i").removeClass("icon-arrow-up");
-            $(this).parents(".navigation").children("li").children("a").find("i").addClass("icon-arrow-down");
-            $(this).parents("li").children("ul").slideToggle();
-            // toggling arrow of expander
-            $(this).find("i").toggleClass("icon-arrow-up");
-            return false;
+        $(".hidden-bar .side-menu ul li.dropdown .btn-expander").on(
+          "click",
+          function (e) {
+            e.preventDefault();
+            if ($(this).parents("li").children("ul").is(":visible")) {
+              $(this).parents("li").children("ul").slideUp();
+              $(this).find("i").toggleClass("icon-arrow-up");
+              return false;
+            } else {
+              $(this)
+                .parents(".navigation")
+                .children("li")
+                .children("ul")
+                .hide();
+              $(this)
+                .parents(".navigation")
+                .children("li")
+                .children("a")
+                .find("i")
+                .removeClass("icon-arrow-up");
+              $(this)
+                .parents(".navigation")
+                .children("li")
+                .children("a")
+                .find("i")
+                .addClass("icon-arrow-down");
+              $(this).parents("li").children("ul").slideToggle();
+              // toggling arrow of expander
+              $(this).find("i").toggleClass("icon-arrow-up");
+              return false;
+            }
           }
-        });
+        );
       }
 
       hiddenBarMenuConfig();
@@ -118,13 +140,17 @@ const Navbar = () => {
         $(".hidden-bar-closer,.menu-backdrop").on("click", function () {
           $(".hidden-bar,body").removeClass("visible-sidebar");
           $(".side-menu ul li.dropdown ul").slideUp();
-          $(".side-menu ul li.dropdown > a i").removeClass("icon-arrow-up").addClass("icon-arrow-down");
+          $(".side-menu ul li.dropdown > a i")
+            .removeClass("icon-arrow-up")
+            .addClass("icon-arrow-down");
         });
         $(document).keydown(function (e) {
           if (e.keyCode == 27) {
             $(".hidden-bar,body").removeClass("visible-sidebar");
             $(".side-menu ul li.dropdown ul").slideUp();
-            $(".side-menu ul li.dropdown > a i").removeClass("icon-arrow-up").addClass("icon-arrow-down");
+            $(".side-menu ul li.dropdown > a i")
+              .removeClass("icon-arrow-up")
+              .addClass("icon-arrow-down");
           }
         });
         $(".hidden-bar-opener").on("click", function () {
@@ -162,7 +188,11 @@ const Navbar = () => {
                       <li className={`${isActive === null ? "current" : ""}`}>
                         <NavLink to="/">Home</NavLink>
                       </li>
-                      <li className={`${isActive === "trips" ? "current" : ""} dropdown`}>
+                      <li
+                        className={`${
+                          isActive === "trips" ? "current" : ""
+                        } dropdown`}
+                      >
                         <NavLink to="/trips">Trips</NavLink>
                         {/* <ul>
                           <li>
@@ -173,13 +203,19 @@ const Navbar = () => {
                           </li>
                         </ul> */}
                       </li>
-                      <li className={`${isActive === "flights" ? "current" : ""}`}>
+                      <li
+                        className={`${isActive === "flights" ? "current" : ""}`}
+                      >
                         <NavLink to="/flights">Flights</NavLink>
                       </li>
-                      <li className={`${isActive === "hotels" ? "current" : ""}`}>
+                      <li
+                        className={`${isActive === "hotels" ? "current" : ""}`}
+                      >
                         <NavLink to="/hotels">Hotels</NavLink>
                       </li>
-                      <li className={`${isActive === "blogs" ? "current" : ""}`}>
+                      <li
+                        className={`${isActive === "blogs" ? "current" : ""}`}
+                      >
                         <NavLink to="/blogs">Blogs</NavLink>
                       </li>
                     </ul>
@@ -197,9 +233,12 @@ const Navbar = () => {
                 <div className="link login">
                   {auth?.user ? (
                     <div className="dropdown">
-                      <a className="nav-link pointer dropdown-toggle" data-bs-toggle="dropdown">
+                      <a
+                        className="nav-link pointer dropdown-toggle"
+                        data-bs-toggle="dropdown"
+                      >
                         <img
-                          src="https://pixlok.com/wp-content/uploads/2022/02/Profile-Icon-SVG-09856789.png"
+                          src={User}
                           style={{
                             width: "36px",
                             height: "36px",
@@ -235,8 +274,17 @@ const Navbar = () => {
         <div className="hidden-bar-wrapper">
           <div className="hidden-bar-closer">
             <span className="icon">
-              <svg className="icon-close" role="presentation" viewBox="0 0 16 14">
-                <path d="M15 0L1 14m14 0L1 0" stroke="currentColor" fill="none" fillRule="evenodd" />
+              <svg
+                className="icon-close"
+                role="presentation"
+                viewBox="0 0 16 14"
+              >
+                <path
+                  d="M15 0L1 14m14 0L1 0"
+                  stroke="currentColor"
+                  fill="none"
+                  fillRule="evenodd"
+                />
               </svg>
             </span>
           </div>
