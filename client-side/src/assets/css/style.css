@@ -2145,7 +2145,6 @@ body.visible-sidebar {
 
 .packages-section .carousel-box {
 	position: relative;
-	margin: 0 -12px;
 }
 
 .packages-section .carousel-box .slick-list {
@@ -2156,6 +2155,9 @@ body.visible-sidebar {
 	position: relative;
 	/* margin-bottom: 30px; */
 	width: 383px;
+}
+.list-container .package-block {
+	margin: auto !important;
 }
 
 /* .packages-section .row {
@@ -2382,6 +2384,14 @@ body.visible-sidebar {
 }
 
 .package-block .bottom-box .rating a {
+	font-size: 12px;
+	color: var(--light-gray-gray);
+	display: inline-block;
+	vertical-align: top;
+	line-height: 20px;
+}
+
+.package-block .bottom-box .rating .theme-btn {
 	font-size: 12px;
 	color: var(--light-gray-gray);
 	display: inline-block;
@@ -2667,7 +2677,6 @@ body.visible-sidebar {
 
 .tour-types .carousel-box {
 	position: relative;
-	margin: 0 -10px;
 }
 
 .tour-types .carousel-box .slick-list {
@@ -2684,6 +2693,7 @@ body.visible-sidebar {
 }
 
 .tour-type-block .inner-box {
+	margin: auto;
 	position: relative;
 	display: block;
 	background: #fff;
@@ -2834,8 +2844,8 @@ body.visible-sidebar {
 .tour-types .slick-dots li button {
 	content: "";
 	position: absolute;
-	left: 6px;
-	top: 6px;
+	left: -4px;
+	top: -4px;
 	width: 10px;
 	height: 10px;
 	background: #c4cecc;
@@ -3301,8 +3311,8 @@ body.visible-sidebar {
 .testimonials-section .slick-dots li button {
 	content: "";
 	position: absolute;
-	left: 6px;
-	top: 6px;
+	left: -4px;
+	top: -4px;
 	width: 10px;
 	height: 10px;
 	background: #c4cecc;
@@ -5835,8 +5845,8 @@ body.visible-sidebar {
 .testimonials-two .slick-dots li button {
 	content: "";
 	position: absolute;
-	left: 6px;
-	top: 6px;
+	left: -4px;
+	top: -4px;
 	width: 10px;
 	height: 10px;
 	background: #c4cecc;

@@ -12,13 +12,19 @@
 	visibility: visible;
 	width: 40px;
 }
-ul.dropdown-menu.show {
+ul.dropdown-menu {
 	padding: 1rem;
-	/* inset: 8px 0 0 8px !important; */
-	left: 3px !important;
-	top: 4px !important;
+	left: -60px !important;
+	top: 5px !important;
 	min-width: 144px;
 	height: 100px;
+}
+.dropdown-menu.show::before {
+	top: 0 !important;
+}
+ul.dropdown-menu.show {
+	left: -60px !important;
+	top: 5px !important;
 }
 ul.dropdown-menu.show .dropdown-item a {
 	padding: 12px 8px 8px 8px;

@@ -48,8 +48,6 @@ const TourPackageForm = ({
 		}),
 		onSubmit: async (values, { resetForm }) => {
 			setLoader(true);
-			// console.log(values);
-			// console.log(auth);
 			if (!auth?.token) {
 				setLoader(false);
 				toast.error("Please login first to continue!");
@@ -79,7 +77,7 @@ const TourPackageForm = ({
 					}
 				} catch (error) {
 					toast.error(error);
-					console.log("Data Booking Failed!", error);
+					console.error("Data Booking Failed!", error);
 				}
 			}
 		},

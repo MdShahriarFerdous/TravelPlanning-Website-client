@@ -1,24 +1,24 @@
-.slick-prev:before,
+/* .slick-prev:before,
 .slick-next:before {
 	font-size: 35px;
 	color: #ff5522;
-}
+} */
 
-.slick-next:before {
+/* .slick-next:before {
 	position: absolute;
 	bottom: 73px;
 	right: 45%;
-}
+} */
 
-.slick-prev:before {
+/* .slick-prev:before {
 	position: absolute;
 	left: 2075%;
 	bottom: 73px;
-}
+} */
 
-.slick-prev {
+/* .slick-prev {
 	left: -40px;
-}
+} */
 
 .destination-section .gallery-box {
 	padding: 0 56px;
@@ -43,7 +43,6 @@ a.btn.btn-primary {
 	margin-bottom: 20px;
 	text-transform: uppercase;
 	letter-spacing: 2px;
-	/* Add additional styles as needed */
 }
 
 .destination-single .upper-images .image-col {

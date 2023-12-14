@@ -26,8 +26,7 @@ export const cancelBooking = async (id) => {
 				}
 			});
 		} catch (error) {
-			console.log(error);
-			toast.error("Blog has not Deleted!");
+			console.error(error);
 		}
 	};
 };
