@@ -52,7 +52,7 @@ const HotelsListPage = () => {
   return (
     <AppLayout>
       <section className="hotels-section">
-        <div className="search-one">
+        <div className="search-two">
           <div className="auto-container">
             <div className="outer">
               <div className="search-title">

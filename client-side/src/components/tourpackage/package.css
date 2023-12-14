@@ -1,79 +1,82 @@
-.slick-prev,
-.slick-next {
+.tour-container.tour-pack .slick-prev,
+.tour-container.tour-pack .slick-next {
 	font-size: 32px;
 	line-height: 0;
 	position: absolute;
-	top: 50px;
+	top: -30px;
 	width: 60px;
 	height: 60px;
 	cursor: pointer;
 	color: transparent;
+	z-index: 990;
 }
 
-.slick-prev:before,
-.slick-next:before {
-	font-family: "slick";
-	font-size: 32px;
-	line-height: 2;
-	opacity: 0.75;
+.tour-container.tour-pack .slick-prev {
+	left: 90%;
+}
+
+.tour-container.tour-pack .slick-next {
+	right: 0;
+}
+
+.tour-container.tour-pack .slick-prev::before,
+.tour-container.tour-pack .slick-next::before {
+	font-size: 35px;
 	color: #ff5522;
 }
-.tour-container.tour-pack .slick-prev:before {
-	position: absolute;
-	left: 1900%;
-	bottom: 80px;
-}
-.tour-container.tour-pack .slick-next:before {
-	position: absolute;
-	bottom: 80px;
-	right: 10%;
-}
-.packages-section .carousel-box {
-	margin: 0 -7px;
-}
+
 .title-box h2 span {
 	position: relative;
 	z-index: 1;
 	color: rgb(108, 113, 113);
 	font-size: 42px;
 }
+
 .packages-section {
 	padding-bottom: 48px;
 }
+
 .packages-section .title-box {
 	margin-top: 24px;
 	margin-bottom: 24px;
 }
+
 .slick-track {
 	margin-bottom: 0;
 	padding-top: 32px;
 	padding-bottom: 120px;
 }
-/* .package-section .carousel-box .slick-list {
-	margin-bottom: 120px;
-} */
+
 .package-block .inner-box,
 .package-block .image-box {
 	min-height: 80%;
 	width: 381px;
+	margin: auto;
 }
+
 .package-block .lower-box {
 	width: 350px;
 }
 
-/* Adjust for smaller screens */
-@media screen and (max-width: 768px) {
-	.slick-prev:before {
-		left: 1000%;
+@media screen and (max-width: 1199px) {
+	.tour-container.tour-pack .slick-prev {
+		left: 85% !important;
 	}
 }
-@media screen and (max-width: 600px) {
-	.slick-prev:before {
-		left: 700%;
+
+@media screen and (max-width: 949px) {
+
+	.tour-container.tour-pack .slick-prev,
+	.tour-container.tour-pack .slick-next {
+		top: 50% !important;
+		transform: translateY(-50%);
 	}
-}
-@media screen and (max-width: 400px) {
-	.slick-prev:before {
-		left: 400%;
+
+	.tour-container.tour-pack .slick-prev {
+		left: -45px !important;
+	}
+
+	.tour-container.tour-pack .slick-next {
+		right: -65px !important;
 	}
 }

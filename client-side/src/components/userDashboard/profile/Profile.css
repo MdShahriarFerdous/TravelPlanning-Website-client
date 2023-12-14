@@ -1,0 +1,21 @@
+.profile_info{
+  width: 60%;
+}
+
+.profile_info form label {
+  font-size: 16px;
+}
+
+.profile_info form .profileBtn {
+ font-size: 16px;
+ margin-left: -1px;  
+}
+
+.heading{
+  color: #344767;
+}
+
+.profileBtn:hover {
+  color: white;
+  background-color: #ff5522;
+}

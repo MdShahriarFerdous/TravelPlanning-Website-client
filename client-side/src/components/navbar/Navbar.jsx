@@ -13,6 +13,8 @@ import MenuIcon from "../../assets/images/icons/menu-icon.svg";
 import { useAuth } from "../../context/authContext";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
+import User from "../../assets/images/photo-1-1.jpg";
+
 const Navbar = () => {
 	const [auth, setAuth] = useAuth();
 	const navigate = useNavigate();
@@ -269,7 +271,7 @@ const Navbar = () => {
 												data-bs-toggle="dropdown"
 											>
 												<img
-													src="https://res.cloudinary.com/dktnokbnw/image/upload/v1702530434/wetravel/user/profileImage_qdwwkv.png"
+													src={User}
 													style={{
 														width: "36px",
 														height: "36px",

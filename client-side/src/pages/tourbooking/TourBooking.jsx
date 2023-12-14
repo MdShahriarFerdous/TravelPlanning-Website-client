@@ -107,7 +107,7 @@ const TourBooking = () => {
 				}
 			});
 		} catch (error) {
-			console.log(error);
+			console.error(error);
 			toast.error("Sorry! something went wrong");
 		}
 	};

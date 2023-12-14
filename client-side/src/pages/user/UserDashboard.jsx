@@ -1,16 +1,25 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap";
-import "../userauth/css/bootstrap.css";
-import { useAuth } from "../../context/authContext";
+import UserSideNavbar from "../../components/userDashboard/navbar/UserSideNavbar";
+import Dashboard from "../../components/userDashboard/dashboard/Dashboard";
+import "../../components/userDashboard/commonCSS/common.css"
 
 const UserDashboard = () => {
-	const [auth, setAuth] = useAuth();
-	return (
-		<div className="d-flex justify-content-center align-items-center vh-100">
-			<h2>Hello! {`${auth?.user?.username}`}</h2>
-		</div>
-	);
+  return (
+    <div className="parent_content">
+      <div className="container-fluids">
+        <div className="row">
+          <div className="col-4">
+            <UserSideNavbar />
+          </div>
+          <div className="col-8">
+            <Dashboard />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default UserDashboard;

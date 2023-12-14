@@ -1,0 +1,22 @@
+.promo_card {
+  width: 80%;
+  color: #000000;
+  margin-top: 10px;
+  border-radius: 8px;
+  padding: 20px;
+  background: #F7E5E9;
+}
+.promo_card h1,
+.promo_card span{
+  margin: 10px;
+}
+button{
+    margin: 10px;
+    color: #ff5522;
+}
+.promo_card button {
+  display: block;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
