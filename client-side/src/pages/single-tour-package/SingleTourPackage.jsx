@@ -83,6 +83,7 @@ const SingleTourPackage = () => {
 	const handleTourTipsToggle = () => {
 		setTourTipsToggle(!tourTipsToggle);
 	};
+	// console.log(tourDetails);
 
 	return (
 		<>

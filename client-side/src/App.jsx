@@ -29,65 +29,85 @@ import FlightBookings from "./components/userDashboard/booking/flight/FlightBook
 import HotelBookmarks from "./components/userDashboard/bookmarks/hotel/HotelBookmarks.jsx";
 import TourBookmarks from "./components/userDashboard/bookmarks/tour/TourBookmarks.jsx";
 import Blogs from "./components/userDashboard/blogs/Blogs.jsx";
+import TourByType from "./components/tourtypes/TourByType.jsx";
 
 const RenderAppContent = () => {
-  const [loader] = useLoader();
-  if (loader) {
-    return null;
-  }
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
+	const [loader] = useLoader();
+	if (loader) {
+		return null;
+	}
+	return (
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" element={<HomePage />} />
 
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/check-mail" element={<SendMailPage />} />
-        <Route path="/user/activate/:verifyId" element={<VerifyPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route
-          path="/tour-package/:tourInfoId"
-          element={<SingleTourPackage />}
-        />
+				<Route path="/register" element={<RegisterPage />} />
+				<Route path="/check-mail" element={<SendMailPage />} />
+				<Route
+					path="/user/activate/:verifyId"
+					element={<VerifyPage />}
+				/>
+				<Route path="/login" element={<LoginPage />} />
+				<Route
+					path="/tour-package/:tourInfoId"
+					element={<SingleTourPackage />}
+				/>
 
-        <Route path="/user" element={<PrivateRoute />}>
-          <Route path="dashboard" element={<UserDashboard />} />
-          <Route path="tour-booking/:bookingId" element={<TourBooking />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="hotel-bookings" element={<HotelBookings />} />
-          <Route path="tour-bookings" element={<TourBookings />} />
-          <Route path="flight-bookings" element={<FlightBookings />} />
-          <Route path="bookmarked-hotels" element={<HotelBookmarks />} />
-          <Route path="bookmarked-tours" element={<TourBookmarks />} />
-          <Route path="blogs" element={<Blogs />} />
-        </Route>
+				<Route path="/user" element={<PrivateRoute />}>
+					<Route path="dashboard" element={<UserDashboard />} />
+					<Route
+						path="tour-booking/:bookingId"
+						element={<TourBooking />}
+					/>
+					<Route path="profile" element={<Profile />} />
+					<Route path="hotel-bookings" element={<HotelBookings />} />
+					<Route path="tour-bookings" element={<TourBookings />} />
+					<Route
+						path="flight-bookings"
+						element={<FlightBookings />}
+					/>
+					<Route
+						path="bookmarked-hotels"
+						element={<HotelBookmarks />}
+					/>
+					<Route
+						path="bookmarked-tours"
+						element={<TourBookmarks />}
+					/>
+					<Route path="blogs" element={<Blogs />} />
+				</Route>
 
-        <Route path="*" element={<PageNotFound />} replace />
+				<Route path="/tour-types/:tourType" element={<TourByType />} />
 
-        <Route path="/trips" element={<TripsSearchPage />} />
-        <Route path="/tripsdetails" element={<TripsDetailsPage />} />
-        <Route path="/flights" element={<FlightsListPage />} />
-        <Route path="/blogs" element={<BlogsListPage />} />
-        <Route path="/blogs/:blogId" element={<BlogDetailsPage />} />
-        <Route path="/hotels" element={<HotelsListPage />} />
-        <Route path="/hotels/:hotelId" element={<HotelDetailsPage />} />
-        <Route path="/destination/:id" element={<DestinationDetailsPage />} />
-      </Routes>
-      <ToastContainer
-        autoClose={3000}
-        draggable={false}
-        position="top-right"
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnHover
-      />
-    </BrowserRouter>
-  );
+				<Route path="/trips" element={<TripsSearchPage />} />
+				<Route path="/tripsdetails" element={<TripsDetailsPage />} />
+				<Route path="/flights" element={<FlightsListPage />} />
+				<Route path="/blogs" element={<BlogsListPage />} />
+				<Route path="/blogs/:blogId" element={<BlogDetailsPage />} />
+				<Route path="/hotels" element={<HotelsListPage />} />
+				<Route path="/hotels/:hotelId" element={<HotelDetailsPage />} />
+				<Route
+					path="/destination/:id"
+					element={<DestinationDetailsPage />}
+				/>
+				<Route path="*" element={<PageNotFound />} replace />
+			</Routes>
+			<ToastContainer
+				autoClose={3000}
+				draggable={false}
+				position="top-right"
+				hideProgressBar={false}
+				newestOnTop
+				closeOnClick
+				rtl={false}
+				pauseOnHover
+			/>
+		</BrowserRouter>
+	);
 };
 
 const App = () => {
-  return <RenderAppContent />;
+	return <RenderAppContent />;
 };
 
 export default App;

@@ -37,7 +37,7 @@ const LoginPage = () => {
 					setAuth({
 						...auth,
 						user: data.user,
-						token: data.createToken,
+						token: data.token,
 					});
 					setLoader(false);
 					toast.success("Login successful");

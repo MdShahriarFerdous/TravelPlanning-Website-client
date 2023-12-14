@@ -36,7 +36,7 @@ const VerifyPage = () => {
 					setAuth({
 						...auth,
 						user: data.user,
-						token: data.createdToken,
+						token: data.token,
 					});
 					setLoader(false);
 					navigate("/");
