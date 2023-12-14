@@ -1,6 +1,21 @@
 import "./BookingDetails.css";
+import {useState} from "react";
 
 const BookingDetails = () => {
+
+  const [isCollapsed1, setCollapsed1] = useState(false);
+  const [isCollapsed2, setCollapsed2] = useState(false);
+  const [isCollapsed3, setCollapsed3] = useState(false);
+  const toggleCollapse1 = () => {
+    setCollapsed1(!isCollapsed1);
+  };
+  const toggleCollapse2 = () => {
+    setCollapsed2(!isCollapsed2);
+  };
+  const toggleCollapse3 = () => {
+    setCollapsed3(!isCollapsed3);
+  };
+
   return (
     <>
       <div className="col-lg-8">
@@ -14,12 +29,12 @@ const BookingDetails = () => {
         </div>
         <div className="booking-flight-info">
           <div>
-            <div className="booking-flight-card">
-              <div className="booking-card-header">
+            <div className={`booking-flight-card ${isCollapsed1 ? 'collapsed' : ''}`}>
+              <div className="booking-card-header" onClick={toggleCollapse1}>
                 <h6>DAC-CXB</h6>
-                <div id="toggle-0" className="toggle-icon flat-icon" />
+                <div id="toggle-0" className={`toggle-icon flat-icon ${isCollapsed1 ? 'collapsed' : ''}`} />
               </div>
-              <div id="flight-0" className="collapse show" style={{}}>
+              <div id="flight-0" className={`collapse ${isCollapsed1 ? '' : 'show'}`}>
                 <div className="detail-accordion">
                   <div className="flight-booking-detail">
                     <div className="flight-airlines-info">
@@ -67,12 +82,12 @@ const BookingDetails = () => {
               </div>
             </div>
           </div>
-          <div className="booking-flight-card">
-            <div className="booking-card-header">
+          <div className={`booking-flight-card ${isCollapsed2 ? 'collapsed' : ''}`}>
+            <div className="booking-card-header" onClick={toggleCollapse2}>
               <h6>Flight Details</h6>
-              <div className="toggle-icon flat-icon" />
+              <div className={`toggle-icon flat-icon ${isCollapsed2 ? 'collapsed' : ''}`} />
             </div>
-            <div className="collapse show">
+            <div className={`collapse ${isCollapsed2 ? '' : 'show'}`}>
               <div className="detail-accordion">
                 <div className="flight-booking-detail">
                   <div className="flight-details">
@@ -186,17 +201,17 @@ const BookingDetails = () => {
         </div>
         <span>
           <div>
-            <div className="card">
+            <div className={`card ${isCollapsed3 ? 'collapsed' : ''}`}>
               <span>
-                <div className="form-header">
+                <div className="form-header" onClick={toggleCollapse3}>
                   <div className="passenger-header">
                     <h6>Passenger 1</h6>
                     <span className="passenger-type">Adult</span>
                     <span className="primary-contact"> Primary Contact </span>
                   </div>
-                  <div className="toggle-icon flat-icon" />
+                  <div className={`toggle-icon flat-icon ${isCollapsed3 ? 'collapsed' : ''}`} />
                 </div>
-                <div className="collapse show">
+                <div className={`collapse ${isCollapsed3 ? '' : 'show'}`}>
                   <div className="card-body">
                     <div className="row border-bottom pb-1 mb-2">
                       <div className="mb-3 col-12">
@@ -278,51 +293,19 @@ const BookingDetails = () => {
                           className="v-select mb-1 vs--single vs--searchable"
                           name="nationality"
                         >
-                          <div
-                            id="vs1__combobox"
-                            role="combobox"
-                            aria-expanded="false"
-                            aria-owns="vs1__listbox"
-                            aria-label="Search for option"
-                            className="vs__dropdown-toggle"
-                          >
-                            <div className="vs__selected-options">
-                              <span className="vs__selected"> Bangladesh </span>
-                              <input
-                                aria-autocomplete="list"
-                                aria-labelledby="vs1__combobox"
-                                aria-controls="vs1__listbox"
-                                type="search"
-                                autoComplete="off"
-                                className="vs__search"
-                              />
-                            </div>
-                            <div className="vs__actions">
-                              <button
-                                type="button"
-                                title="Clear Selected"
-                                aria-label="Clear Selected"
-                                className="vs__clear"
-                              >
-                                <i className="fa fa-times" />
-                              </button>
-                              <i
-                                className="fa fa-chevron-down vs__open-indicator"
-                                role="presentation"
-                              />
-                              <div
-                                className="vs__spinner"
-                                style={{ display: "none" }}
-                              >
-                                Loading...
+                          <div>
+                            <span>
+                              <div role="group" className="input-group">
+                                <input
+                                    id="last-name-0"
+                                    type="text"
+                                    autoComplete="family-name"
+                                    className="form-control"
+                                />
                               </div>
-                            </div>
+                              <small className="text-danger" />
+                            </span>
                           </div>
-                          <ul
-                            id="vs1__listbox"
-                            role="listbox"
-                            style={{ display: "none", visibility: "hidden" }}
-                          />
                         </div>
                       </div>
                       <div className="mb-1 col-md-6">
@@ -367,7 +350,6 @@ const BookingDetails = () => {
                         <fieldset
                           className="form-group"
                           htmlFor="email-0"
-                          id="__BVID__75"
                         >
                           <legend
                             tabIndex={-1}
@@ -401,33 +383,14 @@ const BookingDetails = () => {
                           >
                             Phone Number
                           </legend>
-                          <div>
+                         <div>
                             <span>
-                              <div
-                                className="vue-tel-input global-phone-input"
-                                value=""
-                              >
-                                <div
-                                  aria-label="Country Code Selector"
-                                  aria-haspopup="listbox"
-                                  role="button"
-                                  tabIndex={0}
-                                  className="vti__dropdown"
-                                >
-                                  <span className="vti__selection">
-                                    <span className="vti__flag bd" />
-                                    <span className="vti__country-code">
-                                      {" "}
-                                      +880{" "}
-                                    </span>
-                                    <i className="fas fa-chevron-down" />
-                                  </span>
-                                </div>
+                              <div role="group" className="input-group">
                                 <input
-                                  autoComplete="tel-national"
-                                  id="phone-number-0"
-                                  placeholder="1XXX XXXXXX"
-                                  className="vti__input phone-input"
+                                    id="last-name-0"
+                                    type="text"
+                                    autoComplete="family-name"
+                                    className="form-control"
                                 />
                               </div>
                               <small className="text-danger" />
