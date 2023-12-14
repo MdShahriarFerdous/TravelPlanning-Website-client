@@ -1,11 +1,32 @@
 import Slider from "react-slick";
 import HotelCard from "../common/HotelCard";
-import "../Hotel.css"
+import { hotelsList } from "../../../backend-services/hotelsApi";
+import { useState, useEffect } from "react";
+import "../Hotel.css";
+import MiniLoader from "../../screenloader/MiniLoader";
 
-export default function SimilarHotels() {
+// eslint-disable-next-line react/prop-types
+export default function SimilarHotels({ locationId }) {
+  const [hotels, setHotels] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    (async () => {
+      setIsLoading(true);
+      const res = await hotelsList({
+        query: { pageNumber: 1, location: locationId },
+      });
+      if (res) {
+        const { hotels } = res || {};
+        setIsLoading(false);
+        setHotels(hotels);
+      }
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [locationId]);
   const settings = {
     dots: false,
-    infinite: true,
+    arrows: false,
+    infinite: hotels.length > 3 ? true : false,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -45,32 +66,50 @@ export default function SimilarHotels() {
           slidesToScroll: 2,
         },
       },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
     ],
   };
   return (
-    <div className="similar-section">
+    <div className="hotels-section">
       <div className="auto-container">
         <div className="title-box">
           <h2>
-            <span>Similar Hotels Like This</span>
+            <span>Similar Hotels in The City</span>
           </h2>
         </div>
-        <div className="carousel-box">
-          <div className="packages-carousel">
-            <Slider {...settings}>
-              {Array.apply(null, { length: 9 }).map((e, i) => (
-                <div key={i} className="package-block alt">
-                  <HotelCard index={i} hotelId={1} />
-                </div>
-              ))}
-            </Slider>
+        <div className="packages">
+          <div className="row clearfix">
+            {isLoading ? (
+              <MiniLoader />
+            ) : (
+              <>
+                {hotels && hotels.length > 0 ? (
+                  <Slider {...settings}>
+                    {hotels.map((hotel) => (
+                      <div key={hotel._id} className="package-block alt">
+                        <HotelCard hotel={hotel} hotelId={hotel._id} />
+                      </div>
+                    ))}
+                  </Slider>
+                ) : (
+                  <div className="package-block alt col-12">
+                    <div>
+                      <div>
+                        <div
+                          style={{
+                            padding: "25px 0px 40px",
+                            textAlign: "center",
+                            fontSize: "2rem",
+                            color: "#ff5522",
+                          }}
+                        >
+                          {"No Hotel Found"}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
           </div>
         </div>
       </div>

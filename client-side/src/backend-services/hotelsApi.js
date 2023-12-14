@@ -15,3 +15,12 @@ export const hotelsList = async ({ query }) => {
     console.error(error);
   }
 };
+
+// =========================HotelDetails API=======================
+export const hotelDetailedinfo = async (hotelId) => {
+  try {
+    return await axios.get(`/hotels/${hotelId}`);
+  } catch (error) {
+    console.error(error);
+  }
+};

@@ -1,10 +1,11 @@
-export default function HotelDetails() {
+// eslint-disable-next-line react/prop-types
+export default function HotelDetails({ name, location }) {
   return (
     <div className="content-side col-xl-8 col-lg-12 col-md-12 col-sm-12">
       <div className="content-inner">
         <div className="sp-header">
           <div className="loc-rat clearfix">
-            <div className="location">London</div>
+            <div className="location">{location}</div>
             <div className="rating">
               <a href="#" className="theme-btn">
                 <i className="fa-solid fa-star"></i>
@@ -17,7 +18,7 @@ export default function HotelDetails() {
               </a>
             </div>
           </div>
-          <h1>The Ritz London</h1>
+          <h1>{name}</h1>
           <div className="info clearfix">
             <div className="duration">
               <i className="fa-solid fa-map-marker-alt"></i> 150 Piccadilly,

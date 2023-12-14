@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import Speciality from "./Speciality";
 import Rating from "./Rating";
-import Bookmark from "./Bookmark";
 
 // eslint-disable-next-line react/prop-types
 export default function HotelCard({ hotelId, hotel }) {
@@ -17,7 +16,6 @@ export default function HotelCard({ hotelId, hotel }) {
           </NavLink>
         </div>
         <Speciality isFeatured={isFeatured} isTopRated={isTopRated} />
-        <Bookmark />
       </div>
       <div className="lower-box">
         <div className="location">{location_name || ""}</div>

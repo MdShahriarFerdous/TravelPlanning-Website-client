@@ -1,4 +1,5 @@
-export default function HotelBookingCart() {
+// eslint-disable-next-line react/prop-types
+export default function HotelBookingCart({ rentPerPerson }) {
   return (
     <div className="sidebar-side col-xl-4 col-lg-8 col-md-12 col-sm-12">
       <div className="sidebar-inner">
@@ -9,7 +10,7 @@ export default function HotelBookingCart() {
                 Start <br />
                 From
               </span>
-              <span className="amount">$250</span>
+              <span className="amount">${rentPerPerson}</span>
               <span className="qty">/ Per Person</span>
             </div>
             <div className="lower-box">
