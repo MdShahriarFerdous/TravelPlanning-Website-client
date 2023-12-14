@@ -4,7 +4,8 @@ import HImage3 from "../../../assets/images/resources/destinations/hotels/hb-ima
 import HImage4 from "../../../assets/images/resources/destinations/hotels/hb-image-4.jpg";
 import HImage5 from "../../../assets/images/resources/destinations/hotels/hb-image-5.jpg";
 
-export default function HotelImages() {
+// eslint-disable-next-line react/prop-types
+export default function HotelImages({mainThumbnail}) {
   return (
     <div className="hotel-single-banner" style={{ marginTop: "130px" }}>
       <div className="outer-container">
@@ -13,14 +14,14 @@ export default function HotelImages() {
             <div className="image-block">
               <div className="inner">
                 <div className="image">
-                  <img src={HImage1} alt="" />
+                  <img src={mainThumbnail || HImage1} alt="" />
                 </div>
                 <div
                   className="image-layer"
-                  style={{ backgroundImage: `url(${HImage1})` }}
+                  style={{ backgroundImage: `url(${mainThumbnail || HImage1})` }}
                 ></div>
                 <a
-                  href={HImage1}
+                  href={mainThumbnail || HImage1}
                   className="over-link lightbox-image"
                   data-fancybox="HotelGallery"
                 ></a>
@@ -93,11 +94,11 @@ export default function HotelImages() {
                   data-fancybox="HotelGallery"
                 ></a>
               </div>
-              <div className="img-link">
+              {/* <div className="img-link">
                 <a href="#" className="theme-btn">
                   <span>+ 5 Photos</span>
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
