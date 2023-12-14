@@ -22,6 +22,14 @@ import PrivateRoute from "./routes/PrivateRoute.jsx";
 import TourBooking from "./pages/tourbooking/TourBooking.jsx";
 import { useLoader } from "./context/loaderContext.jsx";
 
+import Profile from "./components/userDashboard/profile/Profile.jsx";
+import TourBookings from "./components/userDashboard/booking/tour/TourBookings.jsx";
+import HotelBookings from "./components/userDashboard/booking/hotel/HotelBookings.jsx";
+import FlightBookings from './components/userDashboard/booking/flight/FlightBookings.jsx';
+import HotelBookmarks from "./components/userDashboard/bookmarks/hotel/HotelBookmarks.jsx";
+import TourBookmarks from "./components/userDashboard/bookmarks/tour/TourBookmarks.jsx";
+import Blogs from "./components/userDashboard/blogs/Blogs.jsx";
+
 const RenderAppContent = () => {
 	const [loader, setLoader] = useLoader();
 	if (loader) {
@@ -50,6 +58,13 @@ const RenderAppContent = () => {
 						path="tour-booking/:bookingId"
 						element={<TourBooking />}
 					/>
+					<Route path="profile" element={<Profile />} />
+					<Route path="hotel-bookings" element={<HotelBookings />} />
+					<Route path="tour-bookings" element={<TourBookings />} />
+					<Route path="flight-bookings" element={<FlightBookings />} />
+        			<Route path="bookmarked-hotels" element={<HotelBookmarks />} />
+        			<Route path="bookmarked-tours" element={<TourBookmarks />} />
+        			<Route path="blogs" element={<Blogs />} />
 				</Route>
 
 				<Route path="*" element={<PageNotFound />} replace />
