@@ -29,7 +29,7 @@ import FlightBookings from "./components/userDashboard/booking/flight/FlightBook
 import HotelBookmarks from "./components/userDashboard/bookmarks/hotel/HotelBookmarks.jsx";
 import TourBookmarks from "./components/userDashboard/bookmarks/tour/TourBookmarks.jsx";
 import Blogs from "./components/userDashboard/blogs/Blogs.jsx";
-import TourByType from "./components/tourtypes/TourByType.jsx";
+import TourByType from "./components/tourtypes/tourbytype/TourByType.jsx";
 
 const RenderAppContent = () => {
 	const [loader] = useLoader();

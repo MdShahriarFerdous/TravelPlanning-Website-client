@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import ScreenLoader from "../screenloader/ScreenLoader";
-import Navbar from "../navbar/Navbar";
-import Footer from "../footer/Footer";
+import ScreenLoader from "../../screenloader/ScreenLoader";
+import Navbar from "../../navbar/Navbar";
+import Footer from "../../footer/Footer";
 
 import { useFormik } from "formik";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap";
-import "./tourbyid.css";
+import "./tourbytype.css";
 
 const TourByType = () => {
 	const { tourType } = useParams();
