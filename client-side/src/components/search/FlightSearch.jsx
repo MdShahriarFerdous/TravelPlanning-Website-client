@@ -12,7 +12,7 @@ export default function FlightSearch() {
         source_destination_id: "",
         destination_id: "",
         journey_date: new Date().toISOString().split("T")[0],
-        total_travellers: "",
+        total_travellers: 1,
         flight_class: "economy"
     });
 
@@ -21,7 +21,7 @@ export default function FlightSearch() {
             source_destination_id: "",
             destination_id: "",
             journey_date: new Date().toISOString().split("T")[0],
-            total_travellers: "",
+            total_travellers: 1,
             flight_class: "economy",
         });
     };

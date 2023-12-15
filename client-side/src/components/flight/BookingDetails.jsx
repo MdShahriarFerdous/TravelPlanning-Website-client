@@ -1,7 +1,10 @@
 import "./BookingDetails.css";
 import {useState} from "react";
+import {formatDate} from "../../utils/formatedDate.js";
+import {calculateDuration} from "../../utils/calculateDuration.js";
+import {comaFormatNumber} from "../../utils/comaFormattedNumber.js";
 
-const BookingDetails = () => {
+const BookingDetails = ({flightData, traveler}) => {
 
   const [collapsedSections, setCollapsedSections] = useState({
     flight: false,
@@ -21,7 +24,29 @@ const BookingDetails = () => {
     setActiveTab(tab);
   };
 
-  return (
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    nationality: '',
+    nidNumber: '',
+    email: '',
+    phoneNumber: '',
+    saveToTravelerList: false,
+  });
+
+  const handleInputChange = (field, value) => {
+    setFormData(prevData => ({
+      ...prevData,
+      [field]: value,
+    }));
+  };
+
+  const handleContinueClick = () => {
+    console.log(formData);
+    // Perform additional actions with the form data as needed
+  };
+
+  return (flightData &&
     <>
       <div className="col-lg-8">
         <div className="booking-header">
@@ -36,7 +61,7 @@ const BookingDetails = () => {
           <div>
             <div className={`booking-flight-card ${collapsedSections.flight ? 'collapsed' : ''}`}>
               <div className="booking-card-header" onClick={() => toggleCollapse('flight')}>
-                <h6>DAC-CXB</h6>
+                <h6 className="text-uppercase">{flightData?.sourceLocation?.location_name}-{flightData?.destinationLocation?.location_name}</h6>
                 <div id="toggle-0" className={`toggle-icon flat-icon ${collapsedSections.flight ? 'collapsed' : ''}`} />
               </div>
               <div id="flight-0" className={`collapse ${collapsedSections.flight ? '' : 'show'}`}>
@@ -46,25 +71,25 @@ const BookingDetails = () => {
                       <div className="airplane-info-wrapper">
                         <div className="airplane-info">
                           <div className="image-placeholder">
-                            <img src="https://storage.googleapis.com/gz-flight-prod-booking-data/carrier/logo/dfcbe726-30f3-478a-a062-731fdd91d0ee.png" />
+                            <img src={flightData?.airlineInfo?.logo} />
                           </div>
                           <div className="airplane-info-text">
-                            <span className="airplane-name"> NOVOAIR </span>
-                            <span className="airplane-model">
-                              VQ 935 | ATR725{" "}
+                            <span className="airplane-name text-uppercase"> {flightData?.airlineInfo?.airline_name} </span>
+                            <span className="airplane-model text-uppercase">
+                              {flightData?.planeInfo?.plane_model}
                             </span>
                           </div>
                         </div>
                         <div className="airplane-amenities">
-                          <span className="flight-type">(Economy)</span>
+                          <span className="flight-type text-capitalize">({flightData?.flight_class})</span>
                           <div className="amenity-icons" />
                         </div>
                       </div>
                       <div className="flight-time detail-time">
                         <div className="start-time">
-                          <span className="time-text"> 16:30 </span>
-                          <span className="day-text"> Tue, 19 Dec, 2023 </span>
-                          <span className="destination-text">DAC </span>
+                          <span className="time-text">{flightData?.departure_time}</span>
+                          <span className="day-text"> {formatDate(flightData?.journey_date)} </span>
+                          <span className="destination-text text-uppercase">{flightData?.sourceLocation?.location_name}</span>
                         </div>
                         <div className="stops-info">
                           <div className="stop-names">
@@ -72,13 +97,13 @@ const BookingDetails = () => {
                           </div>
                           <div className="arrow-pointer" />
                           <div className="stop-names">
-                            <span className="duration-text">1h 5m</span>
+                            <span className="duration-text">{calculateDuration(flightData?.departure_time ? flightData?.departure_time : "", flightData?.arrival_time ? flightData?.arrival_time : "")}</span>
                           </div>
                         </div>
                         <div className="end-time">
-                          <span className="time-text"> 17:35 </span>
-                          <span className="day-text"> Tue, 19 Dec, 2023 </span>
-                          <span className="destination-text">CXB</span>
+                          <span className="time-text"> {flightData?.arrival_time} </span>
+                          <span className="day-text"> {formatDate(flightData?.journey_date)} </span>
+                          <span className="destination-text text-uppercase">{flightData?.destinationLocation?.location_name}</span>
                         </div>
                       </div>
                     </div>
@@ -120,17 +145,14 @@ const BookingDetails = () => {
                             <div className="content-item">
                               <div>
                                 <div className="content-item-text">
-                                  <span className="segment-loc">
-                                    {" "}
-                                    DAC - CXB{" "}
+                                  <span className="segment-loc text-uppercase">
+                                    {flightData?.sourceLocation?.location_name} - {flightData?.destinationLocation?.location_name}
                                   </span>
                                   <span className="baggage-weight">
-                                    {" "}
-                                    7 KGS{" "}
+                                    7 KGS
                                   </span>
                                   <span className="check-in-baggage">
-                                    {" "}
-                                    20 KGS{" "}
+                                    20 KGS
                                   </span>
                                 </div>
                               </div>
@@ -150,15 +172,13 @@ const BookingDetails = () => {
                           <div className="fare-content-wrapper">
                             <div className="content-item">
                               <span className="passenger-type">
-                                {" "}
-                                Adult x 1{" "}
+                                Adult x {traveler}
                               </span>
                               <span className="flight-price text-center">
-                                BDT 5,274{" "}
+                                BDT {comaFormatNumber(flightData?.fare)}
                               </span>
                               <span className="flight-price text-right">
-                                {" "}
-                                BDT 975{" "}
+                                BDT {comaFormatNumber(flightData?.tax)}
                               </span>
                             </div>
                           </div>
@@ -170,7 +190,7 @@ const BookingDetails = () => {
                         >
                           <div className="rule-wrapper">
                             <div className="fare-rule-header">
-                              <h6>DAC-CXB</h6>
+                              <h6 className="text-uppercase">{flightData?.sourceLocation?.location_name}-{flightData?.destinationLocation?.location_name}</h6>
                             </div>
                             <div className="fare-rule-content">
                               <div className="item-header">
@@ -248,7 +268,7 @@ const BookingDetails = () => {
                             tabIndex={-1}
                             className="bv-no-focus-ring col-form-label pt-0"
                           >
-                            Given Name / First Name
+                            First Name
                           </legend>
                           <div>
                             <span>
@@ -261,6 +281,7 @@ const BookingDetails = () => {
                                   type="text"
                                   autoComplete="given-name"
                                   className="form-control"
+                                  onChange={(e) => handleInputChange('firstName', e.target.value)}
                                 />
                               </div>
                               <small className="text-danger" />
@@ -287,6 +308,7 @@ const BookingDetails = () => {
                                   type="text"
                                   autoComplete="family-name"
                                   className="form-control"
+                                  onChange={(e) => handleInputChange('lastName', e.target.value)}
                                 />
                               </div>
                               <small className="text-danger" />
@@ -311,6 +333,7 @@ const BookingDetails = () => {
                                     type="text"
                                     autoComplete="family-name"
                                     className="form-control"
+                                    onChange={(e) => handleInputChange('nationality', e.target.value)}
                                 />
                               </div>
                               <small className="text-danger" />
@@ -327,7 +350,7 @@ const BookingDetails = () => {
                             tabIndex={-1}
                             className="bv-no-focus-ring col-form-label pt-0"
                           >
-                            Frequent Flyer Number (Optional)
+                            NID Number
                           </legend>
                           <div>
                             <div role="group" className="input-group">
@@ -335,6 +358,7 @@ const BookingDetails = () => {
                                 id="frequent-flyer-0"
                                 type="text"
                                 className="form-control"
+                                onChange={(e) => handleInputChange('nidNumber', e.target.value)}
                               />
                             </div>
                           </div>
@@ -375,6 +399,7 @@ const BookingDetails = () => {
                                   type="email"
                                   autoComplete="email"
                                   className="form-control"
+                                  onChange={(e) => handleInputChange('email', e.target.value)}
                                 />
                               </div>
                               <small className="text-danger" />
@@ -401,6 +426,7 @@ const BookingDetails = () => {
                                     type="text"
                                     autoComplete="family-name"
                                     className="form-control"
+                                    onChange={(e) => handleInputChange('phoneNumber', e.target.value)}
                                 />
                               </div>
                               <small className="text-danger" />
@@ -416,11 +442,10 @@ const BookingDetails = () => {
                             type="checkbox"
                             className="custom-control-input"
                             defaultValue="true"
-                            id="__BVID__82"
+                            onChange={(e) => handleInputChange('saveToTravelerList', e.target.value)}
                           />
                           <label
                             className="custom-control-label"
-                            htmlFor="__BVID__82"
                           >
                             Save this to my traveler list.
                           </label>
@@ -438,6 +463,7 @@ const BookingDetails = () => {
           type="button"
           className="btn btn-block btn-secondary"
           style={{ marginTop: "20px" }}
+          onClick={handleContinueClick}
         >
           <span>Continue</span>
         </button>

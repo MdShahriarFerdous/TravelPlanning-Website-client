@@ -5,6 +5,7 @@ import {calculateDuration} from "../../utils/calculateDuration.js";
 import MiniLoader from "../screenloader/MiniLoader.jsx";
 import Timer from "./Timer.jsx";
 import {Link} from "react-router-dom";
+import {comaFormatNumber} from "../../utils/comaFormattedNumber.js";
 
 const FlightCard = ({formData, onResetFormData}) => {
         const [flightData, setFlightData] = useState([]);
@@ -95,7 +96,7 @@ const FlightCard = ({formData, onResetFormData}) => {
                                                     <div>
                                                         <div className="flight-time">
                                                             <div className="start-time">
-                                                                <span className="time-text">{flight?.arrival_time}</span>
+                                                                <span className="time-text">{flight?.departure_time}</span>
                                                                 <span
                                                                     className="destination-text text-uppercase">{flight?.sourceLocation?.location_name}</span>
                                                             </div>
@@ -106,14 +107,14 @@ const FlightCard = ({formData, onResetFormData}) => {
                                                                 <div className="arrow-pointer"></div>
                                                             </div>
                                                             <div className="end-time">
-                                                                <span className="time-text">{flight?.departure_time}</span>
+                                                                <span className="time-text">{flight?.arrival_time}</span>
                                                                 <span
                                                                     className="destination-text text-uppercase">{flight?.destinationLocation?.location_name}</span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div className="flight-duration-text">
-                                                        <span>{calculateDuration(flight?.arrival_time, flight?.departure_time)}</span>
+                                                        <span>{calculateDuration(flight?.departure_time, flight?.arrival_time)}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -122,7 +123,7 @@ const FlightCard = ({formData, onResetFormData}) => {
                                                     <span className="discount-info">{flight?.flight_number}</span>
                                                     <div>
                                                         <span className="actual-price"></span>
-                                                        <span className="discount-price">BDT {flight?.fare}</span>
+                                                        <span className="discount-price">BDT {comaFormatNumber(flight?.fare * formData.total_travellers)}</span>
                                                     </div>
                                                 </div>
                                                 <Link to={`/flight/booking/${flight._id}/${formData.total_travellers}`} >

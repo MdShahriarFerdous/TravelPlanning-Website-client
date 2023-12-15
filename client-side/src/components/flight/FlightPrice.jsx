@@ -1,5 +1,6 @@
 import './FlightPrice.css'
-const FlightPrice = () => {
+import {comaFormatNumber} from "../../utils/comaFormattedNumber.js";
+const FlightPrice = ({flightData, traveler}) => {
     return (<div>
             <div className="fare-summary-wrapper flight sticky">
                 <div className="fare-modal-header text-center">
@@ -12,7 +13,7 @@ const FlightPrice = () => {
                             <div className="wrapper">
                                 <div className="img-placeholder">
                                     <img
-                                        src="https://storage.googleapis.com/gz-flight-prod-booking-data/carrier/logo/5e11f834-0c73-4a6b-95a7-52a5cad2e0ff.jpg"
+                                        src={flightData?.airlineInfo?.logo}
                                     />
                                 </div>
                                 <div className="header-summary">
@@ -20,7 +21,7 @@ const FlightPrice = () => {
                                         <img src="https://www.gozayaan.com/img/flight.27f98987.svg" alt="airplane icon"/>
                                         <span>Flight</span>
                                     </div>
-                                    <span className="name">DAC - CXB</span>
+                                    <span className="name text-uppercase">{flightData?.sourceLocation?.location_name} - {flightData?.destinationLocation?.location_name}</span>
                                     <span className="subtitle">One Way</span>
                                 </div>
                             </div>
@@ -30,21 +31,21 @@ const FlightPrice = () => {
                             <div className="fare-content">
                                 <div className="fare-info-content">
                                     <div className="passenger-items">
-                                        <span className="passenger-type">Adult (2 travelers)</span>
+                                        <span className="passenger-type">Adult ({traveler} travelers)</span>
                                     </div>
                                     <div className="fare-item">
                                         <span className="fare">Base Fare</span>
                                         <span className="fare-price">
-                <span className="sm-text">BDT</span>
-                <span className="lg-text">9,948</span>
-              </span>
+                                            <span className="sm-text">BDT</span>
+                                            <span className="lg-text">{comaFormatNumber(flightData?.fare * traveler)}</span>
+                                        </span>
                                     </div>
                                     <div className="fare-item">
                                         <span className="fare">Tax</span>
                                         <span className="fare-price">
-                <span className="sm-text">BDT</span>
-                <span className="lg-text">1,950</span>
-              </span>
+                                            <span className="sm-text">BDT</span>
+                                            <span className="lg-text">{comaFormatNumber(flightData?.tax)}</span>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -56,7 +57,7 @@ const FlightPrice = () => {
                                         <span className="fare">Sub-Total</span>
                                         <span className="fare-price">
                                             <span className="sm-text">BDT</span>
-                                            <span className="lg-text">11,898</span>
+                                            <span className="lg-text">{comaFormatNumber((flightData?.fare * traveler) + flightData?.tax)}</span>
                                         </span>
                                     </div>
                                 </div>
@@ -67,11 +68,11 @@ const FlightPrice = () => {
                         <div className="price-wrapper">
                             <div>
                                 <span className="text-blue">You Pay</span>
-                                <span className="subtext-grey">(for 2 Travelers)</span>
+                                <span className="subtext-grey">(for {traveler} Travelers)</span>
                             </div>
                             <span className="text-blue">
                               <span className="sm-text">BDT</span>
-                              <span className="lg-text">11,133</span>
+                              <span className="lg-text">{comaFormatNumber((flightData?.fare * traveler) + flightData?.tax)}</span>
                             </span>
                         </div>
                         {/*<div className="price-wrapper savings">*/}
