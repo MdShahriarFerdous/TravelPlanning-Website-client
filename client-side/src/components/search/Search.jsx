@@ -1,32 +1,44 @@
-import { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import DatePicker from "react-datepicker";
-import { Formik, Field, Form } from "formik";
-import qs from "qs";
-import { getAllLocation } from "../../_api/LocationApi";
-import moment from "moment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useLocation, useNavigate } from "react-router-dom";
+import { getAllLocation } from "../../_api/LocationApi";
+import { useSearch } from "../../context/searchContext";
+import { Formik, Field, Form } from "formik";
+import { useState, useEffect } from "react";
+import DatePicker from "react-datepicker";
+import moment from "moment";
+import qs from "qs";
 import {
   faMagnifyingGlass,
   faLocationDot,
   faCalendarDays,
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
-import "react-datepicker/dist/react-datepicker.css";
 import { toast } from "react-toastify";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function Search() {
   // React Hooks
   const navigate = useNavigate();
-  const [locations, setLocations] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState("");
   const [guestsInput, setGuestsInput] = useState(1);
-  const location = useLocation();
+  const [locationId, setLocationId, hotelGuests, setHotelGuests] = useSearch();
   const [routeName, setRouteName] = useState("/");
+  const [locations, setLocations] = useState([]);
+  const location = useLocation();
 
-  useEffect(() => {
-    setRouteName(location.pathname);
-  }, [location]);
+  // Initial Form Values
+  const initialValues = {
+    selectLocation: "",
+    checkInDate: new Date(),
+    guests: 1,
+  };
+
+  // Handler for Select / Input Change
+  const handleChange = (e) => {
+    const { name, value } = e.target || {};
+    if (name === "guests") setGuestsInput(value);
+    if (name === "selectLocation") setSelectedLocation(value);
+  };
 
   // Function to fetch all locations
   const fetchLocation = async () => {
@@ -35,16 +47,44 @@ export default function Search() {
   };
   useEffect(() => {
     fetchLocation();
+    setSelectedLocation(locationId);
+    setGuestsInput(hotelGuests);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Datepicker
-  const initialValues = {
-    destination: "",
-    checkInDate: new Date(),
-    guests: 1,
+  useEffect(() => {
+    setRouteName(location.pathname);
+  }, [location]);
+
+  useEffect(() => {
+    setSelectedLocation(locationId);
+    setGuestsInput(hotelGuests);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location, locationId]);
+
+  const fetchInitialValues = () => {
+    return Promise.resolve({
+      selectLocation: locationId,
+      guests: hotelGuests,
+    });
   };
+  let formikInstance;
+  useEffect(() => {
+    fetchInitialValues().then((fetchedValues) => {
+      formikInstance.setValues(fetchedValues);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Filtering url
+  const filter = /^\/$/;
+  const isLandingPage = filter.test(routeName);
 
   const handleSubmit = async (values) => {
+    localStorage.setItem("search-hotel", JSON.stringify(selectedLocation));
+    setLocationId(selectedLocation);
+    localStorage.setItem("search-hotel-guests", JSON.stringify(guestsInput));
+    setHotelGuests(guestsInput);
     const { checkInDate } = values;
     const checkInDateMoment = moment(checkInDate).format("YYYY-MM-DD");
 
@@ -70,9 +110,7 @@ export default function Search() {
       guests: guestsInput,
     };
 
-    // Filtering url
-    const filter = /^\/$/;
-    const isLandingPage = filter.test(routeName);
+   
 
     // Navigate to 'hotel' Page
     if (isLandingPage) {
@@ -82,22 +120,21 @@ export default function Search() {
     window.location.replace(`hotels?${qs.stringify(query)}`);
   };
 
-  // Handler for Select / Input Change
-  const handleChange = (e) => {
-    const { name, value } = e.target || {};
-    if (name === "guests") setGuestsInput(value);
-    if (name === "selectLocation") setSelectedLocation(value);
-  };
-
   return (
     <div className="form-box site-form">
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      <Formik
+        enableReinitialize={true}
+        innerRef={(formik) => (formikInstance = formik)}
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+      >
         <Form>
           <div className="row clearfix">
             <div className="form-group col-xl-4 col-lg-4 col-md-6 col-sm-12">
               <div className="field-label">Destination</div>
               <div className="field-inner">
                 <Field
+                  id="selectLocation"
                   name="selectLocation"
                   as="select"
                   value={selectedLocation}
@@ -161,7 +198,9 @@ export default function Search() {
             <div className="form-group col-xl-3 col-lg-3 col-md-6 col-sm-12">
               <div className="field-inner">
                 <button type="submit" className="theme-btn f-btn">
-                  <span className="mx-2">Search Hotel</span>
+                  <span className="mx-2">
+                    Search{isLandingPage ? " " : " Available "}Hotel
+                  </span>
                   <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
               </div>
