@@ -5,3 +5,8 @@
 input#\:r0\: {
     font-weight: 600;
 }
+
+.search-one .site-form form button {
+    right: -155px;
+    top: 22px;
+}

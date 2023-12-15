@@ -1,6 +1,7 @@
 import AppLayout from "../../components/applayout/AppLayout";
 import BookingDetails from "../../components/flight/BookingDetails";
 import './FlightBookingPage.css'
+import FlightPrice from "../../components/flight/FlightPrice.jsx";
 
 const FlightBookingPage = () => {
   return (
@@ -13,7 +14,9 @@ const FlightBookingPage = () => {
           <div className="auto-container">
             <div className="row">
                 <BookingDetails />
-              <div className="col-lg-4"></div>
+              <div className="col-lg-4">
+                  <FlightPrice/>
+              </div>
             </div>
           </div>
         </div>

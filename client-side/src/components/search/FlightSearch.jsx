@@ -100,9 +100,9 @@ export default function FlightSearch() {
                                         fullWidth
                                         type="date"
                                         name="journey_date"
-                                        inputProps={{
-                                            min: new Date().toISOString().split("T")[0],
-                                        }}
+                                        // inputProps={{
+                                        //     min: new Date().toISOString().split("T")[0],
+                                        // }}
                                     />
                                     {/* <i className="alt-icon fa fa-calendar-alt"></i> */}
                                 </div>

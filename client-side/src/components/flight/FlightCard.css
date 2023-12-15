@@ -320,4 +320,23 @@ button.selection-btn {
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0.3rem;
     box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
-} 
+}
+
+.flight-card-placeholder {
+    text-align: center;
+    padding: 50px;
+}
+
+.flight-card-placeholder img {
+    opacity: .5;
+    width: 500px;
+}
+
+.flight-card-placeholder h4 {
+    margin-top: 20px;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 900;
+    color: #776f6f;
+}

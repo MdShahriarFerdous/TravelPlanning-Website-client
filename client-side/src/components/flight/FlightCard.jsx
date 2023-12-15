@@ -3,18 +3,33 @@ import {getFilterFlight} from "../../_api/FlightApi.js";
 import "./FlightCard.css";
 import {calculateDuration} from "../../utils/calculateDuration.js";
 import MiniLoader from "../screenloader/MiniLoader.jsx";
+import Timer from "./Timer.jsx";
+import {Link} from "react-router-dom";
 
 const FlightCard = ({formData, onResetFormData}) => {
         const [flightData, setFlightData] = useState([]);
         const [timer, setTimer] = useState({minutes: 1, seconds: 59});
         const [showModal, setShowModal] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+        const [isLoading, setIsLoading] = useState(false);
 
         const fetchFlight = async () => {
             setIsLoading(true);
-            const response = await getFilterFlight(formData);
-            setFlightData(response.data);
-            setIsLoading(false);
+            try {
+                const response = await getFilterFlight(formData);
+                if (response.error) {
+                    // If the API returns an error, set flightData to an empty array
+                    setFlightData([]);
+                } else {
+                    // If the API returns data, set flightData to the response data
+                    setFlightData(response.data);
+                }
+            } catch (error) {
+                // Handle any other errors that might occur during the API call
+                console.error('Error fetching flight data:', error);
+                setFlightData([]);
+            } finally {
+                setIsLoading(false);
+            }
         };
 
         useEffect(() => {
@@ -52,13 +67,14 @@ const FlightCard = ({formData, onResetFormData}) => {
         const handleSearchAgain = () => {
             setShowModal(false);
             setFlightData([]);
-            setTimer({ minutes: 1, seconds: 59 });
+            setTimer({ minutes: 0, seconds: 10 });
             onResetFormData();
         };
 
-        return (isLoading ? <MiniLoader /> : flightData.length > 0 &&
+        return (
             <>
-                <div className="row">
+                {isLoading ? <MiniLoader /> : flightData.length > 0 ?
+                    (<div className="row">
                     <div className="col-lg-9">
                         {flightData.length > 0 && flightData.map((flight, index) => {
                             return (
@@ -109,12 +125,14 @@ const FlightCard = ({formData, onResetFormData}) => {
                                                         <span className="discount-price">BDT {flight?.fare}</span>
                                                     </div>
                                                 </div>
-                                                <button
-                                                    type="button"
-                                                    className="btn selection-btn btn-block btn-secondary btn-sm"
-                                                >
-                                                    Select
-                                                </button>
+                                                <Link to={`/flight/booking/${flight._id}/${formData.total_travellers}`} >
+                                                    <button
+                                                        type="button"
+                                                        className="btn selection-btn btn-block btn-secondary btn-sm"
+                                                    >
+                                                        Select
+                                                    </button>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>
@@ -123,32 +141,7 @@ const FlightCard = ({formData, onResetFormData}) => {
                         })}
                     </div>
                     <div className="col-lg-3">
-                        <div id="flight-timer" className="timer-container">
-                            <div className="timer-container">
-                                <div className="timer-text-wrapper">
-                                    <span></span>
-                                    <div className="timer-number">
-                                        <i className="fa fa-clock"/>
-                                        <div>
-                                            <div className="timer-value">
-                                                <div>
-                                                    {String(timer.minutes).padStart(2, "0")}:
-                                                    <span>min</span>
-                                                </div>
-                                                <div
-                                                    style={{
-                                                        width: "30px" /* Adjust this width as needed */,
-                                                    }}
-                                                >
-                                                    {String(timer.seconds).padStart(2, "0")}
-                                                    <span>sec</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <Timer flightData={flightData}  handleSearchAgain={handleSearchAgain}/>
                         {/*Help Section*/}
                         <div className="support-card-wrapper support-desktop-view">
                             <div className="support-header-text">
@@ -168,30 +161,13 @@ const FlightCard = ({formData, onResetFormData}) => {
                             </div>
                         </div>
                     </div>
-                </div>
-                {showModal && (
-                    <div
-                        className="modal fade show"
-                        tabIndex="-1"
-                        role="dialog"
-                        style={{display: "block"}}
-                    >
-                        <div className="modal-dialog modal-dialog-centered" role="document">
-                            <div className="modal-content">
-                                <div className="modal-body d-flex justify-content-between">
-                                    <p>{`Time's up! Your 30-minute countdown has ended.`}</p>
-                                    <button
-                                        className="btn"
-                                        onClick={handleSearchAgain}
-                                        style={{color: "#fff", backgroundColor: "#ff5522"}}
-                                    >
-                                        Search Again
-                                    </button>
-                                </div>
-                            </div>
+                </div>)
+                    : (
+                        <div className="flight-card-placeholder">
+                            <img src="https://res.cloudinary.com/shakhawat15/image/upload/v1702629792/23823469_r8zh_rcsk_141001-_Converted_tqfhfk.png" alt="Plane Image" />
+                            <h4>No Flight Available</h4>
                         </div>
-                    </div>
-                )}
+                    )}
             </>
         );
     }

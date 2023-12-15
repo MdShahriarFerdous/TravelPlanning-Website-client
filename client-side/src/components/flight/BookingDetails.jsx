@@ -3,17 +3,22 @@ import {useState} from "react";
 
 const BookingDetails = () => {
 
-  const [isCollapsed1, setCollapsed1] = useState(false);
-  const [isCollapsed2, setCollapsed2] = useState(false);
-  const [isCollapsed3, setCollapsed3] = useState(false);
-  const toggleCollapse1 = () => {
-    setCollapsed1(!isCollapsed1);
+  const [collapsedSections, setCollapsedSections] = useState({
+    flight: false,
+    flightDetails: false,
+    passengerDetails: false,
+  });
+  const [activeTab, setActiveTab] = useState('baggage');
+
+  const toggleCollapse = (section) => {
+    setCollapsedSections((prev) => ({
+      ...prev,
+      [section]: !prev[section],
+    }));
   };
-  const toggleCollapse2 = () => {
-    setCollapsed2(!isCollapsed2);
-  };
-  const toggleCollapse3 = () => {
-    setCollapsed3(!isCollapsed3);
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
   };
 
   return (
@@ -29,12 +34,12 @@ const BookingDetails = () => {
         </div>
         <div className="booking-flight-info">
           <div>
-            <div className={`booking-flight-card ${isCollapsed1 ? 'collapsed' : ''}`}>
-              <div className="booking-card-header" onClick={toggleCollapse1}>
+            <div className={`booking-flight-card ${collapsedSections.flight ? 'collapsed' : ''}`}>
+              <div className="booking-card-header" onClick={() => toggleCollapse('flight')}>
                 <h6>DAC-CXB</h6>
-                <div id="toggle-0" className={`toggle-icon flat-icon ${isCollapsed1 ? 'collapsed' : ''}`} />
+                <div id="toggle-0" className={`toggle-icon flat-icon ${collapsedSections.flight ? 'collapsed' : ''}`} />
               </div>
-              <div id="flight-0" className={`collapse ${isCollapsed1 ? '' : 'show'}`}>
+              <div id="flight-0" className={`collapse ${collapsedSections.flight ? '' : 'show'}`}>
                 <div className="detail-accordion">
                   <div className="flight-booking-detail">
                     <div className="flight-airlines-info">
@@ -82,24 +87,25 @@ const BookingDetails = () => {
               </div>
             </div>
           </div>
-          <div className={`booking-flight-card ${isCollapsed2 ? 'collapsed' : ''}`}>
-            <div className="booking-card-header" onClick={toggleCollapse2}>
+          <div className={`booking-flight-card ${collapsedSections.flightDetails ? 'collapsed' : ''}`}>
+            <div className="booking-card-header" onClick={() => toggleCollapse('flightDetails')}>
               <h6>Flight Details</h6>
-              <div className={`toggle-icon flat-icon ${isCollapsed2 ? 'collapsed' : ''}`} />
+              <div className={`toggle-icon flat-icon ${collapsedSections.flightDetails ? 'collapsed' : ''}`}  />
             </div>
-            <div className={`collapse ${isCollapsed2 ? '' : 'show'}`}>
+            <div className={`collapse ${collapsedSections.flightDetails ? '' : 'show'}`}>
               <div className="detail-accordion">
                 <div className="flight-booking-detail">
                   <div className="flight-details">
                     <div className="rules-section">
                       <div className="rule-header">
                         <ul className="rules-tab">
-                          <li className="active">Baggage</li>
-                          <li className="">Fare</li>
-                          <li className="">Policy</li>
+                          <li className={activeTab === 'baggage' ? 'active' : ''} onClick={() => handleTabChange('baggage')}>Baggage</li>
+                          <li className={activeTab === 'fare' ? 'active' : ''} onClick={() => handleTabChange('fare')}>Fare</li>
+                          <li className={activeTab === 'policy' ? 'active' : ''} onClick={() => handleTabChange('policy')}>Policy</li>
                         </ul>
                       </div>
                       <div className="rules-content">
+                        {activeTab === 'baggage' && (
                         <div className="baggage-info">
                           <div className="baggage-header-info">
                             <span className="header-text">Flight</span>
@@ -131,7 +137,9 @@ const BookingDetails = () => {
                             </div>
                           </div>
                         </div>
-                        <div className="fare-info" style={{ display: "none" }}>
+                        )}
+                        {activeTab === 'fare' && (
+                        <div className="fare-info">
                           <div className="fare-info-header">
                             <span className="header-text">Fare Summary</span>
                             <span className="header-text text-center">
@@ -155,9 +163,10 @@ const BookingDetails = () => {
                             </div>
                           </div>
                         </div>
+                        )}
+                        {activeTab === 'policy' && (
                         <div
                           className="fare-rules-info"
-                          style={{ display: "none" }}
                         >
                           <div className="rule-wrapper">
                             <div className="fare-rule-header">
@@ -188,6 +197,7 @@ const BookingDetails = () => {
                             </div>
                           </div>
                         </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -201,17 +211,17 @@ const BookingDetails = () => {
         </div>
         <span>
           <div>
-            <div className={`card ${isCollapsed3 ? 'collapsed' : ''}`}>
+            <div className={`card ${collapsedSections.passengerDetails ? 'collapsed' : ''}`}>
               <span>
-                <div className="form-header" onClick={toggleCollapse3}>
+                <div className="form-header" onClick={() => toggleCollapse('passengerDetails')}>
                   <div className="passenger-header">
                     <h6>Passenger 1</h6>
                     <span className="passenger-type">Adult</span>
                     <span className="primary-contact"> Primary Contact </span>
                   </div>
-                  <div className={`toggle-icon flat-icon ${isCollapsed3 ? 'collapsed' : ''}`} />
+                  <div className={`toggle-icon flat-icon ${collapsedSections.passengerDetails ? 'collapsed' : ''}`} />
                 </div>
-                <div className={`collapse ${isCollapsed3 ? '' : 'show'}`}>
+                <div className={`collapse ${collapsedSections.passengerDetails ? '' : 'show'}`}>
                   <div className="card-body">
                     <div className="row border-bottom pb-1 mb-2">
                       <div className="mb-3 col-12">

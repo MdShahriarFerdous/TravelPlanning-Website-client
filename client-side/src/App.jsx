@@ -72,7 +72,7 @@ const RenderAppContent = () => {
         <Route path="/hotels" element={<HotelsListPage />} />
         <Route path="/hotels/:hotelId" element={<HotelDetailsPage />} />
         <Route path="/destination/:id" element={<DestinationDetailsPage />} />
-        <Route path="/flight/booking" element={<FlightBookingPage />} />
+        <Route path="/flight/booking/:id/:total_traveler" element={<FlightBookingPage />} />
       </Routes>
       <ToastContainer
         autoClose={3000}
