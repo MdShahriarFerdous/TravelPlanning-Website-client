@@ -15,27 +15,27 @@ import MiniLoader from "../../components/screenloader/MiniLoader";
 // import WhatsNearBy from "../../components/hotel/singleView/WhatsNearBy";
 
 const HotelDetailsPage = () => {
-  const { hotelId } = useParams();
+  const { hotelSlug } = useParams();
   const [hotelInfo, setHotelInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     (async () => {
       setIsLoading(true);
-      const res = await hotelDetailedinfo(hotelId);
+      const res = await hotelDetailedinfo(hotelSlug);
       if (res?.data?.data) {
         const { hotelData } = res.data.data || {};
         setIsLoading(false);
         setHotelInfo(hotelData);
       }
     })();
-  }, [hotelId]);
+  }, [hotelSlug]);
   useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   }, []);
-  const { name, thumbnail, rentPerPerson, location } = hotelInfo || {};
+  const { _id, name, thumbnail, rentPerPerson, location } = hotelInfo || {};
   return (
     <AppLayout>
       {isLoading && (
@@ -53,6 +53,7 @@ const HotelDetailsPage = () => {
                   <HotelDetails
                     name={name}
                     location={location?.location_name}
+                    hotelId={_id}
                   />
                   <HotelBookingCart rentPerPerson={rentPerPerson} />
                 </div>

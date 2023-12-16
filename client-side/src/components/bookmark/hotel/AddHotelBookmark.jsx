@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { HiOutlineBookmark, HiBookmark } from "react-icons/hi2";
 import {
   bookmarkList,
@@ -7,34 +7,32 @@ import {
 } from "../../../backend-services/bookmarksApi";
 import { toast } from "react-toastify";
 import { useAuth } from "../../../context/authContext";
-import { useParams } from "react-router-dom";
 import "./BookmarkIcon.css";
 
-const AddHotelBookmark = () => {
+// eslint-disable-next-line react/prop-types
+const AddHotelBookmark = ({hotelId}) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
-  const [auth, setAuth] = useAuth();
-  const { hotelId } = useParams();
-
+  const [auth] = useAuth();
   //   fetch tour bookmark status
   useEffect(() => {
     (async () => {
       const response = await bookmarkList({ query: { type: "hotel" } });
-      if (response) {
+      if (response?.data) {
         const hotels = response.data.hotelId;
-        const foundStatus = hotels.some(
-          (hotel) => hotel.hotelId === hotelId._id
-        );
-        // console.log(foundStatus);
+        const foundStatus = hotels.some((hotel) => {
+          return hotel.hotelId === hotelId;
+        });
         setIsBookmarked(foundStatus);
       }
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //   handle toggle
   const handleBookmarkClick = async () => {
     try {
       if (!auth?.token) {
-        toast.error("Please login first to continue!");
+        toast.error("Please Login to Add Bookmark");
       } else {
         if (isBookmarked) {
           await RemoveHotelTourByIdAPI(hotelId);

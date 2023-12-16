@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { HiOutlineBookmark, HiBookmark } from "react-icons/hi2";
 import {
   bookmarkList,
@@ -11,7 +11,7 @@ import { useParams } from "react-router-dom";
 
 const AddTourBookmark = () => {
   const [isBookmarked, setIsBookmarked] = useState(false);
-  const [auth, setAuth] = useAuth();
+  const [auth] = useAuth();
   const { tourInfoId } = useParams();
 
   useEffect(() => {
@@ -20,11 +20,6 @@ const AddTourBookmark = () => {
       if (response) {
         const tours = response.data.tourId;
         const foundStatus = tours.some((tour) => tour.tourId === tourInfoId);
-        console.log({
-          tourInfoId,
-          tours,
-          foundStatus,
-        });
         setIsBookmarked(foundStatus);
       }
     })();
