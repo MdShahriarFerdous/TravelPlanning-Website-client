@@ -7,13 +7,15 @@ const baseUrl =
 export async function makeAxiosRequest(method, urlPath, data) {
 
 	// Assuming localStorage.getItem('auth') returns the stored string
-	const authString = localStorage.getItem('auth');
+	const authString = localStorage.getItem('auth') ? localStorage.getItem('auth') : "";
 
-	// Parse the string to get an object
-	const authObject = JSON.parse(authString);
+	let token = ""
 
-	// Access the token property
-	const token = authObject.token;
+	if (authString != "") {
+		const authObject = JSON.parse(authString);
+		token = authObject?.token;
+	}
+
 
 	const headers = {
 		"Content-Type": "application/json",
@@ -35,7 +37,8 @@ export async function makeAxiosRequest(method, urlPath, data) {
 			console.error("Request canceled:", err.message);
 		} else if (err.response && err.response.status === 401) {
 			// Handle unauthorized access (e.g., redirect to login)
-			console.error("Unauthorized access:", err.message);
+			console.error("Unauthorized access:", err.response);
+			return err.response
 		} else if (err.response) {
 			console.error("API error:", err.response.data.message);
 			throw err.response.data;

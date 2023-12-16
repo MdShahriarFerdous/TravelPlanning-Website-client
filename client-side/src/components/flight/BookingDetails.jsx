@@ -4,9 +4,12 @@ import {formatDate} from "../../utils/formatedDate.js";
 import {calculateDuration} from "../../utils/calculateDuration.js";
 import {comaFormatNumber} from "../../utils/comaFormattedNumber.js";
 import {BookingFlight} from "../../_api/FlightBookingApi.js";
+import LoginModal from "../../pages/userauth/LoginModal.jsx";
+import {useNavigate} from "react-router-dom";
 
 const BookingDetails = ({flightData, traveler}) => {
-
+    const navigate = useNavigate();
+    const [isLoginModalOpen, setLoginModalOpen] = useState(false);
     const [collapsedSections, setCollapsedSections] = useState({
         flight: false,
         flightDetails: false,
@@ -46,11 +49,35 @@ const BookingDetails = ({flightData, traveler}) => {
     };
 
     const handleContinueClick = async () => {
-        const response = await BookingFlight(formData);
-        console.log(response);
-        console.log(formData);
-        // Perform additional actions with the form data as needed
+        try {
+            const response = await BookingFlight(formData);
+
+            console.log("response", response)
+
+            // Check if the response has a success status
+            if (response.status === 401) {
+                // Show the payment option or perform any other action for success
+                openLoginModal();
+            } else {
+                navigate("/");
+
+            }
+        } catch (error) {
+            // Handle general error scenarios
+            console.error('Error:', error.message);
+        }
     };
+
+    const openLoginModal = () => {
+        // Open the login modal
+        setLoginModalOpen(true);
+    };
+
+    const closeLoginModal = () => {
+        // Close the login modal
+        setLoginModalOpen(false);
+    };
+
 
     return (flightData &&
         <>
@@ -488,6 +515,20 @@ const BookingDetails = ({flightData, traveler}) => {
                     <span>Continue</span>
                 </button>
             </div>
+            {isLoginModalOpen && (
+                <div
+                    className="modal fade show"
+                    tabIndex="-1"
+                    role="dialog"
+                    style={{display: "block"}}
+                >
+                    <div className="modal-dialog modal-dialog-centered" role="document">
+                        <div className="modal-content">
+                            <LoginModal onSuccess={closeLoginModal} />
+                        </div>
+                    </div>
+                </div>
+            )}
         </>
     );
 };
