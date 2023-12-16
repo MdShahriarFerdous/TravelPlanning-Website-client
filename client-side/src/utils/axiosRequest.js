@@ -5,9 +5,19 @@ const baseUrl =
 	"https://travelplanning-website-server.onrender.com/api/v1";
 
 export async function makeAxiosRequest(method, urlPath, data) {
+
+	// Assuming localStorage.getItem('auth') returns the stored string
+	const authString = localStorage.getItem('auth');
+
+	// Parse the string to get an object
+	const authObject = JSON.parse(authString);
+
+	// Access the token property
+	const token = authObject.token;
+
 	const headers = {
 		"Content-Type": "application/json",
-		// Authorization: `Bearer ${serviceToken}`,
+		Authorization: token,
 	};
 
 	const config = {
