@@ -3,7 +3,7 @@ import UserSideNavbar from "../../navbar/UserSideNavbar";
 import { NavLink } from 'react-router-dom';
 import "../../commonCSS/common.css";
 
-const HotelBookings = () => {
+const HotelBookingLists = () => {
   return (
     <div className="parent_content">
       <div className="container-fluids">
@@ -28,4 +28,4 @@ const HotelBookings = () => {
   );
 };
 
-export default HotelBookings;
+export default HotelBookingLists;
