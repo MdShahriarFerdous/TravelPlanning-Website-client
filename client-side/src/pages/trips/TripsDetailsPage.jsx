@@ -2,12 +2,13 @@ import AppLayout from "../../components/applayout/AppLayout";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import Preloader from "./Preloader";
 
 const TripsDetailsPage = () => {
   const location = useLocation();
 
   const [features, setFeatures] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     duration,
@@ -24,7 +25,9 @@ const TripsDetailsPage = () => {
   };
 
   useEffect(() => {
-   
+    setTimeout(() => {
+      setIsLoading(true);
+    }, 2000);
     fetchData();
   }, []);
 
@@ -41,6 +44,10 @@ const TripsDetailsPage = () => {
   }
 
   const mapUrl = `https://maps.google.com/maps?q=${location_name}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+
+  if (!isLoading) {
+    return <Preloader></Preloader>;
+  }
 
   return (
     <AppLayout>
@@ -133,8 +140,8 @@ const TripsDetailsPage = () => {
                     <h3>Need Help to Book?</h3>
                     <p className="travilo-text">Our dedicated team of travel experts is here to assist you every step of the way, ensuring a seamless and unforgettable journey.</p>
                     <div className="call-to">
-                      <a href="tel:+9689999000">
-                        <i className="icon fa-solid fa-phone" /> Call Us <span className="nmbr">+968 9999 9000</span>
+                      <a href="tel:0">
+                        <i className="icon fa-solid fa-phone" /> Call Us <span className="nmbr">+968 99999000</span>
                       </a>
                     </div>
                   </div>
