@@ -88,7 +88,7 @@ const HotelsListPage = () => {
                             key={hotel._id}
                             className="package-block alt col-lg-4 col-md-6 col-sm-12"
                           >
-                            <HotelCard hotelId={hotel._id} hotel={hotel} />
+                            <HotelCard hotel={hotel} />
                           </div>
                         );
                       })}
