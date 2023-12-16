@@ -71,6 +71,7 @@ const TripsSearchPage = () => {
     const selectedLocationObj = locations.find((location) => location._id === selectedId);
     if (selectedLocationObj) {
       setSelectedLocationInfo({
+        location_name: selectedLocationObj.location_name,
         latitude: selectedLocationObj.latitude,
         longitude: selectedLocationObj.longitude,
       });

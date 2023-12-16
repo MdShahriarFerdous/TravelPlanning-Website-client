@@ -1,31 +1,50 @@
+import AppLayout from "../../components/applayout/AppLayout";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 const TripsDetailsPage = () => {
   const location = useLocation();
 
-  const { location_name = "Dhaka", tripLength = "2", itinerary } = location.state;
+  const [features, setFeatures] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
+  const {
+    duration,
+    selectedLocationinfo: { location_name, latitude, longitude },
+  } = location.state;
+
+  const opentripmap_apiKey = "5ae2e3f221c38a28845f05b68852378085b60d4b40e6727779cf2612";
+
+  const fetchData = () => {
+    axios
+      .get(`https://api.opentripmap.com/0.1/en/places/radius?radius=200000&lon=${longitude}&lat=${latitude}&apikey=${opentripmap_apiKey}`)
+      .then((res) => setFeatures(res.data.features))
+      .catch((error) => console.error(error.message));
+  };
+
+  useEffect(() => {
+   
+    fetchData();
+  }, []);
+
+  let filteredObjects = features.filter((item) => item.properties.rate >= 2);
+  let tripAbleLocation = filteredObjects.slice(0, duration * 3);
+
+  const arr = [];
+  for (let i = 0; i < tripAbleLocation.length; i += 3) {
+    const dayObjects = tripAbleLocation.slice(i, i + 3);
+    const day = {
+      [`Day ${Math.floor(i / 3) + 1}`]: dayObjects,
+    };
+    arr.push(day);
+  }
+
+  const mapUrl = `https://maps.google.com/maps?q=${location_name}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
 
   return (
-    <div className="page-wrapper">
-      {/* Banner Section */}
-      <div className="tour-single-banner">
-        <div
-          className="image-layer"
-          style={{
-            backgroundImage: "url(src/assets/images/resources/featured/featured-4.jpg)",
-          }}
-        ></div>
-        <div className="auto-container">
-          <div className="content-box">
-            <div className="content clearfix"></div>
-          </div>
-        </div>
-      </div>
-      {/*End Banner Section */}
-
-      {/*Default Single Container*/}
-      <div className="dsp-container tour-single">
+    <AppLayout>
+      <div className="dsp-container tour-single my-6">
         <div className="auto-container">
           <div className="row clearfix">
             {/*Content Side*/}
@@ -40,51 +59,131 @@ const TripsDetailsPage = () => {
                       </a>
                     </div>
                   </div>
-                  <h1>Welcome to {location_name}</h1>
+                  <h1>Explore the beautiness of {location_name}</h1>
                   <div className="info clearfix">
                     <div className="duration">
-                      <i className="fa-solid fa-clock" /> {tripLength} days
+                      <i className="fa-solid fa-clock" /> {duration} Days
                     </div>
                   </div>
                 </div>
                 <div className="upper-content">
                   <div className="text-content">
                     <h3>Tour Details</h3>
-                    <p>Cupidatat nostrud cupidatat anim mollit reprehenderit pariatur nostrud officia. Dolor enim esse consequat sunt id enim ipsum consectetur occaecat occaecat velit. Id pariatur labore dolor ut do minim. Eiusmod occaecat esse velit mollit excepteur irure fugiat reprehenderit est aliqua sint pariatur anim sint. Ea sit ex ut magna exercitation voluptate incididunt aliqua in in dolor non. Id consequat dolor reprehenderit adipisicing velit pariatur adipisicing aliquip. Reprehenderit dolore qui duis sint Lorem laboris officia in aliquip sunt. Amet aute aliqua cillum excepteur in duis officia aute. Tempor nulla mollit enim amet duis qui elit reprehenderit aliqua est dolor.</p>
+                    <p>
+                      <strong>Below are some lorem ipsum text</strong>
+                    </p>
+                    <p>In laboris amet non tempor et irure anim minim esse est. Commodo in in ut amet proident cillum duis tempor. Officia tempor qui aute laborum non excepteur nulla ex qui. Consequat cillum magna ea et. Voluptate sit laboris dolor consectetur amet ullamco ut ad irure.</p>
+                    <p> Eiusmod sit sint cillum aute duis. Culpa ut mollit qui velit anim. Id deserunt ullamco ad esse enim incididunt dolor cupidatat dolor laboris amet. Consectetur amet nostrud amet ut id ipsum culpa enim aliqua eu eu exercitation. Nostrud duis aute aliqua cupidatat laboris excepteur fugiat. Voluptate ea labore sint do occaecat aliquip eu incididunt dolor magna veniam anim elit. In consectetur culpa laborum proident officia anim.</p>
+                    <p>
+                      Amet excepteur est amet culpa laboris laborum laboris consequat sunt deserunt pariatur aute ut eu. Officia dolore sint veniam laborum. Aute ut consectetur quis nulla non irure. Pariatur dolore enim minim qui mollit. Ea reprehenderit ut consequat duis labore.
+                      <br />
+                      Et incididunt reprehenderit deserunt aliqua. Incididunt ex est commodo ipsum laborum incididunt cupidatat. Eu consectetur consequat fugiat occaecat excepteur cillum velit enim quis Lorem nisi culpa occaecat pariatur. Nulla qui ad deserunt elit minim voluptate culpa. Magna dolor irure reprehenderit do cillum qui. Sit Lorem ad veniam culpa velit et officia anim adipisicing elit dolor.
+                    </p>
+                    <br />
+                    <h5>Highlights</h5>
+                    <ul className="styled-list-one">
+                      <li>Aliqua quis pariatur irure ea id voluptate et adipisicing magna laboris labore.</li>
+                      <li>Aute ullamco commodo incididunt et ea minim occaecat eiusmod commodo ipsum incididunt consectetur.</li>
+                      <li>Laboris occaecat velit id reprehenderit.</li>
+                    </ul>
                   </div>
                 </div>
                 <div className="t-plans">
                   <h3>Tour Plans</h3>
                   <ul className="accordion-box tp-accordion clearfix">
-                    {/*Block*/}
-                    {itinerary &&
-                      itinerary.map((item, index) => (
-                        <li className="accordion block active-block" key={index}>
-                          <div className="acc-btn active">
-                            <span className="d-count">{Object.keys(item)[0]}</span> Explore in {Object.keys(item)[0]}
-                            <span className="arrow fa fa-angle-down" />
-                          </div>
-                          <div className="acc-content current">
-                            <div className="content">
-                              <div className="travilo-text">
-                                <ul>
-                                  {item[Object.keys(item)[0]].map((item, index) => (
-                                    <li key={index}>{item}</li>
-                                  ))}
-                                </ul>
-                              </div>
+                    {arr.map((item, index) => (
+                      <li className="accordion block active-block" key={index}>
+                        <div className="acc-btn active">Explore in {Object.keys(item)[0]}</div>
+                        <div className="acc-content current">
+                          <div className="content">
+                            <div className="travilo-text">
+                              <ul>
+                                {item[Object.keys(item)].map((item, index) => (
+                                  <li key={index} style={{ textTransform: "capitalize", letterSpacing: "1px" }}>
+                                    {item.properties.name}
+                                    <br />
+                                    <small>Tags: {item.properties.kinds}</small>
+                                  </li>
+                                ))}
+                              </ul>
                             </div>
                           </div>
-                        </li>
-                      ))}
+                        </div>
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div className="location">
                   <h3>Map</h3>
                   <div className="map-box">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63230.7149410174!2d98.29248065!3d7.903459599999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30503a96a80e1833%3A0x40223bc2c382480!2sPa%20Tong%2C%20Kathu%20District%2C%20Phuket%2C%20Thailand!5e0!3m2!1sen!2som!4v1690982895480!5m2!1sen!2som" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+                    <iframe width="100%" height="350" id="gmap_canvas" src={mapUrl}></iframe>
                     <div className="map-icon">
                       <img src="assets/images/icons/map-marker-2.png" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/*Sidebar Side*/}
+            <div className="sidebar-side col-xl-4 col-lg-8 col-md-12 col-sm-12">
+              <div className="sidebar-inner">
+                <div className="dsp-widget get-help-widget">
+                  <div className="inner">
+                    <h6>Get Help</h6>
+                    <h3>Need Help to Book?</h3>
+                    <p className="travilo-text">Our dedicated team of travel experts is here to assist you every step of the way, ensuring a seamless and unforgettable journey.</p>
+                    <div className="call-to">
+                      <a href="tel:+9689999000">
+                        <i className="icon fa-solid fa-phone" /> Call Us <span className="nmbr">+968 9999 9000</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                {/*Widget*/}
+                <div className="dsp-widget similar-widget">
+                  <div className="inner">
+                    <h3>You might also like</h3>
+                    {/*Logo*/}
+                    <div className="posts">
+                      <div className="post">
+                        <div className="image">
+                          <a href="#">
+                            <img src="assets/images/resources/thumbnails/uk-thumb.jpg" alt="London Bridge" />
+                          </a>
+                        </div>
+                        <h6>
+                          <a href="#">Iconic Landmark Connecting History and Modernity</a>
+                        </h6>
+                        <div className="price">
+                          Starts from <span className="amount">$399</span>
+                        </div>
+                      </div>
+                      <div className="post">
+                        <div className="image">
+                          <a href="#">
+                            <img src="assets/images/resources/thumbnails/maldives-thumb.jpg" alt="Maldives" />
+                          </a>
+                        </div>
+                        <h6>
+                          <a href="#">Unveiling the Serenity of Maldivian Islands</a>
+                        </h6>
+                        <div className="price">
+                          Starts from <span className="amount">$595</span>
+                        </div>
+                      </div>
+                      <div className="post">
+                        <div className="image">
+                          <a href="#">
+                            <img src="assets/images/resources/thumbnails/finland-thumb.jpg" alt="Helsinki" />
+                          </a>
+                        </div>
+                        <h6>
+                          <a href="#">Vibrant Helsinki, A Fusion of Culture and Cuisine</a>
+                        </h6>
+                        <div className="price">
+                          Starts from <span className="amount">$565</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -93,7 +192,7 @@ const TripsDetailsPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </AppLayout>
   );
 };
 
