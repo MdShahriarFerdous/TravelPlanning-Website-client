@@ -4,6 +4,11 @@ import {getAllLocation} from "../../_api/LocationApi";
 import {TextField} from "@mui/material";
 import "./FlightSearch.css";
 import FlightCard from "../flight/FlightCard.jsx";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCalendarDays, faLocationDot} from "@fortawesome/free-solid-svg-icons";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import "../../pages/trips/customDatePicker.css";
 
 export default function FlightSearch() {
     // eslint-disable-next-line no-unused-vars
@@ -11,7 +16,7 @@ export default function FlightSearch() {
     const [formData, setFormData] = useState({
         source_destination_id: "",
         destination_id: "",
-        journey_date: new Date().toISOString().split("T")[0],
+        journey_date: new Date(),
         total_travellers: 1,
         flight_class: "economy"
     });
@@ -20,11 +25,13 @@ export default function FlightSearch() {
         setFormData({
             source_destination_id: "",
             destination_id: "",
-            journey_date: new Date().toISOString().split("T")[0],
+            journey_date: new Date(),
             total_travellers: 1,
             flight_class: "economy",
         });
     };
+
+    console.log("formData", formData)
 
     const fetchLocation = async () => {
         const response = await getAllLocation();
@@ -54,57 +61,51 @@ export default function FlightSearch() {
                             <div className="form-group col-xl-3 col-lg-6 col-md-6 col-sm-12">
                                 <div className="field-label">From</div>
                                 <div className="field-inner">
-                                    <Field
-                                        as="select"
-                                        className="form-select"
-                                        name="source_destination_id"
-                                        aria-label="From"
-                                    >
-                                        <option value="">Where from go?</option>
+                                    <Field name="source_destination_id" as="select"  className="field-select">
+                                        <option value="" disabled>
+                                            Where from go?
+                                        </option>
                                         {locationData &&
-                                            locationData.map((location, key) => (
-                                                <option key={key} value={location._id}>
-                                                    {location.location_name}
-                                                </option>
-                                            ))}
+                                            locationData.map((location) => (
+                                            <option key={location._id} value={location._id}>
+                                                {location.location_name}
+                                            </option>
+                                        ))}
                                     </Field>
-                                    <i className="alt-icon fa fa-map-marker-alt"></i>
+                                    <FontAwesomeIcon icon={faLocationDot} className="alt-icon" fixedWidth />
                                 </div>
                             </div>
                             <div className="form-group col-xl-3 col-lg-6 col-md-6 col-sm-12">
                                 <div className="field-label">To</div>
                                 <div className="field-inner">
-                                    <Field
-                                        as="select"
-                                        className="form-select"
-                                        name="destination_id"
-                                        aria-label="To"
-                                    >
-                                        <option value="">Where to go?</option>
+                                    <Field name="destination_id" as="select"  className="field-select">
+                                        <option value="" disabled>
+                                            Where to go?
+                                        </option>
                                         {locationData &&
-                                            locationData.map((location, key) => (
-                                                <option key={key} value={location._id}>
+                                            locationData.map((location) => (
+                                                <option key={location._id} value={location._id}>
                                                     {location.location_name}
                                                 </option>
                                             ))}
                                     </Field>
-                                    <i className="alt-icon fa fa-map-marker-alt"></i>
+                                    <FontAwesomeIcon icon={faLocationDot} className="alt-icon" fixedWidth />
                                 </div>
                             </div>
                             <div className="form-group col-xl-3 col-lg-6 col-md-6 col-sm-12">
                                 <div className="field-label">Journey Date</div>
-                                <div className="field-inner">
-                                    <Field
-                                        as={TextField}
-                                        className="datepicker"
-                                        fullWidth
-                                        type="date"
-                                        name="journey_date"
-                                        // inputProps={{
-                                        //     min: new Date().toISOString().split("T")[0],
-                                        // }}
-                                    />
-                                    {/* <i className="alt-icon fa fa-calendar-alt"></i> */}
+                                <div className="field-inner customDatePickerWidth">
+                                    <Field name="journey_date">
+                                        {({ field, form }) => (
+                                            <DatePicker
+                                                id="startDate"
+                                                selected={field.value}
+                                                onChange={(date) => form.setFieldValue("journey_date", date)}
+                                                wrapperClassName="datepicker"
+                                            />
+                                        )}
+                                    </Field>
+                                    <FontAwesomeIcon icon={faCalendarDays} className="alt-icon" fixedWidth />
                                 </div>
                             </div>
                             <div className="form-group col-xl-3 col-lg-6 col-md-6 col-sm-12">

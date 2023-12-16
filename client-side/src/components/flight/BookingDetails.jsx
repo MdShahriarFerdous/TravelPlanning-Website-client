@@ -58,7 +58,7 @@ const BookingDetails = ({flightData, traveler}) => {
             if (response.status === 401) {
                 // Show the payment option or perform any other action for success
                 openLoginModal();
-            } else {
+            } else if (response.success === true) {
                 navigate("/");
 
             }
