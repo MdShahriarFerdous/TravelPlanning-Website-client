@@ -1,3 +1,5 @@
+import AddHotelBookmark from "../../bookmark/hotel/AddHotelBookmark";
+
 // eslint-disable-next-line react/prop-types
 export default function HotelDetails({ name, location }) {
   return (
@@ -12,11 +14,12 @@ export default function HotelDetails({ name, location }) {
                 <strong>4.8</strong> <span className="count">8345 Reviews</span>
               </a>
             </div>
-            <div className="add-fav">
+            {/* <div className="add-fav">
               <a href="#">
                 <i className="far fa-heart"></i> Save
               </a>
-            </div>
+            </div> */}
+            <AddHotelBookmark />
           </div>
           <h1>{name}</h1>
           <div className="info clearfix">

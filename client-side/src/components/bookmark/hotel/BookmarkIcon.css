@@ -1,0 +1,16 @@
+.bookmark-icon {
+	margin-left: 30%;
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	text-align: center;
+	padding-top: 4px;
+	border: 1px solid #3d434e;
+	cursor: pointer;
+}
+.bookmark {
+	font-size: 1.5rem;
+}
+.bookmark.fill-bookmark {
+	color: #ff531f;
+}

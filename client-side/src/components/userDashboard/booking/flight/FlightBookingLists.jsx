@@ -3,7 +3,7 @@ import UserSideNavbar from "../../navbar/UserSideNavbar";
 import { NavLink } from "react-router-dom";
 import "../../commonCSS/common.css";
 
-const TourBookings = () => {
+const FlightBookingLists = () => {
   return (
     <div className="parent_content">
       <div className="container-fluids">
@@ -18,7 +18,7 @@ const TourBookings = () => {
                 Back to Home
               </NavLink>
               <h2 className="card-title heading mt-4 text-start">
-                Tour Booking List
+                Flight Booking List
               </h2>
             </div>
           </div>
@@ -28,4 +28,4 @@ const TourBookings = () => {
   );
 };
 
-export default TourBookings;
+export default FlightBookingLists;
