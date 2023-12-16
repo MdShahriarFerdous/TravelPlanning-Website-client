@@ -8153,6 +8153,11 @@ body.visible-sidebar {
 	padding-right: 5px;
 }
 
+
+.blog-single-banner .content-box .info li:hover a{
+	color: #ff5522;
+}
+
 /*** 
 
 ====================================================================

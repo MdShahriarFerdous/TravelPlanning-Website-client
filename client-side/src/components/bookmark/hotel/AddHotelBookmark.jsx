@@ -13,19 +13,18 @@ import "./BookmarkIcon.css";
 const AddHotelBookmark = ({hotelId}) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [auth] = useAuth();
-  //   fetch tour bookmark status
   useEffect(() => {
     (async () => {
       const response = await bookmarkList({ query: { type: "hotel" } });
       if (response?.data) {
         const hotels = response.data.hotelId;
         const foundStatus = hotels.some((hotel) => {
-          return hotel.hotelId === hotelId;
+          return hotel._id === hotelId;
         });
         setIsBookmarked(foundStatus);
       }
     })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //   handle toggle
@@ -36,11 +35,11 @@ const AddHotelBookmark = ({hotelId}) => {
       } else {
         if (isBookmarked) {
           await RemoveHotelTourByIdAPI(hotelId);
-          toast.info("Bookmark has been removed");
+          toast.info("Bookmark Removed");
           setIsBookmarked(!isBookmarked);
         } else {
           await AddHotelTourByIdAPI(hotelId);
-          toast.success("Bookmark has been added");
+          toast.success("Hotel Bookmarked");
           setIsBookmarked(!isBookmarked);
         }
       }

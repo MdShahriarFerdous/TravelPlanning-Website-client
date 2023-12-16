@@ -32,16 +32,17 @@ export default function RecentPosts() {
               {blogs &&
                 blogs.length > 0 &&
                 blogs.map((blog) => {
-                  const { _id, title, createdAt, thumbnailImage } = blog || {};
+                  const { _id, slug, title, createdAt, thumbnailImage } =
+                    blog || {};
                   return (
                     <div className="post" key={_id}>
                       <div className="post-thumb">
-                        <NavLink to={`/blogs/${_id}`}>
+                        <NavLink to={`/blogs/${slug}`}>
                           <img src={thumbnailImage} alt="Salalah" />
                         </NavLink>
                       </div>
                       <div className="travilo-text">
-                        <NavLink to={`/blogs/${_id}`}>{title}</NavLink>
+                        <NavLink to={`/blogs/${slug}`}>{title}</NavLink>
                       </div>
                       <div className="post-info">
                         {moment(createdAt).format("Do MMMM, YYYY")}

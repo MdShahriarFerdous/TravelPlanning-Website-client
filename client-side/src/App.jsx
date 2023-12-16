@@ -83,7 +83,7 @@ const RenderAppContent = () => {
 				<Route path="/tripsdetails" element={<TripsDetailsPage />} />
 				<Route path="/flights" element={<FlightsListPage />} />
 				<Route path="/blogs" element={<BlogsListPage />} />
-				<Route path="/blogs/:blogId" element={<BlogDetailsPage />} />
+				<Route path="/blogs/:blogSlug" element={<BlogDetailsPage />} />
 				<Route path="/hotels" element={<HotelsListPage />} />
 				<Route path="/hotels/:hotelSlug" element={<HotelDetailsPage />} />
 				<Route
