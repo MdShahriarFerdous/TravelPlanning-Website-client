@@ -12,7 +12,6 @@ import UserDashboard from "./pages/user/UserDashboard";
 import BlogsListPage from "./pages/blogs/BlogsListPage";
 import BlogDetailsPage from "./pages/blogs/BlogDetailsPage";
 import HotelsListPage from "./pages/hotels/HotelsListPage";
-import FlightsListPage from "./pages/flights/FlightsListPage";
 import TripsSearchPage from "./pages/trips/TripsSearchPage";
 import TripsDetailsPage from "./pages/trips/TripsDetailsPage";
 import DestinationDetailsPage from "./pages/destination/DestinationDetailsPage.jsx";
@@ -60,8 +59,14 @@ const RenderAppContent = () => {
 						element={<TourBooking />}
 					/>
 					<Route path="profile" element={<Profile />} />
-					<Route path="hotel-booking-lists" element={<HotelBookingLists />} />
-					<Route path="tour-booking-lists" element={<TourBookingLists />} />
+					<Route
+						path="hotel-booking-lists"
+						element={<HotelBookingLists />}
+					/>
+					<Route
+						path="tour-booking-lists"
+						element={<TourBookingLists />}
+					/>
 					<Route
 						path="flight-booking-lists"
 						element={<FlightBookingLists />}
@@ -81,11 +86,13 @@ const RenderAppContent = () => {
 
 				<Route path="/trips" element={<TripsSearchPage />} />
 				<Route path="/tripsdetails" element={<TripsDetailsPage />} />
-				<Route path="/flights" element={<FlightsListPage />} />
 				<Route path="/blogs" element={<BlogsListPage />} />
 				<Route path="/blogs/:blogSlug" element={<BlogDetailsPage />} />
 				<Route path="/hotels" element={<HotelsListPage />} />
-				<Route path="/hotels/:hotelSlug" element={<HotelDetailsPage />} />
+				<Route
+					path="/hotels/:hotelSlug"
+					element={<HotelDetailsPage />}
+				/>
 				<Route
 					path="/destination/:id"
 					element={<DestinationDetailsPage />}
