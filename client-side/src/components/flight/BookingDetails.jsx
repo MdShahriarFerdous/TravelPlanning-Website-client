@@ -33,7 +33,7 @@ const BookingDetails = ({flightData, traveler}) => {
         first_name: '',
         last_name: '',
         phone: '',
-        nationality: '',
+        nationality: 'Bangladesh',
         email: '',
         nid: '',
         seats: traveler,
@@ -77,6 +77,8 @@ const BookingDetails = ({flightData, traveler}) => {
         // Close the login modal
         setLoginModalOpen(false);
     };
+
+    console.log("isLoginModalOpen", isLoginModalOpen);
 
 
     return (flightData &&
@@ -382,6 +384,7 @@ const BookingDetails = ({flightData, traveler}) => {
                                     autoComplete="family-name"
                                     className="form-control"
                                     onChange={(e) => handleInputChange('nationality', e.target.value)}
+                                    value={formData.nationality}
                                 />
                               </div>
                               <small className="text-danger"/>
@@ -490,6 +493,7 @@ const BookingDetails = ({flightData, traveler}) => {
                               type="checkbox"
                               className="custom-control-input"
                               onChange={(e) => handleInputChange('saveToTravelerList', e.target.value)}
+                              checked={formData.saveToTravelerList}
                           />
                           <label
                               className="custom-control-label"

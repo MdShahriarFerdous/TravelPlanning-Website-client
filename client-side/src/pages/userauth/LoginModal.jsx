@@ -8,7 +8,6 @@ import { toast } from "react-toastify";
 
 const LoginModal = ({ onSuccess }) => {
     const [, setAuth] = useAuth();
-    const [, setLoader] = useLoader();
 
     const formik = useFormik({
         initialValues: {
@@ -19,10 +18,7 @@ const LoginModal = ({ onSuccess }) => {
             email: string().email("Must be a valid email").required(),
             password: string().min(6, "Minimum 6 characters long").required(),
         }),
-        onSubmit: async (values, { resetForm }) => {
-            // Prevent the default form submission behavior
-            // e parameter is not used in the function, so it can be removed
-            setLoader(true);
+        onSubmit: async (values) => {
             try {
                 const data = await LoginAPI(values);
                 if (data.status === "success") {
@@ -32,9 +28,6 @@ const LoginModal = ({ onSuccess }) => {
                         token: data.createToken,
                     });
                     toast.success("Login successful");
-                    resetForm({
-                        values: "",
-                    });
 
                     // Call the onSuccess callback to close the modal
                     onSuccess();
@@ -42,8 +35,6 @@ const LoginModal = ({ onSuccess }) => {
             } catch (error) {
                 console.error(error);
                 toast.error(error.response.data.error.message);
-            } finally {
-                setLoader(false);
             }
         },
 
