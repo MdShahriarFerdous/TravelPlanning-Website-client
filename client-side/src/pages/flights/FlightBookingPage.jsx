@@ -13,11 +13,12 @@ const FlightBookingPage = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     console.log("v", flightData)
+    console.log("Traveler", {travelers: total_traveler})
 
     const fetchFlight = async () => {
         setIsLoading(true);
         try {
-            const response = await getFlightById(id);
+            const response = await getFlightById(id, total_traveler);
             if (response.error) {
                 // If the API returns an error, set flightData to an empty array
                 setFlightData({});

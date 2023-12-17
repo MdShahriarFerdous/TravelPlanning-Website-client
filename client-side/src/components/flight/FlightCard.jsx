@@ -13,6 +13,8 @@ const FlightCard = ({formData, onResetFormData}) => {
         const [showModal, setShowModal] = useState(false);
         const [isLoading, setIsLoading] = useState(false);
 
+    console.log("flightData", flightData)
+
         const fetchFlight = async () => {
             setIsLoading(true);
             try {
@@ -123,7 +125,7 @@ const FlightCard = ({formData, onResetFormData}) => {
                                                     <span className="discount-info">{flight?.flight_number}</span>
                                                     <div>
                                                         <span className="actual-price"></span>
-                                                        <span className="discount-price">BDT {comaFormatNumber(flight?.fare * formData.total_travellers)}</span>
+                                                        <span className="discount-price">BDT {comaFormatNumber(flight?.total_price)}</span>
                                                     </div>
                                                 </div>
                                                 <Link to={`/flight/booking/${flight._id}/${formData.total_travellers}`} >
