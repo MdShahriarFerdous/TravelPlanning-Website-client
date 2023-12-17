@@ -257,3 +257,63 @@ export const DeleteTourBookingAPI = async (id) => {
 		toast.error("Tour booking delete process failed!.");
 	}
 };
+
+//* =========================Get-Tour-by-Types=========================
+export const TourByTypeAPI = async (tourType) => {
+	try {
+		const { data } = await axios.get(`/show-tourTypeLists/${tourType}`);
+
+		if (data.error) {
+			toast.error(data.error);
+		} else {
+			return data;
+		}
+	} catch (error) {
+		console.error(error);
+		toast.error("Tour-type data fetching failed. Try again.");
+	}
+};
+//* ===============Tour-typesSearch or pagination API=================
+export const SearchAPI = async (
+	pageNo = 1,
+	perPage = 5,
+	searchKeyword = "0"
+) => {
+	try {
+		const url =
+			searchKeyword === "0"
+				? `/show-tourCardList/${pageNo}/${perPage}`
+				: `/show-tourCardList/${pageNo}/${perPage}/${searchKeyword}`;
+
+		const { data } = await axios.get(url);
+
+		if (data.error) {
+			toast.error(data.error);
+		} else {
+			return data;
+		}
+	} catch (error) {
+		console.error(error);
+		toast.error("Tour-type data fetching failed. Try again.");
+	}
+};
+
+//* ===============Tour-checkApi=================
+export const CheckBoxAPI = async (pageNo = 1, perPage = 5, checked) => {
+	console.log(checked);
+	try {
+		const { data } = await axios.post(
+			`/show-checkCardList/${pageNo}/${perPage}`,
+			{ checked: checked }
+		);
+
+		if (data.error) {
+			toast.error(data.error);
+		} else {
+			return data;
+		}
+	} catch (error) {
+		console.error(error);
+		toast.error("Tour-type data fetching failed. Try again.");
+	}
+};

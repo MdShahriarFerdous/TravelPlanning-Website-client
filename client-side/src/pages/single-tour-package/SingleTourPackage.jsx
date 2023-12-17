@@ -33,11 +33,13 @@ const SingleTourPackage = () => {
 	const [tourTipsToggle, setTourTipsToggle] = useState(false);
 
 	const { tourInfoId } = useParams();
+	const tourMatchingId =
+		tourInfoId.charAt(0).toUpperCase() + tourInfoId.slice(1).toLowerCase();
 
 	useEffect(() => {
 		const fetchTourInfo = async () => {
 			try {
-				const data = await TourByIdAPI(tourInfoId);
+				const data = await TourByIdAPI(tourMatchingId);
 				if (!data) {
 					console.error("Tour info Data fetching fail", data.message);
 				} else if (data.status === "Success") {
@@ -54,7 +56,7 @@ const SingleTourPackage = () => {
 		};
 
 		fetchTourInfo();
-	}, [tourInfoId]);
+	}, [tourMatchingId]);
 
 	const handleToggleClick = () => {
 		setToggle(!toggle);
@@ -642,7 +644,7 @@ const SingleTourPackage = () => {
 										tourDetails?.getTourInfo?.maxGroupSize
 									}
 									price={tourDetails?.getTourInfo?.price}
-									tourMatchingCode={tourInfoId}
+									tourMatchingCode={tourMatchingId}
 									tourInfoId={tourDetails?.getTourInfo?._id}
 									vehicleDetailes={
 										tourDetails?.tourVehiclePrice

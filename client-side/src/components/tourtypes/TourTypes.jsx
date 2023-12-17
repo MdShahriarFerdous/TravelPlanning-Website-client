@@ -84,7 +84,7 @@ const TourTypes = () => {
 						<img src={Pink1} />
 					</div>
 					<Slider {...settings}>
-						<Link to="/tour-types/Adventure">
+						<Link to="/tour-types/adventure">
 							<div className="tour-type-block bg-blue">
 								<div className="inner-box">
 									<div className="icon-box">
@@ -105,7 +105,7 @@ const TourTypes = () => {
 							</div>
 						</Link>
 
-						<Link to="/tour-types/Hiking">
+						<Link to="/tour-types/hiking">
 							<div className="tour-type-block bg-green">
 								<div className="inner-box">
 									<div className="icon-box">
@@ -126,7 +126,7 @@ const TourTypes = () => {
 							</div>
 						</Link>
 
-						<Link to="/tour-types/Romance">
+						<Link to="/tour-types/romance">
 							<div className="tour-type-block bg-yellow">
 								<div className="inner-box">
 									<div className="icon-box">
@@ -147,7 +147,7 @@ const TourTypes = () => {
 							</div>
 						</Link>
 
-						<Link to="/tour-types/Culture">
+						<Link to="/tour-types/culture">
 							<div className="tour-type-block bg-red">
 								<div className="inner-box">
 									<div className="icon-box">
@@ -168,7 +168,7 @@ const TourTypes = () => {
 							</div>
 						</Link>
 
-						<Link to="/tour-types/Adventure">
+						<Link to="/tour-types/adventure">
 							<div className="tour-type-block bg-blue">
 								<div className="inner-box">
 									<div className="icon-box">
@@ -189,7 +189,7 @@ const TourTypes = () => {
 							</div>
 						</Link>
 
-						<Link to="/tour-types/Hiking">
+						<Link to="/tour-types/hiking">
 							<div className="tour-type-block bg-green">
 								<div className="inner-box">
 									<div className="icon-box">
@@ -210,7 +210,7 @@ const TourTypes = () => {
 							</div>
 						</Link>
 
-						<Link to="/tour-types/Romance">
+						<Link to="/tour-types/romance">
 							<div className="tour-type-block bg-yellow">
 								<div className="inner-box">
 									<div className="icon-box">
@@ -231,7 +231,7 @@ const TourTypes = () => {
 							</div>
 						</Link>
 
-						<Link to="/tour-types/Adventure">
+						<Link to="/tour-types/adventure">
 							<div className="tour-type-block bg-blue">
 								<div className="inner-box">
 									<div className="icon-box">
@@ -252,7 +252,7 @@ const TourTypes = () => {
 							</div>
 						</Link>
 
-						<Link to="/tour-types/Hiking">
+						<Link to="/tour-types/hiking">
 							<div className="tour-type-block bg-green">
 								<div className="inner-box">
 									<div className="icon-box">
@@ -273,7 +273,7 @@ const TourTypes = () => {
 							</div>
 						</Link>
 
-						<Link to="/tour-types/Romance">
+						<Link to="/tour-types/romance">
 							<div className="tour-type-block bg-yellow">
 								<div className="inner-box">
 									<div className="icon-box">
