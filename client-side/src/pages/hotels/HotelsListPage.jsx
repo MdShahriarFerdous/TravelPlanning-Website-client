@@ -12,20 +12,23 @@ const HotelsListPage = () => {
   // eslint-disable-next-line no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
   const queryLocation = searchParams.get("location");
+  const queryDate = searchParams.get("startDate");
+  const queryGuests = searchParams.get("guests");
   const location = useLocation();
   const [hotels, setHotels] = useState([]);
   const [hotelsMeta, setHotelsMeta] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [pageNumber, setPageNumber] = useState(1);
   useEffect(() => {
-    window.scrollTo({
-      top: 600,
-      behavior: "smooth",
-    });
     (async () => {
       setIsLoading(true);
       const res = await hotelsList({
-        query: { pageNumber, location: queryLocation },
+        query: {
+          pageNumber,
+          location: queryLocation,
+          startDate: queryDate,
+          guests: queryGuests,
+        },
       });
       if (res) {
         const { hotels, page, totalPages, count, itemsPerPage } = res || {};
@@ -37,10 +40,6 @@ const HotelsListPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNumber, location.search]);
   const handlePageChange = (page) => {
-    window.scrollTo({
-      top: 600,
-      behavior: "smooth",
-    });
     setPageNumber(page);
   };
   useEffect(() => {
@@ -51,8 +50,8 @@ const HotelsListPage = () => {
   }, []);
   return (
     <AppLayout>
-      <section className="hotels-section">
-        <div className="search-one">
+      <section className="hotels-section" style={{ minHeight: "300px" }}>
+        <div className="search-two">
           <div className="auto-container">
             <div className="outer">
               <div className="search-title">
@@ -89,7 +88,7 @@ const HotelsListPage = () => {
                             key={hotel._id}
                             className="package-block alt col-lg-4 col-md-6 col-sm-12"
                           >
-                            <HotelCard hotelId={hotel._id} hotel={hotel} />
+                            <HotelCard hotel={hotel} />
                           </div>
                         );
                       })}

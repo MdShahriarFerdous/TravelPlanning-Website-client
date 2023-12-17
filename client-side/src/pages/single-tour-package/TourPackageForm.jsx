@@ -48,8 +48,6 @@ const TourPackageForm = ({
 		}),
 		onSubmit: async (values, { resetForm }) => {
 			setLoader(true);
-			// console.log(values);
-			// console.log(auth);
 			if (!auth?.token) {
 				setLoader(false);
 				toast.error("Please login first to continue!");
@@ -79,7 +77,7 @@ const TourPackageForm = ({
 					}
 				} catch (error) {
 					toast.error(error);
-					console.log("Data Booking Failed!", error);
+					console.error("Data Booking Failed!", error);
 				}
 			}
 		},
@@ -97,11 +95,36 @@ const TourPackageForm = ({
 				});
 				setCalculatedPrice(data?.totalCost);
 			} catch (error) {
-				console.error("Error calculating tour price:", error);
+				if (error.response) {
+					// The request was made, but the server responded with a status code
+					// other than 2xx.
+					console.error(
+						"Server responded with an error:",
+						error.response.data
+					);
+					toast.error(error.response.data.message || "Server Error");
+				} else if (error.request) {
+					// The request was made but no response was received.
+					console.error("No response received from the server");
+					toast.error("No response received from the server");
+				} else {
+					// Something happened in setting up the request that triggered an Error.
+					console.error(
+						"An unexpected error occurred:",
+						error.message
+					);
+					toast.error("An unexpected error occurred");
+				}
 			}
 		};
 		calculateTourPrice();
-	}, [formik.values.vehicleOption]);
+	}, [
+		formik.values.adultNo,
+		formik.values.childrenNo,
+		formik.values.packageName,
+		formik.values.vehicleOption,
+		tourMatchingCode,
+	]);
 
 	return (
 		<div>

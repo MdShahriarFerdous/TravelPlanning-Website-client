@@ -88,6 +88,7 @@ const TourBooking = () => {
 				confirmButtonColor: "#d33",
 				cancelButtonColor: "#3085d6",
 				confirmButtonText: "Yes, cancel it!",
+				cancelButtonText: "No, don't cancel",
 			}).then(async (result) => {
 				if (result.isConfirmed) {
 					const deleteBooking = await DeleteTourBookingAPI(
@@ -107,7 +108,7 @@ const TourBooking = () => {
 				}
 			});
 		} catch (error) {
-			console.log(error);
+			console.error(error);
 			toast.error("Sorry! something went wrong");
 		}
 	};

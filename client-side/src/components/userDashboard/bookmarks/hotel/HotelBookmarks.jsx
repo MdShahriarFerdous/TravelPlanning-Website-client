@@ -29,7 +29,6 @@ const HotelBookmarks = () => {
         const { hotelId } = res.data || {};
         setIsLoading(false);
         setHotels(hotelId);
-        console.log(hotelId);
       }
     })();
   }, [location.search]);

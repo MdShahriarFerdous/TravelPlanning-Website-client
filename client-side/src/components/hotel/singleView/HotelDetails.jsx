@@ -1,23 +1,22 @@
-export default function HotelDetails() {
+import AddHotelBookmark from "../../bookmark/hotel/AddHotelBookmark";
+
+// eslint-disable-next-line react/prop-types
+export default function HotelDetails({ name, location, hotelId }) {
   return (
     <div className="content-side col-xl-8 col-lg-12 col-md-12 col-sm-12">
       <div className="content-inner">
         <div className="sp-header">
           <div className="loc-rat clearfix">
-            <div className="location">London</div>
+            <div className="location">{location}</div>
             <div className="rating">
               <a href="#" className="theme-btn">
                 <i className="fa-solid fa-star"></i>
                 <strong>4.8</strong> <span className="count">8345 Reviews</span>
               </a>
             </div>
-            <div className="add-fav">
-              <a href="#">
-                <i className="far fa-heart"></i> Save
-              </a>
-            </div>
+            <AddHotelBookmark hotelId={hotelId} />
           </div>
-          <h1>The Ritz London</h1>
+          <h1>{name}</h1>
           <div className="info clearfix">
             <div className="duration">
               <i className="fa-solid fa-map-marker-alt"></i> 150 Piccadilly,

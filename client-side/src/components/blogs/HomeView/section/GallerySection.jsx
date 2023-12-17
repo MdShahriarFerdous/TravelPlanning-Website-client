@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import Slider from "react-slick";
+import "./Blogs.css";
 
 export default function GallerySection({ galleryBlogs }) {
   const settings = {
@@ -11,6 +12,7 @@ export default function GallerySection({ galleryBlogs }) {
     autoplay: true,
     autoplaySpeed: 3000,
     pauseOnHover: false,
+    arrows: false,
     responsive: [
       {
         breakpoint: 1366,
@@ -41,7 +43,7 @@ export default function GallerySection({ galleryBlogs }) {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
         },
       },
       {
@@ -54,35 +56,17 @@ export default function GallerySection({ galleryBlogs }) {
     ],
   };
   return (
-    <div className="insta-section">
-      <div className="insta-feed">
-        <div className="carousel-container">
-          <div className="carousel-box">
-            <div className="insta-carousel">
-              <Slider {...settings}>
-                {galleryBlogs.map((gallery) => {
-                  const { _id, galleryImage } = gallery || {};
-                  return (
-                    <div key={_id} className="insta-block">
-                      <div className="image">
-                        <span className="img">
-                          <a
-                            href={galleryImage}
-                            className="lightbox-image"
-                            data-fancybox="insta-gallery"
-                          >
-                            <img src={galleryImage} alt="" />
-                          </a>
-                        </span>
-                      </div>
-                    </div>
-                  );
-                })}
-              </Slider>
+    <div className="gallery-list">
+      <Slider {...settings}>
+        {galleryBlogs.map((gallery) => {
+          const { _id, galleryImage } = gallery || {};
+          return (
+            <div key={_id}>
+              <img src={galleryImage} alt="" />
             </div>
-          </div>
-        </div>
-      </div>
+          );
+        })}
+      </Slider>
     </div>
   );
 }

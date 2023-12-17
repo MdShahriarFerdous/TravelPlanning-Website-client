@@ -1,11 +1,10 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import { RiDeleteBin6Line } from "react-icons/ri";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap";
 
 const TourCard = ({ tour }) => {
   const { title, typeOfTour, about } = tour || {};
-  console.log(tour);
   return (
     <div className="card border-primary mb-3 mx-1">
       <div className="card-body d-flex justify-content-between">

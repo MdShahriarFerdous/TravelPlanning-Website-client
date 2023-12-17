@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import { HiOutlineBookmark, HiBookmark } from "react-icons/hi2";
 import { RxCross2 } from "react-icons/rx";
 import { TiTick } from "react-icons/ti";
 // <HiBookmark />   <HiOutlineBookmark /> <TiTick /> <RxCross2 />
@@ -17,13 +16,14 @@ import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import ScreenLoader from "./../../components/screenloader/ScreenLoader";
 import TourPackageForm from "./TourPackageForm";
+import AddTourBookmark from "../../components/bookmark/tour/AddTourBookmark";
 
 const SingleTourPackage = () => {
 	const [tourDetails, setTourDetails] = useState({});
 	const [loading, setLoading] = useState(true);
 
 	const [toggle, setToggle] = useState(false);
-	const [bookmarkToggle, setBookmarkToggle] = useState(false);
+	// const [bookmarkToggle, setBookmarkToggle] = useState(false);
 	const [durationToggle, setDurationToggle] = useState(false);
 	const [distanceToggle, setDistanceToggle] = useState(false);
 	const [descriptionToggle, setDescriptionToggle] = useState(false);
@@ -59,9 +59,9 @@ const SingleTourPackage = () => {
 	const handleToggleClick = () => {
 		setToggle(!toggle);
 	};
-	const handleBookmarkClick = () => {
-		setBookmarkToggle(!bookmarkToggle);
-	};
+	// const handleBookmarkClick = () => {
+	// 	setBookmarkToggle(!bookmarkToggle);
+	// };
 	const handleDurationToggle = () => {
 		setDurationToggle(!durationToggle);
 	};
@@ -83,7 +83,6 @@ const SingleTourPackage = () => {
 	const handleTourTipsToggle = () => {
 		setTourTipsToggle(!tourTipsToggle);
 	};
-	// console.log(tourDetails);
 
 	return (
 		<>
@@ -104,16 +103,7 @@ const SingleTourPackage = () => {
 								>
 									{tourDetails?.getTourInfo?.title}
 								</h3>
-								<span
-									className="span-bookmark"
-									onClick={handleBookmarkClick}
-								>
-									{bookmarkToggle ? (
-										<HiBookmark className="bookmark fill-bookmark" />
-									) : (
-										<HiOutlineBookmark className="bookmark" />
-									)}
-								</span>
+								<AddTourBookmark />
 							</div>
 
 							{tourDetails &&

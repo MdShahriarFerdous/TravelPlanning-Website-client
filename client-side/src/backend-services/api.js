@@ -21,9 +21,9 @@ export const RegisterAPI = async (values) => {
 };
 
 //* =========================Verification API=========================
-export const VerificationAPI = async (token) => {
+export const VerificationAPI = async (browserToken) => {
 	try {
-		const { data } = await axios.post("/user-verify", { token });
+		const { data } = await axios.post("/user-verify", { browserToken });
 		if (data.error) {
 			toast.error(data.error);
 		} else {
