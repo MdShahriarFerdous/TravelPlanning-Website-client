@@ -30,6 +30,7 @@ import TourBookmarks from "./components/userDashboard/bookmarks/tour/TourBookmar
 import Blogs from "./components/userDashboard/blogs/Blogs.jsx";
 import TourByType from "./components/tourtypes/tourbytype/TourByType.jsx";
 import FlightBookingPage from "./pages/flights/FlightBookingPage.jsx";
+import FlightsListPage from "./pages/flights/FlightsListPage.jsx";
 
 const RenderAppContent = () => {
 	const [loader] = useLoader();
@@ -90,6 +91,7 @@ const RenderAppContent = () => {
 				<Route path="/blogs" element={<BlogsListPage />} />
 				<Route path="/blogs/:blogSlug" element={<BlogDetailsPage />} />
 				<Route path="/hotels" element={<HotelsListPage />} />
+				<Route path="/flights" element={<FlightsListPage />} />
 				<Route
 					path="/hotels/:hotelSlug"
 					element={<HotelDetailsPage />}
