@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { blogsGalleryList } from "../../../backend-services/blogsApi";
 import MiniLoader from "../../screenloader/MiniLoader";
+import { NavLink } from "react-router-dom";
 
 export default function Gallery() {
   const [galleryBlogs, setGalleryBlogs] = useState([]);
@@ -35,13 +36,9 @@ export default function Gallery() {
                     return (
                       <li key={_id}>
                         <div className="image">
-                          <a
-                            href={galleryImage}
-                            className="lightbox-image"
-                            data-fancybox="SbGallery"
-                          >
+                          <NavLink to={`/blogs`} className="lightbox-image">
                             <img src={galleryImage} />
-                          </a>
+                          </NavLink>
                         </div>
                       </li>
                     );

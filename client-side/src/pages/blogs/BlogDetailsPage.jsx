@@ -9,7 +9,7 @@ import Banner from "../../components/blogs/SingleView/contentside/Banner";
 import MiniLoader from "../../components/screenloader/MiniLoader";
 
 const BlogDetailsPage = () => {
-  const { blogId } = useParams();
+  const { blogSlug } = useParams();
   const [previousBlogPost, setPreviousBlogPost] = useState(null);
   const [currentBlogPost, setCurrentBlogPost] = useState(null);
   const [nextBlogPost, setNextBlogPost] = useState(null);
@@ -17,7 +17,7 @@ const BlogDetailsPage = () => {
   useEffect(() => {
     (async () => {
       setIsLoading(true);
-      const res = await blogsDetailedList(blogId);
+      const res = await blogsDetailedList(blogSlug);
       if (res?.data?.data) {
         const { previousPost, currentPost, nextPost } = res.data.data || {};
         setIsLoading(false);
@@ -26,7 +26,7 @@ const BlogDetailsPage = () => {
         setNextBlogPost(nextPost);
       }
     })();
-  }, [blogId]);
+  }, [blogSlug]);
   useEffect(() => {
     window.scrollTo({
       top: 0,

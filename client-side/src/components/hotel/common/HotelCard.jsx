@@ -3,15 +3,15 @@ import Speciality from "./Speciality";
 import Rating from "./Rating";
 
 // eslint-disable-next-line react/prop-types
-export default function HotelCard({ hotelId, hotel }) {
-  const { thumbnail, location, name, rentPerPerson, isFeatured, isTopRated } =
+export default function HotelCard({ hotel }) {
+  const { slug, thumbnail, location, name, rentPerPerson, isFeatured, isTopRated } =
     hotel || {};
   const { location_name } = location || {};
   return (
     <div className="inner-box">
       <div className="image-box">
         <div className="image">
-          <NavLink to={`/hotels/${hotelId}`}>
+          <NavLink to={`/hotels/${slug}`}>
             <img src={thumbnail} alt="Beach Hotel" />
           </NavLink>
         </div>
@@ -20,7 +20,7 @@ export default function HotelCard({ hotelId, hotel }) {
       <div className="lower-box">
         <div className="location">{location_name || ""}</div>
         <h5 style={{ minHeight: "57px" }}>
-          <NavLink to={`/hotels/${hotelId}`}>{name || ""}</NavLink>
+          <NavLink to={`/hotels/${slug}`}>{name || ""}</NavLink>
         </h5>
         <div className="bottom-box clearfix">
           <Rating />

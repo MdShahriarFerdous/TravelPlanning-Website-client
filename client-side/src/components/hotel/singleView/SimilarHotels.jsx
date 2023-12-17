@@ -86,7 +86,7 @@ export default function SimilarHotels({ locationId }) {
                   <Slider {...settings}>
                     {hotels.map((hotel) => (
                       <div key={hotel._id} className="package-block alt">
-                        <HotelCard hotel={hotel} hotelId={hotel._id} />
+                        <HotelCard hotel={hotel} />
                       </div>
                     ))}
                   </Slider>

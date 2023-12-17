@@ -23,9 +23,9 @@ import TourBooking from "./pages/tourbooking/TourBooking.jsx";
 import { useLoader } from "./context/loaderContext.jsx";
 
 import Profile from "./components/userDashboard/profile/Profile.jsx";
-import TourBookings from "./components/userDashboard/booking/tour/TourBookings.jsx";
-import HotelBookings from "./components/userDashboard/booking/hotel/HotelBookings.jsx";
-import FlightBookings from "./components/userDashboard/booking/flight/FlightBookings.jsx";
+import TourBookingLists from "./components/userDashboard/booking/tour/TourBookingLists.jsx";
+import HotelBookingLists from "./components/userDashboard/booking/hotel/HotelBookingLists.jsx";
+import FlightBookingLists from "./components/userDashboard/booking/flight/FlightBookingLists.jsx";
 import HotelBookmarks from "./components/userDashboard/bookmarks/hotel/HotelBookmarks.jsx";
 import TourBookmarks from "./components/userDashboard/bookmarks/tour/TourBookmarks.jsx";
 import Blogs from "./components/userDashboard/blogs/Blogs.jsx";
@@ -60,11 +60,11 @@ const RenderAppContent = () => {
 						element={<TourBooking />}
 					/>
 					<Route path="profile" element={<Profile />} />
-					<Route path="hotel-bookings" element={<HotelBookings />} />
-					<Route path="tour-bookings" element={<TourBookings />} />
+					<Route path="hotel-booking-lists" element={<HotelBookingLists />} />
+					<Route path="tour-booking-lists" element={<TourBookingLists />} />
 					<Route
-						path="flight-bookings"
-						element={<FlightBookings />}
+						path="flight-booking-lists"
+						element={<FlightBookingLists />}
 					/>
 					<Route
 						path="bookmarked-hotels"
@@ -83,9 +83,9 @@ const RenderAppContent = () => {
 				<Route path="/tripsdetails" element={<TripsDetailsPage />} />
 				<Route path="/flights" element={<FlightsListPage />} />
 				<Route path="/blogs" element={<BlogsListPage />} />
-				<Route path="/blogs/:blogId" element={<BlogDetailsPage />} />
+				<Route path="/blogs/:blogSlug" element={<BlogDetailsPage />} />
 				<Route path="/hotels" element={<HotelsListPage />} />
-				<Route path="/hotels/:hotelId" element={<HotelDetailsPage />} />
+				<Route path="/hotels/:hotelSlug" element={<HotelDetailsPage />} />
 				<Route
 					path="/destination/:id"
 					element={<DestinationDetailsPage />}
