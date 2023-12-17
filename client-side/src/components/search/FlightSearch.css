@@ -1,0 +1,12 @@
+.search-one .form-box {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+input#\:r0\: {
+    font-weight: 600;
+}
+
+.search-one .site-form form button {
+    right: -155px;
+    top: 22px;
+}
