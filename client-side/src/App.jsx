@@ -30,6 +30,7 @@ import HotelBookmarks from "./components/userDashboard/bookmarks/hotel/HotelBook
 import TourBookmarks from "./components/userDashboard/bookmarks/tour/TourBookmarks.jsx";
 import Blogs from "./components/userDashboard/blogs/Blogs.jsx";
 import TourByType from "./components/tourtypes/tourbytype/TourByType.jsx";
+import FlightBookingPage from "./pages/flights/FlightBookingPage.jsx";
 
 const RenderAppContent = () => {
 	const [loader] = useLoader();
@@ -91,6 +92,7 @@ const RenderAppContent = () => {
 					element={<DestinationDetailsPage />}
 				/>
 				<Route path="*" element={<PageNotFound />} replace />
+				<Route path="/flight/booking/:id/:total_traveler" element={<FlightBookingPage />} />
 			</Routes>
 			<ToastContainer
 				autoClose={3000}
