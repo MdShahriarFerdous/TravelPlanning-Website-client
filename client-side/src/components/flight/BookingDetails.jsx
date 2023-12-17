@@ -38,7 +38,7 @@ const BookingDetails = ({flightData, traveler}) => {
         nid: '',
         seats: traveler,
         saveToTravelerList: true,
-        total_fare: ((flightData?.fare * traveler) + flightData?.tax)
+        total_fare: ((flightData?.fare * Number(traveler)) + flightData?.tax)
     });
 
     const handleInputChange = (field, value) => {
@@ -225,10 +225,10 @@ const BookingDetails = ({flightData, traveler}) => {
                                 Adult x {traveler}
                               </span>
                                                                 <span className="flight-price text-center">
-                                BDT {comaFormatNumber(flightData?.fare)}
+                                BDT {comaFormatNumber(flightData?.fare ? flightData?.fare : 0)}
                               </span>
                                                                 <span className="flight-price text-right">
-                                BDT {comaFormatNumber(flightData?.tax)}
+                                BDT {comaFormatNumber(flightData?.tax ? flightData?.tax : 0)}
                               </span>
                                                             </div>
                                                         </div>

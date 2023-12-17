@@ -44,7 +44,7 @@ const FlightPrice = ({flightData, traveler}) => {
                                         <span className="fare">Tax</span>
                                         <span className="fare-price">
                                             <span className="sm-text">BDT</span>
-                                            <span className="lg-text">{comaFormatNumber(flightData?.tax)}</span>
+                                            <span className="lg-text">{comaFormatNumber(flightData?.tax ? flightData?.tax : 0)}</span>
                                         </span>
                                     </div>
                                 </div>
@@ -57,7 +57,7 @@ const FlightPrice = ({flightData, traveler}) => {
                                         <span className="fare">Sub-Total</span>
                                         <span className="fare-price">
                                             <span className="sm-text">BDT</span>
-                                            <span className="lg-text">{comaFormatNumber(flightData?.total_price)}</span>
+                                            <span className="lg-text">{comaFormatNumber(flightData?.total_price ? flightData?.total_price : 0)}</span>
                                         </span>
                                     </div>
                                 </div>
@@ -72,7 +72,7 @@ const FlightPrice = ({flightData, traveler}) => {
                             </div>
                             <span className="text-blue">
                               <span className="sm-text">BDT</span>
-                              <span className="lg-text">{comaFormatNumber(flightData?.total_price)}</span>
+                              <span className="lg-text">{comaFormatNumber(flightData?.total_price ? flightData?.total_price : 0)}</span>
                             </span>
                         </div>
                         {/*<div className="price-wrapper savings">*/}

@@ -125,7 +125,7 @@ const FlightCard = ({formData, onResetFormData}) => {
                                                     <span className="discount-info">{flight?.flight_number}</span>
                                                     <div>
                                                         <span className="actual-price"></span>
-                                                        <span className="discount-price">BDT {comaFormatNumber(flight?.total_price)}</span>
+                                                        <span className="discount-price">BDT {comaFormatNumber(flight?.total_price ? flight?.total_price : 0)}</span>
                                                     </div>
                                                 </div>
                                                 <Link to={`/flight/booking/${flight._id}/${formData.total_travellers}`} >
