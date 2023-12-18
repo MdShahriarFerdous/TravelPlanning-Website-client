@@ -965,7 +965,7 @@ form label.error {
 .main-header .header-upper {
 	position: absolute;
 	left: 0;
-	top: 12px;
+	top: 8px;
 	width: 100%;
 	background: none;
 	padding: 0 0;
@@ -1025,7 +1025,7 @@ form label.error {
 	position: relative;
 	display: block;
 	float: left;
-	padding: 27px 0px 27px 24px;
+	padding: 25px 0px 27px 24px;
 	transition: all 300ms ease;
 	-moz-transition: all 300ms ease;
 	-webkit-transition: all 300ms ease;
@@ -1049,7 +1049,7 @@ form label.error {
 .main-header .header-upper .links-box {
 	position: relative;
 	float: right;
-	padding-top: 36px;
+	padding-top: 27px;
 }
 
 .header-style-two .header-upper .links-box {
@@ -1233,7 +1233,7 @@ form label.error {
 .main-menu .navigation {
 	position: relative;
 	z-index: 1;
-	padding-left: 250px;
+	padding-left: 235px;
 }
 
 .main-menu .navigation > li {
@@ -8213,8 +8213,7 @@ body.visible-sidebar {
 	padding-right: 5px;
 }
 
-
-.blog-single-banner .content-box .info li:hover a{
+.blog-single-banner .content-box .info li:hover a {
 	color: #ff5522;
 }
 

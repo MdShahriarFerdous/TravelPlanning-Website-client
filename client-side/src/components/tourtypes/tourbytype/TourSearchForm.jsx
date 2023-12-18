@@ -64,7 +64,7 @@ const TourSearchForm = ({ tourType }) => {
 					<button
 						onClick={handleSearchData}
 						type="button"
-						className="btn bg-gradient-primary my-2 btn-search"
+						className="btn bg-gradient-primary my-2 button-search"
 					>
 						Search
 					</button>

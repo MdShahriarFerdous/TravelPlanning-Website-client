@@ -3,11 +3,9 @@
 	margin-top: 103px;
 }
 /* .serach-input {
-	width: 70%;
+	width: 80%;
 } */
-.btn-search {
-	padding: 18px 60px;
-}
+
 .tour-cards {
 	padding-right: 18px;
 }
@@ -43,4 +41,11 @@ label,
 .page-item.active .page-link {
 	background-color: #ff531f;
 	border-color: #ff531f;
+}
+.search-title {
+	letter-spacing: 0.1px;
+}
+button.button-search {
+	padding: 20px 60px;
+	margin-left: 12px;
 }
