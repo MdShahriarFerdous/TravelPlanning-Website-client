@@ -12,12 +12,14 @@ import travelSVG from "../../assets/images/travel.svg";
 
 const VerifyPage = () => {
 	const { verifyId } = useParams();
+
 	const navigate = useNavigate();
 	const [auth, setAuth] = useAuth();
 	const [loader, setLoader] = useLoader();
 
 	let browserToken;
 	let browserId;
+
 	const data = localStorage.getItem("registerInfo");
 	if (data) {
 		const parsedData = JSON.parse(data);

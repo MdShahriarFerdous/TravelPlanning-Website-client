@@ -81,7 +81,7 @@ export const TourByIdAPI = async (tourInfoId) => {
 		}
 	} catch (error) {
 		console.error(error);
-		toast.error("Tour info data failed to serve. Try again.");
+		// toast.error("Tour info data failed to serve. Try again.");
 	}
 };
 
@@ -108,7 +108,7 @@ export const CalculateTourPriceAPI = async ({
 	}
 };
 
-//* =========================Submit-Tour-Booking-Infos-API=========================
+//* =================Submit-Tour-Booking-Infos-API==================
 
 export const TourBookingAPI = async (
 	tourInfoId,
@@ -130,7 +130,7 @@ export const TourBookingAPI = async (
 		}
 	} catch (error) {
 		console.error(error);
-		toast.error("Error when posting booking data");
+		// toast.error("Error when posting booking data");
 	}
 };
 
@@ -184,7 +184,7 @@ export const GetVehicleDataAPI = async (tourId) => {
 		}
 	} catch (error) {
 		console.error(error);
-		toast.error("Failed to fetch vehicle data");
+		// toast.error("Failed to fetch vehicle data");
 	}
 };
 
@@ -203,7 +203,7 @@ export const GetPackageDataAPI = async (tourId, packageName) => {
 		}
 	} catch (error) {
 		console.error(error);
-		toast.error("No package data found");
+		// toast.error("No package data found");
 	}
 };
 
@@ -222,7 +222,7 @@ export const GetPersonPayDataAPI = async (tourId, packageName) => {
 		}
 	} catch (error) {
 		console.error(error);
-		toast.error("No person data found");
+		// toast.error("No person data found");
 	}
 };
 
@@ -273,6 +273,7 @@ export const TourByTypeAPI = async (tourType) => {
 		toast.error("Tour-type data fetching failed. Try again.");
 	}
 };
+
 //* ===============Tour-typesSearch or pagination API=================
 export const SearchAPI = async (
 	pageNo = 1,
