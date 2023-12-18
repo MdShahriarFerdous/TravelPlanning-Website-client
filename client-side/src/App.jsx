@@ -31,6 +31,7 @@ import Blogs from "./components/userDashboard/blogs/Blogs.jsx";
 import TourByType from "./components/tourtypes/tourbytype/TourByType.jsx";
 import FlightBookingPage from "./pages/flights/FlightBookingPage.jsx";
 import FlightsListPage from "./pages/flights/FlightsListPage.jsx";
+import BookingCards from "./components/userDashboard/booking/allbookings/BookingCards.jsx";
 
 const RenderAppContent = () => {
 	const [loader] = useLoader();
@@ -61,6 +62,7 @@ const RenderAppContent = () => {
 						element={<TourBooking />}
 					/>
 					<Route path="profile" element={<Profile />} />
+					<Route path="all-bookings" element={<BookingCards />} />
 					<Route
 						path="hotel-booking-lists"
 						element={<HotelBookingLists />}
@@ -101,7 +103,10 @@ const RenderAppContent = () => {
 					element={<DestinationDetailsPage />}
 				/>
 				<Route path="*" element={<PageNotFound />} replace />
-				<Route path="/flight/booking/:id/:total_traveler" element={<FlightBookingPage />} />
+				<Route
+					path="/flight/booking/:id/:total_traveler"
+					element={<FlightBookingPage />}
+				/>
 			</Routes>
 			<ToastContainer
 				autoClose={3000}

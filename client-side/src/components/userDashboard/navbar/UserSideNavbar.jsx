@@ -1,95 +1,114 @@
-import React from "react";
+import { NavLink } from "react-router-dom";
+import { IoLogOutOutline } from "react-icons/io5";
+import { MdOutlineDashboard } from "react-icons/md";
+import { IoPersonOutline } from "react-icons/io5";
+import { FaRegCalendarCheck } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
+import { TbArticle } from "react-icons/tb";
+
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap";
-import { NavLink } from "react-router-dom";
-import { FaHome } from "react-icons/fa";
-import { BsFillPersonFill } from "react-icons/bs";
-import { IoBookmarks, IoLogOutOutline } from "react-icons/io5";
-import { TbBrandBooking } from "react-icons/tb";
-import { GrBlog } from "react-icons/gr";
 import "./SideNavbar.css";
 
 const UserSideNavbar = () => {
-  return (
-    <div className="container">
-      <nav className="sidebar">
-        <ul>
-          <li>
-            <NavLink
-              to="/user/dashboard"
-              className="list d-block navlink-hover"
-            >
-              <FaHome style={{ marginRight: "8px" }} /> Dashboard
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/user/profile" className="list d-block navlink-hover">
-              <BsFillPersonFill style={{ marginRight: "8px" }} /> Profile
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/user/hotel-booking-lists"
-              className="list d-block navlink-hover"
-            >
-              <TbBrandBooking style={{ marginRight: "8px" }} />
-              Hotel Booking
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/user/tour-booking-lists"
-              className="list d-block navlink-hover"
-            >
-              <TbBrandBooking style={{ marginRight: "8px" }} />
-              Tour Booking
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/user/flight-booking-lists"
-              className="list d-block navlink-hover"
-            >
-              <TbBrandBooking style={{ marginRight: "8px" }} />
-              Flight Booking
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/user/bookmarked-hotels"
-              className="list d-block navlink-hover"
-            >
-              <IoBookmarks style={{ marginRight: "8px" }} />
-              Bookmarked Hotels
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/user/bookmarked-tours"
-              className="list d-block navlink-hover"
-            >
-              <IoBookmarks style={{ marginRight: "8px" }} />
-              Bookmarked Tours
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/user/blogs" className="list d-block navlink-hover">
-              <GrBlog style={{ marginRight: "8px" }} /> Blogs
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="sign-out"
-              className="list signout d-block navlink-hover"
-            >
-              <IoLogOutOutline style={{ marginRight: "8px" }} />
-              Sign Out
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  );
+	return (
+		<div className="container">
+			<nav className="sidebar">
+				<ul className="navbar-ul">
+					<li>
+						<NavLink
+							to="/user/dashboard"
+							className="list d-block navlink-hover"
+						>
+							<MdOutlineDashboard className="ic dashboard-icon" />{" "}
+							Dashboard
+						</NavLink>
+					</li>
+					<li>
+						<NavLink
+							to="/user/profile"
+							className="list d-block navlink-hover"
+						>
+							<IoPersonOutline className="ic profile-icon" />{" "}
+							Profile
+						</NavLink>
+					</li>
+
+					{/* <li>
+						<NavLink
+							to="/user/hotel-booking-lists"
+							className="list d-block navlink-hover"
+						>
+							<FaRegCalendarCheck
+								style={{ marginRight: "8px" }}
+								className="ic book-icon"
+							/>
+							Hotel Booking
+						</NavLink>
+					</li>
+
+					<li>
+						<NavLink
+							to="/user/tour-booking-lists"
+							className="list d-block navlink-hover"
+						>
+							<FaRegCalendarCheck
+								style={{ marginRight: "8px" }}
+								className="ic book-icon"
+							/>
+							Tour Booking
+						</NavLink>
+					</li> */}
+
+					<li>
+						<NavLink
+							to="/user/all-bookings"
+							className="list d-block navlink-hover"
+						>
+							<FaRegCalendarCheck className="ic book-icon" />
+							My Bookings
+						</NavLink>
+					</li>
+
+					<li>
+						<NavLink
+							to="/user/bookmarked-hotels"
+							className="list d-block navlink-hover"
+						>
+							<FaRegHeart className="ic save-icon" />
+							Hotel Bookmarks
+						</NavLink>
+					</li>
+					<li>
+						<NavLink
+							to="/user/bookmarked-tours"
+							className="list d-block navlink-hover"
+						>
+							<FaRegHeart className="ic save-icon" />
+							Tour Bookmarks
+						</NavLink>
+					</li>
+					<li>
+						<NavLink
+							to="/user/blogs"
+							className="list d-block navlink-hover"
+						>
+							<TbArticle className="ic blog-icon" /> Blogs
+						</NavLink>
+					</li>
+					<li>
+						<NavLink
+							to="sign-out"
+							className="list signout d-block navlink-hover"
+						>
+							<IoLogOutOutline className="ic logout-icon" />
+							Sign Out
+						</NavLink>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	);
 };
 
 export default UserSideNavbar;
