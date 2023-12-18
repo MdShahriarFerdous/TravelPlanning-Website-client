@@ -56,20 +56,20 @@ const Timer = ({flightData, handleSearchAgain}) => {
                 </div>
             </div>
             {showModal && (
-                <div
-                    className="modal fade show"
-                    tabIndex="-1"
-                    role="dialog"
-                    style={{display: "block"}}
-                >
+                <div className="modal fade show" tabIndex="-1" role="dialog" style={{ display: "block" }}>
                     <div className="modal-dialog modal-dialog-centered" role="document">
                         <div className="modal-content">
+                            <div className="modal-header" style={{ backgroundColor: "#ff5522", color: "#fff" }}>
+                                <h5 className="modal-title text-white">Session Expired</h5>
+                            </div>
                             <div className="modal-body d-flex justify-content-between">
                                 <p>{`Time's up! Your 30-minute countdown has ended.`}</p>
+                            </div>
+                            <div className="modal-footer">
                                 <button
-                                    className="btn"
+                                    className="btn btn-primary"
                                     onClick={handleSearchAgain}
-                                    style={{color: "#fff", backgroundColor: "#ff5522"}}
+                                    style={{ backgroundColor: "#ff5522", color: "#fff" }}
                                 >
                                     Search Again
                                 </button>
@@ -77,6 +77,7 @@ const Timer = ({flightData, handleSearchAgain}) => {
                         </div>
                     </div>
                 </div>
+
             )}
         </div>
     );
