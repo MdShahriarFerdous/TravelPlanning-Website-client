@@ -1,6 +1,6 @@
 .tour-types .slick-dots li button:before {
 	content: "";
-	color: rgb(36, 35, 35);
+	color: #5e5d5d;
 }
 .tour-types .slick-slider .tour-type-block {
 	margin: 10px 6px;
@@ -23,4 +23,11 @@
 }
 .tour-type-block .inner-box .over-link {
 	height: 325px;
+}
+
+.tour-types .slick-dots li button {
+	background-color: #424140;
+}
+.tour-types .slick-dots li.slick-active {
+	border: none;
 }

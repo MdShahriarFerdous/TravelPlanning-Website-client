@@ -12,6 +12,7 @@
 	justify-content: space-between;
 	padding-top: 5rem;
 	box-shadow: 2px 0 5px rgba(87, 86, 86, 0.1);
+	overflow-y: auto;
 }
 li {
 	padding: 10px 2px;

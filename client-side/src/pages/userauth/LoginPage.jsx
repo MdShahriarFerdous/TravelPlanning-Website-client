@@ -70,13 +70,13 @@ const LoginPage = () => {
 				</div>
 				<div className="row d-flex py-4 justify-content-center">
 					<div className="col-lg-6">
-						<div className="card animated fadeInUp p-5">
+						<div className="card animated fadeInUp p-5 auth-form-card">
 							<h1 className="card-title mb-4 text-center">
 								Sign in
 							</h1>
 							<input
 								type="email"
-								className="form-control my-2 py-3"
+								className="form-control my-2 py-3 email-input"
 								placeholder="Email"
 								name="email"
 								value={formik.values.email}
@@ -89,8 +89,8 @@ const LoginPage = () => {
 							)}
 							<input
 								type="password"
-								className="form-control my-2 py-3"
-								placeholder="Password"
+								className="form-control my-2 py-3 password-input"
+								placeholder="Password (minimum 6 characters long)"
 								name="password"
 								value={formik.values.password}
 								onChange={formik.handleChange}
@@ -103,7 +103,7 @@ const LoginPage = () => {
 								)}
 							<button
 								type="submit"
-								className="btn bg-gradient-primary my-2"
+								className="btn bg-gradient-primary my-2 login-submit-btn"
 							>
 								Sign in
 							</button>

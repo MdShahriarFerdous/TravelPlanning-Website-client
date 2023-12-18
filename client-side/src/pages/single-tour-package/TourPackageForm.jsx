@@ -13,7 +13,7 @@ import "bootstrap";
 import "./singletour.css";
 
 import { useFormik } from "formik";
-import { object, number } from "yup";
+import { object, number, string } from "yup";
 import { useAuth } from "../../context/authContext";
 import { useLoader } from "../../context/loaderContext";
 
@@ -45,6 +45,14 @@ const TourPackageForm = ({
 				.min(1, "Adult count must be at least 1")
 				.max(groupSize || 1, "Exceeds maximum group size")
 				.required(),
+
+			childrenNo: number()
+				.min(0, "Children count cannot be negative")
+				.max(4, "Exceeds maximum children count")
+				.required("Children count is required"),
+
+			packageName: string().required("Package name is required"),
+			vehicleOption: string().required("Vehicle option is required"),
 		}),
 		onSubmit: async (values, { resetForm }) => {
 			setLoader(true);
@@ -147,6 +155,7 @@ const TourPackageForm = ({
 							name="packageName"
 							value={formik.values.packageName}
 							onChange={formik.handleChange}
+							onBlur={formik.handleBlur}
 						>
 							<option value="" disabled>
 								Choose Package
@@ -209,6 +218,7 @@ const TourPackageForm = ({
 							name="vehicleOption"
 							value={formik.values.vehicleOption}
 							onChange={formik.handleChange}
+							onBlur={formik.handleBlur}
 						>
 							<option value="" disabled>
 								{" "}
