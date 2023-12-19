@@ -258,7 +258,7 @@ const TourPackageForm = ({
 
 						<button
 							type="submit"
-							className="btn bg-gradient-primary my-2"
+							className="btn bg-gradient-primary my-2 tour-form-continue-btn"
 						>
 							Continue
 						</button>
