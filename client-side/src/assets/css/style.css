@@ -2177,6 +2177,7 @@ body.visible-sidebar {
 	/* margin-bottom: 30px; */
 	width: 383px;
 }
+
 .list-container .package-block {
 	margin: auto !important;
 }
@@ -9109,6 +9110,7 @@ body.visible-sidebar {
 	font-family: "Gilroy_Bold", sans-serif;
 	cursor: pointer;
 	padding: 17px 60px 17px 120px;
+	padding-left: 17px;
 	background: var(--anti-flash-white-color);
 	border-radius: 5px;
 	-webkit-transition: all 500ms ease;
@@ -10686,6 +10688,10 @@ body.visible-sidebar {
 .rooms-avail-box {
 	position: relative;
 	margin-bottom: 60px;
+}
+
+.rooms-avail-box .table tbody tr:last-child td {
+	border-right: 1px solid #dee2e6 !important
 }
 
 .rooms-avail-box .art-outer {

@@ -8,8 +8,8 @@ import HotelImages from "../../components/hotel/singleView/HotelImages";
 import HotelMap from "../../components/hotel/singleView/HotelMap";
 import SimilarHotels from "../../components/hotel/singleView/SimilarHotels";
 import MiniLoader from "../../components/screenloader/MiniLoader";
+import RoomDetails from "../../components/hotel/singleView/RoomDetails";
 // import FAQ from "../../components/hotel/singleView/FAQ";
-// import RoomDetails from "../../components/hotel/singleView/RoomDetails";
 // import Reviews from ../../components/hotel/singleView/Reviews";
 // import TopAttraction from "../../components/hotel/singleView/TopAttraction";
 // import WhatsNearBy from "../../components/hotel/singleView/WhatsNearBy";
@@ -58,7 +58,8 @@ const HotelDetailsPage = () => {
                   <HotelBookingCart rentPerPerson={rentPerPerson} />
                 </div>
               </div>
-              {/* <RoomDetails /> */}
+              <RoomDetails />
+              
               <div className="part-two">
                 <div className="row clearfix">
                   <div className="content-side col-xl-8 col-lg-12 col-md-12 col-sm-12">
