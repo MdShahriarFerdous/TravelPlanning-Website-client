@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import {Formik, Form, Field} from "formik";
 import {getAllLocation} from "../../_api/LocationApi";
-import {TextField} from "@mui/material";
 import "./FlightSearch.css";
 import FlightCard from "../flight/FlightCard.jsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -9,10 +8,18 @@ import {faCalendarDays, faLocationDot} from "@fortawesome/free-solid-svg-icons";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "../../pages/trips/customDatePicker.css";
+import moment from "moment/moment.js";
 
 export default function FlightSearch() {
     // eslint-disable-next-line no-unused-vars
     const [locationData, setLocationData] = useState();
+    const [searchData, setsetSearchData] = useState({
+        source_destination_id: "",
+        destination_id: "",
+        journey_date: new Date(),
+        total_travellers: 1,
+        flight_class: "economy"
+    });
     const [formData, setFormData] = useState({
         source_destination_id: "",
         destination_id: "",
@@ -32,6 +39,7 @@ export default function FlightSearch() {
     };
 
     console.log("formData", formData)
+    console.log("searchData", searchData)
 
     const fetchLocation = async () => {
         const response = await getAllLocation();
@@ -44,8 +52,19 @@ export default function FlightSearch() {
     }, []);
 
     const handleSubmit = (values) => {
-        // Update form data with the submitted values
-        setFormData(values);
+        // Convert the Date object to a string in a desired format
+        // const formattedDate = values.journey_date.toISOString().split('T')[0];
+        const { journey_date, source_destination_id, destination_id, total_travellers, flight_class } = values;
+        const formattedDate = moment(journey_date).format("YYYY-MM-DD");
+
+        // Update form data with the formatted date
+        setsetSearchData({
+            source_destination_id,
+            destination_id,
+            total_travellers,
+            flight_class,
+            journey_date: formattedDate,
+        });
     };
 
     return (
@@ -129,7 +148,7 @@ export default function FlightSearch() {
                     </Form>
                 </Formik>
             </div>
-            <FlightCard formData={formData} onResetFormData={handleResetFormData}/>
+            <FlightCard formData={searchData} onResetFormData={handleResetFormData}/>
         </>
     );
 }
