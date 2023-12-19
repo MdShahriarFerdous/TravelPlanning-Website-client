@@ -8,11 +8,13 @@ export default function Author({ post }) {
     <div className="author-box">
       <div className="inner">
         <div className="image">
-          <a href="blog-single.html">
+          <NavLink to={`/blogs?author=${_id}`}>
             <img src={image} alt="Author" />
-          </a>
+          </NavLink>
         </div>
-        <h3>{username}</h3>
+        <h3>
+          <NavLink to={`/blogs?author=${_id}`}>{username}</NavLink>
+        </h3>
         <div className="travilo-text">{bio}</div>
         <div className="more">
           <NavLink to={`/blogs?author=${_id}`}>

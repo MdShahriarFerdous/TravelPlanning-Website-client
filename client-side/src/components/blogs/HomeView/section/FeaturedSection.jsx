@@ -16,7 +16,7 @@ export default function FeaturedSection({ featuredBlogs }) {
       >
         <Masonry gutter="1.5rem">
           {featuredBlogs.map((feature) => {
-            const { _id, thumbnailImage, title, category, createdAt } =
+            const { _id, slug, thumbnailImage, title, category, createdAt } =
               feature || {};
             return (
               <div key={_id} className="news-block-one">
@@ -42,7 +42,7 @@ export default function FeaturedSection({ featuredBlogs }) {
                       </li>
                     </ul>
                     <h3>
-                      <NavLink to={`/blogs/${_id}`}>{title}</NavLink>
+                      <NavLink to={`/blogs/${slug}`}>{title}</NavLink>
                     </h3>
                   </div>
                 </div>

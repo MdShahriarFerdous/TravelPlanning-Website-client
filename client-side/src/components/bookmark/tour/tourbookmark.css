@@ -1,0 +1,15 @@
+.span-loader-size {
+	width: 50px;
+	height: 50px;
+	margin-bottom: 6px;
+}
+
+.span-bookmark {
+	margin-left: 30%;
+	width: 44px;
+	height: 44px;
+	border-radius: 22px;
+	text-align: center;
+	padding-top: 8px;
+	cursor: pointer;
+}

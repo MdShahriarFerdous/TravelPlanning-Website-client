@@ -58,3 +58,15 @@ font-family: 'Gilroy-Regular', sans-serif; */
 .logo-text .we-text {
 	color: #ff531f;
 }
+.btn.login-submit-btn,
+.btn.register-submit-btn {
+	padding: 1rem 1.5rem;
+}
+.auth-form-card input.email-input,
+.auth-form-card input.password-input,
+.auth-form-card input.username-input {
+	margin-bottom: 1rem !important;
+}
+.go-to-mail-text {
+	width: 60%;
+}

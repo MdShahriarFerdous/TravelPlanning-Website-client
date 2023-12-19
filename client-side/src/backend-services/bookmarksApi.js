@@ -8,7 +8,7 @@ export const bookmarkList = async ({ query }) => {
   const sortedQuery = qs.stringify(query);
   try {
     const authToken = localStorage.getItem("auth");
-    const token = JSON.parse(authToken).token;
+    const token = authToken && JSON.parse(authToken).token;
 
     if (token) {
       const { data } = await axios.get(

@@ -1,67 +1,60 @@
-import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import ScreenLoader from "../../screenloader/ScreenLoader";
 import Navbar from "../../navbar/Navbar";
 import Footer from "../../footer/Footer";
-
-import { useFormik } from "formik";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap";
 import "./tourbytype.css";
+import TourSearchForm from "./TourSearchForm";
+import TourCards from "./TourCards";
+import { DataProvider } from "../../../context/dataContext";
+import PaginationNav from "./PaginationNav";
+import { SearchDataProvider } from "../../../context/searchDataContext";
+import { useEffect, useState } from "react";
+import ScreenLoader from "../../screenloader/ScreenLoader";
 
 const TourByType = () => {
+	const [count, setCount] = useState(3);
+	const [screenLoader, setScreenLoader] = useState(true);
 	const { tourType } = useParams();
-	const [loading, setLoading] = useState(false);
+	const convertTourTypeForMatch =
+		tourType.charAt(0).toUpperCase() + tourType.slice(1).toLowerCase();
 
-	const formik = useFormik({
-		initialValues: {
-			searchKeyword: "",
-		},
-		onSubmit: async (values, { resetForm }) => {
-			try {
-			} catch (error) {
-				console.error(error);
-				toast.error(error.response.data.error.message);
-			} finally {
-				// setLoader(false);
-			}
-		},
-	});
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setCount((prevValue) => {
+				return --prevValue;
+			});
+		}, 1000);
+
+		count === 0 && setScreenLoader(false);
+		// cleanup
+		return () => clearInterval(interval);
+	}, [count]);
+
 	return (
 		<>
-			{loading ? (
+			{screenLoader ? (
 				<ScreenLoader />
 			) : (
 				<>
 					<Navbar />
-					<div className="container-fluid p-5 bg-div">
-						<div className="container mt-3 mb-3">
-							<form
-								className="form-group p-2"
-								onSubmit={formik.handleSubmit}
+					<SearchDataProvider>
+						<DataProvider>
+							<div
+								className="container-fluid p-5 bg-div"
+								style={{
+									zIndex: "-100",
+								}}
 							>
-								<div className="d-flex align-items-center">
-									<input
-										type="text"
-										placeholder="search"
-										className="form-control my-2 py-3 serach-input"
-										name="searchKeyword"
-										value={formik.values.searchKeyword}
-										onChange={formik.handleChange}
-									/>
-									<button
-										type="submit"
-										className="btn bg-gradient-primary my-2 btn-search"
-									>
-										Search
-									</button>
-								</div>
-							</form>
-						</div>
-
-						<h1>{tourType}</h1>
-					</div>
+								<TourSearchForm
+									tourType={convertTourTypeForMatch}
+								/>
+								<TourCards tourType={convertTourTypeForMatch} />
+								<PaginationNav />
+							</div>
+						</DataProvider>
+					</SearchDataProvider>
 					<Footer />
 				</>
 			)}

@@ -11,6 +11,7 @@ import StarRating from "./StarRating";
 import "./Star.css";
 
 const Review = ({ tourInfoId }) => {
+  // console.log("tourInfoId: ", tourInfoId);
   const [totalReview, setTotalReview] = useState(null); // done
   const [reviewData, setReviewData] = useState([]); // done
   const [userRating, setUserRating] = useState(null);
@@ -22,35 +23,36 @@ const Review = ({ tourInfoId }) => {
   useEffect(() => {
     (async () => {
       try {
-        const response = await ReviewListTourByIdAPI(tourInfoId);
-        console.log("API response: ", response);
-        if (response) {
+        const data = await ReviewListTourByIdAPI(tourInfoId);
+        // console.log("API response: ", data);
+        if (data) {
           // all tour reviews
-          const tourReviews = response.data.reviews;
-          console.log("All Reviews: ", tourReviews);
+          const tourReviews = data.data.reviews;
+          // console.log("All Reviews: ", tourReviews);
 
           setReviewData(tourReviews);
 
           // total reviews count
-          const totalReviews = response.data.totalReviews;
-          console.log("Total Reviews: ", totalReviews);
+          const totalReviews = data.data.totalReviews;
+          // console.log("Total Reviews: ", totalReviews);
           setTotalReview(totalReviews);
 
           // all ratings
           const allRatings = tourReviews.map((tourReview) => tourReview.rating);
+          // console.log(allRatings);
 
           // calculate the average rating
           const totalRatings = allRatings.length;
-          const sumRatings = allRatings.reduce(
-            (acc, rating) => acc + rating,
-            0
+          const sumRatings = Number(
+            allRatings.reduce((acc, rating) => acc + rating, 0)
           );
 
-          console.log("total sum: ", sumRatings);
-          const averageRatings =
-            totalRatings > 0 ? sumRatings / totalRatings : 0;
+          // console.log("total sum: ", sumRatings);
+          const averageRatings = Number(
+            totalRatings > 0 ? sumRatings / totalRatings : 0
+          );
 
-          console.log("Average Rating: ", averageRatings);
+          // console.log("Average Rating: ", averageRatings);
 
           setAverageRating(averageRatings);
         }
@@ -58,30 +60,36 @@ const Review = ({ tourInfoId }) => {
         console.error("Error fetching reviews:", error);
       }
     })();
-  }, [reviewData]);
+  }, [tourInfoId, reviewData]);
 
   const handleRatingChange = (selectedRating) => {
-    console.log("Selected Rating:", selectedRating);
+    // console.log("Selected Rating:", selectedRating);
     setUserRating(selectedRating);
   };
 
   // handle submit button
-  const handleReviewSubmit = async () => {
+  const handleReviewSubmit = async (e) => {
+    e.preventDefault();
+
     try {
       if (!auth?.token) {
         toast.error("Please login first to continue!");
       } else if (!userRating) {
         toast.error("Please provide a rating!");
       } else {
-        const response = await CreateReviewTourByIdAPI(tourInfoId);
-        console.log("API Response:", response);
+        const data = await CreateReviewTourByIdAPI(tourInfoId, {
+          userRating,
+          comment,
+        });
+        console.log("API Response:", data);
         console.log(tourInfoId);
 
-        if (response && response.error) {
-          toast.error(response.error);
+        if (data && data.error) {
+          toast.error(data.error);
         } else {
-          setComment(""); 
-          setReviewData([...reviewData, response]); 
+          setComment("");
+          setReviewData([...reviewData, data]);
+
           setUserRating(null);
         }
       }
@@ -90,20 +98,27 @@ const Review = ({ tourInfoId }) => {
     }
   };
 
+  // console.log("review Data:", reviewData);
+  // console.log("comment:", comment);
+  // console.log("rating:", userRating);
+
   return (
     <div className="container-fluids mt-5">
       <div className="row">
-        <div className="col-lg-8 card p-4" style={{ marginLeft: "30px", overflowY: "auto" }}>
+        <div
+          className="col-lg-8 card p-4"
+          style={{ marginLeft: "30px", overflowY: "auto" }}
+        >
           <h2 className="fw-bold mb-4">Reviews</h2>
           <div className="mb-3">
             <Star stars={averageRating} reviews={totalReview} />
             <p className="fw-medium">{review}</p>
           </div>
           {reviewData.map((obj) => (
-            <div key={obj._id} className="all_reviews card p-3 mt-2 shadow" >
-              <p>User: {obj.user.username}</p>
+            <div key={obj._id} className="all_reviews card p-3 mt-2 shadow">
+              <p>User: {obj?.user?.username}</p>
               <p>
-                Rating: {obj.rating}{" "}
+                Rating: {obj.rating}
                 <FaStar size={15} style={{ color: "orange" }} />
               </p>
               <p>Comment: {obj.comment}</p>

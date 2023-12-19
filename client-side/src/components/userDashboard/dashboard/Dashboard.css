@@ -1,22 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+
 .promo_card {
-  width: 80%;
-  color: #000000;
-  margin-top: 10px;
-  border-radius: 8px;
-  padding: 20px;
-  background: #F7E5E9;
+	width: 90%;
+	margin-top: 10px;
+	border-radius: 8px;
+	padding: 24px 20px;
+	background: #f7e5e9;
 }
 .promo_card h1,
-.promo_card span{
-  margin: 10px;
+.promo_card span {
+	margin: 10px;
 }
-button{
-    margin: 10px;
-    color: #ff5522;
+/* button {
+	margin: 10px;
+	color: #ff5522;
+} */
+/* .promo_card button {
+	display: block;
+	padding: 6px 12px;
+	border-radius: 5px;
+	cursor: pointer;
+} */
+.p-welcome {
+	font-family: "Open Sans", sans-serif;
+	font-size: 1.5rem;
+	font-weight: 500;
 }
-.promo_card button {
-  display: block;
-  padding: 6px 12px;
-  border-radius: 5px;
-  cursor: pointer;
+.title-for-welcome {
+	font-weight: bold;
+	font-size: 2rem;
+	letter-spacing: 0.06rem;
+	padding: 10px 16px 0 16px;
+}
+.main-options-block .options-block {
+	text-align: center;
+}
+.main-options-block .options-block p {
+	color: #374b4a;
+	font-weight: 600;
+}
+.main-options-block .options-block .tour-card-design {
+	background: #c999eb;
+}
+.main-options-block .options-block .hotel-card-design {
+	background: #f5ad8f;
+}
+.main-options-block .options-block .flight-card-design {
+	background: #999eff;
+}
+.main-options-block .options-block .itinerary-card-design {
+	background: #a8dcd1;
+}
+
+.icon-block .tree-icon,
+.icon-block .hotel-icon,
+.icon-block .flight-icon,
+.icon-block .task-icon {
+	font-size: 1.8rem;
+	color: #374b4a;
+}
+.options-block .card {
+	transition: transform 0.4s ease;
+}
+
+.options-block .card:hover {
+	transform: scale(1.2);
 }

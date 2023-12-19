@@ -5,9 +5,21 @@ const baseUrl =
 	"https://travelplanning-website-server.onrender.com/api/v1";
 
 export async function makeAxiosRequest(method, urlPath, data) {
+
+	// Assuming localStorage.getItem('auth') returns the stored string
+	const authString = localStorage.getItem('auth') ? localStorage.getItem('auth') : "";
+
+	let token = ""
+
+	if (authString != "") {
+		const authObject = JSON.parse(authString);
+		token = authObject?.token;
+	}
+
+
 	const headers = {
 		"Content-Type": "application/json",
-		// Authorization: `Bearer ${serviceToken}`,
+		Authorization: token,
 	};
 
 	const config = {
@@ -25,7 +37,8 @@ export async function makeAxiosRequest(method, urlPath, data) {
 			console.error("Request canceled:", err.message);
 		} else if (err.response && err.response.status === 401) {
 			// Handle unauthorized access (e.g., redirect to login)
-			console.error("Unauthorized access:", err.message);
+			console.error("Unauthorized access:", err.response);
+			return err.response
 		} else if (err.response) {
 			console.error("API error:", err.response.data.message);
 			throw err.response.data;

@@ -1,32 +1,70 @@
-.sidebar {
-  background-color: #FEFEFE;
-  height: 100%;
-  width: 350px;
-  position: fixed;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 100px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
 
+.sidebar {
+	background-color: #fefefe;
+	height: 100%;
+	width: 18.5rem;
+	position: fixed;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	padding-top: 5rem;
+	box-shadow: 2px 0 5px rgba(87, 86, 86, 0.1);
+	overflow-y: auto;
+}
+li {
+	padding: 10px 2px;
+}
 .list {
-  text-decoration: none;
-  color: rgb(103,116,142);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: color 0.3s;
-  font-size: 22px;
-  padding-bottom: 16px;
+	text-decoration: none;
+	color: #576170;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	transition: color 0.3s;
+	font-size: 1.1rem;
+	padding: 12px 6px 12px 10px;
+	font-family: "Open Sans", sans-serif;
+	font-weight: 500;
 }
 
 a:hover {
-  color: #ff5522;
+	color: #ff5522;
 }
 
-.active {
-  color: #ff5522; 
+.navbar-ul .active {
+	background-color: #ff5522;
+	color: white;
+	border-radius: 12px;
+}
+ul.navbar-ul {
+	padding-left: 2px;
+}
+.ic {
+	color: #576170;
+	text-align: center;
+	margin-bottom: 4px;
+	margin-right: 10px;
+}
+.ic:hover {
+	color: #ff5522;
+}
+.navbar-ul .active .ic {
+	color: white;
+}
+.navbar-ul .active:hover {
+	color: #ffffff;
+}
+.save-icon,
+.blog-icon {
+	margin-bottom: 2px;
+}
+.logout-icon {
+	font-size: 1.3rem;
+}
+.profile-icon,
+.dashboard-icon {
+	font-size: 1.2rem;
 }

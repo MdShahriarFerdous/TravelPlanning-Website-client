@@ -25,9 +25,9 @@ export default function Banner({ post }) {
 
               {author && (
                 <li>
-                  <a href="#">
+                  <NavLink to={`/blogs?author=${author._id}`}>
                     <i className="fa-solid fa-user"></i> {author.username}
-                  </a>
+                  </NavLink>
                 </li>
               )}
 
