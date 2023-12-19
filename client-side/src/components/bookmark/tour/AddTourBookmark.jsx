@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { HiOutlineBookmark, HiBookmark } from "react-icons/hi2";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 import {
 	bookmarkList,
 	AddBookmarkTourByIdAPI,
@@ -99,9 +99,9 @@ const AddTourBookmark = () => {
 				{loading ? (
 					<img className="span-loader-size" src={SpanLoader} />
 				) : isBookmarked ? (
-					<HiBookmark className="bookmark fill-bookmark" />
+					<FaHeart className="bookmark fill-bookmark" />
 				) : (
-					<HiOutlineBookmark className="bookmark" />
+					<FaRegHeart className="bookmark" />
 				)}
 			</span>
 		</>

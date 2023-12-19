@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap";
 import "./Dashboard.css";
 import WelcomeImg from "../../../assets/images/welcome/travel-welcome.svg";
+import MenuOptions from "./MenuOptions";
 
 const Dashboard = () => {
 	const [auth, setAuth] = useAuth();
@@ -19,7 +20,7 @@ const Dashboard = () => {
 			</p>
 			<h1 className="mt-2 mb-4">Dashboard Overview</h1>
 
-			<div className="promo_card d-flex ">
+			<div className="promo_card d-flex mb-5">
 				<img
 					src={WelcomeImg}
 					style={{
@@ -41,6 +42,7 @@ const Dashboard = () => {
 				{/* {console.log(auth?.user)} */}
 				{/* <span>Lorem ipsum dolor sit amet.</span> */}
 			</div>
+			<MenuOptions />
 		</div>
 	);
 };

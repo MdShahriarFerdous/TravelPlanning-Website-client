@@ -65,7 +65,7 @@ const VerifyPage = () => {
 			</div>
 			<div className="d-flex justify-content-center align-items-center p-2">
 				<button
-					style={{ display: "block" }}
+					style={{ display: "block", padding: "1rem 2rem" }}
 					onClick={handleClick}
 					className="btn bg-gradient-primary"
 				>

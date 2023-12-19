@@ -61,9 +61,7 @@ const SingleTourPackage = () => {
 	const handleToggleClick = () => {
 		setToggle(!toggle);
 	};
-	// const handleBookmarkClick = () => {
-	// 	setBookmarkToggle(!bookmarkToggle);
-	// };
+
 	const handleDurationToggle = () => {
 		setDurationToggle(!durationToggle);
 	};
@@ -99,12 +97,15 @@ const SingleTourPackage = () => {
 					>
 						<div className="container">
 							<div className="d-flex  mb-4">
-								<h3
+								<h2
 									className="mb-4"
-									style={{ letterSpacing: "0.8px" }}
+									style={{
+										letterSpacing: "0.8px",
+										fontSize: "30px",
+									}}
 								>
 									{tourDetails?.getTourInfo?.title}
-								</h3>
+								</h2>
 								<AddTourBookmark />
 							</div>
 
