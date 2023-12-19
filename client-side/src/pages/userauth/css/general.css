@@ -61,6 +61,7 @@ font-family: 'Gilroy-Regular', sans-serif; */
 .btn.login-submit-btn,
 .btn.register-submit-btn {
 	padding: 1rem 1.5rem;
+	font-weight: 400;
 }
 .auth-form-card input.email-input,
 .auth-form-card input.password-input,

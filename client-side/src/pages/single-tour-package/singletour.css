@@ -75,3 +75,6 @@ label,
 	font-weight: 600;
 	color: rgb(52, 71, 103);
 }
+.tour-form-continue-btn {
+	font-weight: 400;
+}
