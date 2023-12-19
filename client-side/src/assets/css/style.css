@@ -2156,6 +2156,7 @@ body.visible-sidebar {
 	/* margin-bottom: 30px; */
 	width: 383px;
 }
+
 .list-container .package-block {
 	margin: auto !important;
 }
@@ -8154,7 +8155,7 @@ body.visible-sidebar {
 }
 
 
-.blog-single-banner .content-box .info li:hover a{
+.blog-single-banner .content-box .info li:hover a {
 	color: #ff5522;
 }
 
@@ -10618,6 +10619,10 @@ body.visible-sidebar {
 .rooms-avail-box {
 	position: relative;
 	margin-bottom: 60px;
+}
+
+.rooms-avail-box .table tbody tr:last-child td {
+	border-right: 1px solid #dee2e6 !important
 }
 
 .rooms-avail-box .art-outer {

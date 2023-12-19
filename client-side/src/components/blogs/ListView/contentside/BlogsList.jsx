@@ -52,6 +52,7 @@ export default function BlogsList() {
               blogs.map((blog) => {
                 const {
                   _id,
+                  slug,
                   title,
                   thumbnailImage,
                   author,
@@ -69,7 +70,7 @@ export default function BlogsList() {
                   >
                     <div className="inner-box">
                       <div className="image-box">
-                        <NavLink to={`/blogs/${blogId}`}>
+                        <NavLink to={`/blogs/${slug}`}>
                           <img src={thumbnailImage} alt="Balloons" />
                         </NavLink>
                       </div>
@@ -97,13 +98,13 @@ export default function BlogsList() {
                           </li>
                         </ul>
                         <h3>
-                          <NavLink to={`/blogs/${blogId}`}>{title}</NavLink>
+                          <NavLink to={`/blogs/${slug}`}>{title}</NavLink>
                         </h3>
                         <div className="travilo-text">{details}</div>
                         <div className="more-links clearfix">
                           <div className="more">
                             <NavLink
-                              to={`/blogs/${blogId}`}
+                              to={`/blogs/${slug}`}
                               className="theme-btn btn-style-two"
                             >
                               <span>Read More</span>
