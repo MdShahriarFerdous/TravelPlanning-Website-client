@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+}
+.icon {
+  font-size: 1.5rem;
+  color: orange;
+}
+.wrapper p {
+  font-size: 1.2rem;
+  margin: 0;
+  padding-left: 1rem;
+}
+input[type="radio"]{
+  display: none;
+}
+.star{
+  cursor: pointer;
+  transition: color 200ms;
+}
+.all_reviews p{
+  line-height: 4px;
+}

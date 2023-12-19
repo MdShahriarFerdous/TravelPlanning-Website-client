@@ -17,6 +17,7 @@ import Footer from "../../components/footer/Footer";
 import ScreenLoader from "./../../components/screenloader/ScreenLoader";
 import TourPackageForm from "./TourPackageForm";
 import AddTourBookmark from "../../components/bookmark/tour/AddTourBookmark";
+import Review from "../../components/review/Review";
 
 const SingleTourPackage = () => {
 	const [tourDetails, setTourDetails] = useState({});
@@ -640,6 +641,7 @@ const SingleTourPackage = () => {
 									packages={tourDetails?.packages}
 								/>
 							</div>
+							<Review tourInfoId={tourInfoId} />
 						</div>
 					</div>
 					<Footer />

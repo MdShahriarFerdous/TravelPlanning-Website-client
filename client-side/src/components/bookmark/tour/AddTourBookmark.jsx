@@ -19,6 +19,7 @@ const AddTourBookmark = () => {
       const response = await bookmarkList({ query: { type: "tour" } });
       if (response) {
         const tours = response.data.tourId;
+        console.log("Tours: ",tours)
         const foundStatus = tours.some((tour) => tour.tourId === tourInfoId);
         console.log({
           tourInfoId,
