@@ -4,10 +4,13 @@ import {
   CreateReviewTourByIdAPI,
   ReviewListTourByIdAPI,
 } from "../../backend-services/reviewApi";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap";
 import { toast } from "react-toastify";
 import { useAuth } from "../../context/authContext";
 import Star from "./average/Star";
 import StarRating from "./StarRating";
+import ProfileImg from "../../assets/images/profile-image/profileImage.png";
 import "./Star.css";
 
 const Review = ({ tourInfoId }) => {
@@ -17,7 +20,7 @@ const Review = ({ tourInfoId }) => {
   const [userRating, setUserRating] = useState(null);
   const [comment, setComment] = useState("");
   const [averageRating, setAverageRating] = useState(null); //done
-  const [review, setReview] = useState(null);
+  // const [review, setReview] = useState(null);
   const [auth, setAuth] = useAuth(); // done
 
   useEffect(() => {
@@ -35,6 +38,7 @@ const Review = ({ tourInfoId }) => {
           // total reviews count
           const totalReviews = data.data.totalReviews;
           // console.log("Total Reviews: ", totalReviews);
+
           setTotalReview(totalReviews);
 
           // all ratings
@@ -98,40 +102,64 @@ const Review = ({ tourInfoId }) => {
     }
   };
 
-  // console.log("review Data:", reviewData);
-  // console.log("comment:", comment);
-  // console.log("rating:", userRating);
-
   return (
-    <div className="container-fluids mt-5">
-      <div className="row">
-        <div
-          className="col-lg-8 card p-4"
-          style={{ marginLeft: "30px", overflowY: "auto" }}
-        >
-          <h2 className="fw-bold mb-4">Reviews</h2>
-          <div className="mb-3">
-            <Star stars={averageRating} reviews={totalReview} />
-            <p className="fw-medium">{review}</p>
-          </div>
-          {reviewData.map((obj) => (
-            <div key={obj._id} className="all_reviews card p-3 mt-2 shadow">
-              <p>User: {obj?.user?.username}</p>
-              <p>
-                Rating: {obj.rating}
-                <FaStar size={15} style={{ color: "orange" }} />
-              </p>
-              <p>Comment: {obj.comment}</p>
+    <div className="container" style={{ marginTop: "200px" }}>
+      <h3 className="text-center">Reviews</h3>
+      <Star stars={averageRating} reviews={totalReview} />
+
+      <div className="row mt-4" style={{ overflowY: "auto" }}>
+        {reviewData.map((obj) => (
+          <div className="col-lg-6" key={obj._id}>
+            <div className="card p-3" key={obj._id}>
+              <div className="row" key={obj._id}>
+                <div className="col-lg-9" key={obj._id}>
+                  <div className="d-flex" key={obj._id}>
+                    <img
+                      src={ProfileImg}
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                      }}
+                    />
+                    <p className="p-user-name">{obj?.user?.username}</p>
+                  </div>
+                </div>
+
+                <div className="col-lg-3">
+                  <p style={{ marginTop: "6px" }}>
+                    Rating: {obj.rating}
+                    <FaStar
+                      style={{
+                        marginBottom: "3px",
+                        color: "#DC8817",
+                      }}
+                    />
+                  </p>
+                </div>
+              </div>
+
+              <div className="row mt-2">
+                <div className="col-lg-11">
+                  <p className="px-2">{obj.comment}</p>
+                </div>
+              </div>
             </div>
-          ))}
-          <div className="my-4">
-            <h4>Give your review:</h4>
+          </div>
+        ))}
+      </div>
+      <div className="row mt-4">
+        <div className="col-lg-12">
+          <div className="card p-3">
+            <h4 className="p-2">Give your review:</h4>
             <StarRating onRatingChange={handleRatingChange} />
-            <label htmlFor="exampleFormControlTextarea1" className="form-label">
+            <label
+              htmlFor="exampleFormControlTextarea1"
+              className="form-label mt-3"
+            >
               Write a Review
             </label>
             <textarea
-              className="form-control "
+              className="form-control p-2"
               id="exampleFormControlTextarea1"
               rows="3"
               placeholder="Share your experience..."

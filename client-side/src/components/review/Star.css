@@ -1,22 +1,25 @@
-.wrapper {
-  display: flex;
-}
 .icon {
   font-size: 1.5rem;
   color: orange;
 }
-.wrapper p {
+/* .container p {
   font-size: 1.2rem;
   margin: 0;
   padding-left: 1rem;
-}
-input[type="radio"]{
+} */
+input[type="radio"] {
   display: none;
 }
-.star{
+.star {
   cursor: pointer;
   transition: color 200ms;
 }
-.all_reviews p{
-  line-height: 4px;
+p.total-reviews-count {
+  font-size: 1.2rem;
+  margin-top: 12px;
+  margin-left: 16px;
+}
+p.p-user-name {
+  margin-left: 12px;
+  margin-top: 8px;
 }

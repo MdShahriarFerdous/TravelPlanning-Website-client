@@ -645,11 +645,10 @@ const SingleTourPackage = () => {
 								/>
 							</div>
 							<Review tourInfoId={tourMatchingId} />
-							{console.log("tourMatchingId:",tourMatchingId)}
+							{/* {console.log("tourMatchingId:",tourMatchingId)} */}
 
 						</div>
 
-						<TourPackageReview />
 					</div>
 					<Footer />
 				</>

@@ -20,10 +20,9 @@ const Star = ({ stars, reviews }) => {
   });
 
   return (
-    <div className="wrapper">
-      <div className="d-flex icon-style">
-        {ratingStar} <p>({reviews} reviews)</p>
-      </div>
+    <div className="d-flex justify-content-center align-items-center pt-2">
+      <h5>{ratingStar}</h5>
+      <p className="total-reviews-count">({reviews} reviews)</p>
     </div>
   );
 };
