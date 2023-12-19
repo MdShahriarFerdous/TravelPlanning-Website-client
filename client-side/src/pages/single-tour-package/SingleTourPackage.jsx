@@ -17,6 +17,7 @@ import Footer from "../../components/footer/Footer";
 import ScreenLoader from "./../../components/screenloader/ScreenLoader";
 import TourPackageForm from "./TourPackageForm";
 import AddTourBookmark from "../../components/bookmark/tour/AddTourBookmark";
+import TourPackageReview from "./tourreview/TourPackageReview";
 
 const SingleTourPackage = () => {
 	const [tourDetails, setTourDetails] = useState({});
@@ -155,7 +156,6 @@ const SingleTourPackage = () => {
 								)}
 						</div>
 
-						{/* <div className="container mt-5"> */}
 						<div className="row mt-5 g-0">
 							<div className="col-lg-8 ps-3">
 								<div className="card p-4 mx-2">
@@ -644,6 +644,8 @@ const SingleTourPackage = () => {
 								/>
 							</div>
 						</div>
+
+						<TourPackageReview />
 					</div>
 					<Footer />
 				</>
