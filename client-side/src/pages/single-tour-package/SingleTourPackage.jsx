@@ -17,6 +17,7 @@ import Footer from "../../components/footer/Footer";
 import ScreenLoader from "./../../components/screenloader/ScreenLoader";
 import TourPackageForm from "./TourPackageForm";
 import AddTourBookmark from "../../components/bookmark/tour/AddTourBookmark";
+import TourPackageReview from "./tourreview/TourPackageReview";
 
 const SingleTourPackage = () => {
 	const [tourDetails, setTourDetails] = useState({});
@@ -33,11 +34,13 @@ const SingleTourPackage = () => {
 	const [tourTipsToggle, setTourTipsToggle] = useState(false);
 
 	const { tourInfoId } = useParams();
+	const tourMatchingId =
+		tourInfoId.charAt(0).toUpperCase() + tourInfoId.slice(1).toLowerCase();
 
 	useEffect(() => {
 		const fetchTourInfo = async () => {
 			try {
-				const data = await TourByIdAPI(tourInfoId);
+				const data = await TourByIdAPI(tourMatchingId);
 				if (!data) {
 					console.error("Tour info Data fetching fail", data.message);
 				} else if (data.status === "Success") {
@@ -54,14 +57,12 @@ const SingleTourPackage = () => {
 		};
 
 		fetchTourInfo();
-	}, [tourInfoId]);
+	}, [tourMatchingId]);
 
 	const handleToggleClick = () => {
 		setToggle(!toggle);
 	};
-	// const handleBookmarkClick = () => {
-	// 	setBookmarkToggle(!bookmarkToggle);
-	// };
+
 	const handleDurationToggle = () => {
 		setDurationToggle(!durationToggle);
 	};
@@ -97,12 +98,15 @@ const SingleTourPackage = () => {
 					>
 						<div className="container">
 							<div className="d-flex  mb-4">
-								<h3
+								<h2
 									className="mb-4"
-									style={{ letterSpacing: "0.8px" }}
+									style={{
+										letterSpacing: "0.8px",
+										fontSize: "30px",
+									}}
 								>
 									{tourDetails?.getTourInfo?.title}
-								</h3>
+								</h2>
 								<AddTourBookmark />
 							</div>
 
@@ -152,7 +156,6 @@ const SingleTourPackage = () => {
 								)}
 						</div>
 
-						{/* <div className="container mt-5"> */}
 						<div className="row mt-5 g-0">
 							<div className="col-lg-8 ps-3">
 								<div className="card p-4 mx-2">
@@ -632,7 +635,7 @@ const SingleTourPackage = () => {
 										tourDetails?.getTourInfo?.maxGroupSize
 									}
 									price={tourDetails?.getTourInfo?.price}
-									tourMatchingCode={tourInfoId}
+									tourMatchingCode={tourMatchingId}
 									tourInfoId={tourDetails?.getTourInfo?._id}
 									vehicleDetailes={
 										tourDetails?.tourVehiclePrice
@@ -641,6 +644,8 @@ const SingleTourPackage = () => {
 								/>
 							</div>
 						</div>
+
+						<TourPackageReview />
 					</div>
 					<Footer />
 				</>

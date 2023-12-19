@@ -13,7 +13,7 @@ import "bootstrap";
 import "./singletour.css";
 
 import { useFormik } from "formik";
-import { object, number } from "yup";
+import { object, number, string } from "yup";
 import { useAuth } from "../../context/authContext";
 import { useLoader } from "../../context/loaderContext";
 
@@ -45,6 +45,14 @@ const TourPackageForm = ({
 				.min(1, "Adult count must be at least 1")
 				.max(groupSize || 1, "Exceeds maximum group size")
 				.required(),
+
+			childrenNo: number()
+				.min(0, "Children count cannot be negative")
+				.max(4, "Exceeds maximum children count")
+				.required("Children count is required"),
+
+			packageName: string().required("Package name is required"),
+			vehicleOption: string().required("Vehicle option is required"),
 		}),
 		onSubmit: async (values, { resetForm }) => {
 			setLoader(true);
@@ -96,19 +104,15 @@ const TourPackageForm = ({
 				setCalculatedPrice(data?.totalCost);
 			} catch (error) {
 				if (error.response) {
-					// The request was made, but the server responded with a status code
-					// other than 2xx.
 					console.error(
 						"Server responded with an error:",
 						error.response.data
 					);
 					toast.error(error.response.data.message || "Server Error");
 				} else if (error.request) {
-					// The request was made but no response was received.
 					console.error("No response received from the server");
 					toast.error("No response received from the server");
 				} else {
-					// Something happened in setting up the request that triggered an Error.
 					console.error(
 						"An unexpected error occurred:",
 						error.message
@@ -151,6 +155,7 @@ const TourPackageForm = ({
 							name="packageName"
 							value={formik.values.packageName}
 							onChange={formik.handleChange}
+							onBlur={formik.handleBlur}
 						>
 							<option value="" disabled>
 								Choose Package
@@ -164,7 +169,12 @@ const TourPackageForm = ({
 								</option>
 							))}
 						</select>
-
+						{formik.touched.packageName &&
+							formik.errors.packageName && (
+								<span className="text-danger my-1 ms-2">
+									&#9432; {formik.errors.packageName}
+								</span>
+							)}
 						<div className="adult-count-div">
 							<label>Adult Person Count</label>
 							<input
@@ -208,6 +218,7 @@ const TourPackageForm = ({
 							name="vehicleOption"
 							value={formik.values.vehicleOption}
 							onChange={formik.handleChange}
+							onBlur={formik.handleBlur}
 						>
 							<option value="" disabled>
 								{" "}
@@ -230,6 +241,12 @@ const TourPackageForm = ({
 								</option>
 							))}
 						</select>
+						{formik.touched.vehicleOption &&
+							formik.errors.vehicleOption && (
+								<span className="text-danger my-1 ms-2">
+									&#9432; {formik.errors.vehicleOption}
+								</span>
+							)}
 
 						<div className="price-div">
 							<p className="text-center p-price">

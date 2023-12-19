@@ -209,14 +209,6 @@ const Navbar = () => {
 												<NavLink to="/trips">
 													Trips
 												</NavLink>
-												{/* <ul>
-                          <li>
-                            <NavLink to="">Plan a trip</NavLink>
-                          </li>
-                          <li>
-                            <NavLink to="">Hire a trip designer</NavLink>
-                          </li>
-                        </ul> */}
 											</li>
 											<li
 												className={`${
@@ -262,6 +254,7 @@ const Navbar = () => {
 									</span>
 								</button>
 							</div>
+
 							<div className="links-box clearfix">
 								<div className="link login">
 									{auth?.user ? (

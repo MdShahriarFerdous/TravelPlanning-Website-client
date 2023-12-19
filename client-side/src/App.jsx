@@ -12,7 +12,6 @@ import UserDashboard from "./pages/user/UserDashboard";
 import BlogsListPage from "./pages/blogs/BlogsListPage";
 import BlogDetailsPage from "./pages/blogs/BlogDetailsPage";
 import HotelsListPage from "./pages/hotels/HotelsListPage";
-import FlightsListPage from "./pages/flights/FlightsListPage";
 import TripsSearchPage from "./pages/trips/TripsSearchPage";
 import TripsDetailsPage from "./pages/trips/TripsDetailsPage";
 import DestinationDetailsPage from "./pages/destination/DestinationDetailsPage.jsx";
@@ -30,6 +29,9 @@ import HotelBookmarks from "./components/userDashboard/bookmarks/hotel/HotelBook
 import TourBookmarks from "./components/userDashboard/bookmarks/tour/TourBookmarks.jsx";
 import Blogs from "./components/userDashboard/blogs/Blogs.jsx";
 import TourByType from "./components/tourtypes/tourbytype/TourByType.jsx";
+import FlightBookingPage from "./pages/flights/FlightBookingPage.jsx";
+import FlightsListPage from "./pages/flights/FlightsListPage.jsx";
+import BookingCards from "./components/userDashboard/booking/allbookings/BookingCards.jsx";
 
 const RenderAppContent = () => {
 	const [loader] = useLoader();
@@ -60,8 +62,15 @@ const RenderAppContent = () => {
 						element={<TourBooking />}
 					/>
 					<Route path="profile" element={<Profile />} />
-					<Route path="hotel-booking-lists" element={<HotelBookingLists />} />
-					<Route path="tour-booking-lists" element={<TourBookingLists />} />
+					<Route path="all-bookings" element={<BookingCards />} />
+					<Route
+						path="hotel-booking-lists"
+						element={<HotelBookingLists />}
+					/>
+					<Route
+						path="tour-booking-lists"
+						element={<TourBookingLists />}
+					/>
 					<Route
 						path="flight-booking-lists"
 						element={<FlightBookingLists />}
@@ -81,16 +90,23 @@ const RenderAppContent = () => {
 
 				<Route path="/trips" element={<TripsSearchPage />} />
 				<Route path="/tripsdetails" element={<TripsDetailsPage />} />
-				<Route path="/flights" element={<FlightsListPage />} />
 				<Route path="/blogs" element={<BlogsListPage />} />
 				<Route path="/blogs/:blogSlug" element={<BlogDetailsPage />} />
 				<Route path="/hotels" element={<HotelsListPage />} />
-				<Route path="/hotels/:hotelSlug" element={<HotelDetailsPage />} />
+				<Route path="/flights" element={<FlightsListPage />} />
+				<Route
+					path="/hotels/:hotelSlug"
+					element={<HotelDetailsPage />}
+				/>
 				<Route
 					path="/destination/:id"
 					element={<DestinationDetailsPage />}
 				/>
 				<Route path="*" element={<PageNotFound />} replace />
+				<Route
+					path="/flight/booking/:id/:total_traveler"
+					element={<FlightBookingPage />}
+				/>
 			</Routes>
 			<ToastContainer
 				autoClose={3000}
