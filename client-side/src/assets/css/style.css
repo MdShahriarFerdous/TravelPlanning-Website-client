@@ -10842,6 +10842,7 @@ body.visible-sidebar {
 }
 ::selection {
 	background-color: #fa9372;
+	color: #041f1e;
 }
 ::-webkit-scrollbar {
 	height: 6px;
