@@ -31,3 +31,6 @@
 .tour-types .slick-dots li.slick-active {
 	border: none;
 }
+.tour-type-text {
+	font-weight: 500;
+}

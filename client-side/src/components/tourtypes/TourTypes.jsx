@@ -94,7 +94,7 @@ const TourTypes = () => {
 											</a>
 										</div>
 									</div>
-									<h5>
+									<h5 className="tour-type-text">
 										<a href="#">Adventure</a>
 									</h5>
 									<a
@@ -115,7 +115,7 @@ const TourTypes = () => {
 											</a>
 										</div>
 									</div>
-									<h5>
+									<h5 className="tour-type-text">
 										<a href="#">Hiking</a>
 									</h5>
 									<a
@@ -136,7 +136,7 @@ const TourTypes = () => {
 											</a>
 										</div>
 									</div>
-									<h5>
+									<h5 className="tour-type-text">
 										<a href="#">Romance</a>
 									</h5>
 									<a
@@ -157,7 +157,7 @@ const TourTypes = () => {
 											</a>
 										</div>
 									</div>
-									<h5>
+									<h5 className="tour-type-text">
 										<a href="#">Culture</a>
 									</h5>
 									<a
@@ -178,7 +178,7 @@ const TourTypes = () => {
 											</a>
 										</div>
 									</div>
-									<h5>
+									<h5 className="tour-type-text">
 										<a href="#">Adventure</a>
 									</h5>
 									<a
@@ -199,7 +199,7 @@ const TourTypes = () => {
 											</a>
 										</div>
 									</div>
-									<h5>
+									<h5 className="tour-type-text">
 										<a href="#">Hiking</a>
 									</h5>
 									<a
@@ -220,7 +220,7 @@ const TourTypes = () => {
 											</a>
 										</div>
 									</div>
-									<h5>
+									<h5 className="tour-type-text">
 										<a href="#">Romance</a>
 									</h5>
 									<a
@@ -241,7 +241,7 @@ const TourTypes = () => {
 											</a>
 										</div>
 									</div>
-									<h5>
+									<h5 className="tour-type-text">
 										<a href="#">Adventure</a>
 									</h5>
 									<a
@@ -262,7 +262,7 @@ const TourTypes = () => {
 											</a>
 										</div>
 									</div>
-									<h5>
+									<h5 className="tour-type-text">
 										<a href="#">Hiking</a>
 									</h5>
 									<a
@@ -283,7 +283,7 @@ const TourTypes = () => {
 											</a>
 										</div>
 									</div>
-									<h5>
+									<h5 className="tour-type-text">
 										<a href="#">Romance</a>
 									</h5>
 									<a

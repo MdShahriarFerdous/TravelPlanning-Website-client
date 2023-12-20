@@ -32,6 +32,7 @@ import TourByType from "./components/tourtypes/tourbytype/TourByType.jsx";
 import FlightBookingPage from "./pages/flights/FlightBookingPage.jsx";
 import FlightsListPage from "./pages/flights/FlightsListPage.jsx";
 import BookingCards from "./components/userDashboard/booking/allbookings/BookingCards.jsx";
+import PaymentStatus from "./pages/tourbooking/PaymentStatus.jsx";
 
 const RenderAppContent = () => {
 	const [loader] = useLoader();
@@ -60,6 +61,10 @@ const RenderAppContent = () => {
 					<Route
 						path="tour-booking/:bookingId"
 						element={<TourBooking />}
+					/>
+					<Route
+						path="tour-payment-status"
+						element={<PaymentStatus />}
 					/>
 					<Route path="profile" element={<Profile />} />
 					<Route path="all-bookings" element={<BookingCards />} />
