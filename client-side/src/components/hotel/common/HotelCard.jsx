@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import Speciality from "./Speciality";
-import Rating from "./Rating";
+// import Rating from "./Rating";
 
 // eslint-disable-next-line react/prop-types
 export default function HotelCard({ hotel }) {
@@ -23,7 +23,7 @@ export default function HotelCard({ hotel }) {
           <NavLink to={`/hotels/${slug}`}>{name || ""}</NavLink>
         </h5>
         <div className="bottom-box clearfix">
-          <Rating />
+          {/* <Rating /> */}
           <div className="price">
             Start from &ensp;
             <span className="amount">${rentPerPerson}</span>

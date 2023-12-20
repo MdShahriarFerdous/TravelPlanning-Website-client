@@ -82,7 +82,7 @@ const HotelCarousel = ({ destinationData }) => {
                       <h5>
                         {/*<a href="#">{truncateDescription(hotel?.description, 50)}</a>*/}
                       </h5>
-                      <div className="bottom-box clearfix">
+                      {/* <div className="bottom-box clearfix">
                         <div className="rating">
                           <a href="#" className="theme-btn">
                             <i className="fa-solid fa-star"></i>
@@ -92,7 +92,7 @@ const HotelCarousel = ({ destinationData }) => {
                         <div className="price">
                           <span className="count">3210 Reviews</span>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
