@@ -1,4 +1,3 @@
-import React from "react";
 import UserSideNavbar from "../../navbar/UserSideNavbar";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -25,7 +24,6 @@ const HotelBookmarks = () => {
       const res = await bookmarkList({
         query: { type: "hotel" },
       });
-      // console.log("API res: ", res);
       if (res) {
         const { hotelId } = res.data || {};
         setIsLoading(false);
@@ -64,7 +62,7 @@ const HotelBookmarks = () => {
               <>
                 {hotels && hotels.length > 0 ? (
                   hotels.map((hotel) => {
-                   return <HotelCard hotel={hotel} key={hotel._id} />;
+                    return <HotelCard hotel={hotel} key={hotel._id} />;
                   })
                 ) : (
                   <div className="d-flex justify-content-center my-8">

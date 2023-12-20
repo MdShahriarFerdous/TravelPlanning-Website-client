@@ -1,4 +1,3 @@
-import React from "react";
 import UserSideNavbar from "../navbar/UserSideNavbar";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -26,8 +25,6 @@ const Blogs = () => {
         query: { type: "blog" },
       });
 
-      // const blogsData = res.blogs;
-      // console.log("API Response:", blogsData);
       if (res) {
         const blogData = res.blogs || {};
         setIsLoading(false);
@@ -43,7 +40,6 @@ const Blogs = () => {
     });
   }, []);
 
-  // console.log("All blogs: ", blogs);
   return (
     <div className="parent_content">
       <div className="container-fluids">

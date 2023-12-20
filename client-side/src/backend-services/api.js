@@ -301,7 +301,6 @@ export const SearchAPI = async (
 
 //* ===============Tour-checkApi=================
 export const CheckBoxAPI = async (pageNo = 1, perPage = 5, checked) => {
-	console.log(checked);
 	try {
 		const { data } = await axios.post(
 			`/show-checkCardList/${pageNo}/${perPage}`,
