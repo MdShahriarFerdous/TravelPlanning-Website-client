@@ -24,3 +24,18 @@ export const hotelDetailedinfo = async (hotelId) => {
     console.error(error);
   }
 };
+
+// =========================Hotel Categories List API=========================
+export const hotelCategoriesList = async ({ query }) => {
+  const sortedQuery = qs.stringify(query);
+  try {
+    const { data } = await axios.get(`/room-categories?${sortedQuery}`);
+    if (data.error) {
+      console.error(data.error);
+    } else {
+      return data;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};

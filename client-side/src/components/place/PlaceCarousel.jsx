@@ -91,7 +91,7 @@ const PlaceCarousel = ({ destinationData }) => {
                       <h5>
                         <a>{truncateDescription(place?.description, 50)}</a>
                       </h5>
-                      <div className="bottom-box clearfix">
+                      {/* <div className="bottom-box clearfix">
                         <div className="rating">
                           <a href="#" className="theme-btn">
                             <i className="fa-solid fa-star"></i>
@@ -101,7 +101,7 @@ const PlaceCarousel = ({ destinationData }) => {
                         <div className="price">
                           <span className="count">3210 Reviews</span>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
