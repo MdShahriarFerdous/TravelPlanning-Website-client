@@ -13,8 +13,6 @@ const FlightCard = ({formData, onResetFormData}) => {
         const [showModal, setShowModal] = useState(false);
         const [isLoading, setIsLoading] = useState(false);
 
-    console.log("flightData", flightData)
-
         const fetchFlight = async () => {
             setIsLoading(true);
             try {
