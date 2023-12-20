@@ -52,9 +52,6 @@ const BookingDetails = ({ flightData, traveler }) => {
 		try {
 			const response = await BookingFlight(formData);
 
-			// console.log("response", response)
-
-			// Check if the response has a success status
 			if (response.status === 401) {
 				// Show the payment option or perform any other action for success
 				openLoginModal();
@@ -76,8 +73,6 @@ const BookingDetails = ({ flightData, traveler }) => {
 		// Close the login modal
 		setLoginModalOpen(false);
 	};
-
-	// console.log("isLoginModalOpen", isLoginModalOpen);
 
 	return (
 		flightData && (

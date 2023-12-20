@@ -244,11 +244,11 @@ const TourBooking = () => {
 								</p>
 							</div>
 
-							<div className="d-flex flex-row-reverse mt-5  align-items-center">
+							<div className="d-flex flex-row-reverse mt-5  align-items-center btn-div-tour">
 								<NavLink to="" className="mr-auto p-2">
 									<button
 										type="button"
-										className="btn btn-lg payment-btn mx-4"
+										className="btn btn-lg payment-btn-tour mx-4"
 									>
 										Proceed to Payment
 									</button>
