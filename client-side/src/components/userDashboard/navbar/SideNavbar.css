@@ -29,9 +29,16 @@ li {
 	font-family: "Open Sans", sans-serif;
 	font-weight: 500;
 }
+li.item-menu-el .list {
+	transition: border 0.15s, border-radius 0.15s;
+}
 
+li.item-menu-el .list:hover {
+	border: 1px solid #ff5522;
+	border-radius: 12px;
+}
 a:hover {
-	color: #ff5522;
+	color: #576170;
 }
 
 .navbar-ul .active {
@@ -54,9 +61,9 @@ ul.navbar-ul {
 .navbar-ul .active .ic {
 	color: white;
 }
-.navbar-ul .active:hover {
+/* .navbar-ul .active:hover {
 	color: #ffffff;
-}
+} */
 .save-icon,
 .blog-icon {
 	margin-bottom: 2px;
