@@ -2836,12 +2836,11 @@ body.visible-sidebar {
 	margin-bottom: 0;
 }
 
-.tour-type-block h5 a {
+.tour-type-block h5 {
 	color: var(--dark-gray-gray);
 }
 
-.tour-type-block .inner-box:hover h5,
-.tour-type-block .inner-box:hover h5 a {
+.tour-type-block .inner-box:hover h5 {
 	color: #fff;
 }
 
@@ -2877,8 +2876,8 @@ body.visible-sidebar {
 .tour-types .slick-dots li button {
 	content: "";
 	position: absolute;
-	left: -4px;
-	top: -4px;
+	left: 6px;
+	top: 6px;
 	width: 10px;
 	height: 10px;
 	background: #c4cecc;
@@ -3344,8 +3343,8 @@ body.visible-sidebar {
 .testimonials-section .slick-dots li button {
 	content: "";
 	position: absolute;
-	left: -4px;
-	top: -4px;
+	left: 6px;
+    top: 6px;
 	width: 10px;
 	height: 10px;
 	background: #c4cecc;
