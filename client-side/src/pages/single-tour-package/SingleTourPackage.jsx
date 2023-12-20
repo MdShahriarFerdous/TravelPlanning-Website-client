@@ -17,6 +17,7 @@ import Footer from "../../components/footer/Footer";
 import ScreenLoader from "./../../components/screenloader/ScreenLoader";
 import TourPackageForm from "./TourPackageForm";
 import AddTourBookmark from "../../components/bookmark/tour/AddTourBookmark";
+import Review from "../../components/review/Review";
 import TourPackageReview from "./tourreview/TourPackageReview";
 
 const SingleTourPackage = () => {
@@ -643,9 +644,11 @@ const SingleTourPackage = () => {
 									packages={tourDetails?.packages}
 								/>
 							</div>
+							<Review tourInfoId={tourMatchingId} />
+							{/* {console.log("tourMatchingId:",tourMatchingId)} */}
+
 						</div>
 
-						<TourPackageReview />
 					</div>
 					<Footer />
 				</>
