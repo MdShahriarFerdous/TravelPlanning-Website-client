@@ -10691,7 +10691,7 @@ body.visible-sidebar {
 }
 
 .rooms-avail-box .table tbody tr:last-child td {
-	border-right: 1px solid #dee2e6 !important
+	border-right: 1px solid #dee2e6 !important;
 }
 
 .rooms-avail-box .art-outer {
@@ -10839,4 +10839,22 @@ body.visible-sidebar {
 .ui-state-default,
 .ui-widget-content .ui-state-default {
 	text-align: center;
+}
+::selection {
+	background-color: #fa9372;
+}
+::-webkit-scrollbar {
+	height: 6px;
+	width: 10px;
+}
+::-webkit-scrollbar-track {
+	background: #e0d3de;
+}
+::-webkit-scrollbar-thumb {
+	background: linear-gradient(#ef709b, #fa9372);
+	border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:horizontal {
+	background: #e0d3de;
+	border-radius: 6px;
 }
