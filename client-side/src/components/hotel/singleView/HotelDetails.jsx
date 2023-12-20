@@ -8,12 +8,12 @@ export default function HotelDetails({ name, location, hotelId }) {
         <div className="sp-header">
           <div className="loc-rat clearfix">
             <div className="location">{location}</div>
-            <div className="rating">
+            {/* <div className="rating">
               <a href="#" className="theme-btn">
                 <i className="fa-solid fa-star"></i>
                 <strong>4.8</strong> <span className="count">8345 Reviews</span>
               </a>
-            </div>
+            </div> */}
             <AddHotelBookmark hotelId={hotelId} />
           </div>
           <h1>{name}</h1>
