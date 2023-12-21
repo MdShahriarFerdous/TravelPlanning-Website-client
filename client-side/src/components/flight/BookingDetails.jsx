@@ -6,11 +6,10 @@ import { comaFormatNumber } from "../../utils/comaFormattedNumber.js";
 import { BookingFlight } from "../../_api/FlightBookingApi.js";
 import LoginModal from "../../pages/userauth/LoginModal.jsx";
 import {makePayment} from "../../_api/PaymentApi.js";
-import ScreenLoader from "../screenloader/ScreenLoader.jsx";
+
 
 const BookingDetails = ({ flightData, traveler }) => {
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   const [collapsedSections, setCollapsedSections] = useState({
     flight: false,
@@ -53,13 +52,10 @@ const BookingDetails = ({ flightData, traveler }) => {
   };
 
   const handleContinueClick = async () => {
-      setIsLoading(true)
     try {
       const response = await BookingFlight(formData);
 
-      // Check if the response has a success status
       if (response.status === 401) {
-        // Show the payment option or perform any other action for success
         openLoginModal();
       } else if (response.success === true) {
         const response = await makePayment(formData);
@@ -68,25 +64,19 @@ const BookingDetails = ({ flightData, traveler }) => {
     } catch (error) {
       // Handle general error scenarios
       console.error("Error:", error.message);
-    }finally {
-      setIsLoading(false)
     }
   };
 
   const openLoginModal = () => {
-    // Open the login modal
     setLoginModalOpen(true);
   };
 
   const closeLoginModal = () => {
-    // Close the login modal
     setLoginModalOpen(false);
   };
 
-  // console.log("isLoginModalOpen", isLoginModalOpen);
 
   return (
-    isLoading ? <ScreenLoader/> : flightData && (
       <>
         <div className="col-lg-8">
           <div className="booking-header">
@@ -669,7 +659,6 @@ const BookingDetails = ({ flightData, traveler }) => {
           </div>
         )}
       </>
-    )
   );
 };
 export default BookingDetails;
