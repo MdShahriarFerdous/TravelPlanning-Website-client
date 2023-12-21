@@ -39,3 +39,21 @@ export const hotelCategoriesList = async ({ query }) => {
     console.error(error);
   }
 };
+
+//* ======================Hotel Room Check Availablity=========================
+export const check = async (info) => {
+  const { guests, rooms, checkIn, checkOut, hotelId } = info || {};
+  try {
+    const data = await axios.post(
+      `${import.meta.env.VITE_API}/hotel-available`,
+      { guests, rooms, checkIn, checkOut, hotelId }
+    );
+    if (data.error) {
+      console.error(data.error);
+    } else {
+      return data;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};

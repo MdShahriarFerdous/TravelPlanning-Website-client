@@ -35,7 +35,7 @@ const HotelDetailsPage = () => {
       behavior: "smooth",
     });
   }, []);
-  const { _id, name, thumbnail, rentPerPerson, location } = hotelInfo || {};
+  const { _id, name, thumbnail, location } = hotelInfo || {};
   return (
     <AppLayout>
       {isLoading && (
@@ -55,7 +55,7 @@ const HotelDetailsPage = () => {
                     location={location?.location_name}
                     hotelId={_id}
                   />
-                  <HotelBookingCart rentPerPerson={rentPerPerson} />
+                  <HotelBookingCart hotelInfo={hotelInfo} />
                 </div>
               </div>
               <RoomDetails hotelId={_id} />
