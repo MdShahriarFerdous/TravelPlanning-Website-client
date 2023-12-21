@@ -2430,6 +2430,20 @@ body.visible-sidebar {
 	font-family: "Gilroy_Bold", sans-serif;
 }
 
+.package-block .bottom-box .only-price {
+	position: relative;
+	font-size: 14px;
+	color: var(--medium-gray-color);
+	line-height: 20px;
+	float: left;
+}
+
+.package-block .bottom-box .only-price .amount {
+	font-size: 18px;
+	color: var(--primary-color);
+	font-family: "Gilroy_Bold", sans-serif;
+}
+
 .packages-section .carousel-box .prev-btn {
 	position: absolute;
 	right: 66px;
@@ -10778,7 +10792,7 @@ body.visible-sidebar {
 
 ::-webkit-scrollbar {
 	height: 6px;
-	width: 10px;
+	width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -10787,10 +10801,5 @@ body.visible-sidebar {
 
 ::-webkit-scrollbar-thumb {
 	background: linear-gradient(#ef709b, #fa9372);
-	border-radius: 6px;
-}
-
-::-webkit-scrollbar-thumb:horizontal {
-	background: #e0d3de;
 	border-radius: 6px;
 }
