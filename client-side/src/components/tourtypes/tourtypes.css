@@ -25,9 +25,6 @@
 	height: 325px;
 }
 
-.tour-types .slick-dots li button {
-	background-color: #424140;
-}
-.tour-types .slick-dots li.slick-active {
-	border: none;
+.tour-type-text {
+	font-weight: 500;
 }

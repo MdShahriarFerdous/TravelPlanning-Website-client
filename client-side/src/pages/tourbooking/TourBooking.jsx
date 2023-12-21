@@ -19,6 +19,7 @@ import {
 	TourInfoByIdAPI,
 } from "../../backend-services/api";
 import BlockLoader from "../../components/screenloader/BlockLoader";
+import LogoImgs from "../../assets/images/logo-nav.png";
 
 const TourBooking = () => {
 	const { bookingId } = useParams();
@@ -113,9 +114,14 @@ const TourBooking = () => {
 		}
 	};
 
+	const handleClick = (e) => {
+		e.preventDefault();
+		navigate("/user/tour-payment-status");
+	};
+
 	return (
-		<div className="container mt-5 mb-5">
-			<div className="home-back-btn mb-5">
+		<div className="container mb-5 pb-5 booking-bg-div">
+			<div className="home-back-btn mt-5 mb-5">
 				<NavLink to="/">
 					<button
 						type="button"
@@ -126,17 +132,17 @@ const TourBooking = () => {
 					</button>
 				</NavLink>
 			</div>
-
 			<div className="row">
-				<div className="col-lg-12">
+				<div className="col-lg-12 ">
 					{loading ? (
 						<BlockLoader />
 					) : (
-						<div className="card p-5 mt-3 mb-4 booking-card">
-							<div className="">
+						<div className="card p-5 mt-3 mb-4 m-auto booking-card">
+							<div className="d-flex justify-content-between">
 								<h2 className="booking-head">
 									Booking Overview
 								</h2>
+								<img src={LogoImgs} />
 							</div>
 							<hr></hr>
 
@@ -244,11 +250,12 @@ const TourBooking = () => {
 								</p>
 							</div>
 
-							<div className="d-flex flex-row-reverse mt-5  align-items-center">
+							<div className="d-flex flex-row-reverse mt-5  align-items-center btn-div-tour">
 								<NavLink to="" className="mr-auto p-2">
 									<button
 										type="button"
-										className="btn btn-lg payment-btn mx-4"
+										className="btn btn-lg payment-btn-tour mx-4"
+										onClick={handleClick}
 									>
 										Proceed to Payment
 									</button>

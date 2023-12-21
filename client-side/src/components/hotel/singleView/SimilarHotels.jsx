@@ -35,35 +35,16 @@ export default function SimilarHotels({ locationId }) {
     pauseOnHover: false,
     responsive: [
       {
-        breakpoint: 1366,
-        settings: {
-          slidesToShow: 4,
-        },
-      },
-      {
         breakpoint: 1200,
         settings: {
-          slidesToShow: 3,
-        },
-      },
-      {
-        breakpoint: 992,
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 834,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 1,
+          slidesToScroll: 1,
         },
       },
     ],

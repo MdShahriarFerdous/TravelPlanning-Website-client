@@ -39,8 +39,8 @@ const Dashboard = () => {
 				>
 					Unlock a World of Journeys with WeTravel
 				</h3>
-				{/* {console.log(auth?.user)} */}
-				{/* <span>Lorem ipsum dolor sit amet.</span> */}
+				
+				
 			</div>
 			<MenuOptions />
 		</div>

@@ -21,7 +21,7 @@ const TourCheckBox = ({ tourType }) => {
 	useEffect(() => {
 		const loadFilteredTours = async () => {
 			if (checked.length > 0) {
-				const data = await CheckBoxAPI(1, 5, checked);
+				const data = await CheckBoxAPI(1, 5, checked, tourType);
 				setSearchData({
 					...searchData,
 					total: data.total,

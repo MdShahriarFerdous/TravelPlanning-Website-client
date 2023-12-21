@@ -13,23 +13,26 @@ p {
 }
 .btn-back {
 	padding: 16px 24px;
-	outline: 1px solid #ff531f;
+
 	color: #ff531f;
 }
-.btn-outline-secondary.btn-back:hover {
-	color: white;
-	background-color: #ff531f;
+.btn.btn-outline-secondary.btn-back:hover {
+	color: #ff531f;
+	outline: 1px solid #ff531f;
 }
-.payment-btn {
-	/* padding: 16px 24px; */
+.btn-div-tour .payment-btn-tour {
+	padding: 16px 24px;
 	background: #ff531f;
 	color: white;
+	font-weight: 400;
 }
 .payment-btn:hover {
 	background: #f54d1a;
 	color: white;
 }
-
+.cancel-btn {
+	font-weight: 400;
+}
 .back-arrow {
 	margin: 0 4px 2px 0;
 	color: #ff531f;
@@ -52,4 +55,14 @@ p {
 }
 .booking-card {
 	width: 85%;
+}
+/* .booking-bg-div {
+	background-color: #f5f5fb;
+	min-height: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+} */
+.p-query {
+	font-weight: 700;
 }

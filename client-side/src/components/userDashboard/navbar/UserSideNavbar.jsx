@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { IoLogOutOutline } from "react-icons/io5";
 import { MdOutlineDashboard } from "react-icons/md";
 import { IoPersonOutline } from "react-icons/io5";
@@ -9,13 +9,23 @@ import { TbArticle } from "react-icons/tb";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap";
 import "./SideNavbar.css";
+import { useAuth } from "../../../context/authContext";
 
 const UserSideNavbar = () => {
+	const [auth, setAuth] = useAuth();
+	const navigate = useNavigate();
+
+	const handleClick = () => {
+		setAuth({ ...auth, user: null, token: "" });
+		localStorage.removeItem("auth");
+		navigate("/");
+	};
+
 	return (
 		<div className="container">
 			<nav className="sidebar">
 				<ul className="navbar-ul">
-					<li>
+					<li className="item-menu-el">
 						<NavLink
 							to="/user/dashboard"
 							className="list d-block navlink-hover"
@@ -24,7 +34,8 @@ const UserSideNavbar = () => {
 							Dashboard
 						</NavLink>
 					</li>
-					<li>
+
+					<li className="item-menu-el">
 						<NavLink
 							to="/user/profile"
 							className="list d-block navlink-hover"
@@ -60,7 +71,7 @@ const UserSideNavbar = () => {
 						</NavLink>
 					</li> */}
 
-					<li>
+					<li className="item-menu-el">
 						<NavLink
 							to="/user/all-bookings"
 							className="list d-block navlink-hover"
@@ -70,7 +81,7 @@ const UserSideNavbar = () => {
 						</NavLink>
 					</li>
 
-					<li>
+					<li className="item-menu-el">
 						<NavLink
 							to="/user/bookmarked-hotels"
 							className="list d-block navlink-hover"
@@ -79,7 +90,8 @@ const UserSideNavbar = () => {
 							Hotel Bookmarks
 						</NavLink>
 					</li>
-					<li>
+
+					<li className="item-menu-el">
 						<NavLink
 							to="/user/bookmarked-tours"
 							className="list d-block navlink-hover"
@@ -88,7 +100,8 @@ const UserSideNavbar = () => {
 							Tour Bookmarks
 						</NavLink>
 					</li>
-					<li>
+
+					<li className="item-menu-el">
 						<NavLink
 							to="/user/blogs"
 							className="list d-block navlink-hover"
@@ -96,7 +109,8 @@ const UserSideNavbar = () => {
 							<TbArticle className="ic blog-icon" /> Blogs
 						</NavLink>
 					</li>
-					<li>
+
+					<li className="item-menu-el" onClick={handleClick}>
 						<NavLink
 							to="sign-out"
 							className="list signout d-block navlink-hover"
