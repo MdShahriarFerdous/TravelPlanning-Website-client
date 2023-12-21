@@ -33,6 +33,7 @@ import FlightBookingPage from "./pages/flights/FlightBookingPage.jsx";
 import FlightsListPage from "./pages/flights/FlightsListPage.jsx";
 import BookingCards from "./components/userDashboard/booking/allbookings/BookingCards.jsx";
 import PaymentStatus from "./pages/tourbooking/PaymentStatus.jsx";
+import FlightPaymentStatus from "./pages/flights/FlightPaymentStatus.jsx";
 
 const RenderAppContent = () => {
 	const [loader] = useLoader();
@@ -111,6 +112,10 @@ const RenderAppContent = () => {
 				<Route
 					path="/flight/booking/:id/:total_traveler"
 					element={<FlightBookingPage />}
+				/>
+				<Route
+					path="/flight/payment/success"
+					element={<FlightPaymentStatus />}
 				/>
 			</Routes>
 			<ToastContainer

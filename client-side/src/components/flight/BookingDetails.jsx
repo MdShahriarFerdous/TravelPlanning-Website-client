@@ -6,9 +6,12 @@ import { comaFormatNumber } from "../../utils/comaFormattedNumber.js";
 import { BookingFlight } from "../../_api/FlightBookingApi.js";
 import LoginModal from "../../pages/userauth/LoginModal.jsx";
 import {makePayment} from "../../_api/PaymentApi.js";
+import ScreenLoader from "../screenloader/ScreenLoader.jsx";
 
 const BookingDetails = ({ flightData, traveler }) => {
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const [collapsedSections, setCollapsedSections] = useState({
     flight: false,
     flightDetails: false,
@@ -50,6 +53,7 @@ const BookingDetails = ({ flightData, traveler }) => {
   };
 
   const handleContinueClick = async () => {
+      setIsLoading(true)
     try {
       const response = await BookingFlight(formData);
 
@@ -64,6 +68,8 @@ const BookingDetails = ({ flightData, traveler }) => {
     } catch (error) {
       // Handle general error scenarios
       console.error("Error:", error.message);
+    }finally {
+      setIsLoading(false)
     }
   };
 
@@ -80,7 +86,7 @@ const BookingDetails = ({ flightData, traveler }) => {
   // console.log("isLoginModalOpen", isLoginModalOpen);
 
   return (
-    flightData && (
+    isLoading ? <ScreenLoader/> : flightData && (
       <>
         <div className="col-lg-8">
           <div className="booking-header">
