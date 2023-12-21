@@ -8,7 +8,7 @@ import HotelImages from "../../components/hotel/singleView/HotelImages";
 import SimilarHotels from "../../components/hotel/singleView/SimilarHotels";
 import MiniLoader from "../../components/screenloader/MiniLoader";
 import RoomDetails from "../../components/hotel/singleView/RoomDetails";
-// import HotelMap from "../../components/hotel/singleView/HotelMap";
+import HotelMap from "../../components/hotel/singleView/HotelMap";
 // import FAQ from "../../components/hotel/singleView/FAQ";
 // import Reviews from ../../components/hotel/singleView/Reviews";
 // import TopAttraction from "../../components/hotel/singleView/TopAttraction";
@@ -61,10 +61,11 @@ const HotelDetailsPage = () => {
               <RoomDetails hotelId={_id} />
               <div className="part-two">
                 <div className="row clearfix">
-                  <div className="content-side col-xl-8 col-lg-12 col-md-12 col-sm-12">
+                  {/* <div className="content-side col-xl-8 col-lg-12 col-md-12 col-sm-12"> */}
+                  <div className="content-side col-xl-12 col-lg-12 col-md-12 col-sm-12">
                     <div className="content-inner">
                       {/* Will Be Implemented Later */}
-                      {/* <HotelMap /> */}
+                      <HotelMap />
                       {/* <FAQ /> */}
                       {/* <Reviews /> */}
                     </div>
