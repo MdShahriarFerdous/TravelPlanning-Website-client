@@ -38,9 +38,6 @@ export default function FlightSearch() {
         });
     };
 
-    console.log("formData", formData)
-    console.log("searchData", searchData)
-
     const fetchLocation = async () => {
         const response = await getAllLocation();
         setLocationData(response.data);

@@ -83,7 +83,7 @@ const Destination = () => {
           function (e) {
             e.preventDefault();
             $("body").toggleClass("visible-cart-bar");
-          }
+          },
         );
         $(".cart-sidebar .closer-btn,.cart-backdrop").on("click", function () {
           $("body").removeClass("visible-cart-bar");
@@ -136,7 +136,7 @@ const Destination = () => {
               $(this).find("i").toggleClass("icon-arrow-up");
               return false;
             }
-          }
+          },
         );
       }
 
@@ -336,7 +336,7 @@ const Destination = () => {
             {
               scrollTop: $(target).offset().top,
             },
-            1500
+            1500,
           );
         });
       }
