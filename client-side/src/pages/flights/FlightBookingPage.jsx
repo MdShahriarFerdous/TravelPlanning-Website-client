@@ -12,8 +12,7 @@ const FlightBookingPage = () => {
 	const [flightData, setFlightData] = useState({});
 	const [isLoading, setIsLoading] = useState(false);
 
-	// console.log("v", flightData)
-	// console.log("Traveler", {travelers: total_traveler})
+	
 
 	const fetchFlight = async () => {
 		setIsLoading(true);
