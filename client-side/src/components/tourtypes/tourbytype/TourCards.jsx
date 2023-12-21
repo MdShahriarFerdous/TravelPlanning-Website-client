@@ -61,14 +61,17 @@ const TourCards = ({ tourType }) => {
 
 	tourTypeData = dataToUse.tourData;
 	totalTourData = dataToUse.total;
+	// console.log(dataToUse);
 
 	return (
 		<div className="container-fluid px-5 mt-5 mb-5">
 			<div className="ms-3">
 				<h6>
-					{totalTourData > 1
-						? `Destination: ${totalTourData} places found`
-						: `Destination: ${totalTourData} place found`}
+					{dataToUse.tourData.length === 0
+						? `Destination: No places found`
+						: dataToUse.tourData.length === 1
+						? `Destination: ${dataToUse.tourData.length} place found`
+						: `Destination: ${totalTourData} places found`}
 				</h6>
 			</div>
 			<div className="row">
