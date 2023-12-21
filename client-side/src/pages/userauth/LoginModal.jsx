@@ -1,13 +1,12 @@
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/authContext.jsx";
-import { useLoader } from "../../context/loaderContext.jsx";
 import { useFormik } from "formik";
 import { object, string } from "yup";
 import { LoginAPI } from "../../backend-services/api.js";
 import { toast } from "react-toastify";
 
 const LoginModal = ({ onSuccess }) => {
-	const [setAuth] = useAuth();
+	const [auth, setAuth] = useAuth();
 
 	const formik = useFormik({
 		initialValues: {
@@ -24,10 +23,13 @@ const LoginModal = ({ onSuccess }) => {
 				if (data.status === "success") {
 					localStorage.setItem("auth", JSON.stringify(data));
 					setAuth({
+						...auth,
 						user: data.user,
 						token: data.createToken,
 					});
 					toast.success("Login successful");
+
+					console.log(onSuccess)
 
 					// Call the onSuccess callback to close the modal
 					onSuccess();

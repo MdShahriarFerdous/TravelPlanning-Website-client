@@ -278,13 +278,14 @@ export const TourByTypeAPI = async (tourType) => {
 export const SearchAPI = async (
 	pageNo = 1,
 	perPage = 5,
-	searchKeyword = "0"
+	searchKeyword = "0",
+	tourType
 ) => {
 	try {
 		const url =
 			searchKeyword === "0"
-				? `/show-tourCardList/${pageNo}/${perPage}`
-				: `/show-tourCardList/${pageNo}/${perPage}/${searchKeyword}`;
+				? `/show-tourCardList/${pageNo}/${perPage}/${tourType}`
+				: `/show-tourCardList/${pageNo}/${perPage}/${searchKeyword}/${tourType}`;
 
 		const { data } = await axios.get(url);
 
@@ -300,10 +301,15 @@ export const SearchAPI = async (
 };
 
 //* ===============Tour-checkApi=================
-export const CheckBoxAPI = async (pageNo = 1, perPage = 5, checked) => {
+export const CheckBoxAPI = async (
+	pageNo = 1,
+	perPage = 5,
+	checked,
+	tourType
+) => {
 	try {
 		const { data } = await axios.post(
-			`/show-checkCardList/${pageNo}/${perPage}`,
+			`/show-checkCardList/${pageNo}/${perPage}/${tourType}`,
 			{ checked: checked }
 		);
 

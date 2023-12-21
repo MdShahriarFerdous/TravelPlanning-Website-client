@@ -17,7 +17,12 @@ const TourSearchForm = ({ tourType }) => {
 	const searchHandleChange = async (event) => {
 		if (event.target.value.length > 0) {
 			setSearchKeyword(event.target.value);
-			const data = await SearchAPI(page, perPage, event.target.value);
+			const data = await SearchAPI(
+				page,
+				perPage,
+				event.target.value,
+				tourType
+			);
 			setSearchData({
 				...searchData,
 				total: data.total,
@@ -42,7 +47,7 @@ const TourSearchForm = ({ tourType }) => {
 	};
 	const handleSearchData = async (event) => {
 		event.preventDefault();
-		const data = await SearchAPI(page, perPage, searchKeyword);
+		const data = await SearchAPI(page, perPage, searchKeyword, tourType);
 		setSearchData({
 			...searchData,
 			total: data.total,
