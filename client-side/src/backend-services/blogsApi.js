@@ -59,3 +59,34 @@ export const blogsDetailedList = async (blogId) => {
     console.error(error);
   }
 };
+
+// ======================User Specific Blogs API========================
+export const blogsListByUser = async ({ query }) => {
+  const sortedQuery = qs.stringify(query);
+  try {
+    const authToken = localStorage.getItem("auth");
+    const token = authToken && JSON.parse(authToken).token;
+
+    if (token) {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API}/blogs-by-user?${sortedQuery}`,
+        {
+          headers: {
+            Authorization: `${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (data.error) {
+        console.error(data.error);
+        return false;
+      } else {
+        return data;
+      }
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};

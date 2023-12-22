@@ -1,8 +1,8 @@
 // eslint-disable-next-line react/prop-types
-export default function Pagination({ handlePageChange, meta }) {
+export default function Pagination({ handlePageChange, meta, isCentered }) {
   const { page, totalPages } = meta || {};
   return (
-    <div className="styled-pagination centered">
+    <div className={`styled-pagination ${isCentered ? "centered" : ""}`}>
       <ul className="clearfix">
         {Array.apply(null, { length: totalPages }).map((e, i) => {
           return (
