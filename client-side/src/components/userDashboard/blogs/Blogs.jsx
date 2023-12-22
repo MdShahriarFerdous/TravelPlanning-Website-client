@@ -28,10 +28,10 @@ const Blogs = () => {
         query: { pageNumber },
       });
       if (res) {
-        const { blogs, page, totalPages, count } = res || {};
+        const { blogs, page, totalPages, count, itemsPerPage } = res || {};
         setIsLoading(false);
         setBlogs(blogs);
-        setBlogsMeta({ page, totalPages, count });
+        setBlogsMeta({ page, totalPages, count, itemsPerPage });
       }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps

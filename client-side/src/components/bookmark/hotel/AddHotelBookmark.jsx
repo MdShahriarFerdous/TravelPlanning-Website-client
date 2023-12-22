@@ -78,7 +78,7 @@ const AddHotelBookmark = ({ hotelId }) => {
       ) : (
         <>
           <FaRegHeart />
-          <span style={{ marginLeft: "10px" }}>BookMark this Hotel</span>
+          <span style={{ marginLeft: "10px" }}>Bookmark this Hotel</span>
         </>
       )}
     </span>

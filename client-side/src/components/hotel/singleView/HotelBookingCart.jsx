@@ -208,45 +208,51 @@ export default function HotelBookingCart({ hotelInfo, hotelDetailedInfos }) {
             </div>
           </div>
         </div>
-
-        <div className="dsp-widget dsp-stat-widget">
-          <div className="inner">
-            <h3>Property Highlights</h3>
-            <div className="stats">
-              <ul>
-                <li className="clearfix">
-                  <span className="ttl">Established</span>
-                  <span className="dtl">{establishYear}</span>
-                </li>
-                <li className="clearfix">
-                  <span className="ttl">Renovation</span>
-                  <span className="dtl">{renovationYear}</span>
-                </li>
-                <li className="clearfix">
-                  <span className="ttl">Total Floor</span>
-                  <span className="dtl">{floors}</span>
-                </li>
-                <li className="clearfix">
-                  <span className="ttl">Total Rooms</span>
-                  <span className="dtl">{rooms}</span>
-                </li>
-
-                <li className="clearfix">
-                  <span className="ttl">Total Bars</span>
-                  <span className="dtl">{bars}</span>
-                </li>
-                <li className="clearfix">
-                  <span className="ttl">Total Stuff</span>
-                  <span className="dtl">{staff}</span>
-                </li>
-                <li className="clearfix">
-                  <span className="ttl">Total Branch</span>
-                  <span className="dtl">{branch}</span>
-                </li>
-              </ul>
+        {bars &&
+          branch &&
+          establishYear &&
+          floors &&
+          renovationYear &&
+          rooms &&
+          staff && (
+            <div className="dsp-widget dsp-stat-widget">
+              <div className="inner">
+                <h3>Property Highlights</h3>
+                <div className="stats">
+                  <ul>
+                    <li className="clearfix">
+                      <span className="ttl">Established</span>
+                      <span className="dtl">{establishYear}</span>
+                    </li>
+                    <li className="clearfix">
+                      <span className="ttl">Renovation</span>
+                      <span className="dtl">{renovationYear}</span>
+                    </li>
+                    <li className="clearfix">
+                      <span className="ttl">Total Floor</span>
+                      <span className="dtl">{floors}</span>
+                    </li>
+                    <li className="clearfix">
+                      <span className="ttl">Total Rooms</span>
+                      <span className="dtl">{rooms}</span>
+                    </li>
+                    <li className="clearfix">
+                      <span className="ttl">Total Bars</span>
+                      <span className="dtl">{bars}</span>
+                    </li>
+                    <li className="clearfix">
+                      <span className="ttl">Total Stuff</span>
+                      <span className="dtl">{staff}</span>
+                    </li>
+                    <li className="clearfix">
+                      <span className="ttl">Total Branch</span>
+                      <span className="dtl">{branch}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          )}
       </div>
       {!isLoading && (
         <AvailablityModal

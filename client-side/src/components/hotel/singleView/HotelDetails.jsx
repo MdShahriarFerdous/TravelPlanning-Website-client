@@ -12,7 +12,7 @@ export default function HotelDetails({
       <div className="content-inner">
         <div className="sp-header">
           <div className="loc-rat clearfix">
-            <div className="location">{hotelLocation}</div>
+            {hotelLocation && <div className="location">{hotelLocation}</div>}
             {/* <div className="rating">
               <a href="#" className="theme-btn">
                 <i className="fa-solid fa-star"></i>
@@ -22,18 +22,24 @@ export default function HotelDetails({
             <AddHotelBookmark hotelId={hotelId} />
           </div>
           <h1>{name}</h1>
-          <div className="info clearfix">
-            <div className="duration">
-              <i className="fa-solid fa-map-marker-alt"></i> {address}
+          {address && (
+            <div className="info clearfix">
+              <div className="duration">
+                <i className="fa-solid fa-map-marker-alt"></i> {address}
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         <div className="upper-content">
           <div className="text-content">
-            <h3>About this Hotel</h3>
-            <p>{about1}</p>
-            <p>{about2}</p>
+            {(about1 || about2) && (
+              <>
+                <h3>About this Hotel</h3>
+                <p>{about1}</p>
+                <p>{about2}</p>
+              </>
+            )}
             <br />
             <h3>Facilities</h3>
             <div className="facilities">

@@ -120,6 +120,7 @@ const HotelsListPage = () => {
               <Pagination
                 handlePageChange={handlePageChange}
                 meta={hotelsMeta}
+                isCentered={true}
               />
             )}
           </div>
