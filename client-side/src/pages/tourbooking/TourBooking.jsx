@@ -250,6 +250,15 @@ const TourBooking = () => {
 								</p>
 							</div>
 
+							<div className="d-flex justify-content-around">
+								<p className="p-pay flex-grow-1">
+									BDT
+								</p>
+								<p className="p-pay mx-5">
+									 {bookingDetails?.totalToPay * 100} Taka
+								</p>
+							</div>
+
 							<div className="d-flex flex-row-reverse mt-5  align-items-center btn-div-tour">
 								<NavLink to="" className="mr-auto p-2">
 									<button
