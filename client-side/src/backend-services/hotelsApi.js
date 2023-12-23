@@ -1,7 +1,7 @@
 import axios from "axios";
 import qs from "qs";
 
-// =========================HotelsList API=========================
+// =========================HotelsList API===================================
 export const hotelsList = async ({ query }) => {
   const sortedQuery = qs.stringify(query);
   try {
@@ -16,10 +16,18 @@ export const hotelsList = async ({ query }) => {
   }
 };
 
-// =========================HotelDetails API=======================
+// =========================HotelDetails API=================================
 export const hotelDetailedinfo = async (hotelId) => {
   try {
     return await axios.get(`/hotels/${hotelId}`);
+  } catch (error) {
+    console.error(error);
+  }
+};
+// =========================Hotel Info API====================================
+export const hotelInfoApi = async (hotelId) => {
+  try {
+    return await axios.get(`/hotel-info-get?hotelId=${hotelId}`);
   } catch (error) {
     console.error(error);
   }

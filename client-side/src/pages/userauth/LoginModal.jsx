@@ -29,7 +29,7 @@ const LoginModal = ({ onSuccess }) => {
 					});
 					toast.success("Login successful");
 
-					console.log(onSuccess)
+					
 
 					// Call the onSuccess callback to close the modal
 					onSuccess();

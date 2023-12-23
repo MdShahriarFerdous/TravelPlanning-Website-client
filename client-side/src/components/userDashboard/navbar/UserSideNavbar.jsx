@@ -87,7 +87,7 @@ const UserSideNavbar = () => {
 							className="list d-block navlink-hover"
 						>
 							<FaRegHeart className="ic save-icon" />
-							Hotel Bookmarks
+							Bookmarked Hotels
 						</NavLink>
 					</li>
 
@@ -97,7 +97,7 @@ const UserSideNavbar = () => {
 							className="list d-block navlink-hover"
 						>
 							<FaRegHeart className="ic save-icon" />
-							Tour Bookmarks
+							Bookmarked Tours
 						</NavLink>
 					</li>
 
@@ -106,7 +106,7 @@ const UserSideNavbar = () => {
 							to="/user/blogs"
 							className="list d-block navlink-hover"
 						>
-							<TbArticle className="ic blog-icon" /> Blogs
+							<TbArticle className="ic blog-icon" /> My Blogs
 						</NavLink>
 					</li>
 

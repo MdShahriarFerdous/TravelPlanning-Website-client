@@ -61,7 +61,7 @@ const TourCards = ({ tourType }) => {
 
 	tourTypeData = dataToUse.tourData;
 	totalTourData = dataToUse.total;
-	// console.log(dataToUse);
+	
 
 	return (
 		<div className="container-fluid px-5 mt-5 mb-5">

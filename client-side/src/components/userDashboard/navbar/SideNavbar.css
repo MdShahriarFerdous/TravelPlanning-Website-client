@@ -31,11 +31,17 @@ li {
 }
 li.item-menu-el .list {
 	transition: border 0.15s, border-radius 0.15s;
+	border: 1px solid transparent;
+	border-radius: 12px;
 }
 
 li.item-menu-el .list:hover {
+	background-color: #ff5522;
 	border: 1px solid #ff5522;
-	border-radius: 12px;
+	color: #fff;
+}
+li.item-menu-el .list:hover .ic {
+	color: white;
 }
 a:hover {
 	color: #576170;

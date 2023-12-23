@@ -1,13 +1,18 @@
+/* eslint-disable react/prop-types */
 import AddHotelBookmark from "../../bookmark/hotel/AddHotelBookmark";
-
-// eslint-disable-next-line react/prop-types
-export default function HotelDetails({ name, location, hotelId }) {
+export default function HotelDetails({
+  name,
+  hotelId,
+  hotelLocation,
+  hotelDetailedInfos,
+}) {
+  const { about1, about2, address } = hotelDetailedInfos || {};
   return (
     <div className="content-side col-xl-8 col-lg-12 col-md-12 col-sm-12">
       <div className="content-inner">
         <div className="sp-header">
           <div className="loc-rat clearfix">
-            <div className="location">{location}</div>
+            {hotelLocation && <div className="location">{hotelLocation}</div>}
             {/* <div className="rating">
               <a href="#" className="theme-btn">
                 <i className="fa-solid fa-star"></i>
@@ -17,39 +22,24 @@ export default function HotelDetails({ name, location, hotelId }) {
             <AddHotelBookmark hotelId={hotelId} />
           </div>
           <h1>{name}</h1>
-          <div className="info clearfix">
-            <div className="duration">
-              <i className="fa-solid fa-map-marker-alt"></i> 150 Piccadilly,
-              London W1J 9BR, United Kingdom
+          {address && (
+            <div className="info clearfix">
+              <div className="duration">
+                <i className="fa-solid fa-map-marker-alt"></i> {address}
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         <div className="upper-content">
           <div className="text-content">
-            <h3>About this Hotel</h3>
-            <p>
-              The Ritz London is an iconic luxury hotel located in the heart of
-              Piccadilly, one of Londons most prestigious neighborhoods.
-            </p>
-            <p>
-              Established in 1906, The Ritz exudes timeless elegance and refined
-              opulence, making it a favorite destination for discerning
-              travelers from around the world. The hotels stunning Edwardian
-              architecture and lavish interiors, adorned with chandeliers,
-              marble columns, and antique furnishings, transport guests to a
-              bygone era of sophistication and grandeur.
-            </p>
-            <p>
-              With 136 luxurious guest rooms and suites, each meticulously
-              decorated to evoke classic glamour and modern comfort, The Ritz
-              London promises an unforgettable stay. Guests are treated to
-              impeccable service from the hotels dedicated staff, ensuring every
-              need is met with grace and attention to detail. The hotels
-              restaurants, including the renowned Michelin-starred Ritz
-              Restaurant, offer exquisite dining experiences, serving a mix of
-              British and French culinary delights.
-            </p>
+            {(about1 || about2) && (
+              <>
+                <h3>About this Hotel</h3>
+                <p>{about1}</p>
+                <p>{about2}</p>
+              </>
+            )}
             <br />
             <h3>Facilities</h3>
             <div className="facilities">
@@ -61,9 +51,9 @@ export default function HotelDetails({ name, location, hotelId }) {
                     </div>
                     <h5>Full Air Conditioned</h5>
                     <div className="travilo-text">
-                      The Ritz London provides air-conditioned rooms and public
-                      areas to ensure a comfortable stay, especially during warm
-                      London summers.
+                      The Richmond Hotel And Suites provides air-conditioned
+                      rooms and public areas to ensure a comfortable stay,
+                      especially during warm summers.
                     </div>
                   </div>
                 </div>
@@ -100,10 +90,11 @@ export default function HotelDetails({ name, location, hotelId }) {
                     </div>
                     <h5>Food & Drinks</h5>
                     <div className="travilo-text">
-                      The Ritz offers a range of dining options, from the
-                      opulent Ritz Restaurant to the elegant Palm Court, famous
-                      for its afternoon tea service, making every meal a
-                      memorable experience.
+                      The Richmond Hotel And Suites offers a range of dining
+                      options, from the opulent Richmond Hotel And Suites
+                      Restaurant to the elegant Palm Court, famous for its
+                      afternoon tea service, making every meal a memorable
+                      experience.
                     </div>
                   </div>
                 </div>
@@ -114,8 +105,8 @@ export default function HotelDetails({ name, location, hotelId }) {
                     </div>
                     <h5>Swimming Pool</h5>
                     <div className="travilo-text">
-                      The Ritz London features a beautiful indoor swimming pool
-                      where guests can unwind and rejuvenate.
+                      The Richmond Hotel And Suites features a beautiful indoor
+                      swimming pool where guests can unwind and rejuvenate.
                     </div>
                   </div>
                 </div>
@@ -161,9 +152,9 @@ export default function HotelDetails({ name, location, hotelId }) {
                     </div>
                     <h5>Children & Infants</h5>
                     <div className="travilo-text">
-                      The Ritz London welcomes children of all ages. Extra beds
-                      and cribs may be provided upon request, subject to
-                      availability.
+                      The Richmond Hotel And Suites welcomes children of all
+                      ages. Extra beds and cribs may be provided upon request,
+                      subject to availability.
                     </div>
                   </div>
                 </div>
@@ -188,8 +179,9 @@ export default function HotelDetails({ name, location, hotelId }) {
                     </div>
                     <h5>Parking</h5>
                     <div className="travilo-text">
-                      The Ritz London offers valet parking services for guests
-                      with private vehicles. Charges may apply.
+                      The Richmond Hotel And Suites offers valet parking
+                      services for guests with private vehicles. Charges may
+                      apply.
                     </div>
                   </div>
                 </div>

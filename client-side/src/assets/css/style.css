@@ -8867,6 +8867,35 @@ body.visible-sidebar {
 	color: var(--primary-color);
 }
 
+.dsp-container .sp-header .loc-rat .add-favourite {
+	position: relative;
+	display: flex;
+	padding-top: 4px;
+	line-height: 24px;
+	justify-content: end;
+}
+
+.dsp-container .sp-header .loc-rat .add-favourite span {
+	color: var(--medium-gray-color);
+	display: block;
+	line-height: 24px;
+}
+
+.dsp-container .sp-header .loc-rat .add-favourite span:hover {
+	color: var(--primary-color);
+}
+
+.dsp-container .sp-header .loc-rat .add-favourite svg {
+	color: var(--medium-gray-color);
+	display: block;
+	line-height: 24px;
+	margin-top: 5px;
+}
+
+.dsp-container .sp-header .loc-rat .add-favourite svg:hover {
+	color: var(--primary-color);
+}
+
 .dsp-container .sp-header h1 {
 	position: relative;
 	font-weight: 400;

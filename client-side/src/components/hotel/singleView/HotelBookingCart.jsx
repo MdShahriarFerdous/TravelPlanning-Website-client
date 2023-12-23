@@ -12,14 +12,24 @@ import "react-datepicker/dist/react-datepicker.css";
 import MiniLoader from "../../screenloader/MiniLoader";
 
 // eslint-disable-next-line react/prop-types
-export default function HotelBookingCart({ hotelInfo }) {
+export default function HotelBookingCart({ hotelInfo, hotelDetailedInfos }) {
   const { _id, name, rentPerPerson } = hotelInfo || {};
   const [modalShow, setModalShow] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [guestsInput, setGuestsInput] = useState(1);
   const [roomsInput, setRoomsInput] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
-
+  const {
+    bars,
+    branch,
+    establishYear,
+    floors,
+    googleMap,
+    hotelId,
+    renovationYear,
+    rooms,
+    staff,
+  } = hotelDetailedInfos || {};
   // Initial Form Values
   const initialValues = {
     checkInDate: new Date(),
@@ -198,48 +208,51 @@ export default function HotelBookingCart({ hotelInfo }) {
             </div>
           </div>
         </div>
-
-        <div className="dsp-widget dsp-stat-widget">
-          <div className="inner">
-            <h3>Property Highlights</h3>
-            <div className="stats">
-              <ul>
-                <li className="clearfix">
-                  <span className="ttl">Established</span>
-                  <span className="dtl">1970</span>
-                </li>
-                <li className="clearfix">
-                  <span className="ttl">Renovation</span>
-                  <span className="dtl">2020</span>
-                </li>
-                <li className="clearfix">
-                  <span className="ttl">Total Floor</span>
-                  <span className="dtl">50</span>
-                </li>
-                <li className="clearfix">
-                  <span className="ttl">Total Rooms</span>
-                  <span className="dtl">240</span>
-                </li>
-                <li className="clearfix">
-                  <span className="ttl">Total Restaurants</span>
-                  <span className="dtl">5</span>
-                </li>
-                <li className="clearfix">
-                  <span className="ttl">Total Bars</span>
-                  <span className="dtl">3</span>
-                </li>
-                <li className="clearfix">
-                  <span className="ttl">Total Stuff</span>
-                  <span className="dtl">5200</span>
-                </li>
-                <li className="clearfix">
-                  <span className="ttl">Total Branch</span>
-                  <span className="dtl">3</span>
-                </li>
-              </ul>
+        {bars &&
+          branch &&
+          establishYear &&
+          floors &&
+          renovationYear &&
+          rooms &&
+          staff && (
+            <div className="dsp-widget dsp-stat-widget">
+              <div className="inner">
+                <h3>Property Highlights</h3>
+                <div className="stats">
+                  <ul>
+                    <li className="clearfix">
+                      <span className="ttl">Established</span>
+                      <span className="dtl">{establishYear}</span>
+                    </li>
+                    <li className="clearfix">
+                      <span className="ttl">Renovation</span>
+                      <span className="dtl">{renovationYear}</span>
+                    </li>
+                    <li className="clearfix">
+                      <span className="ttl">Total Floor</span>
+                      <span className="dtl">{floors}</span>
+                    </li>
+                    <li className="clearfix">
+                      <span className="ttl">Total Rooms</span>
+                      <span className="dtl">{rooms}</span>
+                    </li>
+                    <li className="clearfix">
+                      <span className="ttl">Total Bars</span>
+                      <span className="dtl">{bars}</span>
+                    </li>
+                    <li className="clearfix">
+                      <span className="ttl">Total Stuff</span>
+                      <span className="dtl">{staff}</span>
+                    </li>
+                    <li className="clearfix">
+                      <span className="ttl">Total Branch</span>
+                      <span className="dtl">{branch}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          )}
       </div>
       {!isLoading && (
         <AvailablityModal
