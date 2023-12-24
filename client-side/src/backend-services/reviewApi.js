@@ -10,7 +10,6 @@ export const CreateReviewTourByIdAPI = async (tourInfoId, {userRating, comment})
         userRating, comment
       }
     );
-    console.log(tourInfoId);
 
     if (data.error) {
       toast.error(data.error);

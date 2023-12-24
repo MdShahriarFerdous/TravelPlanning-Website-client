@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 import {
   CreateReviewTourByIdAPI,
@@ -14,50 +14,39 @@ import ProfileImg from "../../assets/images/profile-image/profileImage.png";
 import "./Star.css";
 import "./review.css";
 
+// eslint-disable-next-line react/prop-types
 const Review = ({ tourInfoId }) => {
-  // console.log("tourInfoId: ", tourInfoId);
-  const [totalReview, setTotalReview] = useState(null); // done
-  const [reviewData, setReviewData] = useState([]); // done
+  const [totalReview, setTotalReview] = useState(null);
+  const [reviewData, setReviewData] = useState([]);
   const [userRating, setUserRating] = useState(null);
   const [comment, setComment] = useState("");
-  const [averageRating, setAverageRating] = useState(null); //done
-  // const [review, setReview] = useState(null);
-  const [auth, setAuth] = useAuth(); // done
+  const [averageRating, setAverageRating] = useState(null);
+  const [auth] = useAuth();
 
   useEffect(() => {
     (async () => {
       try {
         const data = await ReviewListTourByIdAPI(tourInfoId);
-        // console.log("API response: ", data);
         if (data) {
           // all tour reviews
           const tourReviews = data.data.reviews;
-          // console.log("All Reviews: ", tourReviews);
-
           setReviewData(tourReviews);
 
           // total reviews count
           const totalReviews = data.data.totalReviews;
-          // console.log("Total Reviews: ", totalReviews);
-
           setTotalReview(totalReviews);
 
           // all ratings
           const allRatings = tourReviews.map((tourReview) => tourReview.rating);
-          // console.log(allRatings);
 
           // calculate the average rating
           const totalRatings = allRatings.length;
           const sumRatings = Number(
             allRatings.reduce((acc, rating) => acc + rating, 0)
           );
-
-          // console.log("total sum: ", sumRatings);
           const averageRatings = Number(
             totalRatings > 0 ? sumRatings / totalRatings : 0
           );
-
-          // console.log("Average Rating: ", averageRatings);
 
           setAverageRating(averageRatings);
         }
@@ -68,14 +57,12 @@ const Review = ({ tourInfoId }) => {
   }, [tourInfoId, reviewData]);
 
   const handleRatingChange = (selectedRating) => {
-    // console.log("Selected Rating:", selectedRating);
     setUserRating(selectedRating);
   };
 
   // handle submit button
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
-
     try {
       if (!auth?.token) {
         toast.error("Please login first to continue!");
@@ -86,15 +73,11 @@ const Review = ({ tourInfoId }) => {
           userRating,
           comment,
         });
-        console.log("API Response:", data);
-        console.log(tourInfoId);
-
         if (data && data.error) {
           toast.error(data.error);
         } else {
           setComment("");
           setReviewData([...reviewData, data]);
-
           setUserRating(null);
         }
       }
@@ -110,7 +93,6 @@ const Review = ({ tourInfoId }) => {
         <p className="text-center m-4" style={{fontSize:"18px"}}>No reviews for this Tour</p>
       )}
       {totalReview > 0 && <Star stars={averageRating} reviews={totalReview} />}
-
       <div className="row mt-4" style={{ overflowY: "auto" }}>
         {reviewData.map((obj) => (
           <div className="col-lg-6" key={obj._id}>
@@ -128,7 +110,6 @@ const Review = ({ tourInfoId }) => {
                     <p className="p-user-name">{obj?.user?.username}</p>
                   </div>
                 </div>
-
                 <div className="col-lg-3">
                   <p style={{ marginTop: "6px" }}>
                     Rating: {obj.rating}
@@ -141,7 +122,6 @@ const Review = ({ tourInfoId }) => {
                   </p>
                 </div>
               </div>
-
               <div className="row mt-2">
                 <div className="col-lg-11">
                   <p className="px-2">{obj.comment}</p>
@@ -182,5 +162,4 @@ const Review = ({ tourInfoId }) => {
     </div>
   );
 };
-
 export default Review;

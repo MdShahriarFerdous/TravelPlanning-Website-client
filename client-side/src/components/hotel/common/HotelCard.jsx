@@ -24,7 +24,7 @@ export default function HotelCard({ hotel }) {
         </h5>
         <div className="bottom-box clearfix">
           {/* <Rating /> */}
-          <div className="price">
+          <div className="only-price">
             Start from &ensp;
             <span className="amount">${rentPerPerson}</span>
           </div>
