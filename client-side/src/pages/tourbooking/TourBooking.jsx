@@ -42,7 +42,7 @@ const TourBooking = () => {
 	const [vehicleDetails, setVehicleDetails] = useState();
 	const [tourDetails, setTourDetails] = useState();
 	const [loading, setLoading] = useState(false);
-	const [count, setCount] = useState(3);
+	const [count, setCount] = useState(4);
 	const [screenLoader, setScreenLoader] = useState(true);
 	const [toggle, setToggle] = useState(true);
 	const [auth, setAuth] = useAuth();
