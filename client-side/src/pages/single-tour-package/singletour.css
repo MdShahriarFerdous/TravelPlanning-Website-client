@@ -78,3 +78,9 @@ label,
 .tour-form-continue-btn {
 	font-weight: 400;
 }
+select.form-select.package-select:focus,
+select.form-select.vehicle-select:focus {
+	border-color: #ffa185;
+	outline: 0;
+	box-shadow: 0 0 0 0.15px #ffa185;
+}

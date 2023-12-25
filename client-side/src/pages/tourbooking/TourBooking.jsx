@@ -4,11 +4,18 @@ import moment from "moment";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FaArrowLeft } from "react-icons/fa";
+import {
+	IoIosPeople,
+	IoIosArrowDropdownCircle,
+	IoIosArrowDropupCircle,
+} from "react-icons/io";
 // <FaArrowLeft />
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap";
 import "./tourbooking.css";
+
+import { useFormik } from "formik";
+import { object, string } from "yup";
 
 import {
 	DeleteTourBookingAPI,
@@ -17,9 +24,14 @@ import {
 	GetUserAPI,
 	GetVehicleDataAPI,
 	TourInfoByIdAPI,
+	TourMakePayment,
+	TourPaymentDataCreateAPI,
 } from "../../backend-services/api";
 import BlockLoader from "../../components/screenloader/BlockLoader";
-import LogoImgs from "../../assets/images/logo-nav.png";
+import Navbar from "./../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
+import ScreenLoader from "../../components/screenloader/ScreenLoader";
+import { useAuth } from "../../context/authContext";
 
 const TourBooking = () => {
 	const { bookingId } = useParams();
@@ -30,9 +42,25 @@ const TourBooking = () => {
 	const [vehicleDetails, setVehicleDetails] = useState();
 	const [tourDetails, setTourDetails] = useState();
 	const [loading, setLoading] = useState(false);
+	const [count, setCount] = useState(3);
+	const [screenLoader, setScreenLoader] = useState(true);
+	const [toggle, setToggle] = useState(true);
+	const [auth, setAuth] = useAuth();
 
 	const tourId = bookingDetails && bookingDetails?.tourId;
 	const packageName = bookingDetails && bookingDetails?.packageName;
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setCount((prevValue) => {
+				return --prevValue;
+			});
+		}, 1000);
+
+		count === 0 && setScreenLoader(false);
+		// cleanup
+		return () => clearInterval(interval);
+	}, [count]);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -78,6 +106,10 @@ const TourBooking = () => {
 		fetchData();
 	}, [bookingId, tourId, bookingDetails?.userId, packageName]);
 
+	const handleToggleClick = () => {
+		setToggle(!toggle);
+	};
+
 	const handleDelete = async (e) => {
 		e.preventDefault();
 		try {
@@ -114,174 +146,464 @@ const TourBooking = () => {
 		}
 	};
 
-	const handleClick = (e) => {
-		e.preventDefault();
-		navigate("/user/tour-payment-status");
-	};
+	// const handleClick = (e) => {
+	// 	e.preventDefault();
+	// 	navigate("/user/tour-payment-status");
+	// };
+	let userEmail;
+	if (auth?.user) {
+		userEmail = auth?.user?.email;
+	}
+
+	const formik = useFormik({
+		initialValues: {
+			tourBookingId: bookingId,
+			firstName: "",
+			lastName: "",
+			userMail: userEmail,
+			gender: "",
+			phoneNumber: "",
+		},
+		validationSchema: object({
+			firstName: string().required("First name is required"),
+			lastName: string().required("Last name is required"),
+			gender: string().required("Gender is required"),
+			phoneNumber: string().required("Phone number is required"),
+		}),
+		onSubmit: async (values, { resetForm }) => {
+			// console.log(values);
+			setScreenLoader(true);
+			try {
+				const data = await TourPaymentDataCreateAPI(
+					values.tourBookingId,
+					values.firstName,
+					values.lastName,
+					values.userMail,
+					values.gender,
+					values.phoneNumber
+				);
+				if (data?.createdPaymentData) {
+					const response = await TourMakePayment(
+						data?.createdPaymentData?._id
+					);
+					if (response?.url) {
+						window.location.replace(response.url);
+					}
+				}
+			} catch (error) {
+				console.error("Error from payment:", error.message);
+			}
+		},
+	});
 
 	return (
-		<div className="container mb-5 pb-5 booking-bg-div">
-			<div className="home-back-btn mt-5 mb-5">
-				<NavLink to="/">
-					<button
-						type="button"
-						className="btn btn-outline-secondary btn-back"
-					>
-						{" "}
-						<FaArrowLeft className="back-arrow" /> Back to Home
-					</button>
-				</NavLink>
-			</div>
-			<div className="row">
-				<div className="col-lg-12 ">
-					{loading ? (
-						<BlockLoader />
-					) : (
-						<div className="card p-5 mt-3 mb-4 m-auto booking-card">
-							<div className="d-flex justify-content-between">
-								<h2 className="booking-head">
-									Booking Overview
-								</h2>
-								<img src={LogoImgs} />
-							</div>
-							<hr></hr>
+		<div>
+			{screenLoader ? (
+				<ScreenLoader />
+			) : (
+				<>
+					<Navbar />
+					<div className="booking-bg-div">
+						{loading ? (
+							<BlockLoader />
+						) : (
+							<div
+								className="container"
+								style={{
+									paddingTop: "200px",
+									paddingBottom: "120px",
+								}}>
+								<h3>Review Your Tour Booking</h3>
 
-							<div className="d-flex justify-content-around">
-								<p className="p-headline-details flex-grow-1">
-									Details
-								</p>
-								<p className="p-headline-cost mx-5">Cost</p>
-							</div>
+								<div className="row g-2">
+									<div className="col-lg-8">
+										<div className="card p-3 mb-3 mt-2">
+											<div className="row">
+												<div className="col-10">
+													<h5>
+														{tourDetails ? (
+															tourDetails.city
+														) : (
+															<p>Loading..</p>
+														)}{" "}
+														(
+														{tourDetails
+															? tourDetails.duration
+															: "Loading.."}
+														) |{" "}
+														{bookingDetails &&
+															moment(
+																bookingDetails?.journeyDate
+															).format(
+																"MMMM Do YYYY"
+															)}
+													</h5>
+												</div>
+												<div className="col-2">
+													<button
+														style={{
+															background:
+																"transparent",
+														}}
+														className="toggle-btn-tour"
+														onClick={
+															handleToggleClick
+														}>
+														{toggle ? (
+															<IoIosArrowDropupCircle className="arrow-toggle" />
+														) : (
+															<IoIosArrowDropdownCircle className="arrow-toggle" />
+														)}
+													</button>
+												</div>
+											</div>
+											<hr></hr>
+											{toggle && (
+												<>
+													{bookingDetails?.childrenParticipants !==
+													0 ? (
+														<p>
+															<IoIosPeople className="people-icon" />
+															{`${bookingDetails?.adultParticipants} Adults and 
+										${bookingDetails?.childrenParticipants} Children`}
+														</p>
+													) : (
+														<p>
+															<IoIosPeople className="people-icon" />
+															{`${bookingDetails?.adultParticipants} Adults`}
+														</p>
+													)}
+													<hr></hr>
+													<h5>Options</h5>
+													<p>
+														{
+															bookingDetails?.packageName
+														}
+													</p>
+													<hr></hr>
+													<h5>Vehicle</h5>
+													<p>
+														{
+															bookingDetails?.vehicleOption
+														}
+													</p>
+												</>
+											)}
+										</div>
 
-							<div className="d-flex">
-								<p className="p-headline">Username:</p>
-								<p className="p-text ms-2">
-									{userDetails
-										? userDetails.username
-										: "Loading.."}
-								</p>
-							</div>
+										<h3 className="mt-5">
+											Enter Traveler Details
+										</h3>
+										<div className="card p-4 mb-3 mt-2">
+											<h5 className="mt-2">
+												Passenger: Adult (Primary
+												Contact)
+											</h5>
 
-							<div className="d-flex">
-								<p className="p-headline">User Mail:</p>
-								<p className="p-text ms-2">
-									{userDetails
-										? userDetails.email
-										: "Loading.."}
-								</p>
-							</div>
+											<form
+												className="form-group px-2"
+												onSubmit={formik.handleSubmit}>
+												<div className="row g-3">
+													<div className="col-lg-6">
+														<label>Username</label>
+														<input
+															type="text"
+															className="form-control py-3"
+															placeholder="Username"
+															value={
+																userDetails
+																	? userDetails.username
+																	: "Loading.."
+															}
+														/>
+													</div>
 
-							<div className="d-flex">
-								<p className="p-headline">Journey Date:</p>
-								<p className="p-text ms-2">
-									{bookingDetails &&
-										moment(
-											bookingDetails?.journeyDate
-										).format("MMMM Do YYYY")}
-								</p>
-							</div>
+													<div className="col-lg-6">
+														<label>Email</label>
+														<input
+															type="email"
+															className="form-control py-3"
+															placeholder="email"
+															name="userMail"
+															value={
+																formik.values
+																	.userMail
+															}
+															onChange={
+																formik.handleChange
+															}
+														/>
+														{formik.touched
+															.userMail &&
+															formik.errors
+																.userMail && (
+																<span className="text-danger my-1 ms-2">
+																	&#9432;{" "}
+																	{
+																		formik
+																			.errors
+																			.userMail
+																	}
+																</span>
+															)}
+													</div>
+												</div>
 
-							<div className="d-flex">
-								<p className="p-headline">Tour Location:</p>
-								<p className="p-text ms-2">
-									{tourDetails
-										? tourDetails.city
-										: "Loading.."}
-								</p>
-							</div>
+												<div className="row g-3">
+													<div className="col-lg-6">
+														<label>
+															First Name
+														</label>
+														<input
+															type="text"
+															className="form-control py-3"
+															placeholder="First Name"
+															name="firstName"
+															value={
+																formik.values
+																	.firstName
+															}
+															onChange={
+																formik.handleChange
+															}
+														/>
+														{formik.touched
+															.firstName &&
+															formik.errors
+																.firstName && (
+																<span className="text-danger my-1 ms-2">
+																	&#9432;{" "}
+																	{
+																		formik
+																			.errors
+																			.firstName
+																	}
+																</span>
+															)}
+													</div>
+													<div className="col-lg-6">
+														<label>Last Name</label>
+														<input
+															type="text"
+															className="form-control py-3"
+															placeholder="Last Name"
+															name="lastName"
+															value={
+																formik.values
+																	.lastName
+															}
+															onChange={
+																formik.handleChange
+															}
+														/>
+														{formik.touched
+															.lastName &&
+															formik.errors
+																.lastName && (
+																<span className="text-danger my-1 ms-2">
+																	&#9432;{" "}
+																	{
+																		formik
+																			.errors
+																			.lastName
+																	}
+																</span>
+															)}
+													</div>
+												</div>
 
-							<div className="d-flex">
-								<p className="p-headline">Tour Duration:</p>
-								<p className="p-text ms-2">
-									{tourDetails
-										? tourDetails.duration
-										: "Loading.."}
-								</p>
-							</div>
+												<div className="row g-3">
+													<div className="col-lg-6">
+														<label>
+															Phone Number
+														</label>
+														<input
+															type="text"
+															className="form-control py-3"
+															placeholder="Phone Number"
+															name="phoneNumber"
+															value={
+																formik.values
+																	.phoneNumber
+															}
+															onChange={
+																formik.handleChange
+															}
+														/>
+														{formik.touched
+															.phoneNumber &&
+															formik.errors
+																.phoneNumber && (
+																<span className="text-danger my-1 ms-2">
+																	&#9432;{" "}
+																	{
+																		formik
+																			.errors
+																			.phoneNumber
+																	}
+																</span>
+															)}
+													</div>
+													<div className="col-lg-6">
+														<label>Gender</label>
+														<select
+															className="form-select form-select-lg py-3 booking-select"
+															aria-label=".form-select-lg example"
+															id="gender"
+															name="gender"
+															value={
+																formik.values
+																	.gender
+															}
+															onChange={
+																formik.handleChange
+															}
+															onBlur={
+																formik.handleBlur
+															}>
+															<option
+																value=""
+																disabled>
+																Gender
+															</option>
+															<option value="male">
+																Male
+															</option>
 
-							<div className="d-flex">
-								<p className="p-headline">Tour Package:</p>
-								<p className="p-text ms-2">
-									{bookingDetails?.packageName}
-								</p>
-								<p className="p-text ms-auto mx-5 px-2">{`$ ${personPayDetails?.adultPay}`}</p>
-							</div>
+															<option value="female">
+																Female
+															</option>
+														</select>
+														{formik.touched
+															.gender &&
+															formik.errors
+																.gender && (
+																<span className="text-danger my-1 ms-2">
+																	&#9432;{" "}
+																	{
+																		formik
+																			.errors
+																			.gender
+																	}
+																</span>
+															)}
+													</div>
+												</div>
 
-							<div className="d-flex">
-								<p className="p-headline">Adult Person Pay:</p>
-								<p className="p-text ms-auto mx-5 px-2">
-									{bookingDetails?.adultParticipants} X{" "}
-									{`$ ${personPayDetails?.adultPay}`}
-								</p>
-							</div>
-							{bookingDetails?.childrenParticipants !== 0 && (
-								<div className="d-flex">
-									<p className="p-headline">Children Pay:</p>
-									<p className="p-text ms-auto mx-5 px-2">
-										{bookingDetails?.childrenParticipants} X{" "}
-										{`$ ${personPayDetails?.childrenPay}`}
-									</p>
+												<div className="row px-2 g-2 mt-3">
+													<button
+														type="submit"
+														className="btn bg-gradient-primary p-3 tour-form-continue-btn mt-2 mb-1">
+														Continue to Payment
+													</button>
+													<button
+														className="btn btn-outline-danger cancel-btn mt-2 mb-1 p-3"
+														onClick={handleDelete}>
+														No, Cancel this Booking
+													</button>
+												</div>
+											</form>
+										</div>
+									</div>
+
+									<div className="col-lg-4">
+										<div className="card p-3 mb-3 mt-2 fare-card">
+											<h6>Fare Summary</h6>
+											<hr></hr>
+											<div className="row">
+												<div className="col-8">
+													<p>
+														{
+															bookingDetails?.packageName
+														}
+													</p>
+												</div>
+												<div className="col-4">
+													<p>
+														{
+															bookingDetails?.adultParticipants
+														}{" "}
+														X{" "}
+														{`$ ${personPayDetails?.adultPay}`}
+													</p>
+												</div>
+											</div>
+											{bookingDetails?.childrenParticipants !==
+												0 && (
+												<div className="row">
+													<div className="col-8">
+														<p>Children Pay</p>
+													</div>
+													<div className="col-4">
+														<p>
+															{
+																bookingDetails?.childrenParticipants
+															}{" "}
+															X{" "}
+															{`$ ${personPayDetails?.childrenPay}`}
+														</p>
+													</div>
+												</div>
+											)}
+											<div className="row">
+												<div className="col-8">
+													<p>
+														{
+															bookingDetails?.vehicleOption
+														}
+													</p>
+												</div>
+												<div className="col-4">
+													<p>
+														1 X{" "}
+														{bookingDetails?.vehicleOption ===
+														vehicleDetails?.vehicle1Name
+															? `$ ${vehicleDetails?.vehicle1Price}`
+															: bookingDetails?.vehicleOption ===
+																  vehicleDetails?.vehicle2Name
+																? `$ ${vehicleDetails?.vehicle2Price}`
+																: "Null"}
+													</p>
+												</div>
+											</div>
+											<hr></hr>
+											<div className="row">
+												<div className="col-8">
+													<p>Sub Total</p>
+												</div>
+												<div className="col-4">
+													<p>
+														${" "}
+														{
+															bookingDetails?.totalToPay
+														}
+													</p>
+												</div>
+											</div>
+
+											<div>
+												<div className="row mt-3">
+													<div className="col-7">
+														<h6>You Pay</h6>
+													</div>
+													<div className="col-5">
+														<h6 className="ps-3">
+															BDT{" "}
+															{bookingDetails?.totalToPay *
+																100}
+														</h6>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
-							)}
-
-							<div className="d-flex">
-								<p className="p-headline">Vehicle Option:</p>
-								<p className="p-text ms-2">
-									{bookingDetails?.vehicleOption}
-								</p>
-								<p className="p-text ms-auto mx-5 px-2">
-									{bookingDetails?.vehicleOption ===
-									vehicleDetails?.vehicle1Name
-										? `$ ${vehicleDetails?.vehicle1Price}`
-										: bookingDetails?.vehicleOption ===
-										  vehicleDetails?.vehicle2Name
-										? `$ ${vehicleDetails?.vehicle2Price}`
-										: "Null"}
-								</p>
 							</div>
-							<hr></hr>
-
-							<div className="d-flex justify-content-around">
-								<p className="p-pay flex-grow-1">
-									Total Payable
-								</p>
-								<p className="p-pay mx-5">
-									$ {bookingDetails?.totalToPay}
-								</p>
-							</div>
-
-							<div className="d-flex justify-content-around">
-								<p className="p-pay flex-grow-1">
-									BDT
-								</p>
-								<p className="p-pay mx-5">
-									 {bookingDetails?.totalToPay * 100} Taka
-								</p>
-							</div>
-
-							<div className="d-flex flex-row-reverse mt-5  align-items-center btn-div-tour">
-								<NavLink to="" className="mr-auto p-2">
-									<button
-										type="button"
-										className="btn btn-lg payment-btn-tour mx-4"
-										onClick={handleClick}
-									>
-										Proceed to Payment
-									</button>
-								</NavLink>
-
-								<button
-									type="button"
-									className="btn btn-outline-danger cancel-btn mx-4 ml-auto p-3"
-									onClick={handleDelete}
-								>
-									Cancel this Booking
-								</button>
-							</div>
-						</div>
-					)}
-				</div>
-			</div>
+						)}
+					</div>
+					<Footer />
+				</>
+			)}
 		</div>
 	);
 };

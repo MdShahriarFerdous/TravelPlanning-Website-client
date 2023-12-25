@@ -61,8 +61,8 @@ const TourCheckBox = ({ tourType }) => {
 	};
 
 	return (
-		<div className="col-lg-3">
-			<div className="card p-3 ps-4 pt-4 mt-3">
+		<div className="col-lg-3 checkbox-col">
+			<div className="card p-3 ps-4 pt-4 mt-3 checkbox-card">
 				<p>Price Range</p>
 				<div>
 					{prices &&
