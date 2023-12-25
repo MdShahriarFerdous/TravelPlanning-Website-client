@@ -42,7 +42,7 @@ const TourBooking = () => {
 	const [vehicleDetails, setVehicleDetails] = useState();
 	const [tourDetails, setTourDetails] = useState();
 	const [loading, setLoading] = useState(false);
-	const [count, setCount] = useState(4);
+	const [count, setCount] = useState(3);
 	const [screenLoader, setScreenLoader] = useState(true);
 	const [toggle, setToggle] = useState(true);
 	const [auth, setAuth] = useAuth();
@@ -205,7 +205,13 @@ const TourBooking = () => {
 					<Navbar />
 					<div className="booking-bg-div">
 						{loading ? (
-							<BlockLoader />
+							<div
+								style={{
+									marginTop: "280px",
+									marginBottom: "300px",
+								}}>
+								<BlockLoader />
+							</div>
 						) : (
 							<div
 								className="container"
