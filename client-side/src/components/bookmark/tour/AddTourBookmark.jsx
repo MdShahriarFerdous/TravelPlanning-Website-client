@@ -89,21 +89,24 @@ const AddTourBookmark = () => {
 	// };
 	return (
 		<>
-			<span
-				className="span-bookmark"
-				style={{
-					border: loading ? "1px solid #ffffff" : "1px solid #424853",
-				}}
-				onClick={handleBookmarkClick}
-			>
-				{loading ? (
-					<img className="span-loader-size" src={SpanLoader} />
-				) : isBookmarked ? (
-					<FaHeart className="bookmark fill-bookmark" />
-				) : (
-					<FaRegHeart className="bookmark" />
-				)}
-			</span>
+			<div className="bookmark-div">
+				<span
+					className="span-bookmark"
+					style={{
+						border: loading
+							? "1px solid #ffffff"
+							: "1px solid #424853",
+					}}
+					onClick={handleBookmarkClick}>
+					{loading ? (
+						<img className="span-loader-size" src={SpanLoader} />
+					) : isBookmarked ? (
+						<FaHeart className="bookmark fill-bookmark" />
+					) : (
+						<FaRegHeart className="bookmark" />
+					)}
+				</span>
+			</div>
 		</>
 	);
 };
