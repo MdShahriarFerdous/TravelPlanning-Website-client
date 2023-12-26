@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { object, string } from "yup";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { LoginAPI } from "../../backend-services/api";
 import { useAuth } from "../../context/authContext";
 import { useLoader } from "../../context/loaderContext";
@@ -17,7 +17,6 @@ const LoginPage = () => {
 	const [auth, setAuth] = useAuth();
 	const [loader, setLoader] = useLoader();
 	const navigate = useNavigate();
-	const location = useLocation();
 
 	const formik = useFormik({
 		initialValues: {
@@ -33,7 +32,14 @@ const LoginPage = () => {
 			try {
 				const data = await LoginAPI(values);
 				if (data?.status === "success") {
-					localStorage.setItem("auth", JSON.stringify(data));
+					const setDataForAuth = {
+						user: data.user,
+						token: data.token,
+					};
+					localStorage.setItem(
+						"auth",
+						JSON.stringify(setDataForAuth)
+					);
 					setAuth({
 						...auth,
 						user: data.user,
@@ -103,16 +109,14 @@ const LoginPage = () => {
 								)}
 							<button
 								type="submit"
-								className="btn bg-gradient-primary my-2 login-submit-btn"
-							>
+								className="btn bg-gradient-primary my-2 login-submit-btn">
 								Sign in
 							</button>
 							<p className="text-center mt-2">
 								New Here?
 								<NavLink
 									className="text-info ms-2"
-									to="/register"
-								>
+									to="/register">
 									Sign up
 								</NavLink>
 							</p>

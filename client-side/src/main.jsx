@@ -4,13 +4,16 @@ import "./index.css";
 import { AuthProvider } from "./context/authContext.jsx";
 import { LoaderProvider } from "./context/loaderContext.jsx";
 import { SearchProvider } from "./context/searchContext.jsx";
+import { UserImageProvider } from "./context/userImageContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<AuthProvider>
-		<LoaderProvider>
-			<SearchProvider>
-				<App />
-			</SearchProvider>
-		</LoaderProvider>
+		<UserImageProvider>
+			<LoaderProvider>
+				<SearchProvider>
+					<App />
+				</SearchProvider>
+			</LoaderProvider>
+		</UserImageProvider>
 	</AuthProvider>
 );
