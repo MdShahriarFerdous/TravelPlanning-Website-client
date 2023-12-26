@@ -149,22 +149,20 @@ const TourPackageForm = ({
 						</fieldset>
 
 						<select
-							className="form-select form-select-lg my-2"
+							className="form-select form-select-lg my-2 package-select"
 							aria-label=".form-select-lg example"
 							id="packageName"
 							name="packageName"
 							value={formik.values.packageName}
 							onChange={formik.handleChange}
-							onBlur={formik.handleBlur}
-						>
+							onBlur={formik.handleBlur}>
 							<option value="" disabled>
 								Choose Package
 							</option>
 							{packages.map((packageItem, index) => (
 								<option
 									value={packageItem?.packageName}
-									key={index + 1}
-								>
+									key={index + 1}>
 									{packageItem?.packageName}
 								</option>
 							))}
@@ -212,14 +210,13 @@ const TourPackageForm = ({
 						</div>
 
 						<select
-							className="form-select form-select-lg my-2"
+							className="form-select form-select-lg my-2 vehicle-select"
 							aria-label=".form-select-lg example"
 							id="vehicleOption"
 							name="vehicleOption"
 							value={formik.values.vehicleOption}
 							onChange={formik.handleChange}
-							onBlur={formik.handleBlur}
-						>
+							onBlur={formik.handleBlur}>
 							<option value="" disabled>
 								{" "}
 								Choose vehicle option
@@ -227,16 +224,14 @@ const TourPackageForm = ({
 							{vehicleDetailes.map((vehicle, index) => (
 								<option
 									key={index + 3}
-									value={vehicle.vehicle1Name}
-								>
+									value={vehicle.vehicle1Name}>
 									{vehicle.vehicle1Name}
 								</option>
 							))}
 							{vehicleDetailes.map((vehicle, index) => (
 								<option
 									key={index + 4}
-									value={vehicle.vehicle2Name}
-								>
+									value={vehicle.vehicle2Name}>
 									{vehicle.vehicle2Name}
 								</option>
 							))}
@@ -258,8 +253,7 @@ const TourPackageForm = ({
 
 						<button
 							type="submit"
-							className="btn bg-gradient-primary my-2 tour-form-continue-btn"
-						>
+							className="btn bg-gradient-primary my-2 tour-form-continue-btn">
 							Continue
 						</button>
 					</div>

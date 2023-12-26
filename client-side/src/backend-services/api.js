@@ -323,3 +323,48 @@ export const CheckBoxAPI = async (
 		toast.error("Tour-type data fetching failed. Try again.");
 	}
 };
+
+//* =================TourPaymentData-create-API==================
+export const TourPaymentDataCreateAPI = async (
+	tourBookingId,
+	firstName,
+	lastName,
+	userMail,
+	gender,
+	phoneNumber
+) => {
+	try {
+		const { data } = await axios.post(`/tour-payment-data/create`, {
+			tourBookingId,
+			firstName,
+			lastName,
+			userMail,
+			gender,
+			phoneNumber,
+		});
+
+		if (data.error) {
+			toast.error(data.error);
+		} else {
+			return data;
+		}
+	} catch (error) {
+		console.error(error);
+		toast.error("Error when posting payment data");
+	}
+};
+
+//* =================Tour-Make-Payment-API==================
+export const TourMakePayment = async (tourPaymentDataId) => {
+	try {
+		const { data } = await axios.post(`/tour-payment/${tourPaymentDataId}`);
+		if (data.error) {
+			toast.error(data.error);
+		} else {
+			return data;
+		}
+	} catch (error) {
+		console.error(error);
+		toast.error("Error paying for tour ");
+	}
+};

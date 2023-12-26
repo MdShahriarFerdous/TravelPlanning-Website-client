@@ -1,5 +1,5 @@
 .bg-div {
-	background-color: #f5f5fb;
+	background-color: #fcf7ff;
 	margin-top: 103px;
 }
 /* #f9f7f3 */
@@ -49,4 +49,8 @@ label,
 button.button-search {
 	padding: 20px 60px;
 	margin-left: 12px;
+}
+.checkbox-col .checkbox-card {
+	position: sticky;
+	top: 0;
 }

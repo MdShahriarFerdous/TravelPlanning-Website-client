@@ -1,7 +1,8 @@
-import HighFiveImg from "../../assets/images/welcome/high-five.png";
 import { FaArrowLeft } from "react-icons/fa";
 import LogoImgs from "../../assets/images/logo-nav.png";
 import "./tourbooking.css";
+import SuccessfulAnimation from "../../assets/animation-json/successful.json";
+import Lottie from "lottie-react";
 import { NavLink } from "react-router-dom";
 const PaymentStatus = () => {
 	return (
@@ -10,8 +11,7 @@ const PaymentStatus = () => {
 				<NavLink to="/">
 					<button
 						type="button"
-						className="btn btn-outline-secondary btn-back"
-					>
+						className="btn btn-outline-secondary btn-back">
 						{" "}
 						<FaArrowLeft className="back-arrow" /> Back to Home
 					</button>
@@ -20,24 +20,25 @@ const PaymentStatus = () => {
 			<div className="row">
 				<div className="col-lg-6 m-auto">
 					<div className="card p-5 status-card">
-						<div className="m-auto mt-4 mb-4">
-							<img
-								src={HighFiveImg}
-								style={{ width: "64px", height: "64px" }}
+						<div
+							className="m-auto mt-2 mb-4"
+							style={{ width: "160px" }}>
+							<Lottie
+								loop={true}
+								animationData={SuccessfulAnimation}
 							/>
 						</div>
 						<div className="container text-center">
-							<h3 className="mb-4">Thanks for your interest!</h3>
+							<h3 className="mb-4">Payment Successful!</h3>
 							<p className="mb-4">
-								Our developers are building payment
-								functionalities. After the job done we will
-								surely provide you this service.
+								Your payment invoice will be added in your
+								dashboard booking section.
 							</p>
 							<p className="p-query mb-4">
 								If you have any questions or quiries feel free
 								to contact us.
 							</p>
-							<p className="">All the best.</p>
+							<p className="">Thanks for being with us.</p>
 						</div>
 						<div className="text-center mt-4">
 							<img src={LogoImgs} />

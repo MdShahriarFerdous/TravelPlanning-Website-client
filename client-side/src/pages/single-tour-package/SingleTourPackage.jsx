@@ -95,20 +95,23 @@ const SingleTourPackage = () => {
 					<Navbar />
 					<div
 						className="container single-tour"
-						style={{ marginTop: "180px", marginBottom: "180px" }}
-					>
+						style={{ marginTop: "180px", marginBottom: "180px" }}>
 						<div className="container">
-							<div className="d-flex  mb-4">
-								<h2
-									className="mb-4"
-									style={{
-										letterSpacing: "0.8px",
-										fontSize: "30px",
-									}}
-								>
-									{tourDetails?.getTourInfo?.title}
-								</h2>
-								<AddTourBookmark />
+							<div className="row mb-4">
+								<div className="col-lg-10">
+									<h2
+										className="mb-4"
+										style={{
+											letterSpacing: "0.8px",
+											fontSize: "30px",
+										}}>
+										{tourDetails?.getTourInfo?.title}
+									</h2>
+								</div>
+
+								<div className="col-lg-2">
+									<AddTourBookmark />
+								</div>
 							</div>
 
 							{tourDetails &&
@@ -173,8 +176,7 @@ const SingleTourPackage = () => {
 												background: "transparent",
 											}}
 											onClick={handleToggleClick}
-											className="toggle-button"
-										>
+											className="toggle-button">
 											{toggle ? (
 												<IoIosArrowUp className="arrow" />
 											) : (
@@ -206,8 +208,7 @@ const SingleTourPackage = () => {
 												background: "transparent",
 											}}
 											onClick={handleDurationToggle}
-											className="toggle-button"
-										>
+											className="toggle-button">
 											{durationToggle ? (
 												<IoIosArrowUp className="arrow" />
 											) : (
@@ -229,8 +230,7 @@ const SingleTourPackage = () => {
 												background: "transparent",
 											}}
 											onClick={handleDistanceToggle}
-											className="toggle-button"
-										>
+											className="toggle-button">
 											{distanceToggle ? (
 												<IoIosArrowUp className="arrow" />
 											) : (
@@ -252,8 +252,7 @@ const SingleTourPackage = () => {
 												background: "transparent",
 											}}
 											onClick={handleDescriptionToggle}
-											className="toggle-button"
-										>
+											className="toggle-button">
 											{descriptionToggle ? (
 												<IoIosArrowUp className="arrow" />
 											) : (
@@ -269,16 +268,14 @@ const SingleTourPackage = () => {
 														<p
 															key={`details-${
 																index + 3
-															}`}
-														>
+															}`}>
 															{item?.details}
 														</p>
 														<p
 															className="p-bold"
 															key={`l1-${
 																index + 3
-															}`}
-														>
+															}`}>
 															Locations that will
 															be covered in this
 															tour are:
@@ -295,8 +292,7 @@ const SingleTourPackage = () => {
 															className="p-bold"
 															key={`l2-${
 																index + 3
-															}`}
-														>
+															}`}>
 															Rooms will be
 															allotted from the
 															following Resorts
@@ -305,8 +301,7 @@ const SingleTourPackage = () => {
 														<p
 															key={`lis-${
 																index + 3
-															}`}
-														>
+															}`}>
 															{" "}
 															Premium Package:{" "}
 															{
@@ -316,8 +311,7 @@ const SingleTourPackage = () => {
 														<p
 															key={`l3-${
 																index + 3
-															}`}
-														>
+															}`}>
 															{" "}
 															Economy Package:{" "}
 															{
@@ -328,8 +322,7 @@ const SingleTourPackage = () => {
 															className="p-bold"
 															key={`l4-${
 																index + 3
-															}`}
-														>
+															}`}>
 															Max number:{" "}
 															{
 																tourDetails
@@ -342,8 +335,7 @@ const SingleTourPackage = () => {
 															className="p-bold"
 															key={`l5-${
 																index + 3
-															}`}
-														>
+															}`}>
 															Food Menu
 														</p>
 														{tourDetails?.foodmenu?.map(
@@ -353,8 +345,7 @@ const SingleTourPackage = () => {
 																		key={
 																			index +
 																			1
-																		}
-																	>
+																		}>
 																		Day
 																		{
 																			food.dayNo
@@ -365,14 +356,12 @@ const SingleTourPackage = () => {
 																			key={`l6-${
 																				index +
 																				3
-																			}`}
-																		>
+																			}`}>
 																			<p
 																				key={`l7-${
 																					index +
 																					3
-																				}`}
-																			>
+																				}`}>
 																				Breakfast:{" "}
 																				{food.breakfast.join()}
 																			</p>
@@ -381,14 +370,12 @@ const SingleTourPackage = () => {
 																			key={`l7-${
 																				index +
 																				4
-																			}`}
-																		>
+																			}`}>
 																			<p
 																				key={`l8-${
 																					index +
 																					3
-																				}`}
-																			>
+																				}`}>
 																				Lunch:{" "}
 																				{food.lunch.join()}
 																			</p>
@@ -397,14 +384,12 @@ const SingleTourPackage = () => {
 																			key={`l9-${
 																				index +
 																				3
-																			}`}
-																		>
+																			}`}>
 																			<p
 																				key={`l10-${
 																					index +
 																					3
-																				}`}
-																			>
+																				}`}>
 																				Dinner:{" "}
 																				{food.dinner.join()}
 																			</p>
@@ -427,8 +412,7 @@ const SingleTourPackage = () => {
 												background: "transparent",
 											}}
 											onClick={handleAdditionalToggle}
-											className="toggle-button"
-										>
+											className="toggle-button">
 											{additionalToggle ? (
 												<IoIosArrowUp className="arrow" />
 											) : (
@@ -460,8 +444,7 @@ const SingleTourPackage = () => {
 												background: "transparent",
 											}}
 											onClick={handleOptionsToggle}
-											className="toggle-button"
-										>
+											className="toggle-button">
 											{optionsToggle ? (
 												<IoIosArrowUp className="arrow" />
 											) : (
@@ -478,8 +461,7 @@ const SingleTourPackage = () => {
 														key={index + 1}
 														style={{
 															marginTop: "8px",
-														}}
-													>
+														}}>
 														{
 															eachPackage?.packageName
 														}
@@ -521,8 +503,7 @@ const SingleTourPackage = () => {
 												background: "transparent",
 											}}
 											onClick={handleIncluExcluToggle}
-											className="toggle-button"
-										>
+											className="toggle-button">
 											{incluExcluToggle ? (
 												<IoIosArrowUp className="arrow" />
 											) : (
@@ -536,8 +517,7 @@ const SingleTourPackage = () => {
 												<>
 													<p
 														key={i + 1}
-														className="p-bold"
-													>
+														className="p-bold">
 														Inclusions
 													</p>
 													{item?.inclusions.map(
@@ -553,8 +533,7 @@ const SingleTourPackage = () => {
 														className="p-bold"
 														style={{
 															marginTop: "8px",
-														}}
-													>
+														}}>
 														Exclusions
 													</p>
 													{item?.exclusions.map(
@@ -577,8 +556,7 @@ const SingleTourPackage = () => {
 												background: "transparent",
 											}}
 											onClick={handleTourTipsToggle}
-											className="toggle-button"
-										>
+											className="toggle-button">
 											{tourTipsToggle ? (
 												<IoIosArrowUp className="arrow" />
 											) : (
@@ -594,8 +572,7 @@ const SingleTourPackage = () => {
 													key={i + 4}
 													style={{
 														marginTop: "8px",
-													}}
-												>
+													}}>
 													Things Should Do:
 												</p>
 												{tip.thingsCandDo.map(
@@ -610,8 +587,7 @@ const SingleTourPackage = () => {
 													className="p-bold"
 													style={{
 														marginTop: "8px",
-													}}
-												>
+													}}>
 													Things to Avoid:
 												</p>
 												{tip?.thingsToAvoid.map(

@@ -64,7 +64,7 @@ const RenderAppContent = () => {
 						element={<TourBooking />}
 					/>
 					<Route
-						path="tour-payment-status"
+						path="tour/payment/success"
 						element={<PaymentStatus />}
 					/>
 					<Route path="profile" element={<Profile />} />
@@ -93,7 +93,6 @@ const RenderAppContent = () => {
 				</Route>
 
 				<Route path="/tour-types/:tourType" element={<TourByType />} />
-
 				<Route path="/trips" element={<TripsSearchPage />} />
 				<Route path="/tripsdetails" element={<TripsDetailsPage />} />
 				<Route path="/blogs" element={<BlogsListPage />} />
