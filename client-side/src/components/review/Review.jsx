@@ -89,7 +89,10 @@ const Review = ({ tourInfoId }) => {
   return (
     <div className="container" style={{ marginTop: "200px" }}>
       <h3 className="text-center">Reviews</h3>
-      <Star stars={averageRating} reviews={totalReview} />
+      {reviewData.length === 0 && (
+        <p className="text-center m-4" style={{fontSize:"18px"}}>No reviews for this Tour</p>
+      )}
+      {totalReview > 0 && <Star stars={averageRating} reviews={totalReview} />}
       <div className="row mt-4" style={{ overflowY: "auto" }}>
         {reviewData.map((obj) => (
           <div className="col-lg-6" key={obj._id}>

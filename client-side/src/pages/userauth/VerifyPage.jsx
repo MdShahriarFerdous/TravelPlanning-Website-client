@@ -34,7 +34,13 @@ const VerifyPage = () => {
 			if (verifyId === browserId) {
 				const data = await VerificationAPI(browserToken);
 				if (data.status === "success") {
-					localStorage.setItem("auth", JSON.stringify(data));
+					const setDataForAuth = {
+						token: data.token,
+					};
+					localStorage.setItem(
+						"auth",
+						JSON.stringify(setDataForAuth)
+					);
 					setAuth({
 						...auth,
 						user: data.user,
@@ -67,8 +73,7 @@ const VerifyPage = () => {
 				<button
 					style={{ display: "block", padding: "1rem 2rem" }}
 					onClick={handleClick}
-					className="btn bg-gradient-primary"
-				>
+					className="btn bg-gradient-primary">
 					Activate
 				</button>
 			</div>
