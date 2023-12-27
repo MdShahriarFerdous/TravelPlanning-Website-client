@@ -35,7 +35,6 @@ const VerifyPage = () => {
 				const data = await VerificationAPI(browserToken);
 				if (data.status === "success") {
 					const setDataForAuth = {
-						user: data.user,
 						token: data.token,
 					};
 					localStorage.setItem(

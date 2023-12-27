@@ -12,8 +12,7 @@ const UserImageProvider = ({ children }) => {
 
 	useEffect(() => {
 		const fetchImage = async () => {
-			if (auth?.token) {
-				const token = auth?.token;
+			if (auth) {
 				const { data } = await axios.get("/user-image");
 				if (data.error) {
 					console.log(data.error);
@@ -26,7 +25,7 @@ const UserImageProvider = ({ children }) => {
 			}
 		};
 		fetchImage();
-	}, [auth?.token]);
+	}, [auth]);
 
 	return (
 		<UserImageContext.Provider value={[userImage, setUserImage]}>

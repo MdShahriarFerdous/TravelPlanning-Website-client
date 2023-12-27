@@ -33,7 +33,6 @@ const LoginPage = () => {
 				const data = await LoginAPI(values);
 				if (data?.status === "success") {
 					const setDataForAuth = {
-						user: data.user,
 						token: data.token,
 					};
 					localStorage.setItem(

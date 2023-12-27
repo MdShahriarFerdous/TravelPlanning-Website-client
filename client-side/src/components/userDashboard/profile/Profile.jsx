@@ -28,10 +28,8 @@ const Profile = () => {
 	};
 
 	useEffect(() => {
-		setLoading(true);
 		if (userImage?.image) {
 			setSelectedImage(userImage?.image);
-			setLoading(false);
 		}
 	}, [userImage]);
 
@@ -45,11 +43,12 @@ const Profile = () => {
 					image: data.image,
 				});
 			}
-			setLoading(false);
-			toast.success("Image uploaded");
 		} catch (error) {
 			console.error("Error uploading : ", error);
 			toast.error("Error uploading image");
+		} finally {
+			setLoading(false);
+			toast.success("Image uploaded");
 		}
 	};
 
@@ -89,7 +88,14 @@ const Profile = () => {
 										<p
 											style={{
 												fontSize: "1.5rem",
+												fontWeight: "bold",
+												marginBottom: "10px",
 											}}>{`${auth?.user?.username}`}</p>
+
+										<p
+											style={{
+												fontSize: "0.8rem",
+											}}>{`${auth?.user?.email}`}</p>
 										{loading ? (
 											<>
 												<div

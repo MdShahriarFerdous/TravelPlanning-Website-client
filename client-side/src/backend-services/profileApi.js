@@ -14,7 +14,6 @@ export const updateProfile = async (formData) => {
 				},
 			}
 		);
-
 		if (data.error) {
 			toast.error(data.error);
 		} else {
