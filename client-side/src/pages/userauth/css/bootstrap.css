@@ -1,10 +1,5 @@
 @charset "UTF-8";
-/*!
- * Bootstrap v5.1.3 (https://getbootstrap.com/)
- * Copyright 2011-2021 The Bootstrap Authors
- * Copyright 2011-2021 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
+
 :root {
 	--bs-blue: #63b3ed;
 	--bs-indigo: #596cff;
@@ -405,6 +400,7 @@ button,
 [type="reset"],
 [type="submit"] {
 	-webkit-appearance: button;
+	appearance: button;
 }
 button:not(:disabled),
 [type="button"]:not(:disabled),
@@ -463,6 +459,7 @@ legend + * {
 [type="search"] {
 	outline-offset: -2px;
 	-webkit-appearance: textfield;
+	appearance: textfield;
 }
 
 /* rtl:raw:
@@ -2921,7 +2918,7 @@ textarea.form-control-lg {
 	-moz-appearance: none;
 	appearance: none;
 	-webkit-print-color-adjust: exact;
-	color-adjust: exact;
+	print-color-adjust: exact;
 	transition: background-color 0.25s ease, border-color 0.25s ease,
 		background-position 0.15s ease-in-out, opacity 0.15s ease-out,
 		box-shadow 0.15s ease-in-out;
@@ -24136,6 +24133,8 @@ p {
 	background: #fff;
 	-webkit-box-shadow: 0 8px 26px -4px rgba(20, 20, 20, 0.15),
 		0 8px 9px -5px rgba(20, 20, 20, 0.06);
+	box-shadow: 0 8px 26px -4px rgba(20, 20, 20, 0.15),
+		0 8px 9px -5px rgba(20, 20, 20, 0.06);
 }
 
 .flatpickr-calendar.open,
@@ -25007,7 +25006,7 @@ span.flatpickr-weekday {
 	box-shadow: -10px 0 0 #cb0c9f;
 }
 
-/*! nouislider - 14.6.3 - 11/19/2020 */
+/* nouislider - 14.6.3 - 11/19/2020 */
 /* Functional styling;
  * These styles are required for noUiSlider to function.
  * You don't need to change these rules to apply your design.
@@ -25173,10 +25172,10 @@ span.flatpickr-weekday {
 	background: #fff;
 	cursor: default;
 	box-shadow: inset 0 0 1px #fff, inset 0 1px 7px #ebebeb, 0 3px 6px -3px #bbb;
-	webkit-transition: 0.3s ease 0s;
+	-webkit-transition: 0.3s ease 0s;
 	-moz-transition: 0.3s ease 0s;
 	-ms-transition: 0.3s ease 0s;
-	-o-transform: 0.3s ease 0s;
+	-o-transition: 0.3s ease 0s;
 	transition: 0.3s ease 0s;
 }
 
@@ -25608,4 +25607,3 @@ pre[class*="language-"] {
 		overflow: auto !important;
 	}
 }
-/*# sourceMappingURL=soft-design-system.css.map */

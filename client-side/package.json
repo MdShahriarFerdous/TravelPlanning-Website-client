@@ -24,6 +24,7 @@
 		"cleave.js": "^1.6.0",
 		"export-from-json": "^1.7.3",
 		"formik": "^2.4.5",
+		"html-react-parser": "^5.0.11",
 		"isotope-layout": "^3.0.6",
 		"jquery": "^3.7.1",
 		"jquery-ui": "^1.13.2",
