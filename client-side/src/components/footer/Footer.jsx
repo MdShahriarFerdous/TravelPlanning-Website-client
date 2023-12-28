@@ -149,7 +149,9 @@ const Footer = () => {
 											<div className="links">
 												<ul>
 													<li>
-														<a href={liveLink}>
+														<a
+															href={liveLink}
+															target="_blank">
 															About Us
 														</a>
 													</li>
