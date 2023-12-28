@@ -21,8 +21,8 @@
 /* Profile Image */
 .profile img {
 	border-radius: 50%;
-	width: 130px;
-	height: 130px;
+	width: 150px;
+	height: 150px;
 }
 
 /* Profile section */
@@ -67,4 +67,11 @@ li {
 button.profileBtn,
 label.input-label-btn {
 	font-weight: normal;
+}
+
+
+/* Personal Info */
+.container form .editBtn{
+	font-weight: normal;
+	color: #344767;
 }
