@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as fillHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as notFillHeart } from "@fortawesome/free-regular-svg-icons";
+import { hotelsList } from "../../backend-services/hotelsApi";
 
 
 const TripsDetailsPage = () => {
@@ -15,6 +16,8 @@ const TripsDetailsPage = () => {
   const location = useLocation();
   const [auth] = useAuth();
   const navigate = useNavigate();
+  const [hotels, setHotels] = useState([]);
+  const [activeAccordion, setActiveAccordion] = useState(0);
 
   const [features, setFeatures] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -38,7 +41,29 @@ const TripsDetailsPage = () => {
       setIsLoading(true);
     }, 2000);
     fetchData();
+    (async () => {
+      const res = await hotelsList({
+        query: {
+          location: location_name,
+        },
+      });
+      if (res) {
+        const { hotels } = res || {};
+        setHotels(hotels);
+      }
+    })();
   }, []);
+
+  const handleAccordionClick = (e) => {
+    let element = e.target;
+    if (element.classList.contains("active")) {
+      element.classList.remove("active");
+      element.parentElement.classList.remove("active-block");
+    } else {
+      element.classList.add("active");
+      element.parentElement.classList.add("active-block");
+    }
+  };
 
   let filteredObjects = features.filter((item) => item.properties.rate >= 2);
   let tripAbleLocation = filteredObjects.slice(0, duration * 3);
@@ -87,9 +112,11 @@ const TripsDetailsPage = () => {
   };
 
   if (!isLoading) {
-    return <div className="d-flex justify-content-center align-items-center vh-100">
-          <MiniLoader />
-        </div>;
+    return (
+      <div className="d-flex justify-content-center align-items-center vh-100">
+        <MiniLoader />
+      </div>
+    );
   }
 
   return (
@@ -148,34 +175,41 @@ const TripsDetailsPage = () => {
                     </ul> */}
                   </div>
                 </div>
+
                 <div className="t-plans my-5">
                   <h3>Tour Plans</h3>
-                  <ul className="accordion-box tp-accordion clearfix">
-                    {arr.map((item, index) => (
-                      <li className="accordion block active-block" key={index}>
-                        <div className="acc-btn active">Explore in {Object.keys(item)[0]}</div>
-                        <div className="acc-content current">
-                          <div className="content">
-                            <div className="travilo-text">
-                              <ul>
-                                {item[Object.keys(item)].map((item, index) => (
-                                  <li
-                                    key={index}
-                                    style={{
-                                      textTransform: "capitalize",
-                                    }}
-                                  >
-                                    {item.properties.name}
-                                    <br />
-                                    <small>Tags: {item.properties.kinds}</small>
-                                  </li>
-                                ))}
-                              </ul>
+                  <ul className="accordion-box tp-accordion clearfix" style={{ paddingLeft: 0 }}>
+                    {arr.map((item, index) => {
+                      console.log(index);
+                      return (
+                        <li className={`accordion block ${index === activeAccordion ? "active-block" : ""}`} key={index}>
+                          <div className={`acc-btn ${index === activeAccordion ? "active" : ""}`} onClick={(e) => handleAccordionClick(e)}>
+                            Explore in {Object.keys(item)[0]}
+                            <span className="arrow fa fa-angle-down"></span>
+                          </div>
+                          <div className="acc-content current">
+                            <div className="content">
+                              <div className="travilo-text">
+                                <ul>
+                                  {item[Object.keys(item)].map((item, index) => (
+                                    <li
+                                      key={index}
+                                      style={{
+                                        textTransform: "capitalize",
+                                      }}
+                                    >
+                                      {item.properties.name}
+                                      <br />
+                                      <small>Tags: {item.properties.kinds}</small>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </li>
-                    ))}
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
                 <div className="location">
@@ -208,48 +242,25 @@ const TripsDetailsPage = () => {
                 {/*Widget*/}
                 <div className="dsp-widget similar-widget">
                   <div className="inner">
-                    <h3>You might also like</h3>
+                    <h3>Featured Hotel</h3>
                     {/*Logo*/}
                     <div className="posts">
-                      <div className="post">
-                        <div className="image">
-                          <a href="#">
-                            <img src="https://images.unsplash.com/photo-1600011689032-8b628b8a8747?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDR8fGhvdGVsfGVufDB8fDB8fHww" alt="London Bridge" />
-                          </a>
+                      {hotels.map((item, index) => (
+                        <div className="post">
+                          <div className="image">
+                            <a href="#">
+                              {/* <img src="https://images.unsplash.com/photo-1600011689032-8b628b8a8747?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDR8fGhvdGVsfGVufDB8fDB8fHww" alt="London Bridge" /> */}
+                              <img src={item.thumbnail} alt={item.name} style={{ height: 63 }} />
+                            </a>
+                          </div>
+                          <h6>
+                            <a href="https://we-travel-tech-taqwa.vercel.app/hotels/le-meridien-dhaka">{item.name}</a>
+                          </h6>
+                          <div className="price">
+                            Starts from <span className="amount">${item.rentPerPerson}</span>
+                          </div>
                         </div>
-                        <h6>
-                          <a href="https://we-travel-tech-taqwa.vercel.app/hotels/le-meridien-dhaka">Le Méridien Dhaka</a>
-                        </h6>
-                        <div className="price">
-                          Starts from <span className="amount">$100</span>
-                        </div>
-                      </div>
-                      <div className="post">
-                        <div className="image">
-                          <a href="#">
-                            <img src="https://images.unsplash.com/photo-1615460549969-36fa19521a4f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fGhvdGVsfGVufDB8fDB8fHww" alt="Maldives" />
-                          </a>
-                        </div>
-                        <h6>
-                          <a href="https://we-travel-tech-taqwa.vercel.app/hotels/tiger-garden-int.-hotel">Tiger Garden Int. Hotel</a>
-                        </h6>
-                        <div className="price">
-                          Starts from <span className="amount">$150</span>
-                        </div>
-                      </div>
-                      <div className="post">
-                        <div className="image">
-                          <a href="#">
-                            <img src="https://images.unsplash.com/photo-1587213811864-46e59f6873b1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTEwfHxob3RlbHxlbnwwfHwwfHx8MA%3D%3D" alt="Helsinki" />
-                          </a>
-                        </div>
-                        <h6>
-                          <a href="https://we-travel-tech-taqwa.vercel.app/hotels/the-peninsula-chittagong">The Peninsula Chittagong</a>
-                        </h6>
-                        <div className="price">
-                          Starts from <span className="amount">$200</span>
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   </div>
                 </div>
