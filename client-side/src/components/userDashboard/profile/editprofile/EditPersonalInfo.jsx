@@ -12,7 +12,7 @@ const EditPersonalInfo = () => {
   });
 
   const handleInputChange = (e) => {
-    console.log(e)
+    console.log(e);
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -25,11 +25,11 @@ const EditPersonalInfo = () => {
     try {
       console.log("Form Data:", formData);
 
-      const response = await updateProfile(formData);
-      console.log("Api response:", response);
+      const data = await updateProfile(formData);
+      console.log("Api response:", data);
 
-      if (response.error) {
-        toast.error(response.error);
+      if (data.error) {
+        toast.error(data.error);
       } else {
         toast.success("Profile updated successfully!");
       }

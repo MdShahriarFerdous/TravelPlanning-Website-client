@@ -5,17 +5,18 @@ import "react-toastify/dist/ReactToastify.css";
 //* =========================Update-Profile-API=========================
 export const updateProfile = async (formData) => {
   try {
-    const data = await axios.post(`/update-profile`, formData, {
+    const response = await axios.post("/update-profile", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     });
-    if (data.error) {
-      toast.error(data.error);
+
+    if (response.data.error) {
+      toast.error(response.data.error);
     } else {
-      return data.data;
+      return response.data;
     }
-    console.log("data: ", data);
+    console.log("data: ", response.data);
   } catch (error) {
     console.error("Update Profile:", error);
   }
