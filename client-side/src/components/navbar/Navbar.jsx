@@ -11,14 +11,13 @@ import NavLogo from "../../assets/images/logo-nav.png";
 import MenuIcon from "../../assets/images/icons/menu-icon.svg";
 
 import { useAuth } from "../../context/authContext";
+import { useUserImage } from "../../context/userImageContext";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-
-import User from "../../assets/images/photo-1-1.jpg";
 
 const Navbar = () => {
 	const [auth, setAuth] = useAuth();
+	const [userImage, setUserImage] = useUserImage();
 	const navigate = useNavigate();
-
 	const logout = () => {
 		setAuth({ ...auth, user: null, token: "" });
 		localStorage.removeItem("auth");
@@ -195,8 +194,7 @@ const Navbar = () => {
 													isActive === null
 														? "current"
 														: ""
-												}`}
-											>
+												}`}>
 												<NavLink to="/">Home</NavLink>
 											</li>
 											<li
@@ -204,8 +202,7 @@ const Navbar = () => {
 													isActive === "trips"
 														? "current"
 														: ""
-												} dropdown`}
-											>
+												} dropdown`}>
 												<NavLink to="/trips">
 													Trips
 												</NavLink>
@@ -215,8 +212,7 @@ const Navbar = () => {
 													isActive === "flights"
 														? "current"
 														: ""
-												}`}
-											>
+												}`}>
 												<NavLink to="/flights">
 													Flights
 												</NavLink>
@@ -226,8 +222,7 @@ const Navbar = () => {
 													isActive === "hotels"
 														? "current"
 														: ""
-												}`}
-											>
+												}`}>
 												<NavLink to="/hotels">
 													Hotels
 												</NavLink>
@@ -237,8 +232,7 @@ const Navbar = () => {
 													isActive === "blogs"
 														? "current"
 														: ""
-												}`}
-											>
+												}`}>
 												<NavLink to="/blogs">
 													Blogs
 												</NavLink>
@@ -257,17 +251,16 @@ const Navbar = () => {
 
 							<div className="links-box clearfix">
 								<div className="link login">
-									{auth?.user ? (
+									{auth?.token ? (
 										<div className="dropdown">
 											<a
 												className="nav-link pointer dropdown-toggle"
-												data-bs-toggle="dropdown"
-											>
+												data-bs-toggle="dropdown">
 												<img
-													src={User}
+													src={userImage?.image}
 													style={{
-														width: "36px",
-														height: "36px",
+														width: "40px",
+														height: "40px",
 													}}
 													className="ms-2 avatar shadow mb-2"
 												/>
@@ -309,8 +302,7 @@ const Navbar = () => {
 							<svg
 								className="icon-close"
 								role="presentation"
-								viewBox="0 0 16 14"
-							>
+								viewBox="0 0 16 14">
 								<path
 									d="M15 0L1 14m14 0L1 0"
 									stroke="currentColor"
