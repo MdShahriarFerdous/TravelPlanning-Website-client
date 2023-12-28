@@ -48,6 +48,7 @@
 .profile_item .list .profile_icon {
 	font-size: 24px;
 	margin-right: 6px;
+	color: #717a8a;
 }
 li {
 	padding: 10px 2px;
@@ -69,9 +70,8 @@ label.input-label-btn {
 	font-weight: normal;
 }
 
-
 /* Personal Info */
-.container form .editBtn{
+.container form .editBtn {
 	font-weight: normal;
 	color: #344767;
 }
