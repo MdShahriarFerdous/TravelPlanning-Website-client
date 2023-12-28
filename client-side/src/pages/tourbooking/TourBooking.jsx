@@ -199,8 +199,8 @@ const TourBooking = () => {
 						{loading ? (
 							<div
 								style={{
-									marginTop: "280px",
-									marginBottom: "300px",
+									paddigTop: "280px",
+									paddingBottom: "300px",
 								}}>
 								<BlockLoader />
 							</div>
