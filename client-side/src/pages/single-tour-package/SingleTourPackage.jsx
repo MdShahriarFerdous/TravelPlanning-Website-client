@@ -18,7 +18,12 @@ import ScreenLoader from "./../../components/screenloader/ScreenLoader";
 import TourPackageForm from "./TourPackageForm";
 import AddTourBookmark from "../../components/bookmark/tour/AddTourBookmark";
 import Review from "../../components/review/Review";
-// import TourPackageReview from "./tourreview/TourPackageReview";
+import {
+	FacebookShareButton,
+	FacebookIcon,
+	WhatsappIcon,
+	WhatsappShareButton,
+} from "react-share";
 
 const SingleTourPackage = () => {
 	const [tourDetails, setTourDetails] = useState({});
@@ -98,7 +103,7 @@ const SingleTourPackage = () => {
 						style={{ marginTop: "180px", marginBottom: "180px" }}>
 						<div className="container">
 							<div className="row mb-4">
-								<div className="col-lg-10">
+								<div className="col-lg-9">
 									<h2
 										className="mb-4"
 										style={{
@@ -109,8 +114,32 @@ const SingleTourPackage = () => {
 									</h2>
 								</div>
 
-								<div className="col-lg-2">
-									<AddTourBookmark />
+								<div className="col-lg-3">
+									<div className="row g-0">
+										<div className="col-lg-4 text-center">
+											<FacebookShareButton
+												url={`https://we-travel-tech-taqwa.vercel.app/tour-package/${tourInfoId}`}>
+												<FacebookIcon
+													size={40}
+													round={true}
+												/>
+											</FacebookShareButton>
+										</div>
+
+										<div className="col-lg-4 text-center">
+											<WhatsappShareButton
+												url={`https://we-travel-tech-taqwa.vercel.app/tour-package/${tourInfoId}`}>
+												<WhatsappIcon
+													size={40}
+													round={true}
+												/>
+											</WhatsappShareButton>
+										</div>
+
+										<div className="col-lg-4">
+											<AddTourBookmark />
+										</div>
+									</div>
 								</div>
 							</div>
 
