@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import UserSideNavbar from "../navbar/UserSideNavbar";
 import { FaArrowLeft } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { CiSettings } from "react-icons/ci";
-import { updateProfile } from "../../../backend-services/profileApi"
+import { updateProfile } from "../../../backend-services/profileApi";
 import { useAuth } from "../../../context/authContext";
 import PersonalInfo from "./PersonalInfo";
 import PasswordSetting from "./PasswordSetting";
@@ -13,24 +13,42 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap";
 import "./Profile.css";
 import "../commonCSS/common.css";
-
+import { useUserImage } from "../../../context/userImageContext";
+import circleLoader from "../../../assets/images/loader/spanloader.svg";
 
 const Profile = () => {
   const [selectedProfile, setSelectedProfile] = useState("personalInfo");
   const [selectedImage, setSelectedImage] = useState(null);
   const [auth] = useAuth();
+  const [userImage, setUserImage] = useUserImage();
+  const [loading, setLoading] = useState(false);
 
   const handleProfileSelect = (profile) => {
     setSelectedProfile(profile);
   };
-  
+
+  useEffect(() => {
+    if (userImage?.image) {
+      setSelectedImage(userImage?.image);
+    }
+  }, [userImage]);
+
   const onUpdateProfile = async (file) => {
+    setLoading(true);
     try {
-      await updateProfile({ image: file });
-      toast.success("Image uploaded");
+      const data = await updateProfile({ image: file });
+      if (data.status === "Success") {
+        setUserImage({
+          ...userImage,
+          image: data.image,
+        });
+      }
     } catch (error) {
       console.error("Error uploading : ", error);
       toast.error("Error uploading image");
+    } finally {
+      setLoading(false);
+      toast.success("Image uploaded");
     }
   };
 
@@ -64,12 +82,48 @@ const Profile = () => {
               <div className="col-lg-4">
                 <div className="card w-100 mt-3 p-4">
                   <div className="profile d-flex flex-column align-items-center">
-                    <p style={{fontSize:"1.5rem"}}>{`${auth?.user?.username}`}</p>
-                    <img
-                      src={selectedImage}
-                      alt="Profile Image"
-                    />
-                    <label htmlFor="upload-photo" className="btn bg-gradient-primary mt-2 align-items-center">
+                    <p
+                      style={{
+                        fontSize: "1.5rem",
+                        fontWeight: "bold",
+                        marginBottom: "10px",
+                      }}
+                    >{`${auth?.user?.username}`}</p>
+
+                    <p
+                      style={{
+                        fontSize: "0.8rem",
+                      }}
+                    >{`${auth?.user?.email}`}</p>
+                    {loading ? (
+                      <>
+                        <div
+                          style={{
+                            width: "120px",
+                            height: "120px",
+                            borderRadius: "60px",
+                            border: "1px solid #67748E",
+                          }}
+                        >
+                          <img
+                            src={circleLoader}
+                            style={{
+                              width: "80px",
+                              height: "80px",
+                              marginTop: "15px",
+                              marginLeft: "16px",
+                            }}
+                          />
+                        </div>
+                      </>
+                    ) : (
+                      <img src={selectedImage} alt="Profile Image" />
+                    )}
+
+                    <label
+                      htmlFor="upload-photo"
+                      className="btn bg-gradient-primary mt-2 input-label-btn"
+                    >
                       Upload Photo
                       <input
                         type="file"
@@ -80,8 +134,9 @@ const Profile = () => {
                       />
                     </label>
                   </div>
+
                   <div className="profile_item">
-                    <ul className="list">
+                    <ul className="list settings-item">
                       <li
                         className={`list-item ${
                           selectedProfile === "personalInfo" ? "active" : ""
@@ -103,9 +158,11 @@ const Profile = () => {
                 </div>
               </div>
 
-              <div className="col-lg-8">
-                  {selectedProfile === "personalInfo" && <PersonalInfo onUpdateProfile={onUpdateProfile} />}
-                  {selectedProfile === "passwordSetting" && <PasswordSetting />}
+              <div className="col-lg-8 user-info-part">
+                {selectedProfile === "personalInfo" && (
+                  <PersonalInfo onUpdateProfile={onUpdateProfile} />
+                )}
+                {selectedProfile === "passwordSetting" && <PasswordSetting />}
               </div>
             </div>
           </div>

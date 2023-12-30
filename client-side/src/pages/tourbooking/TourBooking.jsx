@@ -46,6 +46,7 @@ const TourBooking = () => {
 	const [screenLoader, setScreenLoader] = useState(true);
 	const [toggle, setToggle] = useState(true);
 	const [auth, setAuth] = useAuth();
+	// console.log(auth);
 
 	const tourId = bookingDetails && bookingDetails?.tourId;
 	const packageName = bookingDetails && bookingDetails?.packageName;
@@ -146,21 +147,12 @@ const TourBooking = () => {
 		}
 	};
 
-	// const handleClick = (e) => {
-	// 	e.preventDefault();
-	// 	navigate("/user/tour-payment-status");
-	// };
-	let userEmail;
-	if (auth?.user) {
-		userEmail = auth?.user?.email;
-	}
-
 	const formik = useFormik({
 		initialValues: {
 			tourBookingId: bookingId,
 			firstName: "",
 			lastName: "",
-			userMail: userEmail,
+			userMail: auth?.user?.email,
 			gender: "",
 			phoneNumber: "",
 		},
@@ -206,8 +198,8 @@ const TourBooking = () => {
 						{loading ? (
 							<div
 								style={{
-									marginTop: "280px",
-									marginBottom: "300px",
+									paddigTop: "280px",
+									paddingBottom: "300px",
 								}}>
 								<BlockLoader />
 							</div>

@@ -19,11 +19,25 @@ const AuthProvider = ({ children }) => {
 			const parsedData = JSON.parse(data);
 			setAuth({
 				...auth,
-				user: parsedData.user,
 				token: parsedData.token,
 			});
 		}
 	}, []);
+
+	useEffect(() => {
+		const fetchAuthData = async () => {
+			if (auth?.token) {
+				const { data } = await axios.get("/user-info");
+				data.error
+					? console.log(data.error)
+					: setAuth({
+							...auth,
+							user: data.user,
+						});
+			}
+		};
+		fetchAuthData();
+	}, [auth?.token]);
 
 	return (
 		<AuthContext.Provider value={[auth, setAuth]}>

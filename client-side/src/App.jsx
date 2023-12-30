@@ -36,6 +36,7 @@ import BookingCards from "./components/userDashboard/booking/allbookings/Booking
 import PaymentStatus from "./pages/tourbooking/PaymentStatus.jsx";
 import FlightPaymentStatus from "./pages/flights/FlightPaymentStatus.jsx";
 import HotelBookingPaymentStatus from "./components/userDashboard/booking/hotel/hotelBooking/HotelBookingPaymentStatus.jsx";
+import About from "./pages/about/About.jsx";
 
 const RenderAppContent = () => {
 	const [loader] = useLoader();
@@ -46,6 +47,7 @@ const RenderAppContent = () => {
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<HomePage />} />
+				<Route path="/about-us" element={<About />} />
 
 				<Route path="/register" element={<RegisterPage />} />
 				<Route path="/check-mail" element={<SendMailPage />} />

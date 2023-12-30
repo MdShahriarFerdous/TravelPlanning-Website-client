@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 const Footer = () => {
 	const location = useLocation();
 	const [routeName, setRouteName] = useState("/");
+	const liveLink = "https://we-travel-tech-taqwa.vercel.app/about-us";
 
 	useEffect(() => {
 		setRouteName(location.pathname);
@@ -55,8 +56,7 @@ const Footer = () => {
 											<li className="email">
 												<a
 													href="mailto:hello@WeTravel.com"
-													target="_blank"
-												>
+													target="_blank">
 													<i className="icon fa fa-envelope" />
 													hello@WeTravel.com
 												</a>
@@ -67,8 +67,7 @@ const Footer = () => {
 												<a
 													href="https://www.facebook.com/"
 													target="_blank"
-													className="facebook"
-												>
+													className="facebook">
 													<i className="fab fa-facebook-f" />
 												</a>
 											</li>
@@ -76,8 +75,7 @@ const Footer = () => {
 												<a
 													href="https://twitter.com"
 													target="_blank"
-													className="twitter"
-												>
+													className="twitter">
 													<i className="fab fa-twitter" />
 												</a>
 											</li>
@@ -85,8 +83,7 @@ const Footer = () => {
 												<a
 													href="http://www.linkedin.com/"
 													target="_blank"
-													className="linkedin"
-												>
+													className="linkedin">
 													<i className="fab fa-linkedin-in" />
 												</a>
 											</li>
@@ -94,8 +91,7 @@ const Footer = () => {
 												<a
 													href="https://www.youtube.com/"
 													target="_blank"
-													className="youtube"
-												>
+													className="youtube">
 													<i className="fab fa-youtube" />
 												</a>
 											</li>
@@ -113,32 +109,28 @@ const Footer = () => {
 													<li>
 														<a
 															href="https://we-travel-tech-taqwa.vercel.app/tour-package/brazil1"
-															target="_blank"
-														>
+															target="_blank">
 															Brazil
 														</a>
 													</li>
 													<li>
 														<a
 															href="https://we-travel-tech-taqwa.vercel.app/tour-package/canada1"
-															target="_blank"
-														>
+															target="_blank">
 															Canada
 														</a>
 													</li>
 													<li>
 														<a
 															href="https://we-travel-tech-taqwa.vercel.app/tour-package/italy1"
-															target="_blank"
-														>
+															target="_blank">
 															Italy
 														</a>
 													</li>
 													<li>
 														<a
 															href="https://we-travel-tech-taqwa.vercel.app/tour-package/morocco1"
-															target="_blank"
-														>
+															target="_blank">
 															Morocco
 														</a>
 													</li>
@@ -157,13 +149,12 @@ const Footer = () => {
 											<div className="links">
 												<ul>
 													<li>
-														<a href="#">About Us</a>
-													</li>
-													{/* <li>
-														<a href="#">
-															Company Profile
+														<a
+															href={liveLink}
+															target="_blank">
+															About Us
 														</a>
-													</li> */}
+													</li>
 													<li>
 														<a href="#">
 															Team Members
@@ -171,9 +162,6 @@ const Footer = () => {
 													</li>
 													{/* <li>
 														<a href="#">Support</a>
-													</li> */}
-													{/* <li>
-														<a href="#">Career</a>
 													</li> */}
 												</ul>
 											</div>
@@ -197,8 +185,7 @@ const Footer = () => {
 											<h6>
 												<a
 													href="https://we-travel-tech-taqwa.vercel.app/tour-package/egypt1"
-													target="_blank"
-												>
+													target="_blank">
 													Adventure in Egypt Rimal
 													Bani Wahiba
 												</a>
@@ -219,8 +206,7 @@ const Footer = () => {
 											<h6>
 												<a
 													href="https://we-travel-tech-taqwa.vercel.app/tour-package/maldives1"
-													target="_blank"
-												>
+													target="_blank">
 													Unveiling the Serenity of
 													the Maldives
 												</a>
