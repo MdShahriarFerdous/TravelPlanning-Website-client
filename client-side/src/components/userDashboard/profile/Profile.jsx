@@ -26,9 +26,8 @@ const Profile = () => {
   
   const onUpdateProfile = async (file) => {
     try {
-      const data = await updateProfile({ image: file });
+      await updateProfile({ image: file });
       toast.success("Image uploaded");
-      // console.log('API Response:', data);
     } catch (error) {
       console.error("Error uploading : ", error);
       toast.error("Error uploading image");

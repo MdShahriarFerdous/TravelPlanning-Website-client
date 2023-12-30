@@ -23,7 +23,8 @@ import { useLoader } from "./context/loaderContext.jsx";
 
 import Profile from "./components/userDashboard/profile/Profile.jsx";
 import TourBookingLists from "./components/userDashboard/booking/tour/TourBookingLists.jsx";
-import HotelBookingLists from "./components/userDashboard/booking/hotel/HotelBookingLists.jsx";
+import HotelBooking from "./components/userDashboard/booking/hotel/hotelBooking/HotelBooking.jsx";
+import HotelBookingLists from "./components/userDashboard/booking/hotel/dashboard/HotelBookingLists.jsx";
 import FlightBookingLists from "./components/userDashboard/booking/flight/FlightBookingLists.jsx";
 import HotelBookmarks from "./components/userDashboard/bookmarks/hotel/HotelBookmarks.jsx";
 import TourBookmarks from "./components/userDashboard/bookmarks/tour/TourBookmarks.jsx";
@@ -34,6 +35,7 @@ import FlightsListPage from "./pages/flights/FlightsListPage.jsx";
 import BookingCards from "./components/userDashboard/booking/allbookings/BookingCards.jsx";
 import PaymentStatus from "./pages/tourbooking/PaymentStatus.jsx";
 import FlightPaymentStatus from "./pages/flights/FlightPaymentStatus.jsx";
+import HotelBookingPaymentStatus from "./components/userDashboard/booking/hotel/hotelBooking/HotelBookingPaymentStatus.jsx";
 
 const RenderAppContent = () => {
 	const [loader] = useLoader();
@@ -72,6 +74,14 @@ const RenderAppContent = () => {
 					<Route
 						path="hotel-booking-lists"
 						element={<HotelBookingLists />}
+					/>
+					<Route
+						path="hotel-booking/:hotelSlug"
+						element={<HotelBooking />}
+					/>
+					<Route
+						path="hotel/payment/success"
+						element={<HotelBookingPaymentStatus />}
 					/>
 					<Route
 						path="tour-booking-lists"

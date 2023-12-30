@@ -16,8 +16,22 @@ export const updateProfile = async (formData) => {
     } else {
       return data.data;
     }
-    console.log("data: ", data)
   } catch (error) {
     console.error('Profile API Error:', error);
+  }
+};
+
+//* =========================Get-User-Info-API=========================
+export const userInfo = async () => {
+  try {
+    const { data } = await axios.get("/user-info");
+    if (data.error) {
+      console.error(data.error);
+    } else {
+      return data;
+    }
+  } catch (error) {
+    console.error(error.response.data);
+    return error.response;
   }
 };

@@ -171,7 +171,6 @@ const TourBooking = () => {
 			phoneNumber: string().required("Phone number is required"),
 		}),
 		onSubmit: async (values, { resetForm }) => {
-			// console.log(values);
 			setScreenLoader(true);
 			try {
 				const data = await TourPaymentDataCreateAPI(

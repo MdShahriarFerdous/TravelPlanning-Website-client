@@ -45,6 +45,19 @@ const UserSideNavbar = () => {
 						</NavLink>
 					</li>
 
+					<li className="item-menu-el">
+						<NavLink
+							to="/user/hotel-booking-lists"
+							className="list d-block navlink-hover"
+						>
+							<FaRegCalendarCheck
+								style={{ marginRight: "8px" }}
+								className="ic book-icon"
+							/>
+							Hotel Bookings
+						</NavLink>
+					</li>
+
 					{/* <li>
 						<NavLink
 							to="/user/hotel-booking-lists"
@@ -71,7 +84,7 @@ const UserSideNavbar = () => {
 						</NavLink>
 					</li> */}
 
-					<li className="item-menu-el">
+					{/* <li className="item-menu-el">
 						<NavLink
 							to="/user/all-bookings"
 							className="list d-block navlink-hover"
@@ -79,7 +92,7 @@ const UserSideNavbar = () => {
 							<FaRegCalendarCheck className="ic book-icon" />
 							My Bookings
 						</NavLink>
-					</li>
+					</li> */}
 
 					<li className="item-menu-el">
 						<NavLink

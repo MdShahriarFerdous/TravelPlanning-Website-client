@@ -52,7 +52,7 @@ const Blogs = () => {
   };
   return (
     <div className="parent_content">
-      <div className="container-fluids">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-lg-3 fixed-start">
             <UserSideNavbar />
