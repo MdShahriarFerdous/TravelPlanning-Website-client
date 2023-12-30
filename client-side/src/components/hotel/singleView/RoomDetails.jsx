@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import HotelRoomCategory from "./HotelRoomCategory";
 import { hotelCategoriesList } from "../../../backend-services/hotelsApi";
 import MiniLoader from "../../screenloader/MiniLoader";
-export default function RoomDetails({ hotelId }) {
+export default function RoomDetails({ hotelInfo }) {
   const [hotelCategories, setHotelCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
@@ -11,7 +11,7 @@ export default function RoomDetails({ hotelId }) {
       setIsLoading(true);
       const res = await hotelCategoriesList({
         query: {
-          hotelId,
+          hotelId: hotelInfo._id,
         },
       });
       if (res) {
@@ -63,6 +63,7 @@ export default function RoomDetails({ hotelId }) {
                           key={hotelCategory._id}
                           index={hotelCategory._id}
                           hotelCategory={hotelCategory}
+                          hotelInfo={hotelInfo}
                         />
                       ))}
                     </>
