@@ -15,7 +15,7 @@ const UserImageProvider = ({ children }) => {
 			if (auth) {
 				const { data } = await axios.get("/user-image");
 				if (data.error) {
-					console.log(data.error);
+					console.error(data.error);
 				} else {
 					setUserImage({
 						...userImage,

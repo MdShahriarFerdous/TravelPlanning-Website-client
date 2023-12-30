@@ -4,7 +4,11 @@ import moment from "moment";
 import { useState } from "react";
 import HotelBookingModal from "./HotelBookingModal";
 import MiniLoader from "../../../../screenloader/MiniLoader";
-import { hotelBookingsDetailedinfo } from "../../../../../backend-services/hotelsApi";
+import { useNavigate } from "react-router-dom";
+import {
+  hotelBookingPayment,
+  hotelBookingsDetailedinfo,
+} from "../../../../../backend-services/hotelsApi";
 import { toast } from "react-toastify";
 
 // eslint-disable-next-line react/prop-types
@@ -23,6 +27,8 @@ export default function HotelBookingCard({ booking }) {
     status,
   } = booking || {};
 
+  const navigate = useNavigate();
+
   const { name: hotelName } = hotelId || {};
   const { name: roomType } = roomCategoryId || {};
   const { title: roomOption } = roomSubCategoryId || {};
@@ -30,9 +36,11 @@ export default function HotelBookingCard({ booking }) {
   const [modalShow, setModalShow] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+
   const handleCloseModal = () => {
     setModalShow(false);
   };
+
   const handleView = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -48,6 +56,17 @@ export default function HotelBookingCard({ booking }) {
       }
     }
     setIsLoading(false);
+  };
+
+  const payNow = async (e) => {
+    e.preventDefault();
+    const response = await hotelBookingPayment(_id);
+    if (response?.data?.url) {
+      window.location.replace(response?.data?.url);
+    } else {
+      toast.error("SSL Commerz Payment Failed");
+      navigate("/user/hotel-booking-lists");
+    }
   };
   return (
     <div className="card border-primary mb-3 hotel-booking-card">
@@ -121,12 +140,11 @@ export default function HotelBookingCard({ booking }) {
               onHide={handleCloseModal}
               data={modalData}
             />
-            {/* Later */}
-            {/* {status === "pending" && (
-              <button type="button" className="btn">
+            {status === "pending" && (
+              <button type="button" className="btn" onClick={payNow}>
                 Pay Now
               </button>
-            )} */}
+            )}
           </div>
         </div>
       </div>

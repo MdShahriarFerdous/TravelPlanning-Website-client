@@ -46,7 +46,7 @@ const TourBooking = () => {
 	const [screenLoader, setScreenLoader] = useState(true);
 	const [toggle, setToggle] = useState(true);
 	const [auth, setAuth] = useAuth();
-	// console.log(auth);
+	
 
 	const tourId = bookingDetails && bookingDetails?.tourId;
 	const packageName = bookingDetails && bookingDetails?.packageName;
