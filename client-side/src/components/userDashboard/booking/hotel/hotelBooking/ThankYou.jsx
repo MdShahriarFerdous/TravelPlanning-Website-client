@@ -10,10 +10,10 @@ export default function ThankYou() {
   const payNow = async (e) => {
     e.preventDefault();
     const response = await hotelBookingPayment(bookingInfo?.newlyCreatedId);
-    if (response?.url) {
-      window.location.replace(response.url);
+    if (response?.data?.url) {
+      window.location.replace(response?.data?.url);
     } else {
-      toast.error("SSL COMMERCE ERROR");
+      toast.error("SSL Commerz Payment Failed");
       navigate("/user/hotel-booking-lists");
     }
   };
