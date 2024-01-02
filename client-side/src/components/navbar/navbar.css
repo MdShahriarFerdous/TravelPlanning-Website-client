@@ -5,3 +5,29 @@
 	content: ""; /* This will hide the arrow button */
 	opacity: 0; /* This will make the arrow transparent */
 }
+.main-menu .navigation > li:hover > a:after,
+.main-menu .navigation > li.current > a:after,
+.main-menu .navigation > li.current-menu-item > a:after {
+	opacity: 1;
+	visibility: visible;
+	width: 40px;
+}
+ul.dropdown-menu {
+	padding: 1rem;
+	left: -60px !important;
+	top: 5px !important;
+	min-width: 144px;
+	height: 100px;
+}
+.dropdown-menu.show::before {
+	top: 0 !important;
+}
+ul.dropdown-menu.show {
+	left: -60px !important;
+	top: 5px !important;
+}
+ul.dropdown-menu.show .dropdown-item a {
+	padding: 12px 8px 8px 8px;
+	width: 160px !important;
+	height: 10px !important;
+}

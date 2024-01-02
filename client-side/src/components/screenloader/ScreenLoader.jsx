@@ -1,5 +1,5 @@
-import React from "react";
-import loader from "../../assets/images/loader/loader.svg";
+import Lottie from "lottie-react";
+import FlyLoader from "../../assets/animation-json/fly.json";
 import "./loader.css";
 
 const ScreenLoader = () => {
@@ -7,7 +7,11 @@ const ScreenLoader = () => {
 		<div>
 			<div className="ProcessingDiv">
 				<div className="center-screen">
-					<img className="loader-size" src={loader} />
+					<Lottie
+						loop={true}
+						animationData={FlyLoader}
+						className="loader-size"
+					/>
 				</div>
 			</div>
 		</div>

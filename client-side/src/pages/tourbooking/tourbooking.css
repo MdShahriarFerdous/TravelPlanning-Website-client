@@ -1,0 +1,89 @@
+@import url("https://fonts.cdnfonts.com/css/gilroy-bold");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+
+h2 {
+	font-family: "Gilroy-Medium", sans-serif;
+	letter-spacing: 0.1rem;
+}
+p {
+	font-family: "Open Sans", sans-serif;
+}
+.booking-head {
+	color: #2a324b;
+}
+.btn-back {
+	padding: 16px 24px;
+
+	color: #ff531f;
+}
+.btn.btn-outline-secondary.btn-back:hover {
+	color: #ff531f;
+	outline: 1px solid #ff531f;
+}
+.btn-div-tour .payment-btn-tour {
+	padding: 16px 24px;
+	background: #ff531f;
+	color: white;
+	font-weight: 400;
+}
+.payment-btn:hover {
+	background: #f54d1a;
+	color: white;
+}
+.cancel-btn {
+	font-weight: 400;
+}
+.back-arrow {
+	margin: 0 4px 2px 0;
+	color: #ff531f;
+}
+.p-headline {
+	font-weight: 600;
+}
+.p-headline-details,
+.p-headline-cost {
+	font-weight: 700;
+	color: rgb(52, 71, 103);
+}
+
+.p-text {
+	font-weight: lighter;
+}
+.p-pay {
+	font-size: 1.3rem;
+	font-weight: 700;
+}
+.booking-card {
+	width: 85%;
+}
+.booking-bg-div {
+	background-color: #fcf7ff;
+	min-height: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+.p-query {
+	font-weight: 700;
+}
+.people-icon {
+	color: rgb(164, 170, 180);
+	font-size: 1.3rem;
+	margin-right: 4px;
+}
+.card.fare-card {
+	border-top: 3px solid #ff531f;
+}
+button.toggle-btn-tour {
+	position: absolute;
+	right: 32px;
+}
+.arrow-toggle {
+	font-size: 1.5rem;
+	color: #9b9dcc;
+}
+select.form-select.booking-select:focus {
+	border-color: #ffa185;
+	outline: 0;
+	box-shadow: 0 0 0 0.15px #ffa185;
+}

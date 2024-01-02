@@ -3,22 +3,22 @@ import "bootstrap";
 import "../../assets/css/style.css";
 import "../../assets/css/sections/global-settings.css";
 import "../../assets/css/responsive.css";
-import "./navbar.css";
 import $ from "jquery";
 import { useEffect, useState } from "react";
+import "./navbar.css";
 
-import LogoImage from "../../assets/images/logo.png";
+import NavLogo from "../../assets/images/logo-nav.png";
 import MenuIcon from "../../assets/images/icons/menu-icon.svg";
 
 import { useAuth } from "../../context/authContext";
+import { useUserImage } from "../../context/userImageContext";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
 	const [auth, setAuth] = useAuth();
+	const [userImage, setUserImage] = useUserImage();
 	const navigate = useNavigate();
-
 	const logout = () => {
-		console.log("function call");
 		setAuth({ ...auth, user: null, token: "" });
 		localStorage.removeItem("auth");
 		navigate("/");
@@ -95,7 +95,7 @@ const Navbar = () => {
 				var menuWrap = $(".hidden-bar .side-menu");
 				// appending expander button
 				menuWrap.find("li.dropdown > a").append(function () {
-					return '<button type="button" class="btn-expander"><i class="icon icon-arrow-down"></i></button>';
+					return '<button type="button" className="btn-expander"><i className="icon icon-arrow-down"></i></button>';
 				});
 				// hidding submenu
 				menuWrap.find(".dropdown").children("ul").hide();
@@ -180,13 +180,9 @@ const Navbar = () => {
 						<div className="main-box clearfix">
 							<div className="logo-box">
 								<div className="logo">
-									<a href="index.html" title="Travilo">
-										<img
-											src={LogoImage}
-											alt="Travilo Logo"
-											title="Travilo Logo"
-										/>
-									</a>
+									<NavLink to={"/"} title="WeTravel">
+										<img src={NavLogo} title="WeTravel" />
+									</NavLink>
 								</div>
 							</div>
 							<div className="nav-box clearfix">
@@ -198,8 +194,7 @@ const Navbar = () => {
 													isActive === null
 														? "current"
 														: ""
-												}`}
-											>
+												}`}>
 												<NavLink to="/">Home</NavLink>
 											</li>
 											<li
@@ -207,44 +202,19 @@ const Navbar = () => {
 													isActive === "trips"
 														? "current"
 														: ""
-												} dropdown`}
-											>
+												} dropdown`}>
 												<NavLink to="/trips">
 													Trips
 												</NavLink>
-												<ul>
-													<li>
-														<NavLink to="">
-															Plan a trip
-														</NavLink>
-													</li>
-													<li>
-														<NavLink to="">
-															Hire a trip designer
-														</NavLink>
-													</li>
-												</ul>
 											</li>
 											<li
 												className={`${
 													isActive === "flights"
 														? "current"
 														: ""
-												}`}
-											>
+												}`}>
 												<NavLink to="/flights">
 													Flights
-												</NavLink>
-											</li>
-											<li
-												className={`${
-													isActive === "blogs"
-														? "current"
-														: ""
-												}`}
-											>
-												<NavLink to="/blogs">
-													Blogs
 												</NavLink>
 											</li>
 											<li
@@ -252,10 +222,19 @@ const Navbar = () => {
 													isActive === "hotels"
 														? "current"
 														: ""
-												}`}
-											>
+												}`}>
 												<NavLink to="/hotels">
 													Hotels
+												</NavLink>
+											</li>
+											<li
+												className={`${
+													isActive === "blogs"
+														? "current"
+														: ""
+												}`}>
+												<NavLink to="/blogs">
+													Blogs
 												</NavLink>
 											</li>
 										</ul>
@@ -269,26 +248,26 @@ const Navbar = () => {
 									</span>
 								</button>
 							</div>
+
 							<div className="links-box clearfix">
 								<div className="link login">
-									{auth?.user ? (
+									{auth?.token ? (
 										<div className="dropdown">
 											<a
 												className="nav-link pointer dropdown-toggle"
-												data-bs-toggle="dropdown"
-											>
+												data-bs-toggle="dropdown">
 												<img
-													src="https://pixlok.com/wp-content/uploads/2022/02/Profile-Icon-SVG-09856789.png"
+													src={userImage?.image}
 													style={{
-														width: "36px",
-														height: "36px",
+														width: "40px",
+														height: "40px",
 													}}
 													className="ms-2 avatar shadow mb-2"
 												/>
 											</a>
 											<ul className="dropdown-menu">
 												<li className="dropdown-item">
-													<NavLink to="/dashboard">
+													<NavLink to="/user/dashboard">
 														Dashboard
 													</NavLink>
 												</li>
@@ -323,8 +302,7 @@ const Navbar = () => {
 							<svg
 								className="icon-close"
 								role="presentation"
-								viewBox="0 0 16 14"
-							>
+								viewBox="0 0 16 14">
 								<path
 									d="M15 0L1 14m14 0L1 0"
 									stroke="currentColor"
@@ -342,7 +320,7 @@ const Navbar = () => {
 								{auth?.user ? (
 									<ul>
 										<li>
-											<NavLink to="/dashboard">
+											<NavLink to="/user/dashboard">
 												Dashboard
 											</NavLink>
 										</li>

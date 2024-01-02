@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+
+.profile_info form label {
+	font-size: 16px;
+}
+
+.profile_info form .profileBtn {
+	font-size: 16px;
+	margin-left: -1px;
+}
+
+.heading {
+	color: #344767;
+}
+
+.profileBtn:hover {
+	color: white;
+	background-color: #ff5522;
+}
+
+/* Profile Image */
+.profile img {
+	border-radius: 50%;
+	width: 130px;
+	height: 130px;
+}
+
+/* Profile section */
+
+.profile_item {
+	display: flex;
+	justify-content: center;
+}
+
+.profile_item .list .list-item {
+	cursor: pointer;
+	margin-bottom: 2px;
+	align-items: center;
+	font-size: 1.1rem;
+	padding: 12px 6px 12px 10px;
+	font-family: "Open Sans", sans-serif;
+	font-weight: 500;
+}
+.profile_item .list .list-item:hover {
+	color: #ff5522;
+}
+
+.profile_item .list .profile_icon {
+	font-size: 24px;
+	margin-right: 6px;
+}
+li {
+	padding: 10px 2px;
+}
+.user-info-part {
+	padding-right: 40px;
+}
+.profile_item {
+	margin-top: 24px;
+}
+.profile_item .list {
+	align-items: start;
+}
+.info-edit-div .info-input {
+	width: 100%;
+}
+button.profileBtn,
+label.input-label-btn {
+	font-weight: normal;
+}

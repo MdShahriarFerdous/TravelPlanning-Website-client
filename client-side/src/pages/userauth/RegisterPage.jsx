@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { RegisterAPI } from "../../backend-services/api";
 import { useLoader } from "../../context/loaderContext";
+import { toast } from "react-toastify";
 
 const RegisterPage = () => {
 	const navigate = useNavigate();
@@ -30,10 +31,10 @@ const RegisterPage = () => {
 					localStorage.setItem("registerInfo", JSON.stringify(data));
 					navigate("/check-mail");
 				} else {
-					console.log("Registration failed:", data.message);
+					console.error("Registration failed:", data.message);
 				}
 			} catch (error) {
-				console.log(error);
+				console.error(error);
 				toast.error(error.response.data.error.message);
 			} finally {
 				setLoader(false);
@@ -42,7 +43,7 @@ const RegisterPage = () => {
 	});
 	return (
 		<div className="container mt-5">
-			<form className="form-group " onSubmit={formik.handleSubmit}>
+			<form className="form-group p-5" onSubmit={formik.handleSubmit}>
 				<div className="d-flex justify-content-center logo-div mb-3">
 					<h2 className="welcome-text">Join </h2>
 					<h2 className="logo-text">
@@ -51,13 +52,13 @@ const RegisterPage = () => {
 				</div>
 				<div className="row d-flex py-4 justify-content-center">
 					<div className="col-lg-6">
-						<div className="card p-5">
+						<div className="card p-5 auth-form-card">
 							<h1 className="card-title mb-4 text-center">
 								Sign up
 							</h1>
 							<input
 								type="text"
-								className="form-control my-2 py-3"
+								className="form-control my-2 py-3 username-input"
 								placeholder="Username"
 								name="username"
 								value={formik.values.username}
@@ -71,7 +72,7 @@ const RegisterPage = () => {
 								)}
 							<input
 								type="email"
-								className="form-control my-2 py-3"
+								className="form-control my-2 py-3 email-input"
 								placeholder="Email"
 								name="email"
 								value={formik.values.email}
@@ -84,8 +85,8 @@ const RegisterPage = () => {
 							)}
 							<input
 								type="password"
-								className="form-control my-2 py-3"
-								placeholder="Password"
+								className="form-control my-2 py-3 password-input"
+								placeholder="Password (minimum 6 characters long)"
 								name="password"
 								value={formik.values.password}
 								onChange={formik.handleChange}
@@ -98,7 +99,7 @@ const RegisterPage = () => {
 								)}
 							<button
 								type="submit"
-								className="btn bg-gradient-primary my-2"
+								className="btn bg-gradient-primary my-2 register-submit-btn"
 							>
 								Sign up
 							</button>

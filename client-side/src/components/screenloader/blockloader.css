@@ -1,0 +1,22 @@
+.ProcessingDivBlock {
+	top: 0 !important;
+	bottom: 0 !important;
+	width: 100%;
+	height: 100%;
+	background: white;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	z-index: 10000 !important;
+}
+.center-screenBlock {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	min-height: 85vh;
+}
+.loader-sizeBlock {
+	width: 150px;
+}

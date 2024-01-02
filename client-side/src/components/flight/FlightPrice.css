@@ -1,0 +1,188 @@
+.sticky {
+    position: sticky;
+    top: 88px;
+    z-index: 8;
+}
+
+.fare-summary-wrapper {
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px 0 rgba(113,118,116,.08);
+    overflow: hidden;
+}
+
+.fare-summary-wrapper .fare-modal-header {
+    display: none;
+    position: relative;
+    padding: 15px;
+    margin-bottom: 15px;
+    color: #1c3c6b;
+    border-bottom: 1px solid #ebf0f4;
+}
+
+.fare-summary-wrapper .fare-box {
+    padding: 15px;
+}
+
+.fare-summary-wrapper .fare-header {
+    border-bottom: 1px solid #ebf0f4;
+    padding-bottom: 15px;
+    cursor: pointer;
+    position: relative;
+}
+
+.fare-summary-wrapper .fare-header .wrapper {
+    display: flex;
+    align-items: flex-start;
+}
+
+.fare-summary-wrapper .fare-header .wrapper .img-placeholder {
+    width: 75px;
+    min-width: 75px;
+    height: 75px;
+    box-shadow: 0 2px 12px rgba(51,65,80,.06);
+    border-radius: 3px;
+    margin-right: 15px;
+    overflow: hidden;
+}
+
+.fare-summary-wrapper .fare-header .wrapper .img-placeholder .image-box, .fare-summary-wrapper .fare-header .wrapper .img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 5px;
+}
+
+.fare-summary-wrapper .fare-header .wrapper .header-summary .fare-type img {
+    width: 20px;
+    margin-right: 6px;
+}
+
+.fare-summary-wrapper .fare-header .wrapper .header-summary .name {
+    font-size: 1.1428571429rem;
+    line-height: 24px;
+    font-weight: 600;
+}
+
+.fare-summary-wrapper .fare-header .wrapper .header-summary .fare-type, .fare-summary-wrapper .fare-header .wrapper .header-summary .name {
+    color: #1c3c6b;
+}
+
+.fare-summary-wrapper .fare-header .wrapper .header-summary .subtitle {
+    color: #4e5154;
+    font-size: .8571428571rem;
+    line-height: 22px;
+    font-weight: 400;
+}
+
+.fare-summary-wrapper .fare-header .wrapper .fare-type, .fare-summary-wrapper .fare-header .wrapper .route-names, .fare-summary-wrapper .fare-header .wrapper .subtitle {
+    display: block;
+}
+
+.fare-summary-wrapper .fare-info {
+    overflow: hidden;
+    padding-top: 0;
+}
+
+.fare-summary-wrapper .fare-breakdown, .fare-summary-wrapper .fare-info {
+    padding: 14px 0 0;
+    transition: all .4s ease-in-out;
+    border-bottom: 1px solid #ebf0f4;
+    background-color: #fff;
+}
+
+.fare-summary-wrapper .fare-breakdown .fare-info-header, .fare-summary-wrapper .fare-info .fare-info-header {
+    color: #1c3c6b;
+    font-size: 1.1428571429rem;
+    line-height: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.fare-summary-wrapper .fare-breakdown .fare-content .fare-info-content, .fare-summary-wrapper .fare-info .fare-content .fare-info-content {
+    width: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    color: #636363;
+}
+
+.fare-summary-wrapper .fare-breakdown .fare-item:not(:first-of-type), .fare-summary-wrapper .fare-info .fare-item:not(:first-of-type) {
+    margin-top: 5px;
+}
+
+.fare-summary-wrapper .fare-breakdown .fare-item, .fare-summary-wrapper .fare-info .fare-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.fare-summary-wrapper .fare-breakdown .fare-item .fare, .fare-summary-wrapper .fare-info .fare-item .fare {
+    max-width: 70%;
+}
+
+.fare-summary-wrapper .fare-breakdown .fare-item .fare-price, .fare-summary-wrapper .fare-info .fare-item .fare-price {
+    max-width: 40%;
+    font-size: 1.1428571429rem;
+    line-height: 24px;
+    font-weight: 600;
+}
+
+.sm-text {
+    font-size: .8571428571rem;
+    line-height: 22px;
+    font-weight: 600;
+}
+
+.lg-text {
+    margin-left: 4px;
+    font-size: 1rem;
+}
+
+.fare-summary-wrapper .fare-breakdown[data-v-0aba5672], .fare-summary-wrapper .fare-info {
+    padding: 14px 0 0;
+    transition: all .4s ease-in-out;
+    border-bottom: 1px solid #ebf0f4;
+    background-color: #fff;
+}
+
+.fare-summary-wrapper .fare-breakdown .fare-content .fare-info-content, .fare-summary-wrapper .fare-info .fare-content .fare-info-content {
+    width: 100%;
+    flex-basis: 100%;
+    color: #636363;
+}
+
+.fare-summary-wrapper .fare-breakdown .fare-item:last-child, .fare-summary-wrapper .fare-info .fare-item:last-child {
+    margin-bottom: 10px;
+}
+
+.fare-summary-wrapper .total-price {
+    position: relative;
+    width: 100%;
+    background-color: #ecf3fe;
+    border-radius: 0 0 5px 0;
+    left: 0;
+    bottom: 0;
+    padding: 12px 18px;
+}
+
+.fare-summary-wrapper .total-price .price-wrapper {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1428571429rem;
+    line-height: 22px;
+    font-weight: 400;
+    border-radius: 0 5px 0 0;
+}
+
+.fare-summary-wrapper .total-price .price-wrapper .text-blue {
+    color: #1c3c6b;
+    font-weight: 600;
+}
+
+.fare-summary-wrapper .total-price .price-wrapper .subtext-grey {
+    color: #5d6974;
+}
+

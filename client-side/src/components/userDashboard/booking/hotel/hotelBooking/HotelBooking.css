@@ -1,0 +1,701 @@
+.hotelapp {
+  background-color: #fff;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 2rem;
+  display: flex;
+}
+
+.hotelapp p {
+  font-size: 16px;
+}
+
+.hotelapp main {
+  padding-bottom: 2rem;
+  min-width: 60%;
+}
+
+.hotelapp .container {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.hotelapp .header {
+  padding: 0 15px;
+}
+
+.hotelapp aside {
+  background-image: url("/src/assets/images/bg-sidebar-desktop.svg");
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+  min-width: 30%;
+  padding-bottom: 10rem;
+}
+
+.hotelapp .labels--container {
+  padding: 2.8rem;
+  color: white;
+}
+
+.hotelapp .circle {
+  border: 1px solid white;
+  border-radius: 100%;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  line-height: 35px;
+  margin-right: 20px;
+}
+
+.hotelapp .circle.active {
+  background-color: #bee2fd;
+  color: black;
+  border: none;
+}
+
+.hotelapp .step--label {
+  margin-bottom: 20px !important;
+  display: flex;
+  align-items: center;
+}
+
+.hotelapp .headings p {
+  margin-bottom: 6px;
+  color: hsl(229, 24%, 87%) !important;
+  font-size: 15px !important;
+}
+
+.hotelapp .headings h4 {
+  margin-top: 0px;
+  font-size: 15px !important;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: normal;
+}
+
+.hotelapp .headings p,
+.hotelapp .headings h4 {
+  text-transform: uppercase !important;
+}
+
+.hotelapp .alert {
+  padding: 0.5rem 0.8rem 0.1rem 0.8rem;
+  background-color: #f8d7da;
+  color: black;
+  border: 1px solid #f5c6cb;
+  border-radius: 0.25rem;
+  animation: fade-in 0.5s ease-in-out;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.hotelapp .close {
+  cursor: pointer;
+  padding: 0 1rem;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width:800px) {
+  .hotelapp .alert {
+    position: relative;
+    top: 14px;
+  }
+}
+
+
+/* =================== */
+/* step 1 */
+/* ================= */
+
+.hotelapp .title,
+.hotelapp label {
+  color: #092951;
+}
+
+.hotelapp .title {
+  margin-bottom: 0px;
+}
+
+.hotelapp .description {
+  margin-top: 6px;
+  color: hsl(231, 11%, 63%);
+}
+
+.hotelapp .form {
+  margin-top: 2rem;
+}
+
+.hotelapp form label {
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2px;
+}
+
+.hotelapp form label .required,
+.hotelapp form label .invalid {
+  color: red;
+}
+
+.hotelapp form input {
+  border: 0.75px solid #00000050;
+  text-indent: 8px;
+  border-radius: 6px;
+  height: 42px;
+  color: #092951;
+  outline: none;
+}
+
+.hotelapp form input:focus {
+  border: 2px solid #280951c7;
+}
+
+
+/* ===================== */
+/* step 2  */
+/* =================== */
+
+.hotelapp .plan-card,
+.hotelapp .toggle-plan {
+  color: #092951;
+  border-radius: 10px;
+}
+
+.hotelapp .plan-card:hover,
+.hotelapp .plan-card.selected,
+.hotelapp .toggle-plan {
+  background-color: #eef5ff;
+}
+
+.hotelapp .plan-card-container {
+  margin: 3rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hotelapp .plan-card {
+  width: 30%;
+  padding: 1.3rem;
+  border: 0.75px solid #00000050;
+  transition: all 1s ease-in-out;
+}
+
+.hotelapp .plan-card.selected {
+  border: 2px solid #280951c7;
+}
+
+.hotelapp .plan-card:hover {
+  cursor: pointer;
+}
+
+.hotelapp .plan-card .label {
+  margin-bottom: 0;
+}
+
+.hotelapp .plan-card .price {
+  color: hsl(231, 11%, 63%);
+}
+
+.hotelapp .toggle-plan {
+  min-width: 60%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hotelapp .toggler {
+  margin: 0 20px;
+}
+
+.hotelapp .toggler .inner {
+  width: 70px;
+  height: 30px;
+  background-color: #092951;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.hotelapp .toggler .circle {
+  width: 24px;
+  height: 24px;
+  margin-left: 2px;
+  background-color: #fff;
+  transition: transform 0.6s ease-in-out;
+  transform: translateX(0);
+}
+
+.hotelapp .toggler .circle.to-right {
+  transform: translateX(40px);
+  margin-bottom: 1px;
+}
+
+/* ========================= */
+/* step 3   */
+/* ======================= */
+.hotelapp .add-ons-container {
+  margin-top: 3rem;
+}
+
+.hotelapp .addOn {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  margin-bottom: 1.6rem;
+  border: 1px solid #00000050;
+  border-radius: 10px;
+}
+
+.hotelapp .addOn>div {
+  margin-top: 0.4rem;
+  margin-left: 2rem;
+}
+
+.hotelapp .addOn .heading {
+  color: #092951;
+  position: relative;
+}
+
+.hotelapp .addOn:hover {
+  cursor: pointer;
+  background-color: #eef5ff;
+}
+
+.hotelapp .addOn.selected {
+  background-color: #eef5ff;
+  border: 2px solid hsl(243, 100%, 62%);
+}
+
+.hotelapp .addOn .heading {
+  margin: 0;
+}
+
+.hotelapp .addOn .price {
+  margin-left: auto;
+  color: hsl(243, 100%, 62%);
+}
+
+.hotelapp .addOn input {
+  width: 24px;
+  height: 24px;
+}
+
+/* ================================ */
+/* ===== step 4 ======== */
+/* ============================== */
+
+.hotelapp .summary {
+  background-color: #eef5ff;
+  padding: 1.4rem;
+  margin-top: 3rem;
+  border-radius: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.hotelapp .head {
+  color: #092951;
+}
+
+.hotelapp .head>div {
+  margin-bottom: 0.5rem;
+}
+
+.hotelapp .head .plan,
+.hotelapp .head .price {
+  margin: 0px;
+}
+
+.hotelapp .plan-toggler {
+  cursor: pointer;
+  text-decoration: underline;
+  margin: 0px;
+  padding: 10px 0 10px 0px;
+}
+
+.hotelapp .body {
+  border-bottom: 1px solid hsl(231, 11%, 63%);
+  margin-bottom: 10px;
+}
+
+.hotelapp .body .label {
+  color: hsl(231, 11%, 63%);
+}
+
+.hotelapp .body .price {
+  color: #092951;
+}
+
+.hotelapp .head,
+.hotelapp .selectedAddOn,
+.hotelapp .total {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hotelapp .total h4 {
+  color: hsl(243, 100%, 62%);
+}
+
+/* ====================== */
+/* ===== footer ======== */
+/* ==================== */
+.hotelapp footer {
+  margin-left: 15px;
+  margin-right: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hotelapp .btn {
+  height: 46px;
+  width: 130px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #ff5522;
+}
+
+.hotelapp .go-back {
+  border: 0.7px solid #00000050;
+}
+
+.hotelapp .next-step {
+  background-color: #092951;
+  color: white;
+  border: none;
+}
+
+.hotelapp .next-step.end {
+  margin-left: auto;
+}
+
+.hotelapp .next-step.confirm {
+  background-color: #ff5522;
+}
+
+.hotelapp .thanks {
+  padding: 6rem 3rem 3rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hotelapp .thanks p {
+  line-height: 1.4rem;
+  color: hsl(231, 11%, 63%);
+  width: 60%;
+  margin: auto;
+  text-align: center;
+}
+
+/* attribution */
+
+.hotelapp .attribution {
+  text-align: center;
+  padding: 2rem 1rem;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #092951;
+  color: #fff;
+  line-height: 1.8rem;
+}
+
+.hotelapp .attribution a {
+  color: #bee2fd;
+}
+
+@media (max-width: 1200px) {
+  .hotelapp aside {
+    min-width: 34%;
+  }
+
+  .hotelapp main {
+    min-width: 70%;
+  }
+
+  .hotelapp .labels--container {
+    padding: 1.4rem;
+  }
+
+  .hotelapp header,
+  .hotelapp .container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (max-width:1080px) {
+  .hotelapp .thanks {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .hotelapp .plan-card-container {
+    flex-direction: column;
+    margin: 1rem 0;
+  }
+
+  .hotelapp .plan-card {
+    width: 80%;
+    margin: 1rem 0;
+  }
+
+  .hotelapp .toggle-plan,
+  .hotelapp footer {
+    min-width: 80%;
+  }
+
+  .hotelapp .thanks p {
+    width: 100%;
+  }
+}
+
+@media (max-width: 800px) {
+  .hotelapp {
+    flex-direction: column;
+    padding-bottom: 0px;
+  }
+
+  .hotelapp aside,
+  .hotelapp main {
+    width: 100%;
+  }
+
+  .hotelapp aside {
+    background-position: bottom;
+    padding-bottom: 0rem;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+
+  .hotelapp header,
+  .hotelapp .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .hotelapp .plan-card {
+    display: grid;
+    grid-template-columns: 0.4fr auto;
+    grid-column-gap: 1.2rem;
+    padding: 1rem;
+  }
+
+  .hotelapp .plan-card .label {
+    margin-top: 0.5rem;
+  }
+
+  .hotelapp .plan-card p {
+    margin: 6px 0;
+  }
+
+  .hotelapp .icon {
+    grid-row: 1 / 4;
+    align-self: center;
+  }
+
+}
+
+@media (max-width:600px) {
+  .hotelapp .step--label {
+    margin-bottom: 0px !important;
+  }
+
+  .hotelapp .addOn>div {
+    margin-left: 1rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .hotelapp {
+    padding: 1rem;
+  }
+
+  .hotelapp .labels--container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .hotelapp .labels--container .headings {
+    display: none;
+  }
+
+  .hotelapp form label {
+    flex-direction: column;
+  }
+
+  .hotelapp .addOn {
+    padding: 1rem;
+    flex-direction: column;
+  }
+
+  .hotelapp .addOn>div {
+    margin-left: 0rem;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .hotelapp .addOn .price {
+    margin: 0;
+  }
+
+  .hotelapp .btn {
+    font-weight: normal;
+  }
+}
+
+@media (max-width:380px) {
+  .hotelapp .toggler .inner {
+    width: 46px;
+    height: 20px;
+  }
+
+  .hotelapp .toggler .circle {
+    width: 16px;
+    height: 16px;
+  }
+
+  .hotelapp .toggler .circle.to-right {
+    transform: translateX(26px);
+    margin-bottom: 0px;
+  }
+
+  .hotelapp .btn {
+    height: 36px;
+    width: 100px;
+  }
+
+  .hotelapp .thanks {
+    padding: 0.8rem;
+  }
+}
+
+.hotelapp .field-label {
+  margin-left: 15px;
+}
+
+.hotelapp .date-input {
+  line-height: 54px;
+  height: 54px;
+  width: 100% !important;
+  padding: 12px 0px !important;
+  box-shadow: none !important;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  color: #353535;
+  border-radius: 5px !important;
+  margin-left: 15px;
+}
+
+.hotelapp .text-input {
+  line-height: 54px;
+  height: 54px;
+  width: 100% !important;
+  padding: 12px 12px !important;
+  box-shadow: none !important;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  font-size: 16px;
+  font-weight: 400;
+  color: #353535;
+  border-radius: 5px !important;
+  margin-left: 15px;
+}
+
+.hotelapp .react-datepicker__navigation-icon {
+  top: 6px;
+}
+
+.hotelapp .field-check {
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+.hotelapp .check-input {
+  flex-basis: 20%;
+  line-height: 20px;
+  height: 20px;
+  width: 100% !important;
+  padding: 10px 0px !important;
+  box-shadow: none !important;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  text-align: center;
+  font-size: 15px;
+  font-weight: 400;
+  color: #353535;
+  border-radius: 5px !important;
+  margin-left: 0px;
+  cursor: pointer;
+}
+
+.hotelapp .check-label {
+  flex-basis: 80%;
+  line-height: 25px;
+  width: 100% !important;
+  padding: 8px 0px 0px !important;
+  box-shadow: none !important;
+  border: 1px solid transparent;
+  font-size: 15px;
+  font-weight: 400;
+  color: #353535;
+  border-radius: 5px !important;
+  margin-left: 0px;
+  cursor: pointer;
+}
+
+.hotelapp .field-radio {
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+.hotelapp .radio-input {
+  flex-basis: 20%;
+  line-height: 20px;
+  height: 20px;
+  width: 100% !important;
+  padding: 10px 0px !important;
+  box-shadow: none !important;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  text-align: center;
+  font-size: 15px;
+  font-weight: 400;
+  color: #353535;
+  border-radius: 5px !important;
+  margin-left: 0px;
+  cursor: pointer;
+}
+
+.hotelapp .radio-label {
+  flex-basis: 80%;
+  line-height: 25px;
+  width: 100% !important;
+  padding: 8px 0px 0px !important;
+  box-shadow: none !important;
+  border: 1px solid transparent;
+  font-size: 15px;
+  font-weight: 400;
+  color: #353535;
+  border-radius: 5px !important;
+  margin-left: 0px;
+  cursor: pointer;
+}

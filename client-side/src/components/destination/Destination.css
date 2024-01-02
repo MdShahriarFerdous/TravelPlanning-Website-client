@@ -1,0 +1,54 @@
+/* .slick-prev:before,
+.slick-next:before {
+	font-size: 35px;
+	color: #ff5522;
+} */
+
+/* .slick-next:before {
+	position: absolute;
+	bottom: 73px;
+	right: 45%;
+} */
+
+/* .slick-prev:before {
+	position: absolute;
+	left: 2075%;
+	bottom: 73px;
+} */
+
+/* .slick-prev {
+	left: -40px;
+} */
+
+.destination-section .gallery-box {
+	padding: 0 56px;
+}
+
+a.btn.btn-primary {
+	background: rgba(255, 85, 34, 0.85);
+	color: #fff;
+}
+.destination-section {
+	padding-top: 110px;
+}
+
+.destination-single {
+	padding-top: 25px;
+}
+
+.destination-heading {
+	text-align: center;
+	font-size: 2rem;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+.destination-single .upper-images .image-col {
+	padding: 0 5px;
+}
+.destination-single .upper-images .image-block {
+	position: relative;
+	margin-bottom: 10px;
+}

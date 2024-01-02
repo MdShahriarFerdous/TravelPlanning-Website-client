@@ -1,41 +1,50 @@
+import { useEffect, useState } from "react";
+import { blogCategoriesList } from "../../../../backend-services/blogsApi";
+import { NavLink } from "react-router-dom";
+import MiniLoader from "../../../screenloader/MiniLoader";
+
 export default function Categories() {
+  const [blogCategories, setBlogCategories] = useState([]);
+  const [isBlogCategoriesLoading, setIsBlogCategoriesLoading] = useState(false);
+  useEffect(() => {
+    (async () => {
+      setIsBlogCategoriesLoading(true);
+      const res = await blogCategoriesList();
+      if (res?.data) {
+        const { blogCategories } = res?.data || {};
+        setIsBlogCategoriesLoading(false);
+        setBlogCategories(blogCategories);
+      }
+    })();
+  }, []);
   return (
-    <div className="sb-widget links-widget">
-      <div className="w-inner">
-        <div className="s-title">
-          <i className="fa-solid fa-caret-right"></i>
-          <h4>Categories</h4>
-        </div>
-        <ul>
-          <li>
-            <a href="#">Adventure</a>
-          </li>
-          <li>
-            <a href="#">Hiking</a>
-          </li>
-          <li>
-            <a href="#">Romance</a>
-          </li>
-          <li>
-            <a href="#">Culture</a>
-          </li>
-          <li>
-            <a href="#">City Tour</a>
-          </li>
-          <li>
-            <a href="#">History</a>
-          </li>
-          <li>
-            <a href="#">Beach Tour</a>
-          </li>
-          <li>
-            <a href="#">Sports Tour</a>
-          </li>
-          <li>
-            <a href="#">Relaxation</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <>
+      {isBlogCategoriesLoading ? (
+        <MiniLoader />
+      ) : (
+        <>
+          {blogCategories && blogCategories.length > 0 && (
+            <div className="sb-widget links-widget">
+              <div className="w-inner">
+                <div className="s-title">
+                  <i className="fa-solid fa-caret-right"></i>
+                  <h4>Categories</h4>
+                </div>
+                <ul>
+                  {blogCategories.map((category) => {
+                    const { _id, title } = category || {};
+                    return (
+                      <li key={_id}>
+                        <NavLink to={`/blogs?category=${_id}`}>{title}</NavLink>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </div>
+          )}
+        </>
+      )}
+    </>
   );
 }

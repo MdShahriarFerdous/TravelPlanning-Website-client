@@ -8,15 +8,18 @@ import "./css/bootstrap.css";
 import "bootstrap";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import travelSVG from "../../assets/images/travel.svg";
 
 const VerifyPage = () => {
 	const { verifyId } = useParams();
+
 	const navigate = useNavigate();
 	const [auth, setAuth] = useAuth();
 	const [loader, setLoader] = useLoader();
 
 	let browserToken;
 	let browserId;
+
 	const data = localStorage.getItem("registerInfo");
 	if (data) {
 		const parsedData = JSON.parse(data);
@@ -30,13 +33,18 @@ const VerifyPage = () => {
 			setLoader(true);
 			if (verifyId === browserId) {
 				const data = await VerificationAPI(browserToken);
-				console.log(data);
 				if (data.status === "success") {
-					localStorage.setItem("auth", JSON.stringify(data));
+					const setDataForAuth = {
+						token: data.token,
+					};
+					localStorage.setItem(
+						"auth",
+						JSON.stringify(setDataForAuth)
+					);
 					setAuth({
 						...auth,
 						user: data.user,
-						token: data.createdToken,
+						token: data.token,
 					});
 					setLoader(false);
 					navigate("/");
@@ -47,7 +55,7 @@ const VerifyPage = () => {
 				console.error("Verification ID mismatch");
 			}
 		} catch (error) {
-			console.log(error);
+			console.error(error);
 			toast.error(
 				error.response?.data?.error?.message || "Verification failed"
 			);
@@ -57,16 +65,25 @@ const VerifyPage = () => {
 	};
 
 	return (
-		<div className="d-flex justify-content-center align-items-center vh-100">
-			<h2>Almost there! Click this button to activate your account</h2>
-			<button
-				style={{ display: "block" }}
-				onClick={handleClick}
-				className="btn btn-secondary"
-			>
-				Activate
-			</button>
-		</div>
+		<>
+			<div className="d-flex justify-content-center align-items-center mt-5 p-5">
+				<h2>Almost there! Click activate button and join our family</h2>
+			</div>
+			<div className="d-flex justify-content-center align-items-center p-2">
+				<button
+					style={{ display: "block", padding: "1rem 2rem" }}
+					onClick={handleClick}
+					className="btn bg-gradient-primary">
+					Activate
+				</button>
+			</div>
+			<div className="d-flex justify-content-center align-items-center mt-2">
+				<img
+					src={travelSVG}
+					style={{ width: "300px", height: "300px" }}
+				/>
+			</div>
+		</>
 	);
 };
 

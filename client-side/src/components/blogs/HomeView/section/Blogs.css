@@ -1,0 +1,8 @@
+.gallery-list {
+    background: #f9fcff;
+}
+
+.gallery-list img {
+    margin: auto !important;
+    border-radius: 15px;
+}
