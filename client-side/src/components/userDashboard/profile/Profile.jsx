@@ -7,7 +7,7 @@ import { CiSettings } from "react-icons/ci";
 import { updateProfile } from "../../../backend-services/profileApi";
 import { useAuth } from "../../../context/authContext";
 import PersonalInfo from "./PersonalInfo";
-import PasswordSetting from "./PasswordSetting";
+import UserSetting from "./UserSetting";
 import { toast } from "react-toastify";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap";
@@ -15,13 +15,19 @@ import "./Profile.css";
 import "../commonCSS/common.css";
 import { useUserImage } from "../../../context/userImageContext";
 import circleLoader from "../../../assets/images/loader/spanloader.svg";
+import EditPersonalInfo from "./editprofile/EditPersonalInfo";
 
 const Profile = () => {
   const [selectedProfile, setSelectedProfile] = useState("personalInfo");
   const [selectedImage, setSelectedImage] = useState(null);
-  const [auth] = useAuth();
+  const [auth, setAuth] = useAuth();
   const [userImage, setUserImage] = useUserImage();
   const [loading, setLoading] = useState(false);
+  const [updatedUsername, setUpdatedUsername] = useState("");
+
+  const handleUpdateUsername = (newUsername) => {
+    setUpdatedUsername(newUsername);
+  };
 
   const handleProfileSelect = (profile) => {
     setSelectedProfile(profile);
@@ -88,7 +94,7 @@ const Profile = () => {
                         fontWeight: "bold",
                         marginBottom: "10px",
                       }}
-                    >{`${auth?.user?.username}`}</p>
+                    >{`${updatedUsername || auth?.user?.username}`}</p>
 
                     <p
                       style={{
@@ -147,11 +153,17 @@ const Profile = () => {
                       </li>
                       <li
                         className={`list-item ${
-                          selectedProfile === "passwordSetting" ? "active" : ""
+                          selectedProfile === "userSetting" ? "active" : ""
                         }`}
-                        onClick={() => handleProfileSelect("passwordSetting")}
+                        onClick={() => handleProfileSelect("userSetting")}
                       >
-                        <CiSettings className="profile_icon" /> Password Setting
+                        <CiSettings
+                          className="profile_icon"
+                          style={{
+                            fontSize: "1.68rem",
+                          }}
+                        />{" "}
+                        User Setting
                       </li>
                     </ul>
                   </div>
@@ -160,9 +172,15 @@ const Profile = () => {
 
               <div className="col-lg-8 user-info-part">
                 {selectedProfile === "personalInfo" && (
-                  <PersonalInfo onUpdateProfile={onUpdateProfile} />
+                  <PersonalInfo
+                    onUpdateProfile={onUpdateProfile}
+                    profile={handleProfileSelect}
+                  />
                 )}
-                {selectedProfile === "passwordSetting" && <PasswordSetting />}
+                {selectedProfile === "edit" && <EditPersonalInfo />}
+                {selectedProfile === "userSetting" && (
+                  <UserSetting onUpdateUsername={handleUpdateUsername} />
+                )}
               </div>
             </div>
           </div>
