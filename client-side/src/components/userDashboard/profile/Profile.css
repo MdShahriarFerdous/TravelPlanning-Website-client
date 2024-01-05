@@ -1,77 +1,101 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
 
 .profile_info form label {
-	font-size: 16px;
+  font-size: 16px;
 }
 
 .profile_info form .profileBtn {
-	font-size: 16px;
-	margin-left: -1px;
+  font-size: 16px;
+  margin-left: -1px;
 }
 
 .heading {
-	color: #344767;
+  color: #344767;
 }
 
 .profileBtn:hover {
-	color: white;
-	background-color: #ff5522;
+  color: white;
+  background-color: #ff5522;
 }
 
-/* Profile Image */
+/* ============== Profile Image ============== */
 .profile img {
-	border-radius: 50%;
-	width: 150px;
-	height: 150px;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
 }
 
-/* Profile section */
+/* ============== Profile section ============== */
 
 .profile_item {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .profile_item .list .list-item {
-	cursor: pointer;
-	margin-bottom: 2px;
-	align-items: center;
-	font-size: 1.1rem;
-	padding: 12px 6px 12px 10px;
-	font-family: "Open Sans", sans-serif;
-	font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 2px;
+  align-items: center;
+  font-size: 1.1rem;
+  padding: 12px 6px 12px 10px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
 }
 .profile_item .list .list-item:hover {
-	color: #ff5522;
+  color: #ff5522;
 }
 
 .profile_item .list .profile_icon {
-	font-size: 24px;
-	margin-right: 6px;
-	color: #717a8a;
+  font-size: 24px;
+  margin-right: 6px;
+  color: #717a8a;
 }
 li {
-	padding: 10px 2px;
+  padding: 10px 2px;
 }
 .user-info-part {
-	padding-right: 40px;
+  padding-right: 40px;
 }
 .profile_item {
-	margin-top: 24px;
+  margin-top: 24px;
 }
 .profile_item .list {
-	align-items: start;
-}
-.info-edit-div .info-input {
-	width: 100%;
-}
-button.profileBtn,
-label.input-label-btn {
-	font-weight: normal;
+  align-items: start;
 }
 
-/* Personal Info */
-.container form .editBtn {
-	font-weight: normal;
-	color: #344767;
+button.profileBtn,
+label.input-label-btn {
+  font-weight: normal;
+}
+
+/* ============== Personal Info ============== */
+.container .Btn .editBtn {
+  font-weight: normal;
+  color: #344755;
+}
+
+.container .profile-info {
+  display: flex;
+  flex-direction: column;
+}
+.container .profile-info .profile_content {
+  border-bottom: 1px solid #201f1f;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container .profile-info .info-title {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #615f66;
+  margin-right: 40px;
+}
+
+.container .profile-info .info {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #4e5154;
+  text-align: end;
 }
