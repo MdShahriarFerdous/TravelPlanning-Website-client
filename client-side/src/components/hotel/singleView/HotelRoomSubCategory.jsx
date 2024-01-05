@@ -1,34 +1,65 @@
+/* eslint-disable react/prop-types */
+import { useNavigate } from "react-router-dom";
 // eslint-disable-next-line react/prop-types
-export default function HotelRoomSubCategory({ index }) {
-  const keyFeaturesLength = 3;
-  const facilitiesLength = 8;
+export default function HotelRoomSubCategory({
+  hotelInfo,
+  category,
+  subCategory,
+}) {
+  const navigate = useNavigate();
+  const { _id, title, rentPerPerson, keyFeatures, facilities, maxAllowed } =
+    subCategory || {};
+  const handleBookNow = () => {
+    navigate(`/user/hotel-booking/${hotelInfo.slug}`, {
+      state: {
+        hotelName: hotelInfo.name,
+        hotelId: hotelInfo._id,
+        category: category.name,
+        roomCategoryId: category._id,
+        subCategory: title,
+        roomSubCategoryId: _id,
+      },
+    });
+  };
+  const calculateCost = Number(rentPerPerson) * Number(maxAllowed);
   return (
     <tr>
       <td className="ro">
-        <h6>Sub Category {index + 2}</h6>
+        <h6>{title}</h6>
         <ul className="un-styled-list">
-          {Array.apply(null, { length: keyFeaturesLength - 1 }).map((x, i) => (
-            <li key={i}>Key Feature {i + 1}</li>
-          ))}
+          <li>
+            Max {maxAllowed || 0} Guest
+            {maxAllowed ? (maxAllowed > 1 ? "s" : "") : ""} Per Room Allowed
+          </li>
+          {keyFeatures?.length > 0 &&
+            keyFeatures.map((kFeature, i) => <li key={i}>{kFeature}</li>)}
         </ul>
       </td>
       <td className="fac">
-        <ul className="styled-list-two">
-          {Array.apply(null, { length: facilitiesLength - 1 }).map((x, i) => (
-            <li key={i}>Facility {i + 1}</li>
-          ))}
+        <ul>
+          {facilities?.length > 0 &&
+            facilities.map((facility, i) => (
+              <li key={i}>
+                <i className="fa-solid fa-check" style={{ color: "green" }}></i>{" "}
+                {facility}
+              </li>
+            ))}
         </ul>
       </td>
       <td className="price">
         <div className="rate">
-          <span className="amount">$1299</span>{" "}
+          <span className="amount">${calculateCost}</span>{" "}
           <span className="duration">/ Per Night</span>
         </div>
         <div className="p-for">Price for 1 room</div>
         <div className="book-link">
-          <a href="#" className="theme-btn btn-style-two">
-            <span>Book Now</span>
-          </a>
+          <span
+            className="theme-btn btn-style-two"
+            onClick={handleBookNow}
+            style={{ cursor: "pointer" }}
+          >
+            Book Now
+          </span>
         </div>
       </td>
     </tr>

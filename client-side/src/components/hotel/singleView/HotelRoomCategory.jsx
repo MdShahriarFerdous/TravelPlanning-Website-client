@@ -1,12 +1,27 @@
+/* eslint-disable react/prop-types */
 import RoomImage from "../../../assets/images/resources/destinations/hotels/hotel-room-5.jpg";
 import HotelRoomSubCategory from "./HotelRoomSubCategory";
+import { useNavigate } from "react-router-dom";
 
-// eslint-disable-next-line react/prop-types
-export default function HotelRoomCategory({ hotelCategory }) {
-  const { name, shortDesc, roomSize, features, thumbnail, subCategories } =
+export default function HotelRoomCategory({ hotelCategory, hotelInfo }) {
+  const navigate = useNavigate();
+  const { _id, name, shortDesc, roomSize, features, thumbnail, subCategories } =
     hotelCategory || {};
   const subCategoriesLength = subCategories.length;
   const firstSub = subCategories[0] || {};
+  const handleBookNow = () => {
+    navigate(`/user/hotel-booking/${hotelInfo.slug}`, {
+      state: {
+        hotelName: hotelInfo.name,
+        hotelId: hotelInfo._id,
+        category: name,
+        roomCategoryId: _id,
+        subCategory: firstSub?.title,
+        roomSubCategoryId: firstSub?._id,
+      },
+    });
+  };
+  const calculateCost = Number(firstSub?.rentPerPerson) * Number(firstSub?.maxAllowed);
   return (
     <>
       <tr>
@@ -39,6 +54,15 @@ export default function HotelRoomCategory({ hotelCategory }) {
         <td className="ro">
           <h6>{firstSub?.title}</h6>
           <ul className="un-styled-list">
+            <li>
+              Max {firstSub?.maxAllowed || 0} Guest
+              {firstSub?.maxAllowed
+                ? firstSub?.maxAllowed > 1
+                  ? "s"
+                  : ""
+                : ""}{" "}
+              Per Room Allowed
+            </li>
             {firstSub?.keyFeatures?.length > 0 &&
               firstSub.keyFeatures.map((kFeature, i) => (
                 <li key={i}>{kFeature}</li>
@@ -63,21 +87,30 @@ export default function HotelRoomCategory({ hotelCategory }) {
           {firstSub?.rentPerPerson && (
             <>
               <div className="rate">
-                <span className="amount">${firstSub?.rentPerPerson} </span>{" "}
+                <span className="amount">${calculateCost} </span>{" "}
                 <span className="duration">/ Per Night</span>
               </div>
               <div className="p-for">Price for 1 room</div>
               <div className="book-link">
-                <a href="#" className="theme-btn btn-style-two">
-                  <span>Book Now</span>
-                </a>
+                <span
+                  className="theme-btn btn-style-two"
+                  onClick={handleBookNow}
+                  style={{ cursor: "pointer" }}
+                >
+                  Book Now
+                </span>
               </div>
             </>
           )}
         </td>
       </tr>
-      {subCategories.slice(1).map((el, i) => (
-        <HotelRoomSubCategory key={i} index={i} />
+      {subCategories.slice(1).map((subCategory, i) => (
+        <HotelRoomSubCategory
+          key={i}
+          category={hotelCategory}
+          hotelInfo={hotelInfo}
+          subCategory={subCategory}
+        />
       ))}
     </>
   );

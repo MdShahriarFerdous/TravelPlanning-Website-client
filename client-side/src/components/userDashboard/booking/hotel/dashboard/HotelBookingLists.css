@@ -1,0 +1,39 @@
+.parent_content {
+    background-color: #F5F5FB;
+    min-height: 100vh;
+}
+
+.hotel-booking-card .btn {
+    width: 120px;
+    transition: all linear .3s;
+    border: 1px solid #ff531f;
+}
+
+.hotel-booking-card .btn.view {
+    border: 1px solid #ff531f;
+    color: #fff;
+    background: #ff531f;
+    margin-right: 10px;
+}
+
+.hotel-booking-card .btn:hover {
+    border: 1px solid #ff531f;
+    color: #fff;
+    background: #ff531f;
+    transform: scale(1);
+}
+.guests-list{
+    padding-left: 5px;
+}
+
+.guests-list li {
+    position: relative;
+    line-height: 15px;
+}
+
+.guests-list li span {
+    margin-left: 5px;
+    text-align: center;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+}

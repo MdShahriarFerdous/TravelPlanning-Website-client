@@ -29,7 +29,7 @@ const AuthProvider = ({ children }) => {
 			if (auth?.token) {
 				const { data } = await axios.get("/user-info");
 				data.error
-					? console.log(data.error)
+					? console.error(data.error)
 					: setAuth({
 							...auth,
 							user: data.user,

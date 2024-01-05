@@ -47,3 +47,18 @@ export const updateUser = async (userData) => {
     console.error("Error updating user:", error);
   }
 };
+
+//* =========================Get-User-Info-API=========================
+export const userInfo = async () => {
+  try {
+    const { data } = await axios.get("/user-info");
+    if (data.error) {
+      console.error(data.error);
+    } else {
+      return data;
+    }
+  } catch (error) {
+    console.error(error.response.data);
+    return error.response;
+  }
+};

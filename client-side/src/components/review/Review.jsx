@@ -87,7 +87,7 @@ const Review = ({ tourInfoId }) => {
   };
 
   return (
-    <div className="container" style={{ marginTop: "200px" }}>
+    <div className="container review" style={{ marginTop: "200px" }}>
       <h3 className="text-center">Reviews</h3>
       {reviewData.length === 0 && (
         <p className="text-center m-4" style={{fontSize:"18px"}}>No reviews for this Tour</p>

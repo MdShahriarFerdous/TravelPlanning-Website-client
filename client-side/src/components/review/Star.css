@@ -7,7 +7,7 @@
   margin: 0;
   padding-left: 1rem;
 } */
-input[type="radio"] {
+.container.review input[type="radio"] {
   display: none;
 }
 .star {
