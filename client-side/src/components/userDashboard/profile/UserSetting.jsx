@@ -10,6 +10,11 @@ const UserSetting = ({ onUpdateUsername }) => {
   const handleSave = async (e) => {
     e.preventDefault();
 
+    if (!username && !password) {
+      toast.error("Please fill in at least one field");
+      return;
+    }
+
     try {
       const response = await updateUser({ username, password });
 
@@ -18,8 +23,9 @@ const UserSetting = ({ onUpdateUsername }) => {
       } else {
         toast.success("User updated successfully!");
 
-        onUpdateUsername(username);
-
+        if (username) {
+          onUpdateUsername(username);
+        }
         setUsername("");
         setPassword("");
       }
