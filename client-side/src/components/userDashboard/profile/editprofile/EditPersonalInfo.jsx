@@ -22,18 +22,28 @@ const EditPersonalInfo = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!formData.bio && !formData.city && !formData.phone) {
+      toast.error("Please fill in at least one field");
+      return;
+    }
+
     const instanceOfFormData = new FormData();
 
-    instanceOfFormData.append("bio", formData.bio);
-    instanceOfFormData.append("city", formData.city);
-    instanceOfFormData.append("phone", formData.phone);
+    if (formData.bio) {
+      instanceOfFormData.append("bio", formData.bio);
+    }
+    if (formData.city) {
+      instanceOfFormData.append("city", formData.city);
+    }
+    if (formData.phone) {
+      instanceOfFormData.append("phone", formData.phone);
+    }
 
     try {
       // for (let [key, value] of instanceOfFormData.entries()) {
       // 	console.log(`${key}: ${value}`);
       // }
       const data = await updateProfile(instanceOfFormData);
-      console.log("Api response:", data);
 
       if (data.error) {
         toast.error(data.error);
