@@ -10,7 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import "../../pages/trips/customDatePicker.css";
+import "./customDatePicker.css";
 import moment from "moment/moment.js";
 
 export default function FlightSearch() {
