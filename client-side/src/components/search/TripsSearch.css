@@ -1,0 +1,16 @@
+.trips-img {
+    padding: 20px 0;
+}
+
+.trips-img img {
+    width: 500px;
+}
+
+.trips-img h4 {
+    /* margin-top: 20px; */
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 900;
+    color: #776f6f;
+}
